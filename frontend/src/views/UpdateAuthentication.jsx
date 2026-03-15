@@ -25,7 +25,7 @@ const SetAuthentication = (props) => {
   const [loadFail, setLoadFail] = useState("");
   const [appAuthentication, setAppAuthentication] = React.useState([]);
 
-  const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+  const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
   //const alert = useAlert();
 
   const parseIncomingOpenapiData = (data) => {
@@ -155,14 +155,14 @@ const SetAuthentication = (props) => {
 				:
 				<><div>
 					<Typography variant="h4" style={{ marginBottom: 20, }}>
-						You are invited to: Configure <a href={appLink} target="_blank" style={{ color: '#FF8444', textDecoration: 'none' }}>{appname}</a> Authentication
+						You are invited to: Configure <a href={appLink} target="_blank" style={{ color: '#FF8444', textDecoration: 'none' }} rel="noreferrer">{appname}</a> Authentication
 					</Typography>
 
 					<Typography variant="h6" style={{ marginBottom: 20, }}>
 						What does this mean?
 					</Typography>
 					<Typography variant="body1" style={{ marginBottom: 20, color: "rgba(255,255,255,0.4)", }}>
-						A Shuffle Organization has invited you to configure authentication for this app so that they can use this authentication in one of their workflows.
+						A NexusGuard Organization has invited you to configure authentication for this app so that they can use this authentication in one of their workflows.
 					</Typography>
 
 					<Typography variant="body1" style={{ marginBottom: 20, }}>

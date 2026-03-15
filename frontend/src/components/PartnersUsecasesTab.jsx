@@ -98,8 +98,8 @@ export const getCategoryImagePath = (category) => {
     return triggers.find((trigger) => trigger?.name.toLowerCase() === "schedule")?.large_image;
   } else if (lowerCategory.includes("pipelines")) {
     return triggers.find((trigger) => trigger?.name.toLowerCase() === "pipelines")?.large_image;
-  } else if (lowerCategory.includes("shuffle workflow")) {
-    return triggers.find((trigger) => trigger?.name.toLowerCase() === "shuffle workflow")?.large_image;
+  } else if (lowerCategory.includes("nexusguard workflow")) {
+    return triggers.find((trigger) => trigger?.name.toLowerCase() === "nexusguard workflow")?.large_image;
   } else if (lowerCategory.includes("user input")) {
     return triggers.find((trigger) => trigger?.name.toLowerCase() === "user input")?.large_image;
   } else {
@@ -827,7 +827,7 @@ const PartnersUsecasesTab = ({ isCloud, globalUrl, userdata, partnerData, setPar
     {value: "webhook", label: "Webhook"},
     {value: "schedule", label: "Schedule"},
     {value: "pipelines", label: "Pipelines"},
-    {value: "shuffle workflow", label: "Shuffle Workflow"},
+    {value: "nexusguard workflow", label: "NexusGuard Workflow"},
     {value: "user input", label: "User Input"},
     { value: "other", label: "Other" }
   ];

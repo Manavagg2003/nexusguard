@@ -206,7 +206,7 @@ const CacheView = memo((props) => {
 
 		{
 			"name": "Run AI Agent",
-			"description": "Runs an AI Agent to process the updated value. Uses built-in ShuffleAI configs. Learn more: https://shuffler.io/docs/AI",
+			"description": "Runs an AI Agent to process the updated value. Uses built-in NexusGuardAI configs. Learn more: https://nexusguardr.io/docs/AI",
 			"type": "singul",
 			"options": [{
 				"key": "",
@@ -269,7 +269,7 @@ const CacheView = memo((props) => {
 		})
 		.then((responseJson) => {
 			if (responseJson?.success === false) {
-				toast.warn("Failed to load apps. Please try again or contact support@shuffler if this persists.")
+				toast.warn("Failed to load apps. Please try again or contact support@nexusguardr if this persists.")
 			} else {
 				setApps(responseJson)
 			}
@@ -301,7 +301,7 @@ const CacheView = memo((props) => {
 			if (responseJson?.success !== true) {
 				setWorkflows(responseJson)
 			} else {
-				toast.warn("Failed to load workflows. Please try again or contact support@shuffler if this persists.")
+				toast.warn("Failed to load workflows. Please try again or contact support@nexusguardr if this persists.")
 			}
 		})
 		.catch((error) => {
@@ -514,7 +514,7 @@ const CacheView = memo((props) => {
 					}
 				} 
 			} else {
-				//toast.warn("Failed to load keys. Please try again or contact support@shuffler if this persists.")
+				//toast.warn("Failed to load keys. Please try again or contact support@nexusguardr if this persists.")
 				
 				if (category !== undefined && category !== null && category !== "" && category !== "default") {
 					toast.info(`No keys to load in category ${category}`)
@@ -559,7 +559,7 @@ const CacheView = memo((props) => {
 						}, 1000);
 					}
                 } else {
-                    toast.error(`Failed deleting entry ${key} in category ${itemCategory || selectedCategory}. If this persists, please contact support@shuffler.io.`)
+                    toast.error(`Failed deleting entry ${key} in category ${itemCategory || selectedCategory}. If this persists, please contact support@nexusguardr.io.`)
                 }
             })
             .catch((error) => {
@@ -1057,7 +1057,7 @@ const CacheView = memo((props) => {
 			if (responseJson?.success === true) {
 				toast.success("Saved successfully!")
 			} else {
-				toast.warn("Failed to save automations. Please try again or contact support@shuffler if this persists.")
+				toast.warn("Failed to save automations. Please try again or contact support@nexusguardr if this persists.")
 			}
 		})
 		.catch((error) => {
@@ -2041,7 +2041,7 @@ const CacheView = memo((props) => {
 				<div style={{display: "flex", position: "relative", }}>
 
 					<Typography variant="h5" style={{ display: isSelectedDataStore?null: "inline", fontWeight: 500 }}>
-						Shuffle Datastore
+						NexusGuard Datastore
 					</Typography>
 
 					{userdata?.support === true ? 
@@ -2766,7 +2766,7 @@ const CacheView = memo((props) => {
               </div>
             </div>
 			<TextField
-			  id="copy_element_shuffle"
+			  id="copy_element_nexusguard"
 			  value={to_be_copied}
 			  style={{ display: "none" }}
 			/>

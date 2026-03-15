@@ -77,14 +77,14 @@ const SearchData = props => {
     //    return null
     //}
 
-    const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+    const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
     // if (window.location.pathname === "/docs" || window.location.pathname === "/apps" || window.location.pathname === "/usecases"  ) {
     //     setModalOpen(false)
     // }
 
     // useEffect(() => {
     // 	if (searchOpen) {
-    // 		var tarfield = document.getElementById("shuffle_search_field")
+    // 		var tarfield = document.getElementById("nexusguard_search_field")
     // 		tarfield.focus()
     // 	}
     // }, searchOpen)
@@ -170,7 +170,7 @@ const SearchData = props => {
                     color="primary"
                     placeholder={isDocSearchModal ? "Type to search documentation..." : "Find Public Apps, Workflows, Documentation..."}
                     value={inputValue}
-                    id="shuffle_search_field"
+                    id="nexusguard_search_field"
                     onClick={(event) => {
                         if (inputValue.trim() !== '') {
                             setSearchOpen(true);
@@ -261,7 +261,7 @@ const SearchData = props => {
                             const avatar = baseImage
 
 
-                            var parsedUrl = isCloud ? `/workflows/${hit.objectID}` : `https://shuffler.io/workflows/${hit.objectID}`
+                            var parsedUrl = isCloud ? `/workflows/${hit.objectID}` : `https://nexusguardr.io/workflows/${hit.objectID}`
 
                             parsedUrl += `?queryID=${hit.__queryID}`
 							const validated = hit.validated !== undefined && hit.validate !== null ? hit.validated : false
@@ -301,7 +301,7 @@ const SearchData = props => {
                                     }}>
                                         <ListItemAvatar>
 											{validated === true ? 
-												<Tooltip title="The functionality of this workflow manually verified by the Shuffle automation team" placement="top">
+												<Tooltip title="The functionality of this workflow manually verified by the NexusGuard automation team" placement="top">
 													<VerifiedUserIcon style={{marginLeft: 0, marginRight: 20, }} />
 												</Tooltip>
 										  		: 
@@ -853,7 +853,7 @@ const SearchData = props => {
                         </ListItem>
                         <ListItem>
                             <a
-                                href="https://github.com/Shuffle/Shuffle/blob/main/.github/install-guide.md"
+                                href="https://github.com/NexusGuard/NexusGuard/blob/main/.github/install-guide.md"
                                 style={{
                                     textDecoration: "none",
                                     color: "var(--Paragraph-text, #C8C8C8)",

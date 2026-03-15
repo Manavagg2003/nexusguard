@@ -226,7 +226,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [creatorProfile, setCreatorProfile] = React.useState({});
   const [selectedTab, setSelectedTab] = React.useState(0);
-  const defaultDocs = `\n\n## No Shuffle-specific app documentation is available yet.\n\n## Need more information about the app? [Contact us](/contact) and [Join the Community](https://discord.gg/B2CBzUm) and find others using this app.`
+  const defaultDocs = `\n\n## No NexusGuard-specific app documentation is available yet.\n\n## Need more information about the app? [Contact us](/contact) and [Join the Community](https://discord.gg/B2CBzUm) and find others using this app.`
   const [sharingConfiguration, setSharingConfiguration] = React.useState("you");
   const [appdata, setAppData] = React.useState({});
   const [appDocumentation, setAppDocumentation] = useState(defaultDocs)
@@ -243,11 +243,11 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
   const [selectedValidationAction, setSelectedValidationAction] = React.useState({})
 
   const [selectedMeta, setSelectedMeta] = React.useState({
-    link: "https://github.com/Shuffle/openapi-apps/new/master/docs",
+    link: "https://github.com/NexusGuard/openapi-apps/new/master/docs",
     read_time: 1,
   })
 
-  const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+  const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
 
 
   // FIXME: This is used, as useEffect() creates an issue with apps not loading at all
@@ -633,7 +633,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
 
   const [, setCurrentActionMethod] = useState(actionNonBodyRequest[0]);
 
-  // Selectedaction = Shuffle style action
+  // Selectedaction = NexusGuard style action
   // Currentaction = OpenAPI style
   const [selectedAction, setSelectedAction] = useState({});
   const [currentAction, setCurrentAction] = useState({
@@ -731,7 +731,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
   const handleReactJsonClipboard = (copy) => {
     console.log("COPY: ", copy);
 
-    const elementName = "copy_element_shuffle";
+    const elementName = "copy_element_nexusguard";
     var copyText = document.getElementById(elementName);
     if (copyText !== null && copyText !== undefined) {
       navigator.clipboard.writeText(JSON.stringify(copy));
@@ -1069,7 +1069,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
     }
 
     if (serverside !== true) {
-			var doctitle = "Shuffle App for " + data.info.title 
+			var doctitle = "NexusGuard App for " + data.info.title 
 			if (!data.info.title.toLowerCase().includes("api")) {
 				doctitle += " API"
 			}
@@ -1217,7 +1217,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
               // Need to split the data.
             } else if (parameter.in === "body") {
               // FIXME: Add tracking for components
-              // E.G: https://raw.githubusercontent.com/owentl/Shuffle/master/gosecure.yaml
+              // E.G: https://raw.githubusercontent.com/owentl/NexusGuard/master/gosecure.yaml
               if (parameter.example !== undefined) {
                 newaction.body = parameter.example;
               }
@@ -1437,7 +1437,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
   					"contributors": [],
   					"edited": "",
   					"read_time": 1,
-						"link": `https://github.com/Shuffle/openapi-apps/new/master/docs?filename=${appname.toLowerCase().replaceAll(" ", "_").replaceAll("%20", "_")}.md`,
+						"link": `https://github.com/NexusGuard/openapi-apps/new/master/docs?filename=${appname.toLowerCase().replaceAll(" ", "_").replaceAll("%20", "_")}.md`,
 					})
 				}
       })
@@ -1453,7 +1453,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
 	if (appname === "integration") {
 		// Redirect to https://singul.io
 		window.location.href = "https://singul.io"
-	} else if (appname === "shuffle_agent") {
+	} else if (appname === "nexusguard_agent") {
 		navigate("/agents")
 	}
 
@@ -1525,7 +1525,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
 			}
 
 			//navigate("/search?message=App not found&q=" + appname + "&tab=apps")
-			//toast("App not found. Please contact support@shuffler.io if you believe this is an error.")
+			//toast("App not found. Please contact support@nexusguardr.io if you believe this is an error.")
 			return
 		}
       })
@@ -1640,7 +1640,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
 	if (isCloud) {
 		thisaction.environment = "Cloud"
 	} else {
-		thisaction.environment = "Shuffle"
+		thisaction.environment = "NexusGuard"
 	}
 
     setExecutionResult({
@@ -2470,8 +2470,8 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
           <DialogContent>
             <a
               target="_blank"
-              rel="norefferer"
-              href="https://shuffler.io/docs/apps#authentication"
+              rel="norefferer noreferrer"
+              href="https://nexusguardr.io/docs/apps#authentication"
               style={{ textDecoration: "none", color: "#f85a3e" }}
             >
               What is this?
@@ -3075,7 +3075,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
 
 	  const appEnding = app?.public === true ? app?.app_version : app?.id
 
-	  return `curl -L \ \\\n    "${globalUrl}/api/v1/download_docker_image?image=frikky/shuffle:${app?.name.toLowerCase().replaceAll(' ', '_')}_${appEnding}" \\\n    -H \"Authorization: Bearer APIKEY" \\\n    -o image.zip; \\\n    docker load -i image.zip${!app?.public ? ` \\\n    docker tag frikky/shuffle:${app?.name.toLowerCase().replaceAll(' ', '_')}_${appEnding} frikky/shuffle:${app?.name.toLowerCase().replaceAll(' ', '_')}_${app.app_version}` : ``}`
+	  return `curl -L \ \\\n    "${globalUrl}/api/v1/download_docker_image?image=frikky/nexusguard:${app?.name.toLowerCase().replaceAll(' ', '_')}_${appEnding}" \\\n    -H \"Authorization: Bearer APIKEY" \\\n    -o image.zip; \\\n    docker load -i image.zip${!app?.public ? ` \\\n    docker tag frikky/nexusguard:${app?.name.toLowerCase().replaceAll(' ', '_')}_${appEnding} frikky/nexusguard:${app?.name.toLowerCase().replaceAll(' ', '_')}_${app.app_version}` : ``}`
   }
 
   const renderedActionOptions = deduplicateByName((
@@ -3353,7 +3353,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
                     color="textSecondary"
                     style={{ textAlign: "center" }}
                   >
-                    Using Shuffle, you can connect{" "}
+                    Using NexusGuard, you can connect{" "}
                     {app.name.replaceAll("_", " ")} and{" "}
                     {secondaryApp.name.replaceAll("_", " ")} with no code.
                   </Typography>
@@ -3475,14 +3475,14 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
 							App Details
 						</Typography> 
 						<Typography variant="body2" style={{marginTop: 20, marginBottom: 10, }} color="textSecondary">
-							Add more details about your app here. This is to help both the Shuffle team, and the public get easier access to this information. Data from these will be used to track app "completeness" for recommendation systems.
+							Add more details about your app here. This is to help both the NexusGuard team, and the public get easier access to this information. Data from these will be used to track app "completeness" for recommendation systems.
 						</Typography> 
 				  		<Divider style={{marginTop: 10, marginBottom: 10, }}/>
 				  		<Typography variant="h6" style={{marginTop: 20, marginBottom: 10, }}>
 				  			Validation Action
 				  		</Typography>
 						<Typography variant="body2" style={{marginBottom: 20, }} color="textSecondary">
-				  			The validation action is the action that is used to validate the app. This is used both when a user wants to validate their auth, as well as when Shuffle runs automatic tests of the app. It is recommended that the action should be a GET request. Validation is decided based on whether the action is ran successfully in a workflow.
+				  			The validation action is the action that is used to validate the app. This is used both when a user wants to validate their auth, as well as when NexusGuard runs automatic tests of the app. It is recommended that the action should be a GET request. Validation is decided based on whether the action is ran successfully in a workflow.
 						</Typography> 
 
 						<Autocomplete
@@ -4460,13 +4460,13 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
           ) : (
             <a
               rel="noopener noreferrer"
-              href={"https://shuffler.io/docs/app_creation#python---building-apps-manually"}
+              href={"https://nexusguardr.io/docs/app_creation#python---building-apps-manually"}
               target="_blank"
               style={{ textDecoration: "none", color: "#f85a3e" }}
             >
               <img
                 src={"/images/frameworks/python.jpeg"}
-                alt="Python integration for Shuffle"
+                alt="Python integration for NexusGuard"
                 id="logo"
                 style={{
                   marginTop: 5,
@@ -4854,7 +4854,7 @@ const buttonBackground = "linear-gradient(to right, #f86a3e, #f34079)";
           </Fade>
         )}
         <TextField
-          id="copy_element_shuffle"
+          id="copy_element_nexusguard"
           value={to_be_copied}
           style={{ display: "none" }}
         />

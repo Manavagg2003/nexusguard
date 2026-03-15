@@ -25,7 +25,7 @@ const WorkflowGenerationModal = (props) => {
 
 	const {
 	  open = false,
-	  supportEmail = "support@shuffler.io",
+	  supportEmail = "support@nexusguardr.io",
 	  isMobile = false,
 	  theme = null,
 	  workflow={},
@@ -107,7 +107,7 @@ const WorkflowGenerationModal = (props) => {
     setIsAiEditing(true);
     setBackupWorkflow(null);
 
-    var envToSend = isCloud ? "Cloud" : "Shuffle"
+    var envToSend = isCloud ? "Cloud" : "NexusGuard"
     for (var actionkey in workflow?.actions) {
       envToSend = workflow?.actions[actionkey]?.environment
       break
@@ -131,7 +131,7 @@ const WorkflowGenerationModal = (props) => {
       .then((response) => {
         return response.json().then((json) => {
           if (response.status !== 200) {
-            toast.error(json.reason || "Unexpected response. Please contact support@shuffler.io if this persists.", {
+            toast.error(json.reason || "Unexpected response. Please contact support@nexusguardr.io if this persists.", {
 				autoClose: 10000,
 				onClick: () => {
 					window.open("/docs/AI#self-hosting-models", "_blank")
@@ -265,7 +265,7 @@ const WorkflowGenerationModal = (props) => {
         }
 
 	  <Typography variant="body2" style={{ fontSize: 10, textAlign: "center", color: currentTheme.palette.text.secondary || "#ccc", marginTop: 10 }}>
-	  	AI Edits require you to manually review and accept changes.<br/> You can discard unwanted edits. Uses your configured LLM or shuffler.io AI credits. <b>Alpha</b> feature.
+	  	AI Edits require you to manually review and accept changes.<br/> You can discard unwanted edits. Uses your configured LLM or nexusguardr.io AI credits. <b>Alpha</b> feature.
 	  </Typography>
 
 	</div>

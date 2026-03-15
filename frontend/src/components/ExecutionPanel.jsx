@@ -5,7 +5,7 @@ import theme from '../theme.jsx';
 import ReactJson from "react-json-view-ssr";
 import { toast } from 'react-toastify';
 import { validateJson } from "../views/Workflows2.jsx";
-// import HandleJsonCopy from "./ShuffleCodeEditor1";
+// import HandleJsonCopy from "./NexusGuardCodeEditor1";
 
 const STATUS_CONFIG = {
   EXECUTING: {
@@ -81,7 +81,7 @@ const HandleJsonCopy = (base, copy, base_node_name) => {
   }
 
   to_be_copied.replaceAll(" ", "_");
-  const elementName = "copy_element_shuffle";
+  const elementName = "copy_element_nexusguard";
   var copyText = document.getElementById(elementName);
   if (copyText !== null && copyText !== undefined) {
     console.log("NAVIGATOR: ", navigator);

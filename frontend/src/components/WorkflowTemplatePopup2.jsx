@@ -121,7 +121,7 @@ const WorkflowTemplatePopup = (props) => {
 		fetchWorkflow(inputWorkflowId)
 	}
 
-	const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+	const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
 	let navigate = useNavigate();
 	useEffect(() => {
 		if (modalOpen !== true) {
@@ -384,7 +384,7 @@ const WorkflowTemplatePopup = (props) => {
 
 	const getGeneratedWorkflow = () => {
 		// POST
-		// https://shuffler.io/api/v1/workflows/merge
+		// https://nexusguardr.io/api/v1/workflows/merge
 		// destination: {app_id: "b9c2feaf99b6309dabaeaa8518c61d3d", app_name: "Servicenow_API", app_version: "",…}
 		// id: ""
 		// middle:[]
@@ -435,7 +435,7 @@ const WorkflowTemplatePopup = (props) => {
 		}
 
 		setRequestSent(true)
-		const url = isCloud ? `${globalUrl}/api/v1/workflows/merge` : `https://shuffler.io/api/v1/workflows/merge`
+		const url = isCloud ? `${globalUrl}/api/v1/workflows/merge` : `https://nexusguardr.io/api/v1/workflows/merge`
 		fetch(url, {
 			method: "POST",
 			headers: {
@@ -468,7 +468,7 @@ const WorkflowTemplatePopup = (props) => {
 				//console.log("Error in workflow template: ", responseJson.error);
 				setRequestSent(false)
 
-				const defaultMessage = "Error: Failed to generate workflow the workflow - the Shuffle team has been notified. Contact support@shuffler.io if you want manual help building this usecase." 
+				const defaultMessage = "Error: Failed to generate workflow the workflow - the NexusGuard team has been notified. Contact support@nexusguardr.io if you want manual help building this usecase." 
 				if (responseJson.reason !== undefined && responseJson.reason !== null && responseJson.reason !== "") {
 					setErrorMessage(defaultMessage + "\n\n" + responseJson.reason)
 				} else {
@@ -827,7 +827,7 @@ const WorkflowTemplatePopup = (props) => {
 						loadAppAuth()
 						setModalOpen(true)
 					} else if (isLoggedIn && errorMessage !== "") {
-						toast.error("Already failed to generate a workflow for this usecase. Please try again later or contact support@shuffler.io.")
+						toast.error("Already failed to generate a workflow for this usecase. Please try again later or contact support@nexusguardr.io.")
 
 						setModalOpen(true)
 					} else if (isActive) {

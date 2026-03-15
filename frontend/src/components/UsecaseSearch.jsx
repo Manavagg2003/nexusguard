@@ -349,7 +349,7 @@ const UsecaseSearch = (props) => {
   const [selectedAction, setSelectedAction] = React.useState({});
   const [firstRequest, setFirstRequest] = React.useState(true);
 
-  const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+  const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
   //const alert = useAlert()
 
 	useEffect(() => {
@@ -584,7 +584,7 @@ const UsecaseSearch = (props) => {
         selectedApp.reference_info.github_url === null ||
         selectedApp.reference_info.github_url.length === 0 ? (
           <a
-            href={"https://github.com/shuffle/python-apps"}
+            href={"https://github.com/nexusguard/python-apps"}
             rel="noopener noreferrer" target="_blank" style={{ textDecoration: "none", color: "#f86a3e" }}
           >
             <img
@@ -744,7 +744,7 @@ const UsecaseSearch = (props) => {
                     <a
                       rel="noopener noreferrer"
                       target="_blank"
-                      href={"https://github.com/shuffle/python-apps"}
+                      href={"https://github.com/nexusguard/python-apps"}
                       style={{ textDecoration: "none", color: "#f86a3e" }}
                     >
                       Check it out on Github!
@@ -912,7 +912,7 @@ const UsecaseSearch = (props) => {
 
 	const mergeWorkflowUsecases = (usecasedata) => {
 		// To properly handle multiple-locations 
-		const url = isCloud ? `${globalUrl}/api/v1/workflows/merge` : `https://shuffler.io/api/v1/workflows/merge`;
+		const url = isCloud ? `${globalUrl}/api/v1/workflows/merge` : `https://nexusguardr.io/api/v1/workflows/merge`;
 		fetch(url, {
 			mode: "cors",
 			method: "POST",
@@ -1455,8 +1455,8 @@ const UsecaseSearch = (props) => {
 									>
 										<span>
 											<a
-												href={`https://shuffler.io/docs/creators#${data.text.toLowerCase()}`}
-												rel="norefferer"
+												href={`https://nexusguardr.io/docs/creators#${data.text.toLowerCase()}`}
+												rel="norefferer noreferrer"
 												target="_blank"
 												style={{ textDecoration: "none",  }}
 											>
@@ -1632,7 +1632,7 @@ const UsecaseSearch = (props) => {
 							:
 							<a
 								href={`/workflows/${workflow.id}`}
-								rel="norefferer"
+								rel="norefferer noreferrer"
 								target="_blank"
 								style={{ textDecoration: "none",  }}
 							>

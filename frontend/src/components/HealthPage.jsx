@@ -25,7 +25,7 @@ const HealthPage = (props) => {
     const [isHealthLoading, setIsHealthLoading] = useState(false); // Loading state for HealthBarChart
     const [isLiveExecutionsLoading, setIsLiveExecutionsLoading] = useState(false); // Loading state for LiveExecutionsChart
 
-    const isCloud = (window.location.host === "localhost:3002" || window.location.host === "shuffler.io") ? true : (process.env.IS_SSR === "true");
+    const isCloud = (window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io") ? true : (process.env.IS_SSR === "true");
 
     const fetchHealthStats = useCallback(async () => {
         setIsHealthLoading(true); // Start loading for HealthBarChart

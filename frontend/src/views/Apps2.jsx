@@ -53,8 +53,8 @@ const searchClient = algoliasearch(
 // AppCard Component
 const AppCard = ({ data, index, mouseHoverIndex, setMouseHoverIndex, globalUrl, deactivatedIndexes, currTab, handleAppClick, leftSideBarOpenByClick, userdata, fetchApps, appsToShow, setAppsToShow, setUserApps, }) => {
   const navigate = useNavigate();
-  const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io" || window.location.host === "localhost:3000";
-  //const appUrl = isCloud ? `/apps/${data.id}` : `https://shuffler.io/apps/${data.id}`;
+  const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io" || window.location.host === "localhost:3000";
+  //const appUrl = isCloud ? `/apps/${data.id}` : `https://nexusguardr.io/apps/${data.id}`;
   const appUrl = `/apps/${data.id}` 
   const { themeMode } = useContext(Context);
   const theme = getTheme(themeMode);
@@ -307,7 +307,7 @@ const Hits = ({
 }) => {
   const [hoverEffect, setHoverEffect] = useState(-1);
   const [allActivatedAppIds, setAllActivatedAppIds] = useState([]);
-  const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+  const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
   const [deactivatedIndexes, setDeactivatedIndexes] = React.useState([]);
   const [isLoading, setIsLoading] = useState(false)
   const { themeMode } = useContext(Context);
@@ -456,7 +456,7 @@ const Hits = ({
                   const appUrl =
                     isCloud
                       ? `/apps/${data.objectID}?queryID=${data.__queryID}`
-                      : `https://shuffler.io/apps/${data.objectID}?queryID=${data.__queryID}`;
+                      : `https://nexusguardr.io/apps/${data.objectID}?queryID=${data.__queryID}`;
 
                   return (
                     <Zoom
@@ -772,7 +772,7 @@ const SearchBox = ({ refine, searchQuery, setSearchQuery }) => {
       variant="outlined"
       placeholder="Search from 2500+ public apps"
       value={localQuery}
-      id="shuffle_search_field"
+      id="nexusguard_search_field"
       inputRef={inputRef}
       onChange={handleChange}
       onKeyDown={(event) => {
@@ -1142,11 +1142,11 @@ const Apps2 = (props) => {
   const {themeMode, brandColor} = useContext(Context);
   const theme = getTheme(themeMode, brandColor);
 
-  const baseRepository = "https://github.com/frikky/shuffle-apps";
+  const baseRepository = "https://github.com/frikky/nexusguard-apps";
 
   const isCloud =
     window.location.host === "localhost:3002" ||
-      window.location.host === "shuffler.io"
+      window.location.host === "nexusguardr.io"
       ? true
       : false;
 
@@ -1539,8 +1539,8 @@ const Apps2 = (props) => {
         <TextField
           fullWidth
           variant="outlined"
-          defaultValue="https://github.com/frikky/shuffle-apps"
-          placeholder="https://github.com/frikky/shuffle-apps"
+          defaultValue="https://github.com/frikky/nexusguard-apps"
+          placeholder="https://github.com/frikky/nexusguard-apps"
           value={openApi}
           onChange={(e) => setOpenApi(e.target.value)}
           sx={{
@@ -2055,7 +2055,7 @@ const Apps2 = (props) => {
                   placeholder={currTab === 1 ? "Search your apps" : "Search org apps"}
                   disabled={!isLoggedIn}
                   value={searchQuery}
-                  id="shuffle_search_field"
+                  id="nexusguard_search_field"
                   onChange={handleSearchChange}
                   style={{
                     backgroundColor: theme.palette.textFieldStyle.backgroundColor,

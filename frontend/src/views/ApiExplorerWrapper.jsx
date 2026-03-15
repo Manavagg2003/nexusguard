@@ -60,7 +60,7 @@ const ApiExplorer = React.lazy(() => import("../components/ApiExplorer.jsx"));
 const ApiExplorerWrapper = (props) => {
   const { globalUrl, serverside, userdata, isLoggedIn, isLoaded} = props;
   const { supportEmail } = useContext(Context);
-  const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io"
+  const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io"
   const location = useLocation();
   const navigate = useNavigate();
   const [openapi, setOpenapi] = useState({});
@@ -195,7 +195,7 @@ const ApiExplorerWrapper = (props) => {
   	  setOpenapi({
 		  "id": "HTTP",
 		  "servers": [
-			  {"url": "https://shuffler.io"},
+			  {"url": "https://nexusguardr.io"},
 		  ],
 		  "info": {
 			  "title": "HTTP",
@@ -553,7 +553,7 @@ const ApiExplorerWrapper = (props) => {
 			app_id: appid,
 			authentication_id: selectedAuthentication?.id?.length > 0 ? selectedAuthentication?.id : "",
 			auth_not_required: false,
-			environment: isCloud ? "cloud" : "Shuffle",
+			environment: isCloud ? "cloud" : "NexusGuard",
 			node_type: "action",
 			parameters: [{ name: "url", value: fix_url(url)}],
       }
@@ -654,7 +654,7 @@ const ApiExplorerWrapper = (props) => {
 					if (validate.result.status === 401 || validate.result.status === 403) {
 						setAuthHighlighted(true)
 
-						toast.info("You need to authenticate the app first, either with an API-key directly in the headers or with the Shuffle auth system")
+						toast.info("You need to authenticate the app first, either with an API-key directly in the headers or with the NexusGuard auth system")
 
 						if (setCurTab !== undefined) {
 							if (hasBody) {
@@ -1106,7 +1106,7 @@ const ApiExplorerWrapper = (props) => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://shuffler.io/docs/apps#authentication"
+            href="https://nexusguardr.io/docs/apps#authentication"
             style={{ textDecoration: "none", color: "#f85a3e" }}
           >
             What is app authentication?
@@ -1336,7 +1336,7 @@ const ApiExplorerWrapper = (props) => {
           <a
             rel="noopener noreferrer"
             target="_blank"
-            href={"https://github.com/shuffle/python-apps"}
+            href={"https://github.com/nexusguard/python-apps"}
             style={{ textDecoration: "none", color: "#f86a3e" }}
           >
             <img
@@ -1502,7 +1502,7 @@ const ApiExplorerWrapper = (props) => {
 			}}
 		>
           <Typography variant="h6" style={{marginBottom: 25, }}>
-          There is no Shuffle-specific documentation for this app yet outside of the general description above. Documentation is written for each api, and is a community effort. We hope to see your contribution!
+          There is no NexusGuard-specific documentation for this app yet outside of the general description above. Documentation is written for each api, and is a community effort. We hope to see your contribution!
           </Typography>
           <Button 
             variant="contained" 
@@ -1511,7 +1511,7 @@ const ApiExplorerWrapper = (props) => {
               toast.success("Opening remote Github documentation link. Thanks for contributing!")
 
               setTimeout(() => {
-                window.open(`https://github.com/Shuffle/openapi-apps/new/master/docs?filename=${selectedAppData.name.toLowerCase()}.md`, "_blank")
+                window.open(`https://github.com/NexusGuard/openapi-apps/new/master/docs?filename=${selectedAppData.name.toLowerCase()}.md`, "_blank")
               }, 2500)
             }}
            >
@@ -1545,7 +1545,7 @@ const ApiExplorerWrapper = (props) => {
                     <a
                       rel="noopener noreferrer"
                       target="_blank"
-                      href={"https://github.com/shuffle/python-apps"}
+                      href={"https://github.com/nexusguard/python-apps"}
                       style={{ textDecoration: "none", color: "#f86a3e" }}
                     >
                       Check it out on Github!

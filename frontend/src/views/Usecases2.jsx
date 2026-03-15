@@ -907,7 +907,7 @@ const Usecases2 = (props) => {
 	let navigate = useNavigate();
   const isCloud =
     window.location.host === "localhost:3002" ||
-    window.location.host === "shuffler.io";
+    window.location.host === "nexusguardr.io";
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -998,7 +998,7 @@ const Usecases2 = (props) => {
 	}
 
 
-  document.title = brandName?.length > 0 ? `${brandName} - usecases` : "Shuffle - usecases";
+  document.title = brandName?.length > 0 ? `${brandName} - usecases` : "NexusGuard - usecases";
   var dayGraphLabels = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
   var dayGraphData = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
 

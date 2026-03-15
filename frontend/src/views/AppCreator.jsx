@@ -208,7 +208,7 @@ const parseCurl = (s) => {
 };
 
 // Basically CRUD for each category + special
-// These are already tracked in the shuffle/shuffle-shared/blobs.go file
+// These are already tracked in the nexusguard/nexusguard-shared/blobs.go file
 // as backend should be used for managing this long-term
 export const appCategories = [
 	{
@@ -563,7 +563,7 @@ const AppCreator = (defaultprops) => {
   };
   
 
-  const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+  const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
 
   useEffect(() => {
 		if (window.location.pathname.includes("apps/edit")) {
@@ -952,9 +952,9 @@ const AppCreator = (defaultprops) => {
 				newaction.required_bodyfields = methodvalue["x-required-fields"]
 			}
 
-			if (newaction.url !== undefined && newaction.url !== null && newaction.url.includes("_shuffle_replace_")) {
-				//const regex = /_shuffle_replace_\d/i;
-				const regex = /_shuffle_replace_\d+/i
+			if (newaction.url !== undefined && newaction.url !== null && newaction.url.includes("_nexusguard_replace_")) {
+				//const regex = /_nexusguard_replace_\d/i;
+				const regex = /_nexusguard_replace_\d+/i
 				const newurl = newaction.url.replaceAll(new RegExp(regex, 'g'), "")
 				newaction.url = newurl
 			}
@@ -965,9 +965,9 @@ const AppCreator = (defaultprops) => {
             var categoryindex = -1;
             // Stupid way of finding a category/grouping
             for (let splitkey in pathsplit) {
-				if (pathsplit[splitkey].includes("_shuffle_replace_")) {
-					//const regex = /_shuffle_replace_\d/i;
-					const regex = /_shuffle_replace_\d+/i
+				if (pathsplit[splitkey].includes("_nexusguard_replace_")) {
+					//const regex = /_nexusguard_replace_\d/i;
+					const regex = /_nexusguard_replace_\d+/i
 					pathsplit[splitkey] = pathsplit[splitkey].replaceAll(new RegExp(regex, 'g'), "")
 				}
 
@@ -1273,7 +1273,7 @@ const AppCreator = (defaultprops) => {
                     }
 
                     if (methodvalue.responses.default.content["text/plain"]["schema"]["format"] === "binary" && methodvalue.responses.default.content["text/plain"]["schema"]["type"] === "string") {
-                  		newaction.example_response = "shuffle_file_download"
+                  		newaction.example_response = "nexusguard_file_download"
 					}
                   }
                 }
@@ -1586,7 +1586,7 @@ const AppCreator = (defaultprops) => {
               // Need to split the data.
             } else if (parameter.in === "body") {
               // FIXME: Add tracking for components
-              // E.G: https://raw.githubusercontent.com/owentl/Shuffle/master/gosecure.yaml
+              // E.G: https://raw.githubusercontent.com/owentl/NexusGuard/master/gosecure.yaml
               if (parameter.example !== undefined && parameter.example !== null) {
 				  if (newaction.body === undefined || newaction.body === null || newaction.body.length < 5) {
                 	newaction.body = parameter.example
@@ -1955,7 +1955,7 @@ const AppCreator = (defaultprops) => {
       setActionAmount(newActions.length);
     }
 
-    //const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io"
+    //const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io"
     if (newActions.length > 1000 && isCloud) {
       toast("Cut down actions from " + newActions.length + " to 999 because of limit");
       newActions = newActions.slice(0, 999);
@@ -2024,9 +2024,9 @@ const AppCreator = (defaultprops) => {
       data.info["contact"] = basedata.info.contact;
     } else if (contact === "") {
       data.info["contact"] = {
-        name: "@Anonymous Shuffle User",
-        url: "https://twitter.com/shuffleio",
-        email: "support@shuffler.io",
+        name: "@Anonymous NexusGuard User",
+        url: "https://twitter.com/nexusguardio",
+        email: "support@nexusguardr.io",
       };
     } else {
       data.info["contact"] = contact;
@@ -2065,7 +2065,7 @@ const AppCreator = (defaultprops) => {
 				// Max 1000 of same. Will it be ok for graphql longterm?
 				const baseurl = item.url
 				for (let i = 0; i < 1000; i++) {
-					item.url = baseurl+"_shuffle_replace_"+i
+					item.url = baseurl+"_nexusguard_replace_"+i
 
 					pathjoin = item.url+"_"+item.method.toLowerCase()
 					if (handledPaths.includes(pathjoin)) {
@@ -2131,7 +2131,7 @@ const AppCreator = (defaultprops) => {
 
       if (item.example_response !== undefined && item.example_response !== null && item.example_response.length > 0) {
 
-				if (item["example_response"] === "shuffle_file_download") {
+				if (item["example_response"] === "nexusguard_file_download") {
 					data.paths[item.url][item.method.toLowerCase()].responses["default"]["content"]["text/plain"].schema.type = "string"
 					data.paths[item.url][item.method.toLowerCase()].responses["default"]["content"]["text/plain"].schema.format = "binary"
 
@@ -2258,7 +2258,7 @@ const AppCreator = (defaultprops) => {
           var newitem = {
             in: "query",
             name: queryitem.name,
-            description: "Generated by shuffler.io OpenAPI",
+            description: "Generated by nexusguardr.io OpenAPI",
             required: queryitem.required,
             schema: {
               type: "string",
@@ -2306,7 +2306,7 @@ const AppCreator = (defaultprops) => {
           newitem = {
             in: "path",
             name: queryitem,
-            description: "Generated by shuffler.io OpenAPI",
+            description: "Generated by nexusguardr.io OpenAPI",
             required: true,
             schema: {
               type: "string",
@@ -2330,7 +2330,7 @@ const AppCreator = (defaultprops) => {
           newitem = {
             in: "path",
             name: queryitem,
-            description: "Generated by shuffler.io OpenAPI",
+            description: "Generated by nexusguardr.io OpenAPI",
             required: false,
             schema: {
               type: "string",
@@ -2358,7 +2358,7 @@ const AppCreator = (defaultprops) => {
 					//console.log("GOT BODY: ", item.url, item.method, item.body)
 
 					// Replacing dollarsign insertions that aren't escaped
-					// This is to stop it from messing with systems in Shuffle.
+					// This is to stop it from messing with systems in NexusGuard.
 					// This MAY cause it to be a little weird in other systems however,
 					// but it's the only way we can properly support e.g. GraphQL
 					// with good examples
@@ -2397,7 +2397,7 @@ const AppCreator = (defaultprops) => {
       	    in: "body",
       	    name: "body",
       	    multiline: true,
-      	    description: "Generated by shuffler.io OpenAPI",
+      	    description: "Generated by nexusguardr.io OpenAPI",
       	    required: required,
       	    example: item.body,
       	    schema: {
@@ -2407,7 +2407,7 @@ const AppCreator = (defaultprops) => {
 
       	  // FIXME - add application/json if JSON example?
       	  data.paths[item.url][item.method.toLowerCase()]["requestBody"] = {
-      	    description: "Generated by Shuffler.io",
+      	    description: "Generated by NexusGuardr.io",
       	    required: required,
       	    content: {
       	      example: {
@@ -2426,7 +2426,7 @@ const AppCreator = (defaultprops) => {
       	    in: "body",
       	    name: "body",
       	    multiline: true,
-      	    description: "Generated by shuffler.io OpenAPI",
+      	    description: "Generated by nexusguardr.io OpenAPI",
       	    required: required,
       	    example: "",
       	    schema: {
@@ -2436,7 +2436,7 @@ const AppCreator = (defaultprops) => {
 
       	  // FIXME - add application/json if JSON example?
       	  data.paths[item.url][item.method.toLowerCase()]["requestBody"] = {
-      	    description: "Generated by Shuffler.io",
+      	    description: "Generated by NexusGuardr.io",
       	    required: required,
       	    content: {
       	      example: {
@@ -2514,7 +2514,7 @@ const AppCreator = (defaultprops) => {
               in: "header",
               name: innerkey,
               multiline: false,
-              description: "Header generated by shuffler.io OpenAPI",
+              description: "Header generated by nexusguardr.io OpenAPI",
               required: false,
               example: value,
               schema: {
@@ -2681,7 +2681,7 @@ const AppCreator = (defaultprops) => {
             setErrorCode(responseJson.reason);
 
 			if (responseJson?.details !== undefined && responseJson?.details !== null) {
-				toast.error("Failed to build - contact support@shuffler.io:\n\n" + responseJson.details, {
+				toast.error("Failed to build - contact support@nexusguardr.io:\n\n" + responseJson.details, {
 					autoClose: 60000 
 				})
 			} else {
@@ -2714,7 +2714,7 @@ const AppCreator = (defaultprops) => {
           <a
             target="_blank"
             href="https://swagger.io/docs/specification/authentication/bearer-authentication/"
-            style={{ textDecoriation: "none", color: theme.palette.linkColor }}
+            style={{ textDecoriation: "none", color: theme.palette.linkColor }} rel="noreferrer"
           >
             Bearer auth
           </a>
@@ -2732,7 +2732,7 @@ const AppCreator = (defaultprops) => {
           <a
             target="_blank"
             href="https://swagger.io/docs/specification/authentication/basic-authentication/"
-            style={{ textDecoriation: "none", color: theme.palette.linkColor }}
+            style={{ textDecoriation: "none", color: theme.palette.linkColor }} rel="noreferrer"
           >
             Basic authentication
           </a>
@@ -3053,7 +3053,7 @@ const AppCreator = (defaultprops) => {
           style={{ marginTop: 10 }}
         >
 			{oauth2Type === "delegated" ?
-				"Find the Authorization URL, Token URL and scopes in question for the API. Ensure your app in the service uses redirect url https://shuffler.io/set_authentication"
+				"Find the Authorization URL, Token URL and scopes in question for the API. Ensure your app in the service uses redirect url https://nexusguardr.io/set_authentication"
 				:
 				"Find the Token URL and scopes in question for the API"
 			}
@@ -3171,7 +3171,7 @@ const AppCreator = (defaultprops) => {
         		<TextField
         		  style={{ 
 					margin: 0, flex: "1", backgroundColor: inputColor,
-				  	border: refreshUrl.length > 0 && (!refreshUrl.startsWith("http") || refreshUrl.includes("//shuffler.")) ? "2px solid red" : "inherit",
+				  	border: refreshUrl.length > 0 && (!refreshUrl.startsWith("http") || refreshUrl.includes("//nexusguardr.")) ? "2px solid red" : "inherit",
 				  }}
         		  fullWidth={true}
         		  placeholder="The URL to retrieve refresh-tokens at"
@@ -3180,7 +3180,7 @@ const AppCreator = (defaultprops) => {
         		  margin="normal"
         		  variant="outlined"
         		  value={refreshUrl}
-				  helperText={!refreshUrl.startsWith("http") || refreshUrl.includes("//shuffler.")? "Must start with http(s):// and can not contain shuffler.io" : ""}
+				  helperText={!refreshUrl.startsWith("http") || refreshUrl.includes("//nexusguardr.")? "Must start with http(s):// and can not contain nexusguardr.io" : ""}
         		  onChange={(e) => setRefreshUrl(e.target.value)}
 				  onBlur={(event) => {
         		    var tmpstring = event.target.value.trim();
@@ -3860,8 +3860,8 @@ const AppCreator = (defaultprops) => {
     		    <DialogContent style={{paddingBottom: 100, }}>
     		      <a
     		        target="_blank"
-    		        href="https://shuffler.io/docs/app_creation#actions"
-    		        style={{ textDecoration: "none", color: theme.palette.linkColor }}
+    		        href="https://nexusguardr.io/docs/app_creation#actions"
+    		        style={{ textDecoration: "none", color: theme.palette.linkColor }} rel="noreferrer"
     		      >
     		        Learn more about actions
     		      </a>
@@ -4296,7 +4296,7 @@ const AppCreator = (defaultprops) => {
     		            if (fileDownloadEnabled) {
     		              setActionField("example_response", "");
 										} else {
-    		              setActionField("example_response", "shuffle_file_download");
+    		              setActionField("example_response", "nexusguard_file_download");
 										}
     		            //setUpdate(Math.random());
     		          }}
@@ -4451,7 +4451,7 @@ const AppCreator = (defaultprops) => {
 		}
 
 		const url = data.url;
-		const hasFile = (data["file_field"] !== undefined && data["file_field"] !== null && data["file_field"].length > 0) || data["example_response"] === "shuffle_file_download"
+		const hasFile = (data["file_field"] !== undefined && data["file_field"] !== null && data["file_field"].length > 0) || data["example_response"] === "nexusguard_file_download"
 			
 				
 		return (
@@ -5170,8 +5170,8 @@ const AppCreator = (defaultprops) => {
           <DialogContent>
             <a
               target="_blank"
-              rel="norefferer"
-              href="https://shuffler.io/docs/app_creation#authentication"
+              rel="norefferer noreferrer"
+              href="https://nexusguardr.io/docs/app_creation#authentication"
               style={{ textDecoration: "none", color: theme.palette.linkColor }}
             >
               What is this?
@@ -5319,7 +5319,7 @@ const AppCreator = (defaultprops) => {
           {projectCategories.map((tag, index) => {
             const newname = tag.charAt(0).toUpperCase() + tag.slice(1);
 
-			//var regex = /_shuffle_replace_\d/i;
+			//var regex = /_nexusguard_replace_\d/i;
 			////console.log("NEW: ", 
 			//newname = newname.replaceAll(regex, "")
 			//console.log("Replaced: ", newname) 
@@ -5467,8 +5467,8 @@ const AppCreator = (defaultprops) => {
       Test an action to see whether it performs in an expected way.
       <a
         target="_blank"
-        href="https://shuffler.io/docs/app_creation#testing"
-        style={{ textDecoration: "none", color: theme.palette.linkColor }}
+        href="https://nexusguardr.io/docs/app_creation#testing"
+        style={{ textDecoration: "none", color: theme.palette.linkColor }} rel="noreferrer"
       >
         &nbsp;TBD: Click here to learn more about testing
       </a>
@@ -5959,8 +5959,8 @@ const AppCreator = (defaultprops) => {
 		</div>
         <a
           target="_blank"
-          href="https://shuffler.io/docs/app_creation#app-creator-instructions"
-          style={{ textDecoration: "none", color: theme.palette.linkColor }}
+          href="https://nexusguardr.io/docs/app_creation#app-creator-instructions"
+          style={{ textDecoration: "none", color: theme.palette.linkColor }} rel="noreferrer"
         >
           Click to learn more about app creation
         </a>
@@ -6158,8 +6158,8 @@ const AppCreator = (defaultprops) => {
 						<Typography variant="h6">Authentication</Typography>
 						<a
 							target="_blank"
-							href="https://shuffler.io/docs/app_creation#authentication"
-							style={{ textDecoration: "none", color: theme.palette.linkColor }}
+							href="https://nexusguardr.io/docs/app_creation#authentication"
+							style={{ textDecoration: "none", color: theme.palette.linkColor }} rel="noreferrer"
 						>
 							Learn more about app authentication
 						</a>

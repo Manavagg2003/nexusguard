@@ -99,7 +99,7 @@ const CorrelationGraph = (props) => {
 		})
 		.then((responseJson) => {
 			if (responseJson?.success === false) {
-				toast.warn("Failed to load correlations. Please try again or contact support@shuffler if this persists.")
+				toast.warn("Failed to load correlations. Please try again or contact support@nexusguardr if this persists.")
 			} else {
 				if (responseJson.length === 0) {
 					toast.warn("No correlations found for this datastore item.")
@@ -273,7 +273,7 @@ const CorrelationGraph = (props) => {
 
 					value.fillGradient = iconInfo.fillGradient
 					value.fillstyle = "solid"
-					value.app_name = "Shuffle Tools"
+					value.app_name = "NexusGuard Tools"
 
 					if (
 					  value.fillGradient !== undefined &&
@@ -607,7 +607,7 @@ const CorrelationGraph = (props) => {
 
 	return (
 		<div style={{position: "relative", width: "95%", height: "95%", margin: "16px 16px 32px 32px", }}>
-			<Tooltip title="Re-shuffle graph" placement="top">
+			<Tooltip title="Re-nexusguard graph" placement="top">
 				<IconButton
 					variant="outlined"
 					color="secondary"

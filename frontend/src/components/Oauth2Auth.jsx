@@ -440,7 +440,7 @@ const AuthenticationOauth2 = (props) => {
 
 	// This is to make sure authorization can be handled WITHOUT being logged in,
 	// kind of making it act like an api key
-	// https://shuffler.io/authorization -> 3rd party integration auth
+	// https://nexusguardr.io/authorization -> 3rd party integration auth
 	const urlParams = new URLSearchParams(window.location.search);
 	const userAuth = urlParams.get("authorization");
 	if (userAuth !== undefined && userAuth !== null && userAuth.length > 0) {
@@ -756,7 +756,7 @@ const AuthenticationOauth2 = (props) => {
             style={{ textDecoration: "none", color: theme.palette.linkColor}}
           >
             {" "}
-            Learn more about Oauth2 with Shuffle
+            Learn more about Oauth2 with NexusGuard
           </a>
           <div />
         </span>

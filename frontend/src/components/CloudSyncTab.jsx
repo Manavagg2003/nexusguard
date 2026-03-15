@@ -47,7 +47,7 @@ const CloudSyncTab = (props) => {
     const [userSettings, setUserSettings] = React.useState({});
     const [, forceUpdate] = React.useState();
     const itemColor = "white";
-    const isCloud = window?.location?.host === "localhost:3002" || window?.location?.host === "shuffler.io";
+    const isCloud = window?.location?.host === "localhost:3002" || window?.location?.host === "nexusguardr.io";
 
     const { themeMode, brandColor, setUpdateOrg } = useContext(Context);
     const theme = getTheme(themeMode, brandColor);
@@ -341,7 +341,7 @@ const CloudSyncTab = (props) => {
 		}
 
         if (orgId.length === 0) {
-            toast("Organization ID not defined. Please contact us on https://shuffler.io if this persists logout.");
+            toast("Organization ID not defined. Please contact us on https://nexusguardr.io if this persists logout.");
             return;
         }
 
@@ -547,7 +547,7 @@ const CloudSyncTab = (props) => {
                     Cloud syncronization
                 </Typography>
                 <Typography variant="body2" style={{ color: theme.palette.text.secondary, fontSize: 16, fontWeight: 400, }}>
-                    What does <a href="/docs/organizations#cloud_sync" target="_blank" rel="noopener noreferrer" style={{ color: theme.palette.linkColor, fontSize: 16, textDecoration: 'none', }}>cloud sync</a> do? Cloud synchronization is a way of getting more out of Shuffle. Shuffle will ALWAYS make every option open source, but features relying on other users can't be done without a collaborative approach. This will by default back up apps and workflows.
+                    What does <a href="/docs/organizations#cloud_sync" target="_blank" rel="noopener noreferrer" style={{ color: theme.palette.linkColor, fontSize: 16, textDecoration: 'none', }}>cloud sync</a> do? Cloud synchronization is a way of getting more out of NexusGuard. NexusGuard will ALWAYS make every option open source, but features relying on other users can't be done without a collaborative approach. This will by default back up apps and workflows.
                 </Typography>
             </div>
 
@@ -713,7 +713,7 @@ const CloudSyncTab = (props) => {
                     </div>
                     {orgSyncResponse.length > 0 ? (
                         <Typography style={{ marginTop: 5, marginBottom: 10 }}>
-                            Message from Shuffle Cloud: <b>{orgSyncResponse}</b>
+                            Message from NexusGuard Cloud: <b>{orgSyncResponse}</b>
                         </Typography>
                     ) : null}
                 </div>

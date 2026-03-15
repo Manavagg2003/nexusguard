@@ -31,6 +31,7 @@ import {
 import SuccessFailedRunsWidget from '../components/SuccessFailedRunsWidget.jsx';
 import RunsOverTimeWidget from '../components/RunsOverTimeWidget.jsx';
 import DashboardOnboarding from '../components/DashboardOnboarding.jsx';
+import AISummary from '../components/AISummary.jsx';
 import { Context } from '../context/ContextApi.jsx';
 import { useNavigate } from 'react-router-dom';
 
@@ -64,13 +65,13 @@ const NewDashboard = (props) => {
   const [selectedOrgDetailsForStats, setSelectedOrgDetailsForStats] = useState(null)
   const [fallbackToParentStats, setFallbackToParentStats] = useState(false);
 
-  document.title = "Shuffle - Dashboard";
+  document.title = "NexusGuard - Dashboard";
 
   const isCloud =
     serverside === true || typeof window === "undefined"
       ? true
       : window.location.host === "localhost:3002" ||
-        window.location.host === "shuffler.io" ||
+        window.location.host === "nexusguardr.io" ||
         window.location.host === "localhost:5002";
   
   const navigate = useNavigate();
@@ -473,6 +474,10 @@ const NewDashboard = (props) => {
           </Grid>
         ))}
       </Grid>
+
+      <Box sx={{ mt: 3, mb: 1 }}>
+        <AISummary alerts={notifications} />
+      </Box>
 
       {/* Success/Failed widget uses its own internal sub-cards; make wrapper transparent */}
       <Paper elevation={0} style={{ padding: 0, marginTop: 5, background: 'transparent', boxShadow: 'none', border: 'none' }}>

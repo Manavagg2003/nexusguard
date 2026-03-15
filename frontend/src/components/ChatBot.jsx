@@ -247,7 +247,7 @@ const ChatBot = (props) => {
 		});
 	};
 
-	window.title = "Shuffle - New Chat"
+	window.title = "NexusGuard - New Chat"
 
 	// Automatic submit handler based on a lot of stuff :)
 	const handleSubmit = (e, inputmsg) => {
@@ -940,7 +940,7 @@ const ChatBot = (props) => {
 							fontSize: isMobile ? "2rem" : "2.5rem",
 							letterSpacing: "-0.02em"
 						}}>
-							Shuffle Support (beta)
+							NexusGuard Support (beta)
 						</Typography>
 					</div>
 					<Typography variant="h6" style={{
@@ -1038,7 +1038,7 @@ const ChatBot = (props) => {
 								}
 
 								if (message.action === "login") {
-									navigate("/login?view=/conversation&message=You must log in to use ShuffleGPT");
+									navigate("/login?view=/conversation&message=You must log in to use NexusGuardGPT");
 								} else if (message.action === "app_authentication") {
 									console.log("App auth action!");
 								} else {
@@ -1225,8 +1225,8 @@ const ChatBot = (props) => {
 						margin: "0 auto"
 					}}>
 						{messages.length === 0 
-							? `The Shuffle AI is a test system for automatic workflow generation and atomic functions for the future of Shuffle. Shuffle AI may use your organization info in the query, and attempts to auto-correct any failed behavior. If you have any questions, please contact us at ${supportEmail}`
-							: "Shuffle AI can make mistakes. Always double-check important information."
+							? `The NexusGuard AI is a test system for automatic workflow generation and atomic functions for the future of NexusGuard. NexusGuard AI may use your organization info in the query, and attempts to auto-correct any failed behavior. If you have any questions, please contact us at ${supportEmail}`
+							: "NexusGuard AI can make mistakes. Always double-check important information."
 						}
 					</Typography>
 				) : null}

@@ -268,8 +268,8 @@ const DashboardOnboarding = ({
     {
       index: 1,
       key: 'docs',
-      title: 'Read our docs to understand Shuffle',
-      description: 'Explore the basics of Shuffle in our documentation. It will help you understand the platform and how to use it.',
+      title: 'Read our docs to understand NexusGuard',
+      description: 'Explore the basics of NexusGuard in our documentation. It will help you understand the platform and how to use it.',
       primaryCta: { label: 'Read docs', onClick: handleDocsClick },
       completed: completed.docs,
     },

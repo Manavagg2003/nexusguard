@@ -272,7 +272,7 @@ func handleGetWorkflowqueue(resp http.ResponseWriter, request *http.Request) {
 		//log.Printf("[AUDIT] No 'org' header set (get workflow queue). ")
 		/*
 			resp.WriteHeader(403)
-			resp.Write([]byte(fmt.Sprintf(`{"success": false, "reason": "Specify the org header. This can be done by setting the 'ORG' environment variable for Orborus to your Org ID in Shuffle"}`)))
+			resp.Write([]byte(fmt.Sprintf(`{"success": false, "reason": "Specify the org header. This can be done by setting the 'ORG' environment variable for Orborus to your Org ID in NexusGuard"}`)))
 			return
 		*/
 	}
@@ -3698,7 +3698,7 @@ func checkUnfinishedExecution(resp http.ResponseWriter, request *http.Request) {
 			//	Label: trigger.Label,
 			//	Name:  trigger.Name,
 			//})
-		} else if trigger.Name == "Shuffle Workflow" && trigger.AppName == "Shuffle Workflow" {
+		} else if trigger.Name == "NexusGuard Workflow" && trigger.AppName == "NexusGuard Workflow" {
 			extraInputs += 1
 
 			//exec.Workflow.Actions = append(exec.Workflow.Actions, shuffle.Action{
@@ -3738,7 +3738,7 @@ func checkUnfinishedExecution(resp http.ResponseWriter, request *http.Request) {
 		log.Printf("[ERROR][%s] No workflow ID found for execution", exec.ExecutionId)
 		shuffle.DeleteKey(ctx, "workflowexecution", exec.ExecutionId)
 		resp.WriteHeader(200)
-		resp.Write([]byte(fmt.Sprintf(`{"success": true, "reason": "No workflow name / ID found. Can't run. Contact support@shuffler.io if this persists."}`)))
+		resp.Write([]byte(fmt.Sprintf(`{"success": true, "reason": "No workflow name / ID found. Can't run. Contact support@nexusguard.io if this persists."}`)))
 		return
 	}
 

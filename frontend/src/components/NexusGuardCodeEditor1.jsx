@@ -92,16 +92,16 @@ const liquidFilters = [
 
 const pythonFilters = [
 	{ "name": "Hello World", "value": `print("hello world")`, "example": `` },
-	{ "name": "Using Shuffle variables", "value": `import json\nnodevalue = r\"\"\"$exec\"\"\"\nif not nodevalue:\n  nodevalue = r\"\"\"{\"sample\": \"string\", \"int\": 1}\"\"\"\n  \njsondata = json.loads(nodevalue)\nprint(jsondata)`, "example": `` },
+	{ "name": "Using NexusGuard variables", "value": `import json\nnodevalue = r\"\"\"$exec\"\"\"\nif not nodevalue:\n  nodevalue = r\"\"\"{\"sample\": \"string\", \"int\": 1}\"\"\"\n  \njsondata = json.loads(nodevalue)\nprint(jsondata)`, "example": `` },
 	{ "name": "Filter a list", "value": `import json\nnodevalue = r\"\"\"$exec\"\"\"\nif not nodevalue:\n  nodevalue = r\"\"\"[{\"sample\": \"string\", \"int\": 1, "malicious": "no"}, {\"sample\": \"string2\", \"int\": 1, "malicious": "yes"}]\"\"\"\n  \njsondata = json.loads(nodevalue)\nfiltered = []\nfor item in jsondata:\n  try:\n    if item[\"malicious\"] == \"yes\":\n      filtered.append(item)\n  except:\n    pass\nprint(json.dumps(filtered))`, "example": `` },
 	{ "name": "Print Execution ID", "value": `print(self.current_execution_id)`, "example": `` },
 	{ "name": "Get full execution details", "value": `print(self.full_execution)`, "example": `` },
-	{ "name": "Use files", "value": `# Create a sample file\nfiles = [{\n  \"filename\": \"test.txt\",\n  \"data\": \"Testdata\"\n}]\nret = self.set_files(files)\n\n# Get the content of the file from Shuffle storage\n# Originally a byte string in the \"data\" key\nfile_content = (self.get_file(ret[0])[\"data\"]).decode()\nprint(file_content)`, "example": `` },
+	{ "name": "Use files", "value": `# Create a sample file\nfiles = [{\n  \"filename\": \"test.txt\",\n  \"data\": \"Testdata\"\n}]\nret = self.set_files(files)\n\n# Get the content of the file from NexusGuard storage\n# Originally a byte string in the \"data\" key\nfile_content = (self.get_file(ret[0])[\"data\"]).decode()\nprint(file_content)`, "example": `` },
 
 	{ "name": "Use datastore", "value": `key = \"testkey\"\nvalue = \"The value of the testkey\"\n\nself.set_key(key, value)\n\n# Print the details of the key after it's been updated\n# To get the value, use self.get_key(key)[\"value\"]\nprint(self.get_key(key))`, "example": `` },
 
-	{ "name": "Run a Subflow", "value": `response = shuffle.run_workflow(workflow_id="", start_command="Runtime arg here!", wait=True)\nprint(response)`, "example": ``, "disabled": false, },
-	{ "name": "Run an App Action", "value": `response = shuffle.run_app(app_id="app", action="action_name", auth="authentication_id", params={})\nprint(response)`, "example": ``, "disabled": false, },
+	{ "name": "Run a Subflow", "value": `response = nexusguard.run_workflow(workflow_id="", start_command="Runtime arg here!", wait=True)\nprint(response)`, "example": ``, "disabled": false, },
+	{ "name": "Run an App Action", "value": `response = nexusguard.run_app(app_id="app", action="action_name", auth="authentication_id", params={})\nprint(response)`, "example": ``, "disabled": false, },
 	{ "name": "Run a Singul AI Action", "value": `response = singul.cases.create_ticket(app="jira", fields={"title": "Test ticket!"})\nprint(response)`, "example": ``, "disabled": false, },
 
 
@@ -435,7 +435,7 @@ const CodeEditor = (props) => {
 		}
 
 		to_be_copied.replaceAll(" ", "_");
-		const elementName = "copy_element_shuffle";
+		const elementName = "copy_element_nexusguard";
 		var copyText = document.getElementById(elementName);
 		if (copyText !== null && copyText !== undefined) {
 			console.log("NAVIGATOR: ", navigator);
@@ -1267,13 +1267,13 @@ const CodeEditor = (props) => {
 			inputdata = JSON.stringify(inputdata)
 		}
 
-		// Shuffle Tools 1.2.0 (in most cases?)
+		// NexusGuard Tools 1.2.0 (in most cases?)
 		const appid = toolsAppId !== undefined && toolsAppId !== null && toolsAppId.length > 0 ? toolsAppId : "3e2bdf9d5069fe3f4746c29d68785a6a"
 
 		const actionname = selectedAction.name === "execute_python" && !inputdata.replaceAll(" ", "").includes("{%python%}") ? "execute_python" : selectedAction.name === "execute_bash" ? "execute_bash" : "repeat_back_to_me"
-		const params = actionname === "execute_python" ? [{ "name": "code", "value": inputdata }] : actionname === "execute_bash" ? [{ "name": "code", "value": inputdata }, { "name": "shuffle_input", "value": "", }] : [{ "name": "call", "value": inputdata }]
+		const params = actionname === "execute_python" ? [{ "name": "code", "value": inputdata }] : actionname === "execute_bash" ? [{ "name": "code", "value": inputdata }, { "name": "nexusguard_input", "value": "", }] : [{ "name": "call", "value": inputdata }]
 
-		const actiondata = { "description": "Repeats the call parameter", "id": "", "name": actionname, "label": "", "node_type": "", "environment": environment?.Name, "sharing": false, "private_id": "", "public_id": "", "app_id": appid, "tags": null, "authentication": [], "tested": false, "parameters": params, "execution_variable": { "description": "", "id": "", "name": "", "value": "" }, "returns": { "description": "", "example": "", "id": "", "schema": { "type": "string" } }, "authentication_id": "", "example": "", "auth_not_required": false, "source_workflow": "", "run_magic_output": false, "run_magic_input": false, "execution_delay": 0, "app_name": "Shuffle Tools", "app_version": "1.2.0", "selectedAuthentication": {} }
+		const actiondata = { "description": "Repeats the call parameter", "id": "", "name": actionname, "label": "", "node_type": "", "environment": environment?.Name, "sharing": false, "private_id": "", "public_id": "", "app_id": appid, "tags": null, "authentication": [], "tested": false, "parameters": params, "execution_variable": { "description": "", "id": "", "name": "", "value": "" }, "returns": { "description": "", "example": "", "id": "", "schema": { "type": "string" } }, "authentication_id": "", "example": "", "auth_not_required": false, "source_workflow": "", "run_magic_output": false, "run_magic_input": false, "execution_delay": 0, "app_name": "NexusGuard Tools", "app_version": "1.2.0", "selectedAuthentication": {} }
 
 		setExecutionResult({
 			"valid": false,
@@ -2023,7 +2023,7 @@ const CodeEditor = (props) => {
 															}}
 															key={index} onClick={() => {
 																if (item.disabled) {
-																	toast.error("This feature may not work in your environment until you update your Shuffle Tools app.", { autoClose: 10000 })
+																	toast.error("This feature may not work in your environment until you update your NexusGuard Tools app.", { autoClose: 10000 })
 																}
 
 																if (selectedAction.name !== "execute_python") {
@@ -2074,7 +2074,7 @@ const CodeEditor = (props) => {
 															innerdata.type === "execution_variable" ? (
 															<FavoriteBorderIcon style={{ marginRight: 10 }} />
 														) :
-															innerdata.type === "Shuffle DB" ?
+															innerdata.type === "NexusGuard DB" ?
 																<StorageIcon style={{ marginRight: 10, }} />
 																:
 																<ScheduleIcon style={{ marginRight: 10 }} />
@@ -2400,8 +2400,8 @@ const CodeEditor = (props) => {
 					>
 						{(availableVariables !== undefined && availableVariables !== null && availableVariables.length > 0) || isFileEditor || isWorkflowEditor ? (
 							<AceEditor
-								id="shuffle-codeeditor"
-								name="shuffle-codeeditor"
+								id="nexusguard-codeeditor"
+								name="nexusguard-codeeditor"
 								value={localcodedata}
 								mode={isWorkflowEditor ? "yaml" : selectedAction === undefined ? "json" : selectedAction.name === "execute_python" ? "python" : selectedAction.name === "execute_bash" ? "bash" : "json"}
 								theme="gruvbox"
@@ -2554,7 +2554,7 @@ const CodeEditor = (props) => {
 							}
 
 							<div style={{}}>
-								<Tooltip title="Try it! This runs the Shuffle Tools 'repeat back to me' or 'execute python' action with what you see in the expected output window. Commonly used to test your Python scripts or Liquid filters, not requiring the full workflow to run again." placement="top">
+								<Tooltip title="Try it! This runs the NexusGuard Tools 'repeat back to me' or 'execute python' action with what you see in the expected output window. Commonly used to test your Python scripts or Liquid filters, not requiring the full workflow to run again." placement="top">
 									<Button
 										id="try-it-button"
 										disabled={executing}
@@ -2779,7 +2779,7 @@ const CodeEditor = (props) => {
 						if (isFileEditor !== true) {
 							navigate("")
 						}
-						// Take localcodedata through the Shuffle JSON parser just in case
+						// Take localcodedata through the NexusGuard JSON parser just in case
 						// This is to make it so we don't need to handle these fixes on the
 						// backend by itself
 						var fixedcodedata = localcodedata

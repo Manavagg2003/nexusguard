@@ -361,7 +361,7 @@ const PartnerSettings = (props) => {
                                 if(!isCloud){
                                     navigate("/become-partner")
                                 }else{
-                                    window.open("https://shuffler.io/become-partner")
+                                    window.open("https://nexusguardr.io/become-partner")
                                 }
                             }}
                         >

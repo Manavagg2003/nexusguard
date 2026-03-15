@@ -41,7 +41,7 @@ const SchedulesTab = memo((props) => {
   const [showLoader, setShowLoader] = React.useState(true);
   const [workflows, setWorkflows] = React.useState([]);
   const [pipelineModalOpen, setPipelineModalOpen] = React.useState(false);
-  const [newPipelineValue, setNewPipelineValue] = React.useState(`export live=true | sigma "/tmp/sigma_rules" | to "SHUFFLE_WEBHOOK"`);
+  const [newPipelineValue, setNewPipelineValue] = React.useState(`export live=true | sigma "/tmp/sigma_rules" | to "NEXUSGUARD_WEBHOOK"`);
 
   const [ticketWebhook, setTicketWebhook] = React.useState("");
   const [detectionWorkflowId, setDetectionWorkflowId] = React.useState("");
@@ -210,7 +210,7 @@ const SchedulesTab = memo((props) => {
 					Run a Tenzir pipeline
 				</Typography>
 				<Typography variant="body2" color="textSecondary" style={{marginTop: 10, }}>
-					Alpha feature. Deploys to the first available Orborus location. <a href="https://docs.tenzir.com/explanations/architecture/pipeline/" target="_blank" rel="noopener noreferrer" style={{ color: theme.palette.primary.main }}>Explore Tenzir Pipelines</a>. The example below exports everything in the Tenzir database, runs Sigma rules on it, and forwards the results to a Shuffle webhook.
+					Alpha feature. Deploys to the first available Orborus location. <a href="https://docs.tenzir.com/explanations/architecture/pipeline/" target="_blank" rel="noopener noreferrer" style={{ color: theme.palette.primary.main }}>Explore Tenzir Pipelines</a>. The example below exports everything in the Tenzir database, runs Sigma rules on it, and forwards the results to a NexusGuard webhook.
 				</Typography>
             </DialogTitle>
             <DialogContent style={{padding: "0px 50px 50px 50px", }}>
@@ -242,7 +242,7 @@ const SchedulesTab = memo((props) => {
 
                 	<Chip 
 						onClick={() => {
-							setNewPipelineValue(`export live=true | sigma "/tmp/sigma_rules" | to "${ticketWebhook !== "" ? ticketWebhook : "SHUFFLE_WEBHOOK"}"`)
+							setNewPipelineValue(`export live=true | sigma "/tmp/sigma_rules" | to "${ticketWebhook !== "" ? ticketWebhook : "NEXUSGUARD_WEBHOOK"}"`)
 						}}
 					  	label={"Sigma Rules"}
 					  	variant="outlined"
@@ -254,7 +254,7 @@ const SchedulesTab = memo((props) => {
 
                 	<Chip 
 						onClick={() => {
-							setNewPipelineValue(`export live=true | to_opensearch "localhost:9200", action="create", index="shuffle_logs", user="admin", passwd="PASSWORD"`)
+							setNewPipelineValue(`export live=true | to_opensearch "localhost:9200", action="create", index="nexusguard_logs", user="admin", passwd="PASSWORD"`)
 						}}
 					  	label={"Opensearch Ingest"}
 					  	variant="outlined"
@@ -273,9 +273,9 @@ const SchedulesTab = memo((props) => {
 						minRows={4}
                         required
                         fullWidth={true}
-						defaultValue={`export | sigma /tmp/sigma_rules | to ${ticketWebhook !== "" ? ticketWebhook : "SHUFFLE_WEBHOOK"}`}
+						defaultValue={`export | sigma /tmp/sigma_rules | to ${ticketWebhook !== "" ? ticketWebhook : "NEXUSGUARD_WEBHOOK"}`}
 						value={newPipelineValue}
-                        placeholder={`export | sigma /tmp/sigma_rules | to ${ticketWebhook !== "" ? ticketWebhook : "SHUFFLE_WEBHOOK"}`}
+                        placeholder={`export | sigma /tmp/sigma_rules | to ${ticketWebhook !== "" ? ticketWebhook : "NEXUSGUARD_WEBHOOK"}`}
                         id="environment_name"
                         margin="normal"
                         variant="outlined"
@@ -1104,7 +1104,7 @@ const SchedulesTab = memo((props) => {
 
         <div style={{ marginTop: 50, marginBottom: 20 }}>
           <Typography variant='h6' color="textPrimary">Webhooks</Typography>
-          <Typography variant='body2' color="textSecondary"> Webhooks used in Shuffle workflows.&nbsp;
+          <Typography variant='body2' color="textSecondary"> Webhooks used in NexusGuard workflows.&nbsp;
             <a
               target="_blank"
               rel="noopener noreferrer"

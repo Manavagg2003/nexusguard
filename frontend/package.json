@@ -1,6 +1,7 @@
 {
-  "name": "shuffler",
-  "homepage": "https://shuffler.io",
+  "name": "nexusguard",
+  "description": "NexusGuard - Security Orchestration, Automation and Response Platform",
+  "homepage": "https://nexusguardr.io",
   "version": "2.0.0",
   "private": true,
   "dependencies": {
@@ -96,7 +97,7 @@
     "zone.js": "^0.15.1"
   },
   "scripts": {
-    "start": "HTTPS=false&&PORT=3000 GENERATE_SOURCEMAP=false react-scripts --openssl-legacy-provider start",
+    "start": "set HTTPS=false&& set PORT=3000&& set GENERATE_SOURCEMAP=false&& react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

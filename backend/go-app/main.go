@@ -66,7 +66,7 @@ var baseDockerName = "frikky/shuffle"
 var registryName = "registry.hub.docker.com"
 var runningEnvironment = "onprem"
 
-var syncUrl = "https://shuffler.io"
+var syncUrl = "https://nexusguard.io"
 var debug = false
 
 //var syncUrl = "http://localhost:5002"
@@ -649,7 +649,7 @@ func handleRegister(resp http.ResponseWriter, request *http.Request) {
 
 				defaultEnv := os.Getenv("ENVIRONMENT_NAME")
 				if len(defaultEnv) == 0 {
-					defaultEnv = "Shuffle"
+					defaultEnv = "NexusGuard"
 					log.Printf("[DEBUG] Setting default environment for org to %s", defaultEnv)
 				}
 
@@ -1001,10 +1001,10 @@ func handleInfo(resp http.ResponseWriter, request *http.Request) {
 			log.Printf("[WARNING] Failed setting user to parent org: %s", err)
 		}
 
-		reason := "Parent org has more than 3 child orgs and is not licensed. Moving user to parent org. Contact support@shuffler.io for more information"
+		reason := "Parent org has more than 3 child orgs and is not licensed. Moving user to parent org. Contact support@nexusguard.io for more information"
 
 		if parentOrg.Licensed {
-			reason = fmt.Sprintf("Parent organization is licensed, but the maximum number of sub-organizations (%d) has been reached. You have been moved to the parent organization. Please contact support@shuffler.io for further assistance.", parentOrg.SyncFeatures.MultiTenant.Limit)
+			reason = fmt.Sprintf("Parent organization is licensed, but the maximum number of sub-organizations (%d) has been reached. You have been moved to the parent organization. Please contact support@nexusguard.io for further assistance.", parentOrg.SyncFeatures.MultiTenant.Limit)
 		}
 
 		resp.WriteHeader(200)
@@ -2471,7 +2471,7 @@ func executeCloudAction(action shuffle.CloudSyncJob, apikey string) error {
 	}
 
 	if !responseData.Success {
-		return errors.New(fmt.Sprintf("Cloud error from Shuffler: %s", responseData.Reason))
+		return errors.New(fmt.Sprintf("Cloud error from NexusGuard: %s", responseData.Reason))
 	}
 
 	log.Printf("[INFO] Cloud action executed successfully for '%s'", action.Action)
@@ -3259,7 +3259,7 @@ func buildSwaggerApp(resp http.ResponseWriter, body []byte, user shuffle.User, s
 		} else {
 			log.Printf("[WARNING] Wrong user (%s) for app %s when verifying swagger", user.Username, app.Name)
 			resp.WriteHeader(403)
-			resp.Write([]byte(`{"success": false, "reason": "You don't have permissions to edit this app. Contact support@shuffler.io if this persists."}`))
+			resp.Write([]byte(`{"success": false, "reason": "You don't have permissions to edit this app. Contact support@nexusguard.io if this persists."}`))
 			return
 		}
 
@@ -4148,7 +4148,7 @@ func runInitEs(ctx context.Context) {
 
 	defaultEnv := os.Getenv("ENVIRONMENT_NAME")
 	if len(defaultEnv) == 0 {
-		defaultEnv = "Shuffle"
+		defaultEnv = "NexusGuard"
 		log.Printf("[DEBUG] Setting default environment for org to %s", defaultEnv)
 	}
 
@@ -5327,7 +5327,7 @@ func handleAppZipUpload(resp http.ResponseWriter, request *http.Request) {
 	}
 
 	resp.WriteHeader(500)
-	resp.Write([]byte(`{"success": false, "reason": "The upload API is not yet implemented in self-hosted Shuffle. Please explore the app hotloading system: https://shuffler.io/docs/app_creation#uploading-an-app"}`))
+	resp.Write([]byte(`{"success": false, "reason": "The upload API is not yet implemented in self-hosted NexusGuard. Please explore the app hotloading system: https://nexusguard.io/docs/app_creation#uploading-an-app"}`))
 	return
 
 	//https://stackoverflow.com/questions/22964950/http-request-formfile-handle-zip-files
@@ -5387,7 +5387,7 @@ func initHandlers() {
 	ctx := context.Background()
 	CronScheduler.StartAsync()
 
-	log.Printf("[DEBUG] Starting Shuffle backend - initializing database connection")
+	log.Printf("[DEBUG] Starting NexusGuard backend - initializing database connection")
 	//requestCache = cache.New(5*time.Minute, 10*time.Minute)
 
 	//es := shuffle.GetEsConfig()
@@ -5407,7 +5407,7 @@ func initHandlers() {
 		break
 	}
 
-	log.Printf("[DEBUG] Initialized Shuffle database connection. Setting up environment.")
+	log.Printf("[DEBUG] Initialized NexusGuard database connection. Setting up environment.")
 
 	if elasticConfig == "elasticsearch" {
 		time.Sleep(10 * time.Second)

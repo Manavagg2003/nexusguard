@@ -247,36 +247,36 @@ export const usecases = {
 			},
 			{
 				"source":	"COMMS",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"CASES",
 				"human": false,
 			},
 			{
 				"source":	"INTEL",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"human": false,
 			},
 			{
 				"source":	"ASSETS",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"human": false,
 			},
 			{
 				"source":	"SIEM",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"INTEL",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"COMMS",
 				"human": false,
 			},
@@ -304,32 +304,32 @@ export const usecases = {
 			},
 			{
 				"source":	"SIEM",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"CASES",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"COMMS",
 				"human": false,
 			},
 			{
 				"source":	"INTEL",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"human": false,
 			},
 			{
 				"source":	"ASSETS",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"human": false,
 			},
 			{
 				"source":	"IAM",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"human": false,
 			},
 			{
@@ -350,49 +350,49 @@ export const usecases = {
 			},
 			{
 				"source":	"SIEM",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Alerts",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"INTEL",
 				"description": "Enrich",
 				"human": false,
 			},
 			{
 				"source":	"INTEL",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"human": false,
 			},
 			{
 				"source":	"IAM",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"human": false,
 				"description": "enrich",
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"IAM",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"CASES",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"COMMS",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"EDR & AV",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"EDR & AV",
 				"human": true,
 			},
@@ -427,36 +427,36 @@ export const usecases = {
 			},
 			{
 				"source":	"SIEM",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Send alert",
 				"human": false,
 			},
 			{
 				"source":	"NETWORK",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Send alert",
 				"human": false,
 			},
 			{
 				"source":	"EDR & AV",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Send alert",
 				"human": false,
 			},
 			{
 				"source":	"INTEL",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Enrich IOCs",
 				"human": false,
 			},
 			{
 				"source":	"ASSETS",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Enrich hostnames etc.",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"CASES",
 				"description": "Create enriched alert",
 				"human": false,
@@ -474,30 +474,30 @@ export const usecases = {
 			},
 			{
 				"source":	"ASSETS",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Get vuln",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"CASES",
 				"description": "Raise ticket",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"COMMS",
 				"description": "Notify owner",
 				"human": false,
 			},
 			{
 				"source":	"COMMS",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "",
 				"human": true,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"ASSETS",
 				"description": "Auto-patch",
 				"human": false,
@@ -515,35 +515,35 @@ export const usecases = {
 			},
 			{
 				"source":	"CASES",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Get tickets",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"COMMS",
 				"description": "Ask for approval",
 				"human": false,
 			},
 			{
 				"source":	"COMMS",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"human": true,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"ASSETS",
 				"description": "Add to user",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"IAM",
 				"description": "Approve access",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"CASES",
 				"human": false,
 			},
@@ -559,55 +559,55 @@ export const usecases = {
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"CASES",
 				"description": "Get and enrich ticket",
 				"human": false,
 			},
 			{
 				"source":	"IAM",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Get access rights",
 				"human": false,
 			},
 			{
 				"source":	"ASSETS",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Get relevant assets",
 				"human": false,
 			},
 			{
 				"source":	"INTEL",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Get relevant IPs",
 				"human": false,
 			},
 			{
 				"source":	"COMMS",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Find relevant mails & chats",
 				"human": false,
 			},
 			{
 				"source":	"EDR & AV",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Find incidents for host",
 				"human": false,
 			},
 			{
 				"source":	"SIEM",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Find info about hostname and user",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
-				"target":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
+				"target":	"NEXUSGUARD",
 				"description": "Format info",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"CASES",
 				"description": "",
 				"human": false,
@@ -625,36 +625,36 @@ export const usecases = {
 			},
 			{
 				"source":	"EDR & AV",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"EDR & AV",
 				"human": false,
 				"description": "isolate",
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"IAM",
 				"human": false,
 				"description": "Block access",
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"COMMS",
 				"description": "Notify oncall and affected user",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"CASES",
 				"description": "Create enriched alert",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"CASES",
 				"human": false,
 			},
@@ -712,9 +712,9 @@ const AppFramework = (props) => {
 			"comms": 5, 
 		}
 		
-		// Based on apps recommended from repo https://github.com/Shuffle/app-recommender
+		// Based on apps recommended from repo https://github.com/NexusGuard/app-recommender
 		//fetch("http://localhost:8080/app_recommendations", {
-		fetch("https://europe-west2-shuffler.cloudfunctions.net/app_recommendations", {
+		fetch("https://europe-west2-nexusguardr.cloudfunctions.net/app_recommendations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -887,7 +887,7 @@ const AppFramework = (props) => {
 
 	useEffect(() => {
 		//console.log("DISCWRAP CHANG: ", discoveryWrapper)
-		if (discoveryWrapper === undefined || discoveryWrapper.id === "SHUFFLE" || discoveryWrapper.id === undefined || cy === undefined) {
+		if (discoveryWrapper === undefined || discoveryWrapper.id === "NEXUSGUARD" || discoveryWrapper.id === undefined || cy === undefined) {
 			setDiscoveryData({})
 
 			if (cy !== undefined) {
@@ -1129,7 +1129,7 @@ const AppFramework = (props) => {
 	}, [newSelectedApp])
 
 
-  const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+  const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
   const imgSize = 50;
 	var parsedFrameworkData = frameworkData === undefined ? {} : frameworkData 
 
@@ -1451,7 +1451,7 @@ const AppFramework = (props) => {
 
 	const onNodeSelect = (event) => {
     var data = event.target.data();
-		if (data.id === "SHUFFLE") {
+		if (data.id === "NEXUSGUARD") {
 			event.target.unselect()
 			return
 		}
@@ -1514,7 +1514,7 @@ const AppFramework = (props) => {
 		//const svgSize = `${40*scale}px`
 		//const svgSize = `${40}px`
 	
-		const foundMiddleImage = userdata !== undefined && userdata !== null && userdata.active_org !== undefined && userdata.active_org.image !== undefined && userdata.active_org.image !== null && userdata.active_org.image !== "" ? userdata.active_org.image : '/images/Shuffle_logo.png'
+		const foundMiddleImage = userdata !== undefined && userdata !== null && userdata.active_org !== undefined && userdata.active_org.image !== undefined && userdata.active_org.image !== null && userdata.active_org.image !== "" ? userdata.active_org.image : '/images/NexusGuard_logo.png'
 		
 		const siemcheck = parsedFrameworkData.SIEM.large_image === undefined || (parsedFrameworkData.SIEM.name !== undefined && parsedFrameworkData.SIEM.name !== null && parsedFrameworkData.SIEM.name.includes(":default"))
 		const iamcheck = parsedFrameworkData.IAM.large_image === undefined || (parsedFrameworkData.IAM.name !== undefined && parsedFrameworkData.IAM.name !== null && parsedFrameworkData.IAM.name.includes(":default")) 
@@ -1764,7 +1764,7 @@ const AppFramework = (props) => {
 					font_size: fontSize,
 					width: defaultSize,
 					height: defaultSize,
-					id: "SHUFFLE",
+					id: "NEXUSGUARD",
 					is_valid: true,
 					isValid: true,
 					errors: [],
@@ -2002,12 +2002,12 @@ const AppFramework = (props) => {
 		"automated": [
 			{
 				"source":	"CASES",
-				"target":	"SHUFFLE",
+				"target":	"NEXUSGUARD",
 				"description": "Get cases",
 				"human": false,
 			},
 			{
-				"source":	"SHUFFLE",
+				"source":	"NEXUSGUARD",
 				"target":	"CASES",
 				"description": "Update cases",
 				"human": false,

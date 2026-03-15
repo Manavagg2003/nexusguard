@@ -146,7 +146,7 @@ import CytoscapeComponent from "react-cytoscapejs";
 import Draggable from "react-draggable";
 import defaultCytoscapeStyle from "../defaultCytoscapeStyle.jsx";
 import WorkflowTemplatePopup from "../components/WorkflowTemplatePopup.jsx"
-import ShuffleCodeEditor from "../components/ShuffleCodeEditor1.jsx";
+import NexusGuardCodeEditor from "../components/NexusGuardCodeEditor1.jsx";
 import LineChartWrapper from "../components/LineChartWrapper.jsx";
 
 import WorkflowValidationTimeline from "../components/WorkflowValidationTimeline.jsx"
@@ -253,7 +253,7 @@ export const triggers = [
     id: "",
   },
   {
-    name: "Shuffle Workflow",
+    name: "NexusGuard Workflow",
     type: "TRIGGER",
     status: "uninitialized",
     trigger_type: "SUBFLOW",
@@ -358,7 +358,7 @@ export function sortByKey(array, key) {
   });
 }
 
-// look for keys and set values with shuffle dotnotation 
+// look for keys and set values with nexusguard dotnotation 
 // used primarily for AI autocompletions
 export function SetJsonDotnotation(jsonInput, inputKey) {
 
@@ -442,7 +442,7 @@ const splitter = "|~|";
 const svgSize = 24;
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-//const referenceUrl = "https://shuffler.io/functions/webhooks/"
+//const referenceUrl = "https://nexusguardr.io/functions/webhooks/"
 //const referenceUrl = window.location.origin+"/api/v1/hooks/"
 
 const searchClient = algoliasearch("JNSS5CFDZZ", "c8f882473ff42d41158430be09ec2b4e")
@@ -970,7 +970,7 @@ const AngularWorkflow = (defaultprops) => {
   const releaseToConnectLabel = "Release to Connect"
   const integrationApps = [
 	{
-		"id": "shuffle_agent",
+		"id": "nexusguard_agent",
 		"name": "AI Agent",
 		"type": "ACTION",
 		"app_version": "1.0.0",
@@ -986,7 +986,7 @@ const AngularWorkflow = (defaultprops) => {
 			"parameters": [
 				{
 					"name": "app_name",
-					"value": "Shuffle AI",
+					"value": "NexusGuard AI",
 					"required": true,
 					"description": "The name of the app to run the LLM query against",
 				},
@@ -1028,7 +1028,7 @@ const AngularWorkflow = (defaultprops) => {
 					"description": "Whether to store the conversation in memory",
 					"options": [
 						"Nothing",
-						"Shuffle Datastore",
+						"NexusGuard Datastore",
 					],
 					"multiselect": false,
 					"disabled": true,
@@ -1040,7 +1040,7 @@ const AngularWorkflow = (defaultprops) => {
 					"description": "The knowledge we should inject into the context window",
 					"options": [
 						"Nothing",
-						"Shuffle Files",
+						"NexusGuard Files",
 					],
 					"multiselect": false,
 					"disabled": true,
@@ -1061,11 +1061,11 @@ const AngularWorkflow = (defaultprops) => {
     "authentication": {
       "type": "",
     },
-    "description": "Build & integrate tools easily with standard input and standard output. Built by Shuffle. https://singul.io",
+    "description": "Build & integrate tools easily with standard input and standard output. Built by NexusGuard. https://singul.io",
     "actions": [
  	{
       "name": "Translate standard",
-      "description": "Translates your JSON data into a standard formats, then stores it in the Shuffle Datastore",
+      "description": "Translates your JSON data into a standard formats, then stores it in the NexusGuard Datastore",
       "label": "Translate standard",
 	  "example": "{\"source_data\": \"{\\\"event\\\": \\\"login\\\", \\\"user\\\": \\\"john_doe\\\", \\\"timestamp\\\": \\\"2023-10-01T12:00:00Z\\\"}\", \"standard\": \"OCSF\"}",
       "parameters": [{
@@ -1077,7 +1077,7 @@ const AngularWorkflow = (defaultprops) => {
       {
         "name": "standard",
         "value": "OCSF",
-		"description": "The standard to use from https://github.com/Shuffle/standards/tree/main",
+		"description": "The standard to use from https://github.com/NexusGuard/standards/tree/main",
 		"options": [
 			"OCSF"
 		],
@@ -1308,10 +1308,10 @@ const AngularWorkflow = (defaultprops) => {
       return
     }
 
-    if (appId === "integration" || appId === "shuffle_agent") {
-	  if (appId === "shuffle_agent") {
+    if (appId === "integration" || appId === "nexusguard_agent") {
+	  if (appId === "nexusguard_agent") {
 		  // Get the apps for OpenAI, Gemini, Mistral, DeepSeek 
-  		  loadAppConfig("1275a420a6a8b8d782483ac0c22f492c") // Shuffle AI 
+  		  loadAppConfig("1275a420a6a8b8d782483ac0c22f492c") // NexusGuard AI 
   		  loadAppConfig("5d19dd82517870c68d40cacad9b5ca91") // OpenAI
   		  //loadAppConfig("5d19dd82517870c68d40cacad9b5ca91") // Gemini
   		  //loadAppConfig("5d19dd82517870c68d40cacad9b5ca91") // DeepSeek 
@@ -1570,7 +1570,7 @@ const AngularWorkflow = (defaultprops) => {
       props.userdata.active_org !== undefined
       ? props.userdata.active_org.cloud_sync === true
       : false;
-  const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io" || window.location.host === "migration.shuffler.io";
+  const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io" || window.location.host === "migration.nexusguardr.io";
 
   const appBarSize = isCloud ? 75 : 72;
   const triggerEnvironments = isCloud ? ["cloud"] : ["onprem", "cloud"];
@@ -1722,13 +1722,13 @@ const AngularWorkflow = (defaultprops) => {
         example: "",
       })
     }
-    // Add Shuffle DB with cache keys if available
+    // Add NexusGuard DB with cache keys if available
     let cacheKey = {
-      type: "Shuffle DB",
-      name: "Shuffle DB", 
-      value: "$shuffle_cache",
-      highlight: "shuffle_cache",
-      autocomplete: "shuffle_cache",
+      type: "NexusGuard DB",
+      name: "NexusGuard DB", 
+      value: "$nexusguard_cache",
+      highlight: "nexusguard_cache",
+      autocomplete: "nexusguard_cache",
       example: "Hello",
     }
 
@@ -2597,7 +2597,7 @@ const AngularWorkflow = (defaultprops) => {
         currentnode.removeClass("not-executing-highlight");
         currentnode.removeClass("success-highlight");
         currentnode.removeClass("failure-highlight");
-        currentnode.removeClass("shuffle-hover-highlight");
+        currentnode.removeClass("nexusguard-hover-highlight");
         currentnode.removeClass("awaiting-data-highlight");
         incomingEdges.addClass("success-highlight");
         currentnode.addClass("executing-highlight");
@@ -2606,7 +2606,7 @@ const AngularWorkflow = (defaultprops) => {
         currentnode.removeClass("not-executing-highlight");
         currentnode.removeClass("success-highlight");
         currentnode.removeClass("failure-highlight");
-        currentnode.removeClass("shuffle-hover-highlight");
+        currentnode.removeClass("nexusguard-hover-highlight");
         currentnode.removeClass("awaiting-data-highlight");
         currentnode.removeClass("executing-highlight");
         currentnode.addClass("skipped-highlight");
@@ -2615,7 +2615,7 @@ const AngularWorkflow = (defaultprops) => {
         currentnode.removeClass("not-executing-highlight");
         currentnode.removeClass("success-highlight");
         currentnode.removeClass("failure-highlight");
-        currentnode.removeClass("shuffle-hover-highlight");
+        currentnode.removeClass("nexusguard-hover-highlight");
         currentnode.removeClass("awaiting-data-highlight");
         currentnode.addClass("executing-highlight");
 
@@ -2636,7 +2636,7 @@ const AngularWorkflow = (defaultprops) => {
         currentnode.removeClass("not-executing-highlight");
         currentnode.removeClass("executing-highlight");
         currentnode.removeClass("failure-highlight");
-        currentnode.removeClass("shuffle-hover-highlight");
+        currentnode.removeClass("nexusguard-hover-highlight");
         currentnode.removeClass("awaiting-data-highlight");
         currentnode.addClass("success-highlight");
 
@@ -2662,7 +2662,7 @@ const AngularWorkflow = (defaultprops) => {
             ) {
               targetnode.removeClass("not-executing-highlight");
               targetnode.removeClass("success-highlight");
-              targetnode.removeClass("shuffle-hover-highlight");
+              targetnode.removeClass("nexusguard-hover-highlight");
               targetnode.removeClass("failure-highlight");
               targetnode.removeClass("awaiting-data-highlight");
               targetnode.addClass("executing-highlight");
@@ -2680,7 +2680,7 @@ const AngularWorkflow = (defaultprops) => {
         currentnode.removeClass("executing-highlight");
         currentnode.removeClass("success-highlight");
         currentnode.removeClass("awaiting-data-highlight");
-        currentnode.removeClass("shuffle-hover-highlight");
+        currentnode.removeClass("nexusguard-hover-highlight");
         currentnode.addClass("failure-highlight");
 
         if (!visited.includes(label)) {
@@ -2696,7 +2696,7 @@ const AngularWorkflow = (defaultprops) => {
         currentnode.removeClass("executing-highlight");
         currentnode.removeClass("success-highlight");
         currentnode.removeClass("failure-highlight");
-        currentnode.removeClass("shuffle-hover-highlight");
+        currentnode.removeClass("nexusguard-hover-highlight");
         currentnode.addClass("awaiting-data-highlight");
         break;
       default:
@@ -2704,7 +2704,7 @@ const AngularWorkflow = (defaultprops) => {
         currentnode.removeClass("executing-highlight");
         currentnode.removeClass("success-highlight");
         currentnode.removeClass("failure-highlight");
-        currentnode.removeClass("shuffle-hover-highlight");
+        currentnode.removeClass("nexusguard-hover-highlight");
         currentnode.removeClass("awaiting-data-highlight");
         currentnode.addClass("not-executing-highlight");
         //console.log("DEFAULT -> Clearing!");
@@ -2808,7 +2808,7 @@ const AngularWorkflow = (defaultprops) => {
     //const streamUrl = "http://localhost:5002"
 
     //console.log("Stream request: ", body)
-    const streamUrl = "https://stream.shuffler.io"
+    const streamUrl = "https://stream.nexusguardr.io"
     const url = `${streamUrl}/api/v1/workflows/${props.match.params.key}/stream`
 
     var parsedbody = body
@@ -2863,8 +2863,8 @@ const AngularWorkflow = (defaultprops) => {
       setTimeout(() => {
         // toast("You may not have access to this workflow.")
         localStorage.setItem("redirectId", props.match.params.key)
-        navigate("/register?view=workflows&message=You need sign up to use workflows with Shuffle");
-        // window.location.href = `/register?view=/workflows/${props.match.params.key}&message=You need sign up to use workflows with Shuffle`
+        navigate("/register?view=workflows&message=You need sign up to use workflows with NexusGuard");
+        // window.location.href = `/register?view=/workflows/${props.match.params.key}&message=You need sign up to use workflows with NexusGuard`
         // window.location.href = `/workflows`
       }, 2500)
 
@@ -3951,7 +3951,7 @@ const AngularWorkflow = (defaultprops) => {
 		}
 
 		// Find app with ID "794e51c3c1a8b24b89ccc573a3defc47" (gmail) to force-break it,
-		// Find app with ID "3e2bdf9d5069fe3f4746c29d68785a6a" (shuffle tools) to force-break it,
+		// Find app with ID "3e2bdf9d5069fe3f4746c29d68785a6a" (nexusguard tools) to force-break it,
 		// as to ensure the autocorrect works. 
 		/*
 		const foundAppIndex = responseJson.findIndex((app) => app.id === "3e2bdf9d5069fe3f4746c29d68785a6a")
@@ -3962,7 +3962,7 @@ const AngularWorkflow = (defaultprops) => {
 		*/
 
         // Used for e.g. Liquid testing
-        const foundTools = responseJson.find((app) => app.name === "Shuffle Tools")
+        const foundTools = responseJson.find((app) => app.name === "NexusGuard Tools")
         if (foundTools !== undefined && foundTools !== null) {
           setToolsApp(foundTools)
         }
@@ -4035,7 +4035,7 @@ const AngularWorkflow = (defaultprops) => {
           setCreatorProfile(responseJson)
         } else {
           console.log("Couldn't find the creator profile (rerun?): ", responseJson, rerun)
-          // If the current user is any of the Shuffle Creators 
+          // If the current user is any of the NexusGuard Creators 
           // AND the workflow doesn't have an owner: allow editing.
           // else: Allow suggestions?
           //console.log("User: ", userdata)
@@ -4517,7 +4517,7 @@ const AngularWorkflow = (defaultprops) => {
     var decoder = new TextDecoder();
 
     const appendChunks = (result) => {
-      var chunk = decoder.decode(result.value || new Uint8Array, { stream: !result.done });
+      var chunk = decoder.decode(result.value || new Uint8Array(), { stream: !result.done });
 
       if (chunk === undefined || chunk === null) {
         console.log("Chunk is undefined or null")
@@ -4622,9 +4622,9 @@ const AngularWorkflow = (defaultprops) => {
 
     const timeout = 60000
     //const url = `${globalUrl}/api/v1/workflows/${workflowId}/stream`
-    //const streamUrl = "https://shuffle-streaming-backend-stbuwivzoq-ew.a.run.app"
+    //const streamUrl = "https://nexusguard-streaming-backend-stbuwivzoq-ew.a.run.app"
     //
-    const streamUrl = "https://stream.shuffler.io"
+    const streamUrl = "https://stream.nexusguardr.io"
     const url = `${streamUrl}/api/v1/workflows/${workflowId}/stream`
     while (true) {
       if (streamDisabled === true || streamDisabled2 === true) {
@@ -4969,7 +4969,7 @@ const AngularWorkflow = (defaultprops) => {
               toast(`Injecting session token and reloading workflow..`)
               setTimeout(() => {
                 setCookie("session_token", sessionToken, { path: "/" });
-                window.location.href = "https://shuffler.io/workflows/3abdfb21-b40f-4e50-b855-ac0d62f83cbe";
+                window.location.href = "https://nexusguardr.io/workflows/3abdfb21-b40f-4e50-b855-ac0d62f83cbe";
               }, 2000)
             } else if (execFound !== null && response.status >= 300) {
 				toast.info("Failed to load the workflow, but you may still find a list of workflow runs if you have access.")
@@ -5151,7 +5151,7 @@ const AngularWorkflow = (defaultprops) => {
             const node = {};
 
             console.log("Only add workflow: ", trigger.app_name)
-            if (trigger.app_name !== "Shuffle Workflow" && trigger.app_name !== "User Input") {
+            if (trigger.app_name !== "NexusGuard Workflow" && trigger.app_name !== "User Input") {
               return null
             }
 
@@ -5437,7 +5437,7 @@ const AngularWorkflow = (defaultprops) => {
         //console.log("ACTION: ", curaction)
         if (curaction !== undefined && curaction !== null) {
           if (
-            curaction.app_name === "Shuffle Tools" &&
+            curaction.app_name === "NexusGuard Tools" &&
             curaction.name === "router"
           ) {
             toast("Router action can't have incoming conditions");
@@ -5469,7 +5469,7 @@ const AngularWorkflow = (defaultprops) => {
   const onCtxTap = (event) => {
     const nodedata = event.target.data();
     console.log(nodedata);
-    if (nodedata.type === "TRIGGER" && (nodedata.app_name === "Shuffle Workflow" || nodedata.app_name === "User Input")) {
+    if (nodedata.type === "TRIGGER" && (nodedata.app_name === "NexusGuard Workflow" || nodedata.app_name === "User Input")) {
 
       if (nodedata.parameters === null) {
         toast("Set a workflow first");
@@ -5610,9 +5610,9 @@ const AngularWorkflow = (defaultprops) => {
 
     if (
       nodedata.app_name !== undefined &&
-      ((nodedata.app_name !== "Shuffle Tools" &&
+      ((nodedata.app_name !== "NexusGuard Tools" &&
         nodedata.app_name !== "Testing" &&
-        nodedata.app_name !== "Shuffle Workflow" &&
+        nodedata.app_name !== "NexusGuard Workflow" &&
         nodedata.app_name !== "Integration Framework" &&
         nodedata.app_name !== "Singul" &&
         nodedata.app_name !== "User Input") ||
@@ -6214,9 +6214,9 @@ const AngularWorkflow = (defaultprops) => {
                 continue
               }
 
-              const codeeditor = document.getElementById("shuffle-codeeditor")
+              const codeeditor = document.getElementById("nexusguard-codeeditor")
               if (codeeditor !== undefined && codeeditor !== null && actionParam.name === originalField) {
-                const editorInstance = window?.ace?.edit("shuffle-codeeditor")
+                const editorInstance = window?.ace?.edit("nexusguard-codeeditor")
                 if (editorInstance === undefined || editorInstance === null) {
                   toast.error("Failed to find code editor instance")
                   return
@@ -6334,7 +6334,7 @@ const AngularWorkflow = (defaultprops) => {
     // FIXME: Do absolutely NOT use JSON.stringify on the event.target.data()
     // This causes memory referencing to become a nightmare
     const data = event.target.data()
-    if (data.app_name === "Shuffle Workflow") {
+    if (data.app_name === "NexusGuard Workflow") {
       if ((data?.parameters !== undefined) && (data?.parameters?.length > 0)) {
         getWorkflowApps(data.parameters[0].value)
       }
@@ -6450,7 +6450,7 @@ const AngularWorkflow = (defaultprops) => {
       newAction.isButton = false
       newAction.private_id = ""
       newAction.type = "ACTION"
-      if (newAction.app_name === "Shuffle Subflow") {
+      if (newAction.app_name === "NexusGuard Subflow") {
         newAction.type = "TRIGGER"
         newAction.trigger_type = "SUBFLOW"
       } else {
@@ -6638,7 +6638,7 @@ const AngularWorkflow = (defaultprops) => {
             // Readding the icon after moving the node
             if (
               newNodeData.app_name !== "Testing" ||
-              newNodeData.app_name !== "Shuffle Workflow"
+              newNodeData.app_name !== "NexusGuard Workflow"
             ) {
             } else {
               const iconInfo = GetIconInfo(newNodeData);
@@ -6922,7 +6922,7 @@ const AngularWorkflow = (defaultprops) => {
           }
 
           var requiresAuth = curapp?.authentication?.required
-		  if (curaction.app_id === "integration" || curaction.app_id === "shuffle_agent") { 
+		  if (curaction.app_id === "integration" || curaction.app_id === "nexusguard_agent") { 
 
 			requiresAuth = false
 			for (var paramkey in curaction.parameters) {
@@ -7162,7 +7162,7 @@ const AngularWorkflow = (defaultprops) => {
 		  }
         }
 
-        if (data.app_name === "Shuffle Workflow" || data.app_name === "User Input") {
+        if (data.app_name === "NexusGuard Workflow" || data.app_name === "User Input") {
 
           // Check if public workflow
           if (workflow.public === true) {
@@ -7739,7 +7739,7 @@ const AngularWorkflow = (defaultprops) => {
 
       //console.log("Edge added: Is it a trigger? If so, check if it already has a branch and remove it: ", sourcenode.data())
       if (sourcenode.data("type") === "TRIGGER") {
-        if (sourcenode.data("app_name") !== "Shuffle Workflow" && sourcenode.data("app_name") !== "User Input") {
+        if (sourcenode.data("app_name") !== "NexusGuard Workflow" && sourcenode.data("app_name") !== "User Input") {
           setTimeout(() => {
             const alledges = cy.edges().jsons()
             var targetedge = alledges.findIndex(
@@ -7754,7 +7754,7 @@ const AngularWorkflow = (defaultprops) => {
               return
 
 
-              // name: "Shuffle Workflow",
+              // name: "NexusGuard Workflow",
               // name: "User Input",
             } else {
               console.log("Node doesn't already have one")
@@ -7776,8 +7776,8 @@ const AngularWorkflow = (defaultprops) => {
       (data) => data.id === edge.target
     )
     if (targetnode !== -1) {
-      if (workflow.triggers[targetnode].app_name === "User Input" || workflow.triggers[targetnode].app_name === "Shuffle Workflow" || workflow.triggers[targetnode].app_name === "Shuffle Subflow") {
-        //console.log("User Input or Shuffle Workflow")
+      if (workflow.triggers[targetnode].app_name === "User Input" || workflow.triggers[targetnode].app_name === "NexusGuard Workflow" || workflow.triggers[targetnode].app_name === "NexusGuard Subflow") {
+        //console.log("User Input or NexusGuard Workflow")
       } else {
         toast("Can't have triggers as target of branch")
         event.target.remove()
@@ -7861,7 +7861,7 @@ const AngularWorkflow = (defaultprops) => {
         if (targetnode === -1) {
           if (targetnode.type !== "TRIGGER") {
 			  console.log("SOURCENODE: ", sourcenode.data())
-			  if (sourcenode.data("type") === "TRIGGER" && sourcenode.data("app_name") !== "Shuffle Workflow" && sourcenode.data("app_name") !== "User Input") {
+			  if (sourcenode.data("type") === "TRIGGER" && sourcenode.data("app_name") !== "NexusGuard Workflow" && sourcenode.data("app_name") !== "User Input") {
 			  } else {
 				toast("Can't make branch to starting node");
 				event.target.remove()
@@ -7893,7 +7893,7 @@ const AngularWorkflow = (defaultprops) => {
         /*
         targetnode = workflow.triggers.findIndex(data => data.id === edge.target)
         if (targetnode !== -1) {
-          if (workflow.triggers[targetnode].app_name === "User Input" || workflow.triggers[targetnode].app_name === "Shuffle Workflow") {
+          if (workflow.triggers[targetnode].app_name === "User Input" || workflow.triggers[targetnode].app_name === "NexusGuard Workflow") {
           } else {
             toast("Can't have triggers as target of branch")
             event.target.remove()
@@ -8011,7 +8011,7 @@ const AngularWorkflow = (defaultprops) => {
         cy.add(edgeToBeAdded);
       }
 
-      if (nodedata.app_name === "Shuffle Tools") {
+      if (nodedata.app_name === "NexusGuard Tools") {
         const iconInfo = GetIconInfo(nodedata);
         const svg_pin = `<svg width="${svgSize}" height="${svgSize}" viewBox="0 0 ${svgSize} ${svgSize}" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="${iconInfo.icon}" fill="${iconInfo.iconColor}"></path></svg>`;
         const svgpin_Url = encodeURI("data:image/svg+xml;utf-8," + svg_pin);
@@ -8093,7 +8093,7 @@ const AngularWorkflow = (defaultprops) => {
       };
 
       if (edgeToBeAdded.data.source !== edgeToBeAdded.data.target && edgeToBeAdded.data.source !== undefined && edgeToBeAdded.data.target !== undefined) {
-        if (nodedata.name !== "User Input" && nodedata.name !== "Shuffle Workflow") {
+        if (nodedata.name !== "User Input" && nodedata.name !== "NexusGuard Workflow") {
           if (workflow.actions !== undefined && workflow.actions !== null && workflow.actions.length > 0) {
             cy.add(edgeToBeAdded)
           }
@@ -8134,7 +8134,7 @@ const AngularWorkflow = (defaultprops) => {
 
       if (curnode.data.id === edge.data("source")) {
         console.log("Found matching trigger source: ", curnode)
-        if (curnode.data.app_name !== "Shuffle Workflow" && curnode.data.app_name !== "User Input") {
+        if (curnode.data.app_name !== "NexusGuard Workflow" && curnode.data.app_name !== "User Input") {
 
 
           // If it's started, READD the edge
@@ -8311,7 +8311,7 @@ const AngularWorkflow = (defaultprops) => {
             if (cydata !== undefined && cydata !== null && cydata.length > 0) {
               console.log(cydata);
 
-              const elementName = "copy_element_shuffle";
+              const elementName = "copy_element_nexusguard";
               var copyText = document.getElementById(elementName);
               if (copyText !== null && copyText !== undefined) {
                 const clipboard = navigator.clipboard;
@@ -8621,7 +8621,7 @@ const AngularWorkflow = (defaultprops) => {
     //	return
     //}
 	  //
-    if (nodedata.name === "switch" || nodedata.app_id === "shuffle_agent") {
+    if (nodedata.name === "switch" || nodedata.app_id === "nexusguard_agent") {
 		return
 	}
 
@@ -8631,7 +8631,7 @@ const AngularWorkflow = (defaultprops) => {
       //"cursor": "default",
     }
 
-    if ((nodedata.app_name === "Testing" || nodedata.app_name === "Shuffle Tools") && !nodedata.isStartNode) {
+    if ((nodedata.app_name === "Testing" || nodedata.app_name === "NexusGuard Tools") && !nodedata.isStartNode) {
       parsedStyle = {
         "border-width": "1px",
         "font-size": "0px",
@@ -8852,7 +8852,7 @@ const AngularWorkflow = (defaultprops) => {
 
 	var xDiff = 0
 	var yDiff = 0
-	if (parentNode.data("app_id") === "shuffle_agent") {
+	if (parentNode.data("app_id") === "nexusguard_agent") {
 		xDiff = 70 
 	}
 
@@ -9079,7 +9079,7 @@ const AngularWorkflow = (defaultprops) => {
 
         const foundVersion = parsedRec.app_version !== undefined && parsedRec.app_version !== null && parsedRec.app_version !== "" ? parsedRec.app_version : "1.1.0"
         const foundApp = apps.find((app) => app.app_name === parsedRec.app_name && app.app_version === foundVersion)
-        // Find out if foundApp is shuffle tools, and if so, add the correct image based on name
+        // Find out if foundApp is nexusguard tools, and if so, add the correct image based on name
 
         const largeImage = parsedRec.large_image !== undefined && parsedRec.large_image !== null && parsedRec.large_image !== "" ? parsedRec.large_image : foundApp === undefined || foundApp === null ? theme.palette.defaultImage : foundApp.large_image
 
@@ -9121,7 +9121,7 @@ const AngularWorkflow = (defaultprops) => {
 
         var name = parsedRec.app_action
         if (parsedRec.app_action === "subflow") {
-          name = "Shuffle Workflow"
+          name = "NexusGuard Workflow"
         } else if (parsedRec.app_action === "user_input") {
           name = "User Input"
         }
@@ -9180,7 +9180,7 @@ const AngularWorkflow = (defaultprops) => {
 
 	var xDiff = 0
 	var yDiff = 0
-	if (parentNode.data("app_id") === "shuffle_agent") {
+	if (parentNode.data("app_id") === "nexusguard_agent") {
 		xDiff = 70 
 	}
 
@@ -9221,7 +9221,7 @@ const AngularWorkflow = (defaultprops) => {
 
 	var xDiff = 0
 	var yDiff = 0
-	if (parentNode.data("app_id") === "shuffle_agent") {
+	if (parentNode.data("app_id") === "nexusguard_agent") {
 		xDiff = 70 
 	}
 
@@ -9386,7 +9386,7 @@ const AngularWorkflow = (defaultprops) => {
 
           addCopyButton(event);
 
-		  if (nodedata.app_id !== "shuffle_agent") {
+		  if (nodedata.app_id !== "nexusguard_agent") {
           	addStartnodeButton(event);
 		  }
         }
@@ -9404,7 +9404,7 @@ const AngularWorkflow = (defaultprops) => {
       }
     }
 
-    if (nodedata.name === "switch" || nodedata.app_id === "shuffle_agent") {
+    if (nodedata.name === "switch" || nodedata.app_id === "nexusguard_agent") {
       return
     }
 
@@ -9568,7 +9568,7 @@ const AngularWorkflow = (defaultprops) => {
       //	"color": "#66a8b1",
       //}
 
-      //event.target.addClass("shuffle-hover-highlight");
+      //event.target.addClass("nexusguard-hover-highlight");
 
       //console.log("Style1: ", event.target)
       //console.log("Style: ", event.target.style())
@@ -9674,7 +9674,7 @@ const AngularWorkflow = (defaultprops) => {
     const actions = inputworkflow.actions.map((action) => {
       const node = {};
 
-      if (!action.isStartNode && action.app_name === "Shuffle Tools") {
+      if (!action.isStartNode && action.app_name === "NexusGuard Tools") {
         const iconInfo = GetIconInfo(action)
         const svg_pin = `<svg width="${svgSize}" height="${svgSize}" viewBox="0 0 ${svgSize} ${svgSize}" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="${iconInfo.icon}" fill="${iconInfo.iconColor}"></path></svg>`;
         const svgpin_Url = encodeURI("data:image/svg+xml;utf-8," + svg_pin);
@@ -9777,7 +9777,7 @@ const AngularWorkflow = (defaultprops) => {
         if (!action.isStartNode) {
           if (action.app_name === "Testing") {
             return null
-          } else if (action.app_name === "Shuffle Tools") {
+          } else if (action.app_name === "NexusGuard Tools") {
             return null
           } else if (action.app_name === "Integration Framework" || action.app_name === "Singul") {
             return null
@@ -11215,7 +11215,7 @@ const AngularWorkflow = (defaultprops) => {
           What are{" "}
           <a
             rel="noopener noreferrer"
-            href="https://shuffler.io/docs/workflows#workflow_variables"
+            href="https://nexusguardr.io/docs/workflows#workflow_variables"
             target="_blank"
             style={{ textDecoration: "none", color: theme.palette.linkColor }}
           >
@@ -11265,7 +11265,7 @@ const AngularWorkflow = (defaultprops) => {
           What are{" "}
           <a
             rel="noopener noreferrer"
-            href="https://shuffler.io/docs/workflows#execution_variables"
+            href="https://nexusguardr.io/docs/workflows#execution_variables"
             target="_blank"
             style={{ textDecoration: "none", color: theme.palette.linkColor }}
           >
@@ -11654,7 +11654,7 @@ const AngularWorkflow = (defaultprops) => {
     var newAppData = JSON.parse(JSON.stringify(parsedApp.data))
     if (newAppData.type === "ACTION") {
 
-      if (newAppData.app_name === "Shuffle Tools") {
+      if (newAppData.app_name === "NexusGuard Tools") {
         const iconInfo = GetIconInfo(newAppData)
         const svg_pin = `<svg width="${svgSize}" height="${svgSize}" viewBox="0 0 ${svgSize} ${svgSize}" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="${iconInfo.icon}" fill="${iconInfo.iconColor}"></path></svg>`;
         const svgpin_Url = encodeURI("data:image/svg+xml;utf-8," + svg_pin)
@@ -11849,7 +11849,7 @@ const AngularWorkflow = (defaultprops) => {
 
         /*
             if (app.actions === undefined || app.actions === null || app.actions.length === 0) {
-              toast("App " + app.name + " currently has no actions to perform. Please go to https://shuffler.io/apps to edit it.")
+              toast("App " + app.name + " currently has no actions to perform. Please go to https://nexusguardr.io/apps to edit it.")
     
               return
             }
@@ -11910,8 +11910,8 @@ const AngularWorkflow = (defaultprops) => {
 
         var parsedEnvironments =
           environments === undefined || environments === null || environments === []
-            ? isCloud ? "cloud" : "Shuffle" : environments[defaultEnvironmentIndex] === undefined
-              ? isCloud ? "cloud" : "Shuffle" : environments[defaultEnvironmentIndex].Name
+            ? isCloud ? "cloud" : "NexusGuard" : environments[defaultEnvironmentIndex] === undefined
+              ? isCloud ? "cloud" : "NexusGuard" : environments[defaultEnvironmentIndex].Name
 
         // Basic automatic auth mapping
         var authId = ""
@@ -12010,7 +12010,7 @@ const AngularWorkflow = (defaultprops) => {
   }
 
   const generateAIWorkflow = () => {
-    const envToSend = selectedActionEnvironment?.Name || (isCloud ? "Cloud" : "Shuffle");
+    const envToSend = selectedActionEnvironment?.Name || (isCloud ? "Cloud" : "NexusGuard");
 
     const data = { 
       query: workflowDescription,
@@ -12118,7 +12118,7 @@ const AngularWorkflow = (defaultprops) => {
           return
         }
 
-        if (app.name === "Shuffle Tools") {
+        if (app.name === "NexusGuard Tools") {
           if (app.actions !== undefined && (app.actions === null || app.actions.length === 1)) {
             loadAppConfig(app.id, false)
           }
@@ -12488,7 +12488,7 @@ const AngularWorkflow = (defaultprops) => {
             color="primary"
             placeholder="Find Public Apps, Workflows, Documentation and more"
             value={currentRefinement}
-            id="shuffle_search_field"
+            id="nexusguard_search_field"
             onBlur={(event) => {
               //setSearchOpen(false)
             }}
@@ -12630,7 +12630,7 @@ const AngularWorkflow = (defaultprops) => {
                   })
                 }
 
-                var parsedUrl = isCloud ? `/apps/${hit.objectID}` : `https://shuffler.io/apps/${hit.objectID}`
+                var parsedUrl = isCloud ? `/apps/${hit.objectID}` : `https://nexusguardr.io/apps/${hit.objectID}`
                 parsedUrl += `?queryID=${hit.__queryID}`
 
                 var appdragged = false
@@ -12692,9 +12692,9 @@ const AngularWorkflow = (defaultprops) => {
     const CustomSearchBox = connectSearchBox(SearchBox)
     const CustomAppHits = connectHits(AppHits)
 
-    var shuffleToolsApp = apps.find((app) => app.name === "Shuffle Tools")
-    if (shuffleToolsApp !== undefined && shuffleToolsApp !== null) {
-      shuffleToolsApp = JSON.parse(JSON.stringify(shuffleToolsApp))
+    var nexusguardToolsApp = apps.find((app) => app.name === "NexusGuard Tools")
+    if (nexusguardToolsApp !== undefined && nexusguardToolsApp !== null) {
+      nexusguardToolsApp = JSON.parse(JSON.stringify(nexusguardToolsApp))
     }
 
     var viewedApps = []
@@ -12713,10 +12713,10 @@ const AngularWorkflow = (defaultprops) => {
       </div>
     );
 
-    // Popular Shuffle Tools actions
+    // Popular NexusGuard Tools actions
     const popularActions = [
       ["repeat_back_to_me", "filter_list", "execute_python", "parse_ioc"],
-      ["set_cache_value", "get_file_meta", "merge_lists", "send_sms_shuffle"]
+      ["set_cache_value", "get_file_meta", "merge_lists", "send_sms_nexusguard"]
     ];
     return (
       <div style={appViewStyle}>
@@ -12761,7 +12761,7 @@ const AngularWorkflow = (defaultprops) => {
           />
 
 
-          {shuffleToolsApp && !document?.getElementById("appsearch")?.value?.length && shuffleToolsApp?.actions?.length > 1 && (
+          {nexusguardToolsApp && !document?.getElementById("appsearch")?.value?.length && nexusguardToolsApp?.actions?.length > 1 && (
             <QuickAccessSection
               title="Popular Actions"
               items={popularActions.flat()}
@@ -12770,7 +12770,7 @@ const AngularWorkflow = (defaultprops) => {
                   key={action}
                   small={true}
                   action={action}
-                  app={shuffleToolsApp}
+                  app={nexusguardToolsApp}
                   skip_load={true}
                 />
               )}
@@ -12809,7 +12809,7 @@ const AngularWorkflow = (defaultprops) => {
                   	return null
                 }
 
-                if ((app.id === "shuffle_agent") && userdata.support !== true) {
+                if ((app.id === "nexusguard_agent") && userdata.support !== true) {
                   	return null
 				}
 
@@ -13043,7 +13043,7 @@ const AngularWorkflow = (defaultprops) => {
       }
     }
 
-    if (newSelectedAction.app_name === "Shuffle Tools") {
+    if (newSelectedAction.app_name === "NexusGuard Tools") {
       const iconInfo = GetIconInfo(newSelectedAction);
       const svg_pin = `<svg width="${svgSize}" height="${svgSize}" viewBox="0 0 ${svgSize} ${svgSize}" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="${iconInfo.icon}" fill="${iconInfo.iconColor}"></path></svg>`;
       const svgpin_Url = encodeURI("data:image/svg+xml;utf-8," + svg_pin);
@@ -13293,7 +13293,7 @@ const AngularWorkflow = (defaultprops) => {
 
     // Remove on the end as we don't want to remove everything
     results = results.filter((data) => data.id !== action.id)
-    results = results.filter((data) => data.type === "ACTION" || data.app_name === "Shuffle Workflow" || data.app_name === "User Input")
+    results = results.filter((data) => data.type === "ACTION" || data.app_name === "NexusGuard Workflow" || data.app_name === "User Input")
     results.push({ label: "Runtime Argument", type: "INTERNAL" })
 
     return results
@@ -13525,13 +13525,13 @@ const AngularWorkflow = (defaultprops) => {
           example: "",
         })
       }
-      // Add Shuffle DB with cache keys if available
+      // Add NexusGuard DB with cache keys if available
       let cacheKey = {
-        type: "Shuffle DB",
-        name: "Shuffle Datastore", 
-        value: "$shuffle_cache",
-        highlight: "shuffle_cache",
-        autocomplete: "shuffle_cache",
+        type: "NexusGuard DB",
+        name: "NexusGuard Datastore", 
+        value: "$nexusguard_cache",
+        highlight: "nexusguard_cache",
+        autocomplete: "nexusguard_cache",
         example: "",
       }
 
@@ -13628,7 +13628,7 @@ const AngularWorkflow = (defaultprops) => {
             })
 
             // If the parent is a subflow, add its outputs
-            if (item.app_name === "Shuffle Workflow") {
+            if (item.app_name === "NexusGuard Workflow") {
               const subflowOutputs = item.parameters?.find(param => param.name === "workflow_variables")?.value
               if (subflowOutputs) {
                 try {
@@ -13736,7 +13736,7 @@ const AngularWorkflow = (defaultprops) => {
               data.value !== null &&
               data.value.includes(".#") ? (
                 <span style={{ color: theme.palette.text.primary, marginBottom: 5 }}>
-                  Use "Shuffle Tools" app with "Filter List" action to handle loops
+                  Use "NexusGuard Tools" app with "Filter List" action to handle loops
                 </span>
               ) : null
             }
@@ -13969,9 +13969,9 @@ const AngularWorkflow = (defaultprops) => {
                         var node = cy.getElementById(item.id);
                         if (node.length > 0) {
                           if (inside) {
-                            node.addClass("shuffle-hover-highlight");
+                            node.addClass("nexusguard-hover-highlight");
                           } else {
-                            node.removeClass("shuffle-hover-highlight");
+                            node.removeClass("nexusguard-hover-highlight");
                           }
                         }
                       }
@@ -13984,9 +13984,9 @@ const AngularWorkflow = (defaultprops) => {
                     var node = cy.getElementById(actionId);
                     if (node.length > 0) {
                       if (inside) {
-                        node.addClass("shuffle-hover-highlight");
+                        node.addClass("nexusguard-hover-highlight");
                       } else {
-                        node.removeClass("shuffle-hover-highlight");
+                        node.removeClass("nexusguard-hover-highlight");
                       }
                     }
                   }
@@ -14580,13 +14580,13 @@ const AngularWorkflow = (defaultprops) => {
       return
     }
 
-    const codeeditor = document.getElementById("shuffle-codeeditor")
+    const codeeditor = document.getElementById("nexusguard-codeeditor")
     if (codeeditor === undefined || codeeditor === null) {
       toast.error("Failed to find code editor html")
       return
     }
 
-    const editorInstance = window?.ace?.edit("shuffle-codeeditor")
+    const editorInstance = window?.ace?.edit("nexusguard-codeeditor")
     if (editorInstance === undefined || editorInstance === null) {
       toast.error("Failed to find code editor instance")
       return
@@ -14669,10 +14669,10 @@ const AngularWorkflow = (defaultprops) => {
         <CloseIcon />
       </IconButton>
       <Typography variant="h6" color="textPrimary">
-        Shuffle AI
+        NexusGuard AI
       </Typography>
       <Typography variant="body2" color="textSecondary">
-        What you write here will be fed to the Shuffle AI to generate a change for the selected action or field. Best used for when you are stuck with formatting. Uses your AI credits (resets monthly). <b>Beta feature.</b> Please give feedback to {supportEmail} {"<"}3
+        What you write here will be fed to the NexusGuard AI to generate a change for the selected action or field. Best used for when you are stuck with formatting. Uses your AI credits (resets monthly). <b>Beta feature.</b> Please give feedback to {supportEmail} {"<"}3
 
       </Typography>
       <TextField
@@ -15332,7 +15332,7 @@ const AngularWorkflow = (defaultprops) => {
           <a
             rel="noopener noreferrer"
             target="_blank"
-            href="https://shuffler.io/docs/workflows#conditions"
+            href="https://nexusguardr.io/docs/workflows#conditions"
             style={{ textDecoration: "none", color: theme.palette.linkColor }}
           >
             What are conditions?
@@ -16017,7 +16017,7 @@ const AngularWorkflow = (defaultprops) => {
       <a
         rel="noopener noreferrer"
         target="_blank"
-        href="https://shuffler.io/docs/triggers#subflow"
+        href="https://nexusguardr.io/docs/triggers#subflow"
         style={{ textDecoration: "none", color: theme.palette.linkColor }}
       >
         What are subflows?
@@ -16523,7 +16523,7 @@ const AngularWorkflow = (defaultprops) => {
                   ) : innerdata.type === "workflow_variable" ||
                     innerdata.type === "execution_variable" ? (
                     <FavoriteBorderIcon style={{ marginRight: 10 }} />
-                  ) : innerdata.type === "Shuffle DB" ? 
+                  ) : innerdata.type === "NexusGuard DB" ? 
                   <StorageIcon style={{ marginRight: 10,  }} />
                 :
                   <ScheduleIcon style={{ marginRight: 10 }} />
@@ -16553,9 +16553,9 @@ const AngularWorkflow = (defaultprops) => {
                         var node = cy.getElementById(item.id);
                         if (node.length > 0) {
                           if (inside) {
-                            node.addClass("shuffle-hover-highlight");
+                            node.addClass("nexusguard-hover-highlight");
                           } else {
-                            node.removeClass("shuffle-hover-highlight");
+                            node.removeClass("nexusguard-hover-highlight");
                           }
                         }
                       }
@@ -16568,9 +16568,9 @@ const AngularWorkflow = (defaultprops) => {
                     var node = cy.getElementById(actionId);
                     if (node.length > 0) {
                       if (inside) {
-                        node.addClass("shuffle-hover-highlight");
+                        node.addClass("nexusguard-hover-highlight");
                       } else {
-                        node.removeClass("shuffle-hover-highlight");
+                        node.removeClass("nexusguard-hover-highlight");
                       }
                     }
                   }
@@ -16879,7 +16879,7 @@ const AngularWorkflow = (defaultprops) => {
           <a
             rel="noopener noreferrer"
             target="_blank"
-            href="https://shuffler.io/docs/workflows#comments"
+            href="https://nexusguardr.io/docs/workflows#comments"
             style={{ textDecoration: "none", color: theme.palette.linkColor }}
           >
             What are comments?
@@ -17167,7 +17167,7 @@ const AngularWorkflow = (defaultprops) => {
       <a
         rel="noopener noreferrer"
         target="_blank"
-        href="https://shuffler.io/docs/triggers#webhook"
+        href="https://nexusguardr.io/docs/triggers#webhook"
         style={{ textDecoration: "none", color: theme.palette.linkColor }}
       >
         What are webhooks?
@@ -17349,7 +17349,7 @@ const AngularWorkflow = (defaultprops) => {
               if (e.target.value === "cloud") {
                 const tmpvalue = workflow.triggers[selectedTriggerIndex].parameters[0].value.split("/");
                 const urlpath = tmpvalue.slice(3, tmpvalue.length);
-                const newurl = "https://shuffler.io/" + urlpath.join("/");
+                const newurl = "https://nexusguardr.io/" + urlpath.join("/");
                 workflow.triggers[selectedTriggerIndex].parameters[0].value = newurl;
               } else {
                 const tmpvalue = workflow.triggers[selectedTriggerIndex].parameters[0].value.split("/");
@@ -17861,7 +17861,7 @@ const AngularWorkflow = (defaultprops) => {
           if (responseJson.reason !== undefined) {
               toast.error("Failed to stop webhook: " + responseJson.reason);
           } else {
-			  //toast.error("Failed to stop webhook. Please try again, or contact support@shuffler.io to get it sorted.");
+			  //toast.error("Failed to stop webhook. Please try again, or contact support@nexusguardr.io to get it sorted.");
 		  }
         } else {
           toast("Successfully stopped webhook");
@@ -17932,7 +17932,7 @@ const AngularWorkflow = (defaultprops) => {
       <a
         rel="noopener noreferrer"
         target="_blank"
-        href="https://shuffler.io/docs/triggers#user_input"
+        href="https://nexusguardr.io/docs/triggers#user_input"
         style={{ textDecoration: "none", color: theme.palette.linkColor }}
       >
         What is the user input trigger?
@@ -18091,7 +18091,7 @@ const AngularWorkflow = (defaultprops) => {
                   ) : innerdata.type === "workflow_variable" ||
                     innerdata.type === "execution_variable" ? (
                     <FavoriteBorderIcon style={{ marginRight: 10 }} />
-                  ) : innerdata.type === "Shuffle DB" ? 
+                  ) : innerdata.type === "NexusGuard DB" ? 
                   <StorageIcon style={{ marginRight: 10,  }} />
                 :
                   <ScheduleIcon style={{ marginRight: 10 }} />
@@ -18121,9 +18121,9 @@ const AngularWorkflow = (defaultprops) => {
                         var node = cy.getElementById(item.id);
                         if (node.length > 0) {
                           if (inside) {
-                            node.addClass("shuffle-hover-highlight");
+                            node.addClass("nexusguard-hover-highlight");
                           } else {
-                            node.removeClass("shuffle-hover-highlight");
+                            node.removeClass("nexusguard-hover-highlight");
                           }
                         }
                       }
@@ -18136,9 +18136,9 @@ const AngularWorkflow = (defaultprops) => {
                     var node = cy.getElementById(actionId);
                     if (node.length > 0) {
                       if (inside) {
-                        node.addClass("shuffle-hover-highlight");
+                        node.addClass("nexusguard-hover-highlight");
                       } else {
-                        node.removeClass("shuffle-hover-highlight");
+                        node.removeClass("nexusguard-hover-highlight");
                       }
                     }
                   }
@@ -18744,7 +18744,7 @@ const AngularWorkflow = (defaultprops) => {
       <a
         rel="noopener noreferrer"
         target="_blank"
-        href="https://shuffler.io/docs/triggers#pipelines"
+        href="https://nexusguardr.io/docs/triggers#pipelines"
         style={{ textDecoration: "none", color: theme.palette.linkColor}}
       >
         What are pipelines?
@@ -19006,7 +19006,7 @@ const AngularWorkflow = (defaultprops) => {
       <a
         rel="noopener noreferrer"
         target="_blank"
-        href="https://shuffler.io/docs/triggers#schedule"
+        href="https://nexusguardr.io/docs/triggers#schedule"
         style={{ textDecoration: "none", color: theme.palette.linkColor }}
       >
         What are schedules?
@@ -19120,7 +19120,7 @@ const AngularWorkflow = (defaultprops) => {
               }}
             />
             <div style={{ flex: "10" }}>
-              <b>When to start: {isCloud || selectedTrigger?.environment === "cloud" ? <a href="https://crontab.guru" target="_blank" style={{ color: theme.palette.linkColor, }}>Cron formatting</a> : "every X second"}</b>
+              <b>When to start: {isCloud || selectedTrigger?.environment === "cloud" ? <a href="https://crontab.guru" target="_blank" style={{ color: theme.palette.linkColor, }} rel="noreferrer">Cron formatting</a> : "every X second"}</b>
             </div>
           </div>
           <TextField
@@ -19868,7 +19868,7 @@ const AngularWorkflow = (defaultprops) => {
                   }}
           	    }}
           	    value={
-          	      selectedActionEnvironment === undefined || selectedActionEnvironment === null || selectedActionEnvironment.Name === undefined || selectedActionEnvironment.Name === null ? isCloud ? "Cloud" : "Shuffle" : selectedActionEnvironment.Name
+          	      selectedActionEnvironment === undefined || selectedActionEnvironment === null || selectedActionEnvironment.Name === undefined || selectedActionEnvironment.Name === null ? isCloud ? "Cloud" : "NexusGuard" : selectedActionEnvironment.Name
           	    }
           	    SelectDisplayProps={{
           	      style: {
@@ -19927,7 +19927,7 @@ const AngularWorkflow = (defaultprops) => {
 
           	          {data.Name === "cloud" || data.Name === "Cloud" ? null : !isRunning ?
 
-          	            <a href={`/admin?tab=locations&env=${data.Name}`} target="_blank" style={{ textDecoration: "none", }}>
+          	            <a href={`/admin?tab=locations&env=${data.Name}`} target="_blank" style={{ textDecoration: "none", }} rel="noreferrer">
           	              <Tooltip title={"Click to configure this runtime location"} placement="top">
           	                <Chip
           	                  style={{ marginLeft: 0, padding: 0, marginRight: 10, cursor: "pointer", backgroundColor: red, }}
@@ -20024,16 +20024,16 @@ const AngularWorkflow = (defaultprops) => {
 
   const WorkflowMenu = () => {
     const [newAnchor, setNewAnchor] = React.useState(null);
-    const [showShuffleMenu, setShowShuffleMenu] = React.useState(false);
+    const [showNexusGuardMenu, setShowNexusGuardMenu] = React.useState(false);
 
     return (
       <div style={{ display: "inline-block" }}>
         <Menu
           id="long-menu"
           anchorEl={newAnchor}
-          open={showShuffleMenu}
+          open={showNexusGuardMenu}
           onClose={() => {
-            setShowShuffleMenu(false);
+            setShowNexusGuardMenu(false);
           }}
         >
           <div
@@ -20121,7 +20121,7 @@ const AngularWorkflow = (defaultprops) => {
               style={{ height: 50, marginLeft: 10 }}
               variant="outlined"
               onClick={(event) => {
-                setShowShuffleMenu(!showShuffleMenu);
+                setShowNexusGuardMenu(!showNexusGuardMenu);
                 setNewAnchor(event.currentTarget);
               }}
             >
@@ -20162,9 +20162,9 @@ const AngularWorkflow = (defaultprops) => {
       var node = cy.getElementById(actionId);
       if (node.length > 0) {
         if (inside) {
-          node.addClass("shuffle-hover-highlight");
+          node.addClass("nexusguard-hover-highlight");
         } else {
-          node.removeClass("shuffle-hover-highlight");
+          node.removeClass("nexusguard-hover-highlight");
         }
       }
     }
@@ -21304,7 +21304,7 @@ const AngularWorkflow = (defaultprops) => {
       return
     }
 
-    // This ALWAYS talks to Shuffle cloud
+    // This ALWAYS talks to NexusGuard cloud
     data = JSON.parse(JSON.stringify(data));
     const url = `${globalUrl}/api/v1/workflows/${props.match.params.key}/unpublish`;
     fetch(url, {
@@ -21361,7 +21361,7 @@ const AngularWorkflow = (defaultprops) => {
           {workflow.name}
         </Typography>
         {workflow.validated === true ?
-          <Tooltip title="The functionality of this workflow manually verified by the Shuffle automation team" placement="top">
+          <Tooltip title="The functionality of this workflow manually verified by the NexusGuard automation team" placement="top">
             <VerifiedUserIcon style={{ marginLeft: 10, }} />
           </Tooltip>
           : null}
@@ -21902,7 +21902,7 @@ const AngularWorkflow = (defaultprops) => {
           }}
         />
       );
-    } else if (execution.execution_source === "ShuffleGPT") {
+    } else if (execution.execution_source === "NexusGuardGPT") {
       return (
         <AutoAwesomeIcon
           color="secondary"
@@ -22217,7 +22217,7 @@ const AngularWorkflow = (defaultprops) => {
     }
 
     if (stringjson.toLowerCase().includes("too many values to unpack")) {
-		return "This is a known error with old apps. Please rebuild the app. Contact support@shuffler.io if it persists after rebuild."
+		return "This is a known error with old apps. Please rebuild the app. Contact support@nexusguardr.io if it persists after rebuild."
 	}
 
     if (result.status !== 200 && result.url !== undefined && result.url !== null && typeof result.url === "string" && (result.url.includes("192.168") || result.url.includes("172.16") || result.url.includes("10.0"))) {
@@ -22247,7 +22247,7 @@ const AngularWorkflow = (defaultprops) => {
     }
 
     if (isCloud && stringjson.toLowerCase().includes("timeout error")) {
-      return "Run this workflow in a local environment to increase the timeout. Go to https://shuffler.io/admin?tab=locations to create an environment to connect to"
+      return "Run this workflow in a local environment to increase the timeout. Go to https://nexusguardr.io/admin?tab=locations to create an environment to connect to"
     }
 
     if (stringjson.toLowerCase().includes("invalid header")) {
@@ -22260,7 +22260,7 @@ const AngularWorkflow = (defaultprops) => {
         return `KMS authentication most likely failed (2). Check your notifications for more details on this page: /admin?admin_tab=notifications&kms=true. If you need help with KMS, please contact ${supportEmail}`
       }
 
-      return "The URL is incorrect, or Shuffle can't reach it. Set up a Shuffle Environment in the same VLAN, or whitelist Shuffle's IPs."
+      return "The URL is incorrect, or NexusGuard can't reach it. Set up a NexusGuard Environment in the same VLAN, or whitelist NexusGuard's IPs."
     }
 
 
@@ -22365,7 +22365,7 @@ const AngularWorkflow = (defaultprops) => {
               placement="left-start"
               style={{ zIndex: 10010 }}
             >
-              <a target="_blank" href={`/workflows/debug?workflow_id=${workflow.id}`} style={{ textDecoration: "none", }}>
+              <a target="_blank" href={`/workflows/debug?workflow_id=${workflow.id}`} style={{ textDecoration: "none", }} rel="noreferrer">
                 <Button
                   color="secondary"
                   style={{ marginLeft: 125, maxHeight: 30, marginTop: 20, }}
@@ -22493,7 +22493,7 @@ const AngularWorkflow = (defaultprops) => {
                     if (
                       (trigger.app_name === "User Input" &&
                         trigger.trigger_type === "USERINPUT") ||
-                      (trigger.app_name === "Shuffle Workflow" &&
+                      (trigger.app_name === "NexusGuard Workflow" &&
                         trigger.trigger_type === "SUBFLOW")
                     ) {
                       calculatedResult += 1;
@@ -23175,7 +23175,7 @@ const AngularWorkflow = (defaultprops) => {
                   {environments.length > 0 && defaultEnvironmentIndex < environments.length && nonskippedResults.length === 0 && environments[defaultEnvironmentIndex].Name !== "Cloud" ?
                     <Typography variant="body2" color="textSecondary" style={{}}>
                       No results yet. Is Orborus running for the "{environments[defaultEnvironmentIndex].Name}" environment? <a href="/admin?tab=locations" rel="noopener noreferrer" target="_blank" style={{ textDecoration: "none", color: "#f86a3e" }}>Find out here</a>. If the Workflow doesn't start within 30 seconds with Orborus running, contact support: <a href={`mailto:${supportEmail}`} rel="noopener noreferrer" target="_blank" style={{ textDecoration: "none", color: "#f86a3e" }}>{supportEmail}</a>
-                      No results yet. Is Orborus running for the "{environments[defaultEnvironmentIndex].Name}" environment? <a href="/admin?tab=locations" rel="noopener noreferrer" target="_blank" style={{ textDecoration: "none", color: theme.palette.linkColor }}>Find out here</a>. If the Workflow doesn't start within 30 seconds with Orborus running, contact support: <a href="mailto:support@shuffler.io" rel="noopener noreferrer" target="_blank" style={{ textDecoration: "none", color: theme.palette.linkColor}}>support@shuffler.io</a>
+                      No results yet. Is Orborus running for the "{environments[defaultEnvironmentIndex].Name}" environment? <a href="/admin?tab=locations" rel="noopener noreferrer" target="_blank" style={{ textDecoration: "none", color: theme.palette.linkColor }}>Find out here</a>. If the Workflow doesn't start within 30 seconds with Orborus running, contact support: <a href="mailto:support@nexusguardr.io" rel="noopener noreferrer" target="_blank" style={{ textDecoration: "none", color: theme.palette.linkColor}}>support@nexusguardr.io</a>
                     </Typography>
                     : null}
                 </div>
@@ -23280,11 +23280,11 @@ const AngularWorkflow = (defaultprops) => {
                   );
 
                 if (triggers.length > 2) {
-                  if (data.action.app_name === "shuffle-subflow") {
+                  if (data.action.app_name === "nexusguard-subflow") {
                     const parsedImage = triggers[3].large_image;
                     actionimg = (
                       <img
-                        alt={"Shuffle Subflow"}
+                        alt={"NexusGuard Subflow"}
                         src={parsedImage}
                         style={{
                           marginRight: 20,
@@ -23313,7 +23313,7 @@ const AngularWorkflow = (defaultprops) => {
                   }
                 }
 
-                if (data.action.app_name === "Shuffle Tools" && data.action.id !== undefined && cy !== undefined) {
+                if (data.action.app_name === "NexusGuard Tools" && data.action.id !== undefined && cy !== undefined) {
                   const nodedata = cy.getElementById(data.action.id).data();
                   //if (nodedata !== undefined && nodedata !== null && nodedata.fillstyle === "linear-gradient") {
                   if (nodedata !== undefined && nodedata !== null) {
@@ -23418,7 +23418,7 @@ const AngularWorkflow = (defaultprops) => {
 					for (var i = 0; i < data.action.parameters.length; i++) {
 						// Specific error patterns in params
 						const param = data.action.parameters[i]
-						if (param?.name?.endsWith("_error") && (param?.name?.startsWith("shuffle_") || param?.name?.startsWith("liquid_"))) {
+						if (param?.name?.endsWith("_error") && (param?.name?.startsWith("nexusguard_") || param?.name?.startsWith("liquid_"))) {
 							relevant_errors.push(param)
 						}
 					}
@@ -23453,13 +23453,13 @@ const AngularWorkflow = (defaultprops) => {
 
                       var currentnode = cy.getElementById(data.action.id);
                       if (currentnode !== undefined && currentnode !== null && currentnode.length !== 0) {
-                        currentnode.addClass("shuffle-hover-highlight");
+                        currentnode.addClass("nexusguard-hover-highlight");
                       }
 
                       // Add a hover highlight
 
                       //var copyText = document.getElementById(
-                      //	"copy_element_shuffle"
+                      //	"copy_element_nexusguard"
                       //)
                     }}
                     onMouseOut={() => {
@@ -23469,7 +23469,7 @@ const AngularWorkflow = (defaultprops) => {
 
                       var currentnode = cy.getElementById(data.action.id);
                       if (currentnode.length !== 0) {
-                        currentnode.removeClass("shuffle-hover-highlight");
+                        currentnode.removeClass("nexusguard-hover-highlight");
                       }
                     }}
                   >
@@ -23542,7 +23542,7 @@ const AngularWorkflow = (defaultprops) => {
                         </div>
                       </div>
 
-					  {data.action.app_name === "AI Agent" || data.action.app_name === "Shuffle Agent" ? 
+					  {data.action.app_name === "AI Agent" || data.action.app_name === "NexusGuard Agent" ? 
                         <span
                           style={{ flex: 10, float: "right", textAlign: "right" }}
                         >
@@ -23583,7 +23583,7 @@ const AngularWorkflow = (defaultprops) => {
 							</div>
 						: null}
 
-                      {data.action.app_name === "shuffle-subflow" &&
+                      {data.action.app_name === "nexusguard-subflow" &&
                         validate.result.success !== undefined &&
                         validate.result.success === true ? (
                         <span
@@ -23699,7 +23699,7 @@ const AngularWorkflow = (defaultprops) => {
   // This sucks :)
   const curapp = !codeModalOpen
     ? {}
-    : selectedResult.action.app_name === "shuffle-subflow"
+    : selectedResult.action.app_name === "nexusguard-subflow"
       ? triggers[2]
       : selectedResult.action.app_name === "User Input"
         ? triggers[3]
@@ -23730,7 +23730,7 @@ const AngularWorkflow = (defaultprops) => {
     // Check if it's valid JSON
     const checked = validateJson(data.value.trim())
 
-    if (data.name === "shuffle_action_logs" && data.value !== undefined && data.value !== null && data.value.length > 0 && data.value.includes("add env SHUFFLE_LOGS_DISABLED")) {
+    if (data.name === "nexusguard_action_logs" && data.value !== undefined && data.value !== null && data.value.length > 0 && data.value.includes("add env NEXUSGUARD_LOGS_DISABLED")) {
 
 		if (isCloud) {
 			return null
@@ -23745,7 +23745,7 @@ const AngularWorkflow = (defaultprops) => {
 				<b>Action Logs</b>
 			  </Typography>
 			  <Typography variant="body2" color="textSecondary" style={{ whiteSpace: 'pre-line', }}>
-				More log details for this action are not available without <a style={{ color: theme.palette.linkColor, }} href="/admin?tab=locations" target="_blank" rel="noopener noreferrer">an onprem environment</a> with the <a style={{ color: theme.palette.linkColor, }} href="/docs/configuration#scaling-shuffle" target="_blank" rel="noopener noreferrer">SHUFFLE_LOGS_DISABLED</a> environment variable set to false: SHUFFLE_LOGS_DISABLED=false. Logs are enabled by default, except in scale mode.
+				More log details for this action are not available without <a style={{ color: theme.palette.linkColor, }} href="/admin?tab=locations" target="_blank" rel="noopener noreferrer">an onprem environment</a> with the <a style={{ color: theme.palette.linkColor, }} href="/docs/configuration#scaling-nexusguard" target="_blank" rel="noopener noreferrer">NEXUSGUARD_LOGS_DISABLED</a> environment variable set to false: NEXUSGUARD_LOGS_DISABLED=false. Logs are enabled by default, except in scale mode.
 			  </Typography>
 			</div>
 		  )
@@ -23802,7 +23802,7 @@ const AngularWorkflow = (defaultprops) => {
 			aria-label="Copy webhook"
 			style={{marginLeft: 10, }}
 			onClick={() => {
-			  var copyText = document.getElementById("copy_element_shuffle");
+			  var copyText = document.getElementById("copy_element_nexusguard");
 			  if (copyText !== undefined && copyText !== null) {
 				const clipboard = navigator.clipboard;
 				if (clipboard === undefined) {
@@ -24091,7 +24091,7 @@ const AngularWorkflow = (defaultprops) => {
           {curapp === null ? null : (
             <img
               alt={selectedResult.action.app_name}
-              src={selectedResult === undefined ? theme.palette.defaultImage : selectedResult?.action?.name === "run_userinput" ? triggers[4].large_image : selectedResult.action.app_name === "shuffle-subflow" ? triggers[3].large_image : selectedResult.action !== undefined && selectedResult.action.large_image !== undefined && selectedResult.action.large_image !== null && selectedResult.action.large_image !== "" ? selectedResult.action.large_image : curapp !== undefined ? curapp.large_image : theme.palette.defaultImage}
+              src={selectedResult === undefined ? theme.palette.defaultImage : selectedResult?.action?.name === "run_userinput" ? triggers[4].large_image : selectedResult.action.app_name === "nexusguard-subflow" ? triggers[3].large_image : selectedResult.action !== undefined && selectedResult.action.large_image !== undefined && selectedResult.action.large_image !== null && selectedResult.action.large_image !== "" ? selectedResult.action.large_image : curapp !== undefined ? curapp.large_image : theme.palette.defaultImage}
               style={{
                 marginRight: 20,
                 width: imgsize,
@@ -24165,7 +24165,7 @@ const AngularWorkflow = (defaultprops) => {
               onClick={() => {
                 to_be_copied = selectedResult.result;
                 var copyText = document.getElementById(
-                  "copy_element_shuffle"
+                  "copy_element_nexusguard"
                 );
 
                 if (copyText !== null && copyText !== undefined) {
@@ -24187,7 +24187,7 @@ const AngularWorkflow = (defaultprops) => {
                   document.execCommand("copy");
                 } else {
                   console.log(
-                    "Failed to copy. copy_element_shuffle is undefined"
+                    "Failed to copy. copy_element_nexusguard is undefined"
                   );
                 }
               }}
@@ -24258,7 +24258,7 @@ const AngularWorkflow = (defaultprops) => {
 				<div style={{marginTop: "30vh", }}>
 					{/*
 					<Typography variant="body1" color="textSecondary">
-						No workflow to load. Workflow runs may still exist. If you think this is wrong, please contact support@shuffler.io
+						No workflow to load. Workflow runs may still exist. If you think this is wrong, please contact support@nexusguardr.io
 					</Typography>
 					*/}
 				</div>
@@ -24501,7 +24501,7 @@ const AngularWorkflow = (defaultprops) => {
             and used during execution. Learn more{" "}
             <a
               rel="noopener noreferrer"
-              href="https://shuffler.io/docs/workflows#execution_variables"
+              href="https://nexusguardr.io/docs/workflows#execution_variables"
               target="_blank"
               style={{ textDecoration: "none", color: theme.palette.linkColor }}
             >
@@ -24964,7 +24964,7 @@ const AngularWorkflow = (defaultprops) => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://shuffler.io/docs/apps#authentication"
+            href="https://nexusguardr.io/docs/apps#authentication"
             style={{ textDecoration: "none", color: theme.palette.linkColor }}
           >
             What is app authentication?
@@ -25181,8 +25181,8 @@ const AngularWorkflow = (defaultprops) => {
     ) : null;
 
   // This whole part is redundant. Made it part of Arguments instead?
-  const foundIntegrationApp = selectedAction.app_id === "integration" || selectedAction.app_id === "shuffle_agent" ? selectedAction?.parameters?.find(param => param.name === "app_name") : undefined
-  const authApp = !authenticationModalOpen ? undefined : foundIntegrationApp === undefined || (selectedApp.id !== "integration" && selectedApp.id !== "shuffle_agent") ? selectedApp : apps.find(app => app.name === foundIntegrationApp?.value) || selectedApp;
+  const foundIntegrationApp = selectedAction.app_id === "integration" || selectedAction.app_id === "nexusguard_agent" ? selectedAction?.parameters?.find(param => param.name === "app_name") : undefined
+  const authApp = !authenticationModalOpen ? undefined : foundIntegrationApp === undefined || (selectedApp.id !== "integration" && selectedApp.id !== "nexusguard_agent") ? selectedApp : apps.find(app => app.name === foundIntegrationApp?.value) || selectedApp;
 
   const authenticationModal = authenticationModalOpen ? (
     <Dialog
@@ -25243,7 +25243,7 @@ const AngularWorkflow = (defaultprops) => {
           <a
             rel="noopener noreferrer"
             target="_blank"
-            href={"https://github.com/shuffle/python-apps"}
+            href={"https://github.com/nexusguard/python-apps"}
             style={{ textDecoration: "none", color: theme.palette.linkColor }}
           >
             <img
@@ -25431,7 +25431,7 @@ const AngularWorkflow = (defaultprops) => {
                 }}
               >
                 <Typography variant="h6" style={{ marginBottom: 25, }}>
-                  There is no Shuffle-specific documentation for this app yet outside of the general description above. Documentation is written for each api, and is a community effort. We hope to see your contribution!
+                  There is no NexusGuard-specific documentation for this app yet outside of the general description above. Documentation is written for each api, and is a community effort. We hope to see your contribution!
                 </Typography>
                 <Button
                   variant="contained"
@@ -25440,7 +25440,7 @@ const AngularWorkflow = (defaultprops) => {
                     toast.success("Opening remote Github documentation link. Thanks for contributing!")
 
                     setTimeout(() => {
-                      window.open(`https://github.com/Shuffle/openapi-apps/new/master/docs?filename=${authApp.name.toLowerCase()}.md`, "_blank")
+                      window.open(`https://github.com/NexusGuard/openapi-apps/new/master/docs?filename=${authApp.name.toLowerCase()}.md`, "_blank")
                     }, 2500)
                   }}
                 >
@@ -25474,7 +25474,7 @@ const AngularWorkflow = (defaultprops) => {
                     <a
                       rel="noopener noreferrer"
                       target="_blank"
-                      href={"https://github.com/shuffle/python-apps"}
+                      href={"https://github.com/nexusguard/python-apps"}
                       style={{ textDecoration: "none", color: theme.palette.linkColor }}
                     >
                       Check it out on Github!
@@ -26256,7 +26256,7 @@ const AngularWorkflow = (defaultprops) => {
       }
     }
 
-    if (selectedAction.app_name === "Shuffle Tools" && selectedAction.name === "filter_list" && count === 0) {
+    if (selectedAction.app_name === "NexusGuard Tools" && selectedAction.name === "filter_list" && count === 0) {
       const parsedvalue = data
       if (parsedvalue.includes("#")) {
         const splitparsed = parsedvalue.split(".#.")
@@ -26407,7 +26407,7 @@ const AngularWorkflow = (defaultprops) => {
         <SuggestionBoxUi />
 
         {codeEditorModalOpen ?
-          <ShuffleCodeEditor
+          <NexusGuardCodeEditor
             cy={cy}
             workflow={workflow}
             expansionModalOpen={codeEditorModalOpen}
@@ -26528,7 +26528,7 @@ const AngularWorkflow = (defaultprops) => {
           : null}
 
         <TextField
-          id="copy_element_shuffle"
+          id="copy_element_nexusguard"
           value={to_be_copied}
           style={{ display: "none" }}
         />

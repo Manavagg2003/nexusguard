@@ -341,7 +341,7 @@ const UserManagmentTab = memo((props) => {
 					for (var i = 0; i < responseJson.length; i++) {
 						const data = responseJson[i];
 						if (data?.login_type === "DELETED") {
-							//toast.info("Found lost/half-deleted users you can recover. Please contact support@shuffler.io to learn more.")
+							//toast.info("Found lost/half-deleted users you can recover. Please contact support@nexusguardr.io to learn more.")
 							break
 						}
 					}

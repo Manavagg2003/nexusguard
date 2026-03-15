@@ -370,10 +370,10 @@ const UsecaseListComponent = (props) => {
 	return (
 		<div style={{marginTop: 25, minHeight: 1000,}}>
 			<Typography variant="h1">
-				Shuffle usecases
+				NexusGuard usecases
 			</Typography>
 			<Typography variant="body1">
-				Usecases in Shuffle are divided into {keys.length} type{keys.length === 1 ? "" : "s"}. 
+				Usecases in NexusGuard are divided into {keys.length} type{keys.length === 1 ? "" : "s"}. 
 			</Typography>
 			{keys.map((usecase, index) => {
 				return (
@@ -755,7 +755,7 @@ const UsecaseListComponent = (props) => {
 																Find workflows related to this usecase: 
 																	
 															</Typography>
-															<a href={`https://shuffler.io/search?tab=workflows&q=${subcase.name}`} style={{textDecoration: "none", }} target="_blank" rel="noopener noreferrer">
+															<a href={`https://nexusguardr.io/search?tab=workflows&q=${subcase.name}`} style={{textDecoration: "none", }} target="_blank" rel="noopener noreferrer">
 																<IconButton style={{paddingTop: 15, }}>
 																	<OpenInNewIcon   style={{color: "#f85a3e", }}/>
 																</IconButton>
@@ -964,7 +964,7 @@ const UsecaseListComponent = (props) => {
 																	: null}
 																	<div style={{marginTop: 20}}>
 																		<a
-																			href={`https://shuffler.io/search?tab=workflows&q=${subcase.name}`}
+																			href={`https://nexusguardr.io/search?tab=workflows&q=${subcase.name}`}
 																			rel="noopener noreferrer"
 																			target="_blank"
 																			style={{ textDecoration: "none", color: "white", marginRight: 5, }}
@@ -1163,7 +1163,7 @@ const Dashboard = (props) => {
 	let navigate = useNavigate();
   const isCloud =
     window.location.host === "localhost:3002" ||
-    window.location.host === "shuffler.io";
+    window.location.host === "nexusguardr.io";
 
 
 	useEffect(() => {
@@ -1315,7 +1315,7 @@ const Dashboard = (props) => {
 	}
 
 
-  document.title = "Shuffle - usecases";
+  document.title = "NexusGuard - usecases";
   var dayGraphLabels = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
   var dayGraphData = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
 

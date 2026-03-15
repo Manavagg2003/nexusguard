@@ -30,7 +30,7 @@ console.log('Starting Selenium script for testing pages...');
         const routes = process.argv.slice(3);
 
         console.log('Frontend URL:', frontendURL);
-        const isCloud = frontendURL === 'http://localhost:3002' || frontendURL === 'https://sandbox.shuffler.io' || frontendURL === 'https://shuffler.io';
+        const isCloud = frontendURL === 'http://localhost:3002' || frontendURL === 'https://sandbox.nexusguardr.io' || frontendURL === 'https://nexusguardr.io';
        
         if (isCloud) {
             // Login Credentials

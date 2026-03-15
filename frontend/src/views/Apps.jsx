@@ -164,7 +164,7 @@ export const FindJsonPath = (path, inputdata) => {
 	return inputdata 
 }
 
-export const internalIds = ["shuffle tools", "http", "email"];
+export const internalIds = ["nexusguard tools", "http", "email"];
 
 // Parses JSON data into keys that can be used everywhere :)
 // Reverse of this is FindJsonPath 
@@ -286,7 +286,7 @@ const Apps = (props) => {
 
 
   //const [workflows, setWorkflows] = React.useState([]);
-  const baseRepository = "https://github.com/frikky/shuffle-apps";
+  const baseRepository = "https://github.com/frikky/nexusguard-apps";
   //const alert = useAlert();
 	let navigate = useNavigate();
 
@@ -325,7 +325,7 @@ const Apps = (props) => {
   const [firstLoad, setFirstLoad] = React.useState(true);
   const isCloud =
     window.location.host === "localhost:3002" ||
-    window.location.host === "shuffler.io"
+    window.location.host === "nexusguardr.io"
       ? true
       : false;
   const borderRadius = 3;
@@ -380,7 +380,7 @@ const Apps = (props) => {
 
   useEffect(() => {
     if (apps.length <= 0 && firstrequest) {
-      document.title = "Shuffle - Apps";
+      document.title = "NexusGuard - Apps";
 
       if (!isLoggedIn && isLoaded) {
 				if (isCloud) {
@@ -1193,7 +1193,7 @@ const Apps = (props) => {
           {isCloud ? (
             <a
               rel="noopener noreferrer"
-              href={"https://shuffler.io/apps/" + selectedApp.id}
+              href={"https://nexusguardr.io/apps/" + selectedApp.id}
               style={{ textDecoration: "none", color: "#f85a3e" }}
               target="_blank"
             >
@@ -1627,7 +1627,7 @@ const Apps = (props) => {
 			{/*
             <a
               rel="noopener noreferrer"
-              href="https://shuffler.io/docs/apps"
+              href="https://nexusguardr.io/docs/apps"
               style={{ textDecoration: "none", color: "#f85a3e" }}
               target="_blank"
             >
@@ -1852,7 +1852,7 @@ const Apps = (props) => {
             color="primary"
             placeholder="Find Public Apps, Workflows, Documentation and more"
             value={currentRefinement}
-            id="shuffle_search_field"
+            id="nexusguard_search_field"
             onClick={(event) => {
               console.log("Click!")
             }}
@@ -2013,7 +2013,7 @@ const Apps = (props) => {
                   })
                 }
 
-                var parsedUrl = isCloud ? `/apps/${hit.objectID}` : `https://shuffler.io/apps/${hit.objectID}`
+                var parsedUrl = isCloud ? `/apps/${hit.objectID}` : `https://nexusguardr.io/apps/${hit.objectID}`
                 parsedUrl += `?queryID=${hit.__queryID}`
 
                 return (
@@ -2297,10 +2297,10 @@ const Apps = (props) => {
                   If you're still not able to see any apps, please follow our{" "}
                   <a
                     href={
-                      "https://shuffler.io/docs/troubleshooting#load_all_apps_locally"
+                      "https://nexusguardr.io/docs/troubleshooting#load_all_apps_locally"
                     }
                     style={{ textDecoration: "none", color: "#f85a3e" }}
-                    target="_blank"
+                    target="_blank" rel="noreferrer"
                   >
                     troubleshooting guide for loading apps!
                   </a>
@@ -2885,7 +2885,7 @@ const Apps = (props) => {
           style={{ backgroundColor: inputColor }}
           variant="outlined"
           margin="normal"
-          defaultValue={"https://github.com/frikky/shuffle-apps"}
+          defaultValue={"https://github.com/frikky/nexusguard-apps"}
           InputProps={{
             style: {
               color: "white",
@@ -2894,7 +2894,7 @@ const Apps = (props) => {
             },
           }}
           onChange={(e) => setOpenApi(e.target.value)}
-          placeholder="https://github.com/frikky/shuffle-apps"
+          placeholder="https://github.com/frikky/nexusguard-apps"
           fullWidth
         />
         <span style={{ marginTop: 10 }}>
@@ -3020,7 +3020,7 @@ const Apps = (props) => {
         </DialogTitle>
         <DialogContent style={{ color: "rgba(255,255,255,0.65)" }}>
 		  <Typography variant="body1">
-		  	Paste in a URL, and we will make it into an app for you. This may take multiple minutes based on the size of the documentation. <b>{isCloud ? "" : "Uses Shuffle Cloud (https://shuffler.io) for processing (for now)."}</b> 
+		  	Paste in a URL, and we will make it into an app for you. This may take multiple minutes based on the size of the documentation. <b>{isCloud ? "" : "Uses NexusGuard Cloud (https://nexusguardr.io) for processing (for now)."}</b> 
 		  </Typography>
 		  <TextField
             style={{ backgroundColor: inputColor }}

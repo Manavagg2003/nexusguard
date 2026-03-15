@@ -48,7 +48,7 @@ import {
 } from "@mui/icons-material";
 
 import Dropzone from "../components/Dropzone.jsx";
-import ShuffleCodeEditor from "../components/ShuffleCodeEditor1.jsx";
+import NexusGuardCodeEditor from "../components/NexusGuardCodeEditor1.jsx";
 import {getTheme} from "../theme.jsx";
 import { Context } from "../context/ContextApi.jsx";
 import { red } from "../views/AngularWorkflow.jsx";
@@ -70,7 +70,7 @@ const Files = memo((props) => {
 
   const [field1, setField1] = React.useState("");
   const [field2, setField2] = React.useState("");
-  const [downloadUrl, setDownloadUrl] = React.useState("https://github.com/shuffle/standards")
+  const [downloadUrl, setDownloadUrl] = React.useState("https://github.com/nexusguard/standards")
   const [downloadBranch, setDownloadBranch] = React.useState("main");
   const [downloadFolder, setDownloadFolder] = React.useState("translation_standards");
   const [contentLoading, setContentLoading] = React.useState(false)
@@ -736,7 +736,7 @@ const [filesLoaded, setFilesLoaded] = useState(false);
             },
           }}
           onChange={(e) => setDownloadUrl(e.target.value)}
-          placeholder="https://github.com/shuffle/standards"
+          placeholder="https://github.com/nexusguard/standards"
           fullWidth
         />
         <div style={{ display: "flex" }}>
@@ -1183,7 +1183,7 @@ const [filesLoaded, setFilesLoaded] = useState(false);
       try {
         const filename = files[key].name;
         var filedata = new FormData();
-        filedata.append("shuffle_file", files[key]);
+        filedata.append("nexusguard_file", files[key]);
 
         if (typeof files[key] === "object") {
           handleCreateFile(filename, filedata);
@@ -1307,7 +1307,7 @@ const [filesLoaded, setFilesLoaded] = useState(false);
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
-							href="https://shuffler.io/docs/organizations#files"
+							href="https://nexusguardr.io/docs/organizations#files"
 							style={{ textDecoration: isSelectedFiles ? null:"none", color: theme.palette.linkColor }}
 						>
 							Learn more
@@ -1555,7 +1555,7 @@ const [filesLoaded, setFilesLoaded] = useState(false);
 					autoFocus
 				/>}
 
-				<ShuffleCodeEditor
+				<NexusGuardCodeEditor
 					isCloud={isCloud}
 					expansionModalOpen={openEditor}
 					setExpansionModalOpen={setOpenEditor}
@@ -1714,7 +1714,7 @@ export default memo(Files);
 const DownloadFileIcon = memo(({ setLoadFileModalOpen, isSelectedFiles }) => {
 	
     return (
-        <Tooltip color="primary" title={"Import files to Shuffle from Git"} placement="top">
+        <Tooltip color="primary" title={"Import files to NexusGuard from Git"} placement="top">
             <IconButton
                 color="secondary"
                 onClick={() => setLoadFileModalOpen(true)}

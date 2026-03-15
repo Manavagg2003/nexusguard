@@ -57,7 +57,7 @@ const Detection = (props)  => {
 	}
 
 	if (detectionInfo.category === undefined || detectionInfo.category === null) {
-		toast.warn("Detection category not found. Please try again or contact support@shuffler.io if you think this is a bug.")
+		toast.warn("Detection category not found. Please try again or contact support@nexusguardr.io if you think this is a bug.")
 		return
 	}
 

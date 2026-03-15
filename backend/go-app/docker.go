@@ -867,7 +867,7 @@ func getDockerImage(resp http.ResponseWriter, request *http.Request) {
 
 // Downloads and activates an app from shuffler.io if possible
 func handleRemoteDownloadApp(resp http.ResponseWriter, ctx context.Context, user shuffle.User, appId string) {
-	url := fmt.Sprintf("https://shuffler.io/api/v1/apps/%s/config", appId)
+	url := fmt.Sprintf("https://nexusguard.io/api/v1/apps/%s/config", appId)
 	log.Printf("[DEBUG] Downloading API from URL %s", url)
 	req, err := http.NewRequest(
 		"GET",
@@ -915,7 +915,7 @@ func handleRemoteDownloadApp(resp http.ResponseWriter, ctx context.Context, user
 
 			resp.WriteHeader(401)
 			if len(app.App) > 0 {
-				resp.Write([]byte(fmt.Sprintf(`{"success": false, "reason": "Not an OpenAPI app, but a Python app. Please download the app using the Remote Download system: https://shuffler.io/docs/apps#importing-remote-apps"}`)))
+				resp.Write([]byte(fmt.Sprintf(`{"success": false, "reason": "Not an OpenAPI app, but a Python app. Please download the app using the Remote Download system: https://nexusguard.io/docs/apps#importing-remote-apps"}`)))
 			} else {
 				resp.Write([]byte(`{"success": false, "reason": "App doesn't exist"}`))
 			}

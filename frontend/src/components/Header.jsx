@@ -77,7 +77,7 @@ const { globalUrl, setNotifications, notifications, isLoggedIn, removeCookie, ho
 		textDecoration: "none",
 	}
 
-  const isCloud = serverside === true || typeof window === 'undefined' ? true : window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+  const isCloud = serverside === true || typeof window === 'undefined' ? true : window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
 
 	const clearNotifications = () => {
 		// Don't really care about the logout
@@ -367,7 +367,7 @@ const { globalUrl, setNotifications, notifications, isLoggedIn, removeCookie, ho
 						: null}
 					</div>
 					<Typography variant="body2">
-						Notifications are made by Shuffle to help you discover issues or improvements.
+						Notifications are made by NexusGuard to help you discover issues or improvements.
 					</Typography >
 				</Paper>
 				{notifications.map((data, index) => {
@@ -547,8 +547,8 @@ const { globalUrl, setNotifications, notifications, isLoggedIn, removeCookie, ho
 									})
 								}
 							}}>
-								<img src={"/images/logos/orange_logo.svg"} alt="shuffle logo" style={{height: 20, width: 20, }}/>
-								{/*<img alt="Logo Shuffle frontpage lockup" src={"/images/white_logo_new.png"} style={{margin: "auto", height: 22, }}/>*/}
+								<img src={"/images/logos/orange_logo.svg"} alt="nexusguard logo" style={{height: 20, width: 20, }}/>
+								{/*<img alt="Logo NexusGuard frontpage lockup" src={"/images/white_logo_new.png"} style={{margin: "auto", height: 22, }}/>*/}
 							</Button>
 						</Link>
 					</ListItem>
@@ -630,32 +630,18 @@ const { globalUrl, setNotifications, notifications, isLoggedIn, removeCookie, ho
 			<div style={{flex: 1, display: "flex", flexDirection: "row-reverse"}}>
 				<List style={{display: 'flex', flexDirection: 'row-reverse'}} component="nav">
 					<ListItem style={{textAlign: "center"}}>
-						<Link to="/login" style={hrefStyle}>
-							<Button variant="outlined" style={{textTransform: "none", borderRadius: 25, padding: "7px 14px 7px 14px", maxWidth: 100, minWidth: 100, }} onClick={() => {
+						<Link to="/workflows" style={hrefStyle}>
+							<Button variant="contained" color="primary" style={{minWidth: 100, maxWidth: 100, padding: "7px 14px 7px 14px", borderRadius: 25, textTransform: "none", backgroundImage: "linear-gradient(to right, #f86a3e, #f34079)", color: "white",}} onClick={() => {
 								if (isCloud) {
 									ReactGA.event({
 										category: "header",
-										action: "signin_click",
+										action: "openapp_click",
 										label: "",
 									})
 								}
-							}}>Login</Button>
+							}}>Open App</Button>
 						</Link> 
 					</ListItem>
-
-					{isCloud ? 
-						<ListItem style={{flextextAlign: "center", marginRight: 10, }}>
-							<Link to="/register" style={hrefStyle}>
-								<Button variant="contained" color="primary" style={{minWidth: 100, maxWidth: 100, padding: "7px 14px 7px 14px", borderRadius: 25, textTransform: "none", backgroundImage: "linear-gradient(to right, #f86a3e, #f34079)", color: "white",}} onClick={() => {
-									ReactGA.event({
-										category: "header",
-										action: "register_click",
-										label: "",
-									})
-								}}>Sign Up</Button>
-							</Link> 
-						</ListItem>
-					: null}
 
 					{/*
 					<span style={{marginTop: 8}}>
@@ -885,7 +871,7 @@ const { globalUrl, setNotifications, notifications, isLoggedIn, removeCookie, ho
 										var regiontag = "eu"
 										if (data.region_url !== undefined && data.region_url !== null && data.region_url.length > 0) {
 											const regionsplit = data.region_url.split(".")
-											if (regionsplit.length > 2 && !regionsplit[0].includes("shuffler")) {
+											if (regionsplit.length > 2 && !regionsplit[0].includes("nexusguardr")) {
 												const namesplit = regionsplit[0].split("/")
 
 												regiontag = namesplit[namesplit.length - 1]
@@ -932,7 +918,7 @@ const { globalUrl, setNotifications, notifications, isLoggedIn, removeCookie, ho
 						{userdata === undefined || userdata.app_execution_limit === undefined || userdata.app_execution_usage === undefined || userdata.app_execution_usage < 1000 ? 
 							null
 							:
-							<Tooltip title={`Amount of executions left: ${userdata.app_execution_usage} / ${userdata.app_execution_limit}. When the limit is reached, you can still use Shuffle normally, but your Workflow triggers may stop working. Reach out to support@shuffler.io to extend this limit.`}>
+							<Tooltip title={`Amount of executions left: ${userdata.app_execution_usage} / ${userdata.app_execution_limit}. When the limit is reached, you can still use NexusGuard normally, but your Workflow triggers may stop working. Reach out to support@nexusguardr.io to extend this limit.`}>
 								<div style={{maxHeight: 30, minHeight: 30, padding: 8, textAlign: "center", cursor: "pointer", borderRadius: theme.palette?.borderRadius, marginRight: 10, marginTop: 12, backgroundColor: theme.palette.surfaceColor, minWidth: 60, maxWidth: 60, border: userdata.app_execution_usage/userdata.app_execution_limit >= 0.9 ? "#f86a3e" : null, }} onClick={() => {
 										console.log(userdata.appe_execution_usage/userdata.app_execution_limit)
 										if (window.drift !== undefined) {

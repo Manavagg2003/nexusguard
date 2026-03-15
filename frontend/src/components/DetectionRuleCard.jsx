@@ -18,7 +18,7 @@ import {
 	Refresh as RefreshIcon,
 } from "@mui/icons-material";
 import { toast } from "react-toastify";
-import ShuffleCodeEditor from "../components/ShuffleCodeEditor1.jsx";
+import NexusGuardCodeEditor from "../components/NexusGuardCodeEditor1.jsx";
 import theme from '../theme.jsx';
 
 const RuleCard = (props) => {
@@ -30,7 +30,7 @@ const RuleCard = (props) => {
   const [filteredBarchart, setFilteredBarchart] = React.useState(null) 
 
   const [responseValue, setResponseValue] = React.useState("No response action")
-  const isCloud = ["localhost:3002", "shuffler.io"].includes(window.location.host);
+  const isCloud = ["localhost:3002", "nexusguardr.io"].includes(window.location.host);
 
   useEffect(() => {
 		if (key < 10) {
@@ -38,7 +38,7 @@ const RuleCard = (props) => {
 		}
 
 		if (ruleDetails?.title === undefined || ruleDetails?.title === null || ruleDetails?.title.length === 0) {
-			//toast.error("Can't load stats for this rule. Contact support@shuffler.io if this persists.")
+			//toast.error("Can't load stats for this rule. Contact support@nexusguardr.io if this persists.")
 			return
 		}
 
@@ -141,7 +141,7 @@ const RuleCard = (props) => {
 
 					  setResponseValue(e.target.value)
 
-					  toast.error("The automatic response system is NOT available for you yet. Please contact support@shuffler.io if you want to try this feature.")
+					  toast.error("The automatic response system is NOT available for you yet. Please contact support@nexusguardr.io if you want to try this feature.")
 
 					  // FIXME: Handle:
 					  // 1. Get the current cache for the detection 
@@ -216,7 +216,7 @@ const RuleCard = (props) => {
 				<IconButton 
 	  				onClick={() => {
 						if (ruleDetails?.title === undefined || ruleDetails?.title === null || ruleDetails?.title.length === 0) {
-							toast.error("Can't load stats for this rule. Contact support@shuffler.io if this persists.")
+							toast.error("Can't load stats for this rule. Contact support@nexusguardr.io if this persists.")
 							return
 						}
 
@@ -259,7 +259,7 @@ const RuleCard = (props) => {
         </Typography>
 		*/}
 
-        <ShuffleCodeEditor
+        <NexusGuardCodeEditor
           isCloud={isCloud}
           expansionModalOpen={openCodeEditor}
           setExpansionModalOpen={setOpenCodeEditor}

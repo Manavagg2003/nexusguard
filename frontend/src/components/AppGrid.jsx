@@ -71,7 +71,7 @@ const AppGrid = (props) => {
 
   const isCloud =
     window.location.host === "localhost:3002" ||
-    window.location.host === "shuffler.io";
+    window.location.host === "nexusguardr.io";
 
   const rowHandler = maxRows === undefined || maxRows === null ? 50 : maxRows;
   const xs =
@@ -91,7 +91,7 @@ const AppGrid = (props) => {
   };
   const innerColor = "rgba(255,255,255,0.65)";
   const borderRadius = 3;
-  window.title = "Shuffle | Apps | Find and integrate any app";
+  window.title = "NexusGuard | Apps | Find and integrate any app";
   const noImage = "/public/no_image.png";
 
   const submitContact = (email, message) => {
@@ -106,7 +106,7 @@ const AppGrid = (props) => {
     };
 
     const errorMessage =
-      "Something went wrong. Please contact frikky@shuffler.io directly.";
+      "Something went wrong. Please contact frikky@nexusguardr.io directly.";
 
     fetch(globalUrl + "/api/v1/contact", {
       method: "POST",
@@ -230,7 +230,7 @@ const AppGrid = (props) => {
           autoComplete="off"
           color="primary"
           placeholder="Search more than 2500 Apps"
-          id="shuffle_search_field"
+          id="nexusguard_search_field"
           onChange={(event) => {
             const value = event.currentTarget.value;
             setSearchQuery(value);
@@ -1013,7 +1013,7 @@ const AppGrid = (props) => {
           autoComplete="off"
           color="primary"
           placeholder="Search your Activated or self-built apps"
-          id="shuffle_search_field"
+          id="nexusguard_search_field"
           onChange={(event) => {
             setSearchQuery(event.currentTarget.value);
           }}
@@ -1742,7 +1742,7 @@ const AppGrid = (props) => {
                             const appUrl =
                               isCloud === true ?
                                `/apps/${data.id}`
-                                : `https://shuffler.io/apps/${data.id}`;
+                                : `https://nexusguardr.io/apps/${data.id}`;
 
                               if (data.name === "" && data.id === "") {
                                 return null

@@ -56,7 +56,7 @@ import {
 import { toast } from "react-toastify";
 import { Context } from "../context/ContextApi.jsx";
 
-const ShuffleLogo = "/images/Shuffle_logo.png";
+const NexusGuardLogo = "/images/NexusGuard_logo.png";
 const detectionIcon = "/icons/detection.svg";
 const documentationIcon = "/icons/documentation.svg";
 const ExpandMoreAndLessIcon = "/icons/expandMoreIcon.svg";
@@ -250,7 +250,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
     serverside === true || typeof window === "undefined"
       ? true
       : window.location.host === "localhost:3002" ||
-        window.location.host === "shuffler.io" ||
+        window.location.host === "nexusguardr.io" ||
         window.location.host === "localhost:5002";
 
   const UpdateTabStatus  = useCallback(() => {  
@@ -689,7 +689,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
         <Divider style={{ marginBottom: 10, }} />
 
         <Typography color="textSecondary" align="center" style={{ marginTop: 5, marginBottom: 5, fontSize: 18 }}>
-          Version: <a href="https://github.com/Shuffle/Shuffle/releases" style={{ color: theme.palette.text.primary, textDecoration: "underline" }} target="_blank" rel="noreferrer"> 
+          Version: <a href="https://github.com/NexusGuard/NexusGuard/releases" style={{ color: theme.palette.text.primary, textDecoration: "underline" }} target="_blank" rel="noreferrer"> 
 	  		2.1.2
 	  		</a>
         </Typography>
@@ -836,7 +836,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
       region_url.length > 0
     ) {
       const regionsplit = region_url.split(".");
-      if (regionsplit.length > 2 && !regionsplit[0].includes("shuffler")) {
+      if (regionsplit.length > 2 && !regionsplit[0].includes("nexusguardr")) {
         const namesplit = regionsplit[0].split("/");
         regiontag = namesplit[namesplit.length - 1];
 
@@ -988,7 +988,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
         flexDirection: "column",
         width: expandLeftNav ? 260 : 80,
         borderRadius: 8,
-        backgroundColor: theme.palette.backgroundColor,
+        backgroundColor: themeMode === 'dark' ? theme.palette.background.paper : theme.palette.backgroundColor,
         position: "relative",
         transition: "width 0.3s ease",
         boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)" ,
@@ -1052,18 +1052,35 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
           <Link to={isCloud && !showPartnerLogo ? "/" : "/workflows"}>
             <img
               src={
-				  showPartnerLogo ? userdata?.active_org?.image : ShuffleLogo
+				  showPartnerLogo ? userdata?.active_org?.image : NexusGuardLogo
 			  }
-              alt="Shuffle Logo"
+              alt="NexusGuard Logo"
               style={{ width: showPartnerLogo ? 30 : 24, height: showPartnerLogo ? 30 : 24 }}
             />
           </Link>
           </Tooltip>
           {
             !isCloud && expandLeftNav && (
-              <Typography variant="body2" style={{fontSize: 16, color: themeMode === "dark" ? lightText : darkText, transition: "opacity 0.3s ease", fontWeight: 600, marginTop: -5, marginLeft: 3}}>
-                 {isProdStatusOn ? "Enterprise" : "Open Source"}
-              </Typography>
+              <Box style={{ display: "flex", flexDirection: "column", marginLeft: 8 }}>
+                <Typography variant="body2" style={{fontSize: 16, color: themeMode === "dark" ? lightText : darkText, transition: "opacity 0.3s ease", fontWeight: 600, marginTop: -5}}>
+                  {isProdStatusOn ? "Enterprise" : "Open Source"}
+                </Typography>
+                <Typography variant="caption" style={{fontSize: 9, color: themeMode === "dark" ? lightText : darkText, opacity: 0.7, lineHeight: 1, marginTop: 2}}>
+                  Intelligent Security Automation
+                </Typography>
+              </Box>
+            )
+          }
+          {
+            isCloud && expandLeftNav && (
+              <Box style={{ display: "flex", flexDirection: "column", marginLeft: 8 }}>
+                 <Typography variant="body2" style={{fontSize: 16, color: themeMode === "dark" ? lightText : darkText, transition: "opacity 0.3s ease", fontWeight: 600, marginTop: -5}}>
+                    NexusGuard
+                 </Typography>
+                 <Typography variant="caption" style={{fontSize: 9, color: themeMode === "dark" ? lightText : darkText, opacity: 0.7, lineHeight: 1, marginTop: 2}}>
+                    Intelligent Security Automation
+                 </Typography>
+              </Box>
             )
           }
           </Box>
@@ -1230,106 +1247,8 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
             gap: 1.2,
           }}
         >
-          <Box sx={{ display: "flex", flexDirection: "row", marginTop: 2.5, width: expandLeftNav ? "100%" : 48, padding: "0px", }}>
-            <Button
-              component={Link}
-              to={userdata?.support === true ? "/new-dashboard" : "/workflows"}
-              onClick={(event) => {
-                if(!userdata?.support){
-                  return;
-                }
-                setOpenautomateTab(true);
-                setOpenSecurityTab(false);
-                setCurrentOpenTab("new-dashboard");
-                localStorage.setItem("lastTabOpenByUser", "new-dashboard");
-              }}
-              variant="text"
-              style={{
-                ...ButtonStyle,
-                backgroundColor: ((currentOpenTab === "new-dashboard") || (!expandLeftNav && (currentPath === "/workflows" || currentPath === "/usecases" || currentPath.includes("/search"))))? themeMode === "dark" ? darkHoverColor : lightHoverColor : "transparent",
-              }}
-              onMouseOver={(event)=>{
-                event.currentTarget.style.backgroundColor = themeMode === "dark" ? darkHoverColor : lightHoverColor;
-              }}
-              onMouseOut={(event)=>{
-                event.currentTarget.style.backgroundColor = ((currentOpenTab === "new-dashboard")|| (!expandLeftNav && (currentPath === "/workflows" || currentPath === "/usecases" || currentPath.includes("/search"))))? themeMode === "dark" ? darkHoverColor : lightHoverColor : "transparent";
-              }}
-            >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 16 11"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{
-                      marginRight: expandLeftNav ? 10 : 0,
-                    }}
-                  >
-                    <path
-                      d="M7.99935 6.83317C8.73573 6.83317 9.33268 6.23622 9.33268 5.49984C9.33268 4.76346 8.73573 4.1665 7.99935 4.1665C7.26297 4.1665 6.66602 4.76346 6.66602 5.49984C6.66602 6.23622 7.26297 6.83317 7.99935 6.83317Z"
-                      stroke={themeMode === "dark" ? lightText : darkText}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M10.8269 2.67329C11.1988 3.04478 11.4938 3.48593 11.6951 3.97153C11.8964 4.45712 12 4.97763 12 5.50329C12 6.02895 11.8964 6.54946 11.6951 7.03505C11.4938 7.52064 11.1988 7.9618 10.8269 8.33329M5.17354 8.32662C4.80163 7.95513 4.5066 7.51398 4.3053 7.02838C4.104 6.54279 4.00039 6.02228 4.00039 5.49662C4.00039 4.97096 4.104 4.45045 4.3053 3.96486C4.5066 3.47927 4.80163 3.03811 5.17354 2.66662M12.7135 0.786621C13.9633 2.03681 14.6654 3.73219 14.6654 5.49995C14.6654 7.26772 13.9633 8.9631 12.7135 10.2133M3.28687 10.2133C2.03706 8.9631 1.33496 7.26772 1.33496 5.49995C1.33496 3.73219 2.03706 2.03681 3.28687 0.786621"
-                      stroke={themeMode === "dark" ? lightText : darkText}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-              <span
-                style={{
-                  display: expandLeftNav ? "inline" : "none",
-                  marginRight: "auto",
-                  opacity: expandLeftNav ? 1 : 0,
-                  transition: "opacity 0.3s ease",
-                  color: themeMode === "dark" ? lightText : darkText
-                }}
-              >
-                Automate
-              </span>
-            </Button>
-            <IconButton
-              onClick={() => {
-                setOpenautomateTab((prev) => !prev);
-                setOpenSecurityTab(false);
-              }}
-              style={{
-                  color: themeMode === "dark" ? lightText : darkText,
-                  marginLeft: 0.625,
-              }}
-              onMouseOver={(event)=>{
-                event.currentTarget.style.backgroundColor = themeMode === "dark" ? darkHoverColor : lightHoverColor;
-              }}
-              onMouseOut={(event)=>{
-                event.currentTarget.style.backgroundColor = "transparent";
-              }}
-            >
-              {openautomatetab ? (
-                <ExpandLessIcon
-                  style={{
-                    display: expandLeftNav ? "flex" : "none",
-                    opacity: expandLeftNav ? 1 : 0,
-                    transition: "opacity 0.3s ease",
-                  }}
-                />
-              ) : (
-                <ExpandMoreIcon
-                  style={{
-                    display: expandLeftNav ? "flex" : "none",
-                    opacity: expandLeftNav ? 1 : 0,
-                    transition: "opacity 0.3s ease",
-                  }}
-                />
-              )}
-            </IconButton>
-          </Box>
-          <Collapse in={openautomatetab} timeout="auto" unmountOnExit>
           <Box
             style={{
-              maxHeight: expandLeftNav ? 150 : 0,
-              overflow: "hidden",
               display:  "flex",
               flexDirection: "column",
               paddingLeft: 16,
@@ -1338,10 +1257,10 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
           >
             <Button
               component={Link}
-              to="/usecases"
+              to="/new-dashboard"
               onClick={(event) => {
-                setCurrentOpenTab("usecases");
-                localStorage.setItem("lastTabOpenByUser", "usecases");
+                setCurrentOpenTab("new-dashboard");
+                localStorage.setItem("lastTabOpenByUser", "new-dashboard");
               }}
               style={{
                 width: "100%",
@@ -1350,14 +1269,14 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                 justifyContent: "flex-start",
                 fontSize: 18,
                 textTransform: "none",
-                backgroundColor: currentOpenTab === "usecases" && expandLeftNav ? themeMode === "dark"? darkHoverColor : lightHoverColor : "transparent",
+                backgroundColor: currentOpenTab === "new-dashboard" && expandLeftNav ? themeMode === "dark"? darkHoverColor : lightHoverColor : "transparent",
                 marginLeft: 16
               }}
               onMouseOver={(event)=>{
                 event.currentTarget.style.backgroundColor = themeMode === "dark" ? darkHoverColor : lightHoverColor;
               }}
               onMouseOut={(event)=>{
-                event.currentTarget.style.backgroundColor = currentOpenTab === "usecases" && expandLeftNav ? themeMode === "dark"? darkHoverColor : lightHoverColor : "transparent";
+                event.currentTarget.style.backgroundColor = currentOpenTab === "new-dashboard" && expandLeftNav ? themeMode === "dark"? darkHoverColor : lightHoverColor : "transparent";
               }}
               disableRipple={expandLeftNav ? false : true}
             >
@@ -1367,10 +1286,10 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                   display: expandLeftNav ? "inline" : "none",
                   opacity: expandLeftNav ? 1 : 0,
                   transition: "opacity 0.3s ease",
-                  color: themeMode === "dark" ? currentOpenTab === "usecases" ? theme.palette.text.primary : lightText : darkText,
+                  color: themeMode === "dark" ? currentOpenTab === "new-dashboard" ? theme.palette.text.primary : lightText : darkText,
                 }}
               >
-                Usecases
+                Dashboard
               </span>
             </Button>
             <Button
@@ -1412,6 +1331,43 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
             </Button>
             <Button
               component={Link}
+              to="/admin?admin_tab=notifications"
+              onClick={(event) => {
+                setCurrentOpenTab("notifications");
+                localStorage.setItem("lastTabOpenByUser", "notifications");
+              }}
+              style={{
+                width: "100%",
+                height: 35,
+                color: themeMode === "dark" ? lightText : darkText,
+                justifyContent: "flex-start",
+                textTransform: "none",
+                backgroundColor: currentOpenTab === "notifications" && expandLeftNav  ? themeMode === "dark"? darkHoverColor : lightHoverColor : "transparent",
+                marginLeft: 16,
+                fontSize: 18
+              }}
+              onMouseOver={(event)=>{
+                event.currentTarget.style.backgroundColor = themeMode === "dark" ? darkHoverColor : lightHoverColor;
+              }}
+              onMouseOut={(event)=>{
+                event.currentTarget.style.backgroundColor = currentOpenTab === "notifications" && expandLeftNav ? themeMode === "dark"? darkHoverColor : lightHoverColor  : "transparent";
+              }}
+              disableRipple={expandLeftNav ? false : true}
+            >
+              <span style={{display: expandLeftNav ? "inline" : "none",opacity: expandLeftNav ? 1 : 0, transition: "opacity 0.3s ease", position: 'relative', left: !expandLeftNav ? 10: 0, marginRight: 10, fontSize: 18 }}>•</span>{" "}
+              <span
+                style={{
+                  display: expandLeftNav ? "inline" : "none",
+                  opacity: expandLeftNav ? 1 : 0,
+                  transition: "opacity 0.3s ease",
+                  color: themeMode === "dark" ? currentOpenTab === "notifications" ? theme.palette.text.primary : lightText : darkText,
+                }}
+              >
+                Alerts
+              </span>
+            </Button>
+            <Button
+              component={Link}
               to="/apps"
               onClick={(event) => {
                 setCurrentOpenTab("apps");
@@ -1444,357 +1400,48 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                   color: themeMode === "dark" ? currentOpenTab === "apps" ? theme.palette.text.primary : lightText : darkText,
                 }}
               >
-                Apps
+                Integrations
               </span>
             </Button>
-          </Box>
-          </Collapse>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              marginTop: 0
-            }}
-          >
-	  		<span style={{ display: "inline-block", width: "100%" }}> 
             <Button
-              component={Link}
-              to="/forms"
+               component={Link}
+               to="/reports"
               onClick={(event) => {
-                setOpenSecurityTab(true);
-                setOpenautomateTab(false);
-                setCurrentOpenTab("forms");
-                localStorage.setItem("lastTabOpenByUser", "forms");
+                setCurrentOpenTab("reports");
+                localStorage.setItem("lastTabOpenByUser", "reports");
               }}
               style={{
-                ...ButtonStyle,
+                width: "100%",
+                height: 35,
+                color: themeMode === "dark" ? lightText : darkText,
+                justifyContent: "flex-start",
+                textTransform: "none",
+                backgroundColor: currentOpenTab === "reports" && expandLeftNav  ? themeMode === "dark"? darkHoverColor : lightHoverColor : "transparent",
+                marginLeft: 16,
+                fontSize: 18
               }}
               onMouseOver={(event)=>{
                 event.currentTarget.style.backgroundColor = themeMode === "dark" ? darkHoverColor : lightHoverColor;
               }}
               onMouseOut={(event)=>{
-                event.currentTarget.style.backgroundColor = currentOpenTab === "security"
-                  ? themeMode === "dark"? darkHoverColor : lightHoverColor
-                  : "transparent";
+                event.currentTarget.style.backgroundColor = currentOpenTab === "reports" && expandLeftNav ? themeMode === "dark"? darkHoverColor : lightHoverColor  : "transparent";
               }}
+              disableRipple={expandLeftNav ? false : true}
             >
-              <TocIcon 
-                style={{
-                  width: 18,
-                  height: 18,
-                  marginRight: expandLeftNav ? 10 : 0,
-                  color: themeMode === "dark" ? lightText : darkText 
-                }}
-              />
+              <span style={{display: expandLeftNav ? "inline" : "none",opacity: expandLeftNav ? 1 : 0, transition: "opacity 0.3s ease", position: 'relative', left: !expandLeftNav ? 10: 0, marginRight: 10, fontSize: 18 }}>•</span>{" "}
               <span
                 style={{
                   display: expandLeftNav ? "inline" : "none",
-                  marginRight: "auto",
-                  fontSize: 18,
-                  color: themeMode === "dark" ? lightText : darkText
+                  opacity: expandLeftNav ? 1 : 0,
+                  transition: "opacity 0.3s ease",
+                  color: themeMode === "dark" ? currentOpenTab === "reports" ? theme.palette.text.primary : lightText : darkText,
                 }}
               >
-	  			Content
+                Reports
               </span>
             </Button>
-        </span>
-
-            <IconButton
-              onClick={() => {
-                setOpenSecurityTab((prev) => !prev);
-                setOpenautomateTab(false);
-              }}
-              style={{
-                marginLeft: 0.625,
-                color: themeMode === "dark" ? lightText : darkText,
-              }}
-              onMouseOver={(event)=>{
-                event.currentTarget.style.backgroundColor = themeMode === "dark" ? darkHoverColor : lightHoverColor;
-              }}
-              onMouseOut={(event)=>{
-                event.currentTarget.style.backgroundColor = "transparent";
-              }}
-            >
-              {openSecurityTab ? (
-                <ExpandLessIcon
-                  style={{
-                    display: expandLeftNav ? "flex" : "none",
-                  }}
-                />
-              ) : (
-                <ExpandMoreIcon
-                  style={{
-                    display: expandLeftNav ? "flex" : "none",
-                  }}
-                />
-              )}
-            </IconButton>
           </Box>
 
-          <Collapse in={openSecurityTab} timeout="auto" unmountOnExit >
-              <Box
-                style={{
-                  maxHeight: openSecurityTab && expandLeftNav ? 250 : 0,
-                  overflow: "hidden",
-                  transition: "max-height 0.3s ease, opacity 0.3s ease",
-                  display: "flex",
-                  flexDirection: "column",
-                  paddingLeft: 16,
-                  gap: "2px",
-                }}
-                disableRipple={expandLeftNav ? false : true}
-              >
-                <span style={{ display: "inline-block", width: "100%" }}>
-                <Button
-                  component={Link}
-                  to="/forms"
-                  onClick={() => {
-                    setCurrentOpenTab("forms");
-                    localStorage.setItem("lastTabOpenByUser", "forms");
-                  }}
-                  sx={{
-                    width: "100%",
-                    height: 35,
-                    color: themeMode === "dark" ? lightText : darkText,
-                    justifyContent: "flex-start",
-                    textTransform: "none",
-                    backgroundColor:
-                      currentOpenTab === "forms" || currentPath.includes("/forms")
-                        ? themeMode === "dark" ? darkHoverColor : lightHoverColor
-                        : "transparent",
-                    "&:hover": {
-                      backgroundColor: themeMode === "dark" ? darkHoverColor : lightHoverColor,
-                    },
-                    cursor: "pointer",
-                  }}
-                >
-                  <span style={{ position: "relative", left: !expandLeftNav ? 10 : 0, marginRight: 10, fontSize: 18 }}>
-                    •
-                  </span>
-                  <span
-                    style={{
-                      display: expandLeftNav ? "inline" : "none",
-                      opacity: expandLeftNav ? 1 : 0,
-                      transition: "opacity 0.3s ease",
-                      fontSize: 18,
-                      color: themeMode === "dark" ? currentOpenTab === "forms" ? theme.palette.text.primary : lightText : darkText,
-                    }}
-                  >
-                    Forms
-                  </span>
-                </Button>
-                </span>
-				{userdata && (userdata?.support || userdata?.active_org?.role === "admin") ? (
-          <>
-            <span style={{ display: "inline-block", width: "100%" }}>
-          <Button
-          component={Link}
-          to="/admin?tab=datastore"
-            onClick={(event) => {
-              setCurrentOpenTab("datastore");
-              localStorage.setItem("lastTabOpenByUser", "datastore");
-            }}
-            sx={{
-              width: "100%",
-              height: 35,
-              justifyContent: "flex-start",
-              textTransform: "none",
-              backgroundColor:
-                currentOpenTab === "datastore"
-                  ? themeMode === "dark" ? darkHoverColor : lightHoverColor
-                  : "transparent",
-              "&:hover": {
-                backgroundColor: themeMode === "dark" ? darkHoverColor : lightHoverColor,
-              },
-              cursor: "pointer", 
-            }}
-          >
-            <span style={{ position: "relative", left: !expandLeftNav ? 10 : 0, marginRight: 10, fontSize: 18 }}>
-              •
-            </span>
-            <span
-              style={{
-                display: expandLeftNav ? "inline" : "none",
-                opacity: expandLeftNav ? 1 : 0,
-                transition: "opacity 0.3s ease",
-                fontSize: 18,
-                color: themeMode === "dark" ? currentOpenTab === "datastore" ? theme.palette.text.primary : lightText : darkText
-              }}
-            >
-               Datastore	
-            </span>
-          </Button>
-      </span>
-
-      <span style={{ display: "inline-block", width: "100%" }}>
-          <Button
-            component={Link}
-            to="/admin?tab=files"
-            onClick={(event) => {
-              setCurrentOpenTab("files");
-              localStorage.setItem("lastTabOpenByUser", "files");
-            }}
-            sx={{
-              width: "100%",
-              height: 35,
-              color: themeMode === "dark" ? lightText : darkText, 
-              justifyContent: "flex-start",
-              textTransform: "none",
-              backgroundColor:
-              currentOpenTab === "files"
-              ? themeMode === "dark" ? darkHoverColor : lightHoverColor
-              : "transparent",
-              "&:hover": {
-                backgroundColor: themeMode === "dark" ? darkHoverColor : lightHoverColor,
-              },
-              cursor: "pointer", 
-            }}
-          >
-            <span style={{ position: "relative", left: !expandLeftNav ? 10 : 0, marginRight: 10, fontSize: 18 }}>
-              •
-            </span>
-            <span
-              style={{
-                display: expandLeftNav ? "inline" : "none",
-                opacity: expandLeftNav ? 1 : 0,
-                transition: "opacity 0.3s ease",
-                fontSize: 18,
-                color: themeMode === "dark" ? currentOpenTab === "files" ? theme.palette.text.primary : lightText : darkText
-              }}
-            >
-               Files	
-            </span>
-          </Button>
-      </span>
-
-      		<span style={{ display: "inline-block", width: "100%" }}>
-			  <Button
-			   component={Link}
-			   to="/admin?admin_tab=notifications"
-				onClick={(event) => {
-				  setCurrentOpenTab("notifications");
-				  localStorage.setItem("lastTabOpenByUser", "notifications");
-				}}
-				variant="text"
-				sx={{
-				  width: "100%",
-				  height: 35,
-				  color: themeMode === "dark" ? lightText : darkText, 
-				  justifyContent: "flex-start",
-				  textTransform: "none",
-				  backgroundColor:
-					currentOpenTab === "notifications"
-					  ? themeMode === "dark" ? darkHoverColor : lightHoverColor
-					  : "transparent",
-				  "&:hover": {
-					backgroundColor: themeMode === "dark" ? darkHoverColor : lightHoverColor,
-				  },
-				  cursor: "pointer", 
-				}}
-			  >
-				<span style={{ position: "relative", left: !expandLeftNav ? 10 : 0, marginRight: 10, fontSize: 18 }}>
-				  •
-				</span>
-				<span
-				  style={{
-					display: expandLeftNav ? "inline" : "none",
-					opacity: expandLeftNav ? 1 : 0,
-					transition: "opacity 0.3s ease",
-					fontSize: 18,
-					color: themeMode === "dark" ? currentOpenTab === "notifications" ? theme.palette.text.primary : lightText : darkText,
-				  }}
-				>
-					Notifications
-				</span>
-			  </Button>
-          </span>
-
-      		<span style={{ display: "inline-block", width: "100%" }}>
-			  <Button
-			   component={Link}
-			   to="/admin?tab=locations"
-				onClick={(event) => {
-				  setCurrentOpenTab("locations");
-				  localStorage.setItem("lastTabOpenByUser", "locations");
-				}}
-				variant="text"
-				sx={{
-				  width: "100%",
-				  height: 35,
-				  color: themeMode === "dark" ? lightText : darkText, 
-				  justifyContent: "flex-start",
-				  textTransform: "none",
-				  backgroundColor:
-					currentOpenTab === "locations"
-					  ? themeMode === "dark" ? darkHoverColor : lightHoverColor
-					  : "transparent",
-				  "&:hover": {
-					backgroundColor: themeMode === "dark" ? darkHoverColor : lightHoverColor,
-				  },
-				  cursor: "pointer", 
-				}}
-			  >
-				<span style={{ position: "relative", left: !expandLeftNav ? 10 : 0, marginRight: 10, fontSize: 18 }}>
-				  •
-				</span>
-				<span
-				  style={{
-					display: expandLeftNav ? "inline" : "none",
-					opacity: expandLeftNav ? 1 : 0,
-					transition: "opacity 0.3s ease",
-					fontSize: 18,
-					color: themeMode === "dark" ? currentOpenTab === "locations" ? theme.palette.text.primary : lightText : darkText,
-				  }}
-				>
-					Runtime Locations
-				</span>
-			  </Button>
-          </span>
-
-          <span style={{ display: "inline-block", width: "100%" }}>
-          <Button
-           component={Link}
-           to="/partners"
-            onClick={(event) => {
-              setCurrentOpenTab("partners");
-              localStorage.setItem("lastTabOpenByUser", "partners");
-            }}
-            variant="text"
-            sx={{
-              width: "100%",
-              height: 35,
-              color: themeMode === "dark" ? lightText : darkText, 
-              justifyContent: "flex-start",
-              textTransform: "none",
-              backgroundColor:
-                currentOpenTab === "partners"
-                  ? themeMode === "dark" ? darkHoverColor : lightHoverColor
-                  : "transparent",
-              "&:hover": {
-                backgroundColor: themeMode === "dark" ? darkHoverColor : lightHoverColor,
-              },
-              cursor: "pointer", 
-            }}
-          >
-            <span style={{ position: "relative", left: !expandLeftNav ? 10 : 0, marginRight: 10, fontSize: 18 }}>
-              •
-            </span>
-            <span
-              style={{
-                display: expandLeftNav ? "inline" : "none",
-                opacity: expandLeftNav ? 1 : 0,
-                transition: "opacity 0.3s ease",
-                fontSize: 18,
-                color: themeMode === "dark" ? currentOpenTab === "locations" ? theme.palette.text.primary : lightText : darkText,
-              }}
-            >
-    Partners
-            </span>
-          </Button>
-          </span>
-          </>): null}
-              </Box>
-            </Collapse>
 
           <Button
             component={Link}
@@ -1936,24 +1583,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
       >
 	  	
       
-	  {userdata?.licensed !== true && !userdata?.org_status?.includes("integration_partner") && expandLeftNav && !isProdStatusOn &&
-		  <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", }}>
-			  <Button
-					variant="outlined"
-					style={{marginBottom: 15, borderWidth: 2, }}
-					onClick={() => {
-						navigate("/admin?admin_tab=billingstats&ref=left_sidebar_upgrade")
-						if (isCloud) { 
-							window.open("https://shuffler.io/contact?category=book_a_demo&ref=cloud", "_blank")
-						} else {
-							window.open("https://shuffler.io/contact?category=book_a_demo&ref=onprem", "_blank")
-						}
-					}}
-				>
-					Book a Demo
-			  </Button>
-		  </div>
-	  }
+
 
       {!isCloud && activeOrgData?.old_org? (
           <div

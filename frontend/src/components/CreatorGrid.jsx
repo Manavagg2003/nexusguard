@@ -53,11 +53,11 @@ const CreatorGrid = props => {
 
 	const isCloud =
 		window.location.host === "localhost:3002" ||
-		window.location.host === "shuffler.io";
+		window.location.host === "nexusguardr.io";
 
 	const innerColor = "rgba(255,255,255,0.65)"
 	const borderRadius = 3
-	window.title = "Shuffle | Workflows | Discover your use-case"
+	window.title = "NexusGuard | Workflows | Discover your use-case"
 
 	const submitContact = (email, message) => {
 		const data = {
@@ -70,7 +70,7 @@ const CreatorGrid = props => {
 			"message": message,
 		}
 	
-		const errorMessage = "Something went wrong. Please contact frikky@shuffler.io directly."
+		const errorMessage = "Something went wrong. Please contact frikky@nexusguardr.io directly."
 
 		fetch(globalUrl+"/api/v1/contact", {
 			method: 'POST',
@@ -134,7 +134,7 @@ const CreatorGrid = props => {
 					type="search"
 					color="primary"
 					placeholder="Find Creators..."
-					id="shuffle_search_field"
+					id="nexusguard_search_field"
 					onChange={(event) => {
 						removeQuery("q")
 						debouncedRefine(event.currentTarget.value)
@@ -170,7 +170,7 @@ const CreatorGrid = props => {
 					}
 
 					counted += 1
-					const creatorUrl = !isCloud ? `https://shuffler.io/creators/${data.username}` : `/creators/${data.username}`
+					const creatorUrl = !isCloud ? `https://nexusguardr.io/creators/${data.username}` : `/creators/${data.username}`
 
 					return (
 						<Zoom key={index} in={true} style={{}}>
@@ -186,7 +186,7 @@ const CreatorGrid = props => {
 													</Typography>
 													<span style={{marginTop: "auto", marginBottom: "auto", marginLeft: 10, }}>
 														{data.verified === true ? 
-															<Tooltip title="Verified and earning from Shuffle contributions" placement="top">
+															<Tooltip title="Verified and earning from NexusGuard contributions" placement="top">
 																<VerifiedUserIcon style={{}}/>
 															</Tooltip>
 														: 

@@ -161,7 +161,7 @@ const WelcomeForm = (props) => {
   const [clickdiff, setclickdiff] = useState(0);
   const [mouseHoverIndex, setMouseHoverIndex] = useState(-1)
 
-  const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+  const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
   //const alert = useAlert();
   let navigate = useNavigate();
 
@@ -532,7 +532,7 @@ const WelcomeForm = (props) => {
             >
               {/*isCloud ? null :
 												<Typography variant="body1" style={{marginLeft: 8, marginTop: 10, marginRight: 30, }} color="textSecondary">
-														This data will be used within the product and NOT be shared unless <a href="https://shuffler.io/docs/organizations#cloud_synchronization" target="_blank" rel="norefferer" style={{color: "#f86a3e", textDecoration: "none"}}>cloud synchronization</a> is configured.
+														This data will be used within the product and NOT be shared unless <a href="https://nexusguardr.io/docs/organizations#cloud_synchronization" target="_blank" rel="norefferer" style={{color: "#f86a3e", textDecoration: "none"}}>cloud synchronization</a> is configured.
 													</Typography>
 											*/}
               <Typography

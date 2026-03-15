@@ -36,7 +36,7 @@ const FixWorkflowValidationErrors = (props) => {
 	const [appAuth, setAppAuth] = useState([])
 	const [_, setUpdate] = useState(0)
 
-  	const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io" || window.location.host === "migration.shuffler.io";
+  	const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io" || window.location.host === "migration.nexusguardr.io";
 
 	if (workflow === undefined || workflow === null) {
 		console.error("Workflow is undefined")
@@ -239,7 +239,7 @@ const FixWorkflowValidationErrors = (props) => {
 			if (isCloud) {
 				action.environment = "Cloud"
 			} else {
-				action.environment = "Shuffle"
+				action.environment = "NexusGuard"
 			}
 
 			/*

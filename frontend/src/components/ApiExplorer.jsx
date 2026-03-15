@@ -368,10 +368,10 @@ const ApiExplorer = memo(({ openapi, globalUrl, userdata, HandleApiExecution, se
           if (
             newaction.url !== undefined &&
             newaction.url !== null &&
-            newaction.url.includes("_shuffle_replace_")
+            newaction.url.includes("_nexusguard_replace_")
           ) {
-            //const regex = /_shuffle_replace_\d/i;
-            const regex = /_shuffle_replace_\d+/i;
+            //const regex = /_nexusguard_replace_\d/i;
+            const regex = /_nexusguard_replace_\d+/i;
 
             newaction.url = newaction.url.replaceAll(
               new RegExp(regex, "g"),
@@ -384,9 +384,9 @@ const ApiExplorer = memo(({ openapi, globalUrl, userdata, HandleApiExecution, se
             const pathsplit = path.split("/");
             // Stupid way of finding a category/grouping
             for (let splitkey in pathsplit) {
-              if (pathsplit[splitkey].includes("_shuffle_replace_")) {
-                //const regex = /_shuffle_replace_\d/i;
-                const regex = /_shuffle_replace_\d+/i;
+              if (pathsplit[splitkey].includes("_nexusguard_replace_")) {
+                //const regex = /_nexusguard_replace_\d/i;
+                const regex = /_nexusguard_replace_\d+/i;
                 pathsplit[splitkey] = pathsplit[splitkey].replaceAll(
                   new RegExp(regex, "g"),
                   ""
@@ -751,7 +751,7 @@ const ApiExplorer = memo(({ openapi, globalUrl, userdata, HandleApiExecution, se
                         "schema"
                       ]["type"] === "string"
                     ) {
-                      newaction.example_response = "shuffle_file_download";
+                      newaction.example_response = "nexusguard_file_download";
                     }
                   }
                 }
@@ -1055,7 +1055,7 @@ const ApiExplorer = memo(({ openapi, globalUrl, userdata, HandleApiExecution, se
               // Need to split the data.
             } else if (parameter.in === "body") {
               // FIXME: Add tracking for components
-              // E.G: https://raw.githubusercontent.com/owentl/Shuffle/master/gosecure.yaml
+              // E.G: https://raw.githubusercontent.com/owentl/NexusGuard/master/gosecure.yaml
               if (
                 parameter.example !== undefined &&
                 parameter.example !== null
@@ -2571,8 +2571,8 @@ const Action = memo((
                     index={1}
                   >
                     <AceEditor
-                      id="shuffle-codeeditor-api-Explorer"
-                      name="shuffle-codeeditor-api-Explorer"
+                      id="nexusguard-codeeditor-api-Explorer"
+                      name="nexusguard-codeeditor-api-Explorer"
                       mode="json"
                       ref={editorRef}
                       value={RequestBody}
@@ -2872,7 +2872,7 @@ const ActionResponse = memo(({ apiResponse, ExampleBody, isLoggedIn, isLoaded })
   }, [apiResponse, ExampleBody])
 
   const handleReactJsonClipboard = (copy) => {
-    const elementName = "copy_element_shuffle";
+    const elementName = "copy_element_nexusguard";
     let copyText = document.getElementById(elementName);
 
     if (copyText) {
@@ -3019,7 +3019,7 @@ const ResponseTabWrapper = memo(({ apiResponse }) => {
   const theme = getTheme(themeMode)
 
   const handleReactJsonClipboard = (copy) => {
-    const elementName = "copy_element_shuffle";
+    const elementName = "copy_element_nexusguard";
     let copyText = document.getElementById(elementName);
 
     if (copyText) {

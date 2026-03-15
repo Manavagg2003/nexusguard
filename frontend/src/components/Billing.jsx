@@ -110,10 +110,10 @@ const ProductionStatus = ({ selectedOrganization, userdata, isCloud, theme }) =>
 			 
 			}} /> 
 			<Typography variant="body1" color="textPrimary" style={{ marginTop: 24, fontFamily: theme.typography.fontFamily }}>
-				Shuffle Enterprise is designed for organizations that require scalability, high availability, dedicated support and more to run mission-critical workflows in production environments.
+				NexusGuard Enterprise is designed for organizations that require scalability, high availability, dedicated support and more to run mission-critical workflows in production environments.
 			</Typography>
 			<Typography variant="body1" color="textSecondary" style={{ marginTop: 24, fontFamily: theme.typography.fontFamily }}>
-				More about upgrading below. If you want to know more, please contact <a href="mailto:support@shuffler.io?subject=Tell%20me%20about%20Production%20readiness" style={{ color: '#f85a3e', textDecoration: 'none' }}>support@shuffler.io</a> directly.
+				More about upgrading below. If you want to know more, please contact <a href="mailto:support@nexusguardr.io?subject=Tell%20me%20about%20Production%20readiness" style={{ color: '#f85a3e', textDecoration: 'none' }}>support@nexusguardr.io</a> directly.
 			</Typography>
         </div>
     );
@@ -223,7 +223,7 @@ const Billing = memo((props) => {
 
 		if (orgId.length === 0) {
 			toast(
-				"Organization ID not defined (get deals). Please contact us on https://shuffler.io if this persists logout."
+				"Organization ID not defined (get deals). Please contact us on https://nexusguardr.io if this persists logout."
 			);
 			return;
 		}
@@ -321,8 +321,8 @@ const Billing = memo((props) => {
 
 	const isCloud =
 		window.location.host === "localhost:3002" ||
-		window.location.host === "shuffler.io" || 
-		window.location.host === "sandbox.shuffler.io";
+		window.location.host === "nexusguardr.io" || 
+		window.location.host === "sandbox.nexusguardr.io";
 
 	billingInfo.subscription = {
 		"active": true,
@@ -778,7 +778,7 @@ const Billing = memo((props) => {
 										<a
 											href={feature.split("Documentation: ")[1]}
 											target="_blank"
-											style={{ textDecoration: "none", color: "#f85a3e", }}
+											style={{ textDecoration: "none", color: "#f85a3e", }} rel="noreferrer"
 										>
 											Documentation to get started
 										</a>
@@ -860,7 +860,7 @@ const Billing = memo((props) => {
 								:
 
 								userdata.has_card_available === true ?
-									"While you have a card attached to your account, Shuffle will no longer prevent workflows from running. Billing will occur at the start of each month."
+									"While you have a card attached to your account, NexusGuard will no longer prevent workflows from running. Billing will occur at the start of each month."
 									:
 									isCloud ?
 										`You are not subscribed to any plan and are using the free plan with max 10,000 app runs per month. Upgrade to deactivate this limit.`
@@ -983,7 +983,7 @@ const Billing = memo((props) => {
 									handlePayasyougo(userdata, selectedOrganization, BillingEmail)
 									//navigate("/pricing?tab=cloud&highlight=true")
 								} else {
-									//window.open("https://shuffler.io/pricing?tab=onprem&highlight=true", "_blank")
+									//window.open("https://nexusguardr.io/pricing?tab=onprem&highlight=true", "_blank")
 									handlePayasyougo()
 								}
 							}}
@@ -1014,7 +1014,7 @@ const Billing = memo((props) => {
 									if (isCloud) {
 										navigate("/pricing?tab=cloud&highlight=true")
 									} else {
-										window.open("https://shuffler.io/pricing?tab=onprem&highlight=true", "_blank")
+										window.open("https://nexusguardr.io/pricing?tab=onprem&highlight=true", "_blank")
 									}
 								}}
 							>
@@ -1486,7 +1486,7 @@ const Billing = memo((props) => {
 					toast.success("Your request for private training has been submitted successfully. We will get back to you soon.")
 					setOpenPrivateTraining(false)
 				} else {
-					toast.error(`Failed sending request for private training. Please try again later or contact support@shuffler.io for help.`)
+					toast.error(`Failed sending request for private training. Please try again later or contact support@nexusguardr.io for help.`)
 				}
 			})
 		}
@@ -1512,7 +1512,7 @@ const Billing = memo((props) => {
 				</Typography>
 				<Divider />
 				<Typography variant="body1" style={{ marginTop: 10, }}>
-					Become a Shuffle Expert
+					Become a NexusGuard Expert
 				</Typography>
 				<div>
 					<Typography variant="body2" color="textSecondary" style={{ marginTop: 25, }}>
@@ -1526,7 +1526,7 @@ const Billing = memo((props) => {
 						</li>
 						<li style={{color : theme.palette.text.primary}}>
 							<Typography variant="body2" color="textPrimary">
-								Covers Shuffle Platform, Apps, Workflows, Usecases, JSON, Liquid Formatting, and more.
+								Covers NexusGuard Platform, Apps, Workflows, Usecases, JSON, Liquid Formatting, and more.
 							</Typography>
 						</li>
 					</ul>
@@ -2160,15 +2160,15 @@ const Billing = memo((props) => {
 			<>
 				{clickedFromOrgTab ?
 				<Typography variant="body2" color="textSecondary" style={{ fontSize: 16 }}>{isCloud ?
-					"Get more out of Shuffle by adding your credit card, such as no App Run limitations, and priority support from our team. We use Stripe to manage subscriptions and do not store any of your billing information. You can manage your subscription and billing information below."
+					"Get more out of NexusGuard by adding your credit card, such as no App Run limitations, and priority support from our team. We use Stripe to manage subscriptions and do not store any of your billing information. You can manage your subscription and billing information below."
 					:
-					!(selectedOrganization?.subscriptions !== undefined && selectedOrganization?.subscriptions.length > 0 && selectedOrganization?.subscriptions[0]?.name?.toLowerCase().includes("enterprise") && selectedOrganization?.subscriptions[0]?.active) ? "Shuffle is an Enterprise automation platform, and a license is required at scale. We offer a license with HA guarantees, higher limits, along along with support hours. By buying a license on https://shuffler.io, you can get access to the license immediately, and if Cloud Syncronisation is enabled, the UI in your local instance will also update." : "Here you can check your license and billing information."
+					!(selectedOrganization?.subscriptions !== undefined && selectedOrganization?.subscriptions.length > 0 && selectedOrganization?.subscriptions[0]?.name?.toLowerCase().includes("enterprise") && selectedOrganization?.subscriptions[0]?.active) ? "NexusGuard is an Enterprise automation platform, and a license is required at scale. We offer a license with HA guarantees, higher limits, along along with support hours. By buying a license on https://nexusguardr.io, you can get access to the license immediately, and if Cloud Syncronisation is enabled, the UI in your local instance will also update." : "Here you can check your license and billing information."
 				}</Typography> :
 				<Typography variant="body1" color="textSecondary" style={{ marginTop: 0, marginBottom: 10, fontSize: 16 }}>
 					{isCloud ?
-						"Get more out of Shuffle by adding your credit card, such as no App Run limitations, and priority support from our team. We use Stripe to manage subscriptions and do not store any of your billing information. You can manage your subscription and billing information below."
+						"Get more out of NexusGuard by adding your credit card, such as no App Run limitations, and priority support from our team. We use Stripe to manage subscriptions and do not store any of your billing information. You can manage your subscription and billing information below."
 						:
-						!(selectedOrganization?.subscriptions !== undefined && selectedOrganization?.subscriptions.length > 0 && selectedOrganization?.subscriptions[0]?.name?.toLowerCase().includes("enterprise") && selectedOrganization?.subscriptions[0]?.active) ? "Shuffle is an Enterprise automation platform, and a license is required at scale. We offer a Scale license with HA guarantees, along with support hours. By buying a license on https://shuffler.io, you can get access to the license immediately, and if Cloud Syncronisation is enabled, the UI in your local instance will also update." : "Here you can check your license and billing information."
+						!(selectedOrganization?.subscriptions !== undefined && selectedOrganization?.subscriptions.length > 0 && selectedOrganization?.subscriptions[0]?.name?.toLowerCase().includes("enterprise") && selectedOrganization?.subscriptions[0]?.active) ? "NexusGuard is an Enterprise automation platform, and a license is required at scale. We offer a Scale license with HA guarantees, along with support hours. By buying a license on https://nexusguardr.io, you can get access to the license immediately, and if Cloud Syncronisation is enabled, the UI in your local instance will also update." : "Here you can check your license and billing information."
 					}
 				</Typography>}
 			</>  }
@@ -2188,7 +2188,7 @@ const Billing = memo((props) => {
 						Google Drive Link
 					</a>
 					&nbsp; - &nbsp;
-					<a href={"https://github.com/Shuffle/Shuffle-docs/tree/master/handbook/Sales"} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "#FF8444" }}>
+					<a href={"https://github.com/NexusGuard/NexusGuard-docs/tree/master/handbook/Sales"} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "#FF8444" }}>
 						Sales Process (old)
 					</a>
 				</Typography>

@@ -393,7 +393,7 @@ const EnvironmentTab = memo((props) => {
           return;
         }
 
-        const elementName = "copy_element_shuffle";
+        const elementName = "copy_element_nexusguard";
         var auth =
           environment.auth === ""
             ? "cb5st3d3Z!3X3zaJ*Pc"
@@ -401,8 +401,8 @@ const EnvironmentTab = memo((props) => {
       // Escape exclamation marks for copying
       auth = auth.replace("\\!", "!").replace(/!/g, "\\!")
         const newUrl =
-          globalUrl === "https://shuffler.io"
-            ? "https://shuffle-backend-stbuwivzoq-nw.a.run.app"
+          globalUrl === "https://nexusguardr.io"
+            ? "https://nexusguard-backend-stbuwivzoq-nw.a.run.app"
             : globalUrl;
 
         var skipPipeline = false
@@ -423,22 +423,22 @@ const EnvironmentTab = memo((props) => {
         if (installationTab === 1) {
             return (`docker run -d \\
         --restart=always \\
-        --name="shuffle-orborus" \\
+        --name="nexusguard-orborus" \\
         --pull=always \\
         --volume "/var/run/docker.sock:/var/run/docker.sock" \\
         -e AUTH="${auth}" \\
         -e ENVIRONMENT_NAME="${environment.Name}" \\
         -e ORG="${environment.org_id}" \\
-        -e SHUFFLE_SWARM_CONFIG=run \\
+        -e NEXUSGUARD_SWARM_CONFIG=run \\
         -e BASE_URL="${newUrl}" \\${addProxy ? `
         -e HTTPS_PROXY=IP:PORT \\` : ""}${skipPipeline ? `
-        -e SHUFFLE_PIPELINE_URL=http://tenzir-node:5160 \ \n        -e SHUFFLE_PIPELINE_STANDALONE=true \\` : ""}${!showDetection ? `
+        -e NEXUSGUARD_PIPELINE_URL=http://tenzir-node:5160 \ \n        -e NEXUSGUARD_PIPELINE_STANDALONE=true \\` : ""}${!showDetection ? `
         -v /tmp:/tmp \\` : ""}
-        ghcr.io/shuffle/shuffle-orborus:latest
+        ghcr.io/nexusguard/nexusguard-orborus:latest
             `)
         } else if (installationTab === 2) {
-             return `helm install shuffle-orborus oci://ghcr.io/shuffle/charts/shuffle \\
-              --namespace shuffle --create-namespace \\
+             return `helm install nexusguard-orborus oci://ghcr.io/nexusguard/charts/nexusguard \\
+              --namespace nexusguard --create-namespace \\
               --set opensearch.enabled=false \\
               --set backend.replicaCount=0 \\
               --set frontend.replicaCount=0 \\
@@ -450,17 +450,17 @@ const EnvironmentTab = memo((props) => {
               --set 'orborus.extraEnvVars[2].value=${environment.Name}' \\
               --set 'orborus.extraEnvVars[3].name=ORG' \\
               --set 'orborus.extraEnvVars[3].value=${environment.org_id}' \\
-              --set shuffle.org="${environment.org_id}"${addProxy ? ` \\
+              --set nexusguard.org="${environment.org_id}"${addProxy ? ` \\
               --set 'orborus.extraEnvVars[4].name=HTTPS_PROXY' \\
               --set 'orborus.extraEnvVars[4].value=IP:PORT'` : ""}${skipPipeline ? ` \\
-              --set 'orborus.extraEnvVars[${addProxy ? 5 : 4}].name=SHUFFLE_SKIP_PIPELINES' \\
+              --set 'orborus.extraEnvVars[${addProxy ? 5 : 4}].name=NEXUSGUARD_SKIP_PIPELINES' \\
               --set 'orborus.extraEnvVars[${addProxy ? 5 : 4}].value=true'` : ""} \\
               --set persistence.storageClass=standard`
         }
 
-        const commandData = `docker rm shuffle-orborus --force; \\\ndocker run -d \\
+        const commandData = `docker rm nexusguard-orborus --force; \\\ndocker run -d \\
         --restart=always \\
-        --name="shuffle-orborus" \\
+        --name="nexusguard-orborus" \\
         --pull=always  \\
         --volume "/var/run/docker.sock:/var/run/docker.sock" \\
         -e AUTH="${auth}" \\
@@ -468,7 +468,7 @@ const EnvironmentTab = memo((props) => {
         -e ORG="${props.userdata.active_org.id}" \\
         -e BASE_URL="${newUrl}" \\${addProxy ? `
         -e HTTPS_PROXY=IP:PORT \\` : ""}
-        ghcr.io/shuffle/shuffle-orborus:latest`
+        ghcr.io/nexusguard/nexusguard-orborus:latest`
 
         return commandData
     };
@@ -895,7 +895,7 @@ const EnvironmentTab = memo((props) => {
               <div style={{ marginBottom: 20 }}>
                 <Typography variant='h5' color="textPrimary" style={{ marginBottom: 8, marginTop: 0,}}>Runtime Locations</Typography>
                 <Typography variant='body2' color="textSecondary">
-                    Decides which Orborus <b>runtime location</b> to run your workflows in. Previously called Environments. <br /> If you have scale problems, <a href="https://shuffler.io/docs/configuration#high-availability" target="_blank" rel="noopener noreferrer" style={{ color: theme.palette.linkColor }}>check the docs</a> or talk to our team: {supportEmail}.&nbsp;
+                    Decides which Orborus <b>runtime location</b> to run your workflows in. Previously called Environments. <br /> If you have scale problems, <a href="https://nexusguardr.io/docs/configuration#high-availability" target="_blank" rel="noopener noreferrer" style={{ color: theme.palette.linkColor }}>check the docs</a> or talk to our team: {supportEmail}.&nbsp;
                     <a
                         target="_blank"
                         rel="noopener noreferrer"
@@ -1523,7 +1523,7 @@ const EnvironmentTab = memo((props) => {
                             Self-Hosted Orborus instance
                           </Typography>
                           <Typography variant="body2" color="textSecondary">
-                            Orborus is the Shuffle queue handler that runs your hybrid workflows and manages pipelines. It can be run in Docker/k8s container on your server or in your cluster. Follow the steps below, and configure as need be.
+                            Orborus is the NexusGuard queue handler that runs your hybrid workflows and manages pipelines. It can be run in Docker/k8s container on your server or in your cluster. Follow the steps below, and configure as need be.
                           </Typography>
         
                         <Tabs
@@ -1643,7 +1643,7 @@ const EnvironmentTab = memo((props) => {
                             <Divider style={{marginTop: 25, marginBottom: 10, }}/>
                             <div style={{display: 'flex', alignItems: 'center', }}>
 								<Checkbox 
-								  id="shuffle_skip_proxies"
+								  id="nexusguard_skip_proxies"
 								  onClick={() => {
 									if (commandController.proxies === undefined) { 
 									  commandController.proxies = true 
@@ -1660,7 +1660,7 @@ const EnvironmentTab = memo((props) => {
                             <div />
                             <div style={{display: 'flex', alignItems: 'center', }}>
 								<Checkbox 
-								  id="shuffle_enable_detection"
+								  id="nexusguard_enable_detection"
 								  onClick={() => {
 									if (commandController.detection === undefined) { 
 									  commandController.detection = true 
@@ -1677,7 +1677,7 @@ const EnvironmentTab = memo((props) => {
 
                             <div style={{display: 'flex', alignItems: 'center', }}>
 								<Checkbox 
-								  id="shuffle_skip_pipelines"
+								  id="nexusguard_skip_pipelines"
 								  onClick={() => {
 									if (commandController.pipelines === undefined) { 
 									  commandController.pipelines = true 
@@ -1769,7 +1769,7 @@ const EnvironmentTab = memo((props) => {
                                 >
                                   <div style={{ flex: 2, overflow: "hidden" }}>
                                     <Typography variant="body1">
-                                      90% CPU the server(s) hosting the Shuffle App
+                                      90% CPU the server(s) hosting the NexusGuard App
                                       Runner (Orborus) was found.
                                     </Typography>
                                     <Typography variant="body2" color="textSecondary">
@@ -1787,7 +1787,7 @@ const EnvironmentTab = memo((props) => {
                                       </a>{" "}
                                       and{" "}
                                       <a
-                                        href="https://shuffler.io/contact"
+                                        href="https://nexusguardr.io/contact"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{

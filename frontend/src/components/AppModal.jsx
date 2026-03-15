@@ -491,7 +491,7 @@ const AppModal = ({ open, onClose, app, globalUrl, getApps}) => {
 
   const isCloud =
     window.location.host === "localhost:3002" ||
-      window.location.host === "shuffler.io"
+      window.location.host === "nexusguardr.io"
       ? true
       : false;
 
@@ -593,7 +593,7 @@ const AppModal = ({ open, onClose, app, globalUrl, getApps}) => {
                 flexDirection: "row",
                 alignItems: "center",
               }}>
-	  			<a href={isCloud ? "/apps/" + (app?.id || app?.objectID) : `https://shuffler.io/apps/${app?.objectID || app?.id}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "rgba(255,255,255,0.9)", }}>
+	  			<a href={isCloud ? "/apps/" + (app?.id || app?.objectID) : `https://nexusguardr.io/apps/${app?.objectID || app?.id}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "rgba(255,255,255,0.9)", }}>
 					<Typography variant="h5" component="div" sx={{ fontWeight: 600 }}>
 					  {newAppname}
 					</Typography>

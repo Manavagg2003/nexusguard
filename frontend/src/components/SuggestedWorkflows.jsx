@@ -33,7 +33,7 @@ const SuggestedWorkflows = (props) => {
 
   const isCloud =
     window.location.host === "localhost:3002" ||
-    window.location.host === "shuffler.io";
+    window.location.host === "nexusguardr.io";
 
 
 	useEffect(() => {

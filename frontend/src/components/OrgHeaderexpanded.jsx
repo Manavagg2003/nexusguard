@@ -71,10 +71,10 @@ const OrgHeaderexpanded = (props) => {
 
 	const [appDownloadUrl, setAppDownloadUrl] = React.useState(
 		selectedOrganization.defaults === undefined
-			? "https://github.com/frikky/shuffle-apps"
+			? "https://github.com/frikky/nexusguard-apps"
 			: selectedOrganization.defaults.app_download_repo === undefined ||
 				selectedOrganization.defaults.app_download_repo.length === 0
-				? "https://github.com/frikky/shuffle-apps"
+				? "https://github.com/frikky/nexusguard-apps"
 				: selectedOrganization.defaults.app_download_repo
 	);
 	const [appDownloadBranch, setAppDownloadBranch] = React.useState(
@@ -87,10 +87,10 @@ const OrgHeaderexpanded = (props) => {
 	);
 	const [workflowDownloadUrl, setWorkflowDownloadUrl] = React.useState(
 		selectedOrganization.defaults === undefined
-			? "https://github.com/frikky/shuffle-apps"
+			? "https://github.com/frikky/nexusguard-apps"
 			: selectedOrganization.defaults.workflow_download_repo === undefined ||
 				selectedOrganization.defaults.workflow_download_repo.length === 0
-				? "https://github.com/frikky/shuffle-workflows"
+				? "https://github.com/frikky/nexusguard-workflows"
 				: selectedOrganization.defaults.workflow_download_repo
 	);
 	const [workflowDownloadBranch, setWorkflowDownloadBranch] = React.useState(
@@ -360,7 +360,7 @@ console.log("defatult in handleEditOrg", defaults)
       .then((response) => {
         if (response.status !== 200) {
           toast.error(
-            "Failed to test sso. Please try again later or contact support@shuffler.io if issue persist."
+            "Failed to test sso. Please try again later or contact support@nexusguardr.io if issue persist."
           );
           return;
         }
@@ -601,7 +601,7 @@ console.log("defatult in handleEditOrg", defaults)
 									id="outlined-with-placeholder"
 									margin="normal"
 									variant="outlined"
-									placeholder="Ex: github/com/shuffle/workflowbackup "
+									placeholder="Ex: github/com/nexusguard/workflowbackup "
 									value={uploadRepo}
 									onChange={(e) => {
 										setUploadRepo(e.target.value);
@@ -1046,7 +1046,7 @@ console.log("defatult in handleEditOrg", defaults)
               style={{ textAlign: "left" }}
               color="textSecondary"
             >
-              IdP URL for Shuffle: https://shuffler.io/api/v1/login_sso
+              IdP URL for NexusGuard: https://nexusguardr.io/api/v1/login_sso
             </Typography>
           ) : null}
         </Grid>

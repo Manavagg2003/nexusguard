@@ -80,7 +80,7 @@ const TenantsTab = memo((props) => {
 
             if (parentOrg?.region_url?.length > 0) {
                 const regionsplit = parentOrg?.region_url.split(".");
-                if (regionsplit.length > 2 && !regionsplit[0].includes("shuffler")) {
+                if (regionsplit.length > 2 && !regionsplit[0].includes("nexusguardr")) {
                     const namesplit = regionsplit[0].split("/");
                     regiontag = namesplit[namesplit.length - 1];
 
@@ -135,7 +135,7 @@ const TenantsTab = memo((props) => {
     const handleGetSubOrgs = (orgId) => {
 
         if (orgId.length === 0) {
-            toast("Organization ID not defined. Please contact us on https://shuffler.io if this persists logout.");
+            toast("Organization ID not defined. Please contact us on https://nexusguardr.io if this persists logout.");
             return;
         }
 
@@ -167,7 +167,7 @@ const TenantsTab = memo((props) => {
 
                     if (parentOrg?.region_url?.length > 0) {
                     const regionsplit = parentOrg?.region_url.split(".");
-                    if (regionsplit.length > 2 && !regionsplit[0].includes("shuffler")) {
+                    if (regionsplit.length > 2 && !regionsplit[0].includes("nexusguardr")) {
                         const namesplit = regionsplit[0].split("/");
                         regiontag = namesplit[namesplit.length - 1];
 
@@ -697,7 +697,7 @@ const TenantsTab = memo((props) => {
                 if (data.reason) {
                   toast.error(data.reason);
                 }else {
-                    toast.error("Failed to delete suborg. Please try again or contact support@shuffler.io for help.");
+                    toast.error("Failed to delete suborg. Please try again or contact support@nexusguardr.io for help.");
                 }
               }
             })
@@ -1023,7 +1023,7 @@ const TenantsTab = memo((props) => {
                     <Typography variant='body2' color="textSecondary">
                         Create, manage and change to sub-organizations (tenants)! {" "}
                         {isCloud
-                            ? `You can only make a sub organization if you are a customer of shuffle or running a POC of the platform. Please contact ${supportEmail} to try it out.`
+                            ? `You can only make a sub organization if you are a customer of nexusguard or running a POC of the platform. Please contact ${supportEmail} to try it out.`
                             : ''}&nbsp;
                         <a
                             href="/docs/organizations"
@@ -1500,7 +1500,7 @@ const TenantsTab = memo((props) => {
 
 									if (data.region_url?.length > 0) {
 										const regionsplit = data.region_url.split(".");
-										if (regionsplit.length > 2 && !regionsplit[0].includes("shuffler")) {
+										if (regionsplit.length > 2 && !regionsplit[0].includes("nexusguardr")) {
 											const namesplit = regionsplit[0].split("/");
 											regiontag = namesplit[namesplit.length - 1];
 											if (regiontag === "california") {
@@ -1828,7 +1828,7 @@ const TenantsTab = memo((props) => {
 
                     	    if (data.region_url?.length > 0) {
 								const regionsplit = data.region_url.split(".");
-								if (regionsplit.length > 2 && !regionsplit[0].includes("shuffler")) {
+								if (regionsplit.length > 2 && !regionsplit[0].includes("nexusguardr")) {
 									const namesplit = regionsplit[0].split("/");
 									regiontag = namesplit[namesplit.length - 1];
 

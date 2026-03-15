@@ -9,7 +9,7 @@ import {
 } from '@mui/icons-material';
 
 import ExecutionPanel from '../components/ExecutionPanel.jsx';
-import ShuffleCodeEditor from "../components/ShuffleCodeEditor1.jsx";
+import NexusGuardCodeEditor from "../components/NexusGuardCodeEditor1.jsx";
 
 const CodeWorkflow = (defaultprops) => {
     const { serverside, userdata, globalUrl, isLoaded, isLoggedIn, surfaceColor, inputColor, ...props } = defaultprops;
@@ -104,11 +104,11 @@ const CodeWorkflow = (defaultprops) => {
                         console.log("accessible result: ", result);
 
                         // await setCode(`
-                        //     from shufflepy import Shuffle
+                        //     from nexusguardpy import NexusGuard
                             
-                        //     shuffle = Shuffle(
+                        //     nexusguard = NexusGuard(
                         //         "${result}",
-                        //         url='https://shuffler.io',
+                        //         url='https://nexusguardr.io',
                         //     )
                         //     `
                         // );
@@ -147,7 +147,7 @@ const CodeWorkflow = (defaultprops) => {
 
         console.log("Workflow actions: ", newWorkflow.actions);
 
-        // find the latest "Shuffle tools fork" node
+        // find the latest "NexusGuard tools fork" node
         for (let i = 0; i < newWorkflow.actions.length; i++) {
             console.log("Actios: ", newWorkflow.actions[i]);
             if (newWorkflow.actions[i].app_id === "3e320a20966d33c9b7e6790b2705f0bf") {
@@ -362,7 +362,7 @@ const CodeWorkflow = (defaultprops) => {
                 position: 'relative' // Needed for Editor's absolute positioning
             }}>
                 {workflow && mainAction ? (
-                    <ShuffleCodeEditor
+                    <NexusGuardCodeEditor
                         expansionModalOpen={true}
                         setExpansionModalOpen={true}
                         isCloud={true}
@@ -420,8 +420,8 @@ const CodeWorkflow = (defaultprops) => {
                 /> */}
             </Box>
 
-            {/* Create an input element called "copy_element_shuffle" that is not visible */}
-            <input type="text" id="copy_element_shuffle" style={{ position: "absolute", left: "-9999px" }} />
+            {/* Create an input element called "copy_element_nexusguard" that is not visible */}
+            <input type="text" id="copy_element_nexusguard" style={{ position: "absolute", left: "-9999px" }} />
 
             {/* Results Panel */}
             {(error || testResult) && (

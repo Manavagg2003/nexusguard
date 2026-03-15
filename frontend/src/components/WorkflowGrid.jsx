@@ -29,7 +29,7 @@ const searchClient = algoliasearch("JNSS5CFDZZ", "c8f882473ff42d41158430be09ec2b
 const AppGrid = props => {
 	const { maxRows, showName, showSuggestion, isMobile, globalUrl, parsedXs, alternativeView, onlyResults, inputsearch } = props
 
-    const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+    const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
 	const rowHandler = maxRows === undefined || maxRows === null ? 50 : maxRows
 	const xs = parsedXs === undefined || parsedXs === null ? isMobile ? 6 : 4 : parsedXs
 	//const [apps, setApps] = React.useState([]);
@@ -45,7 +45,7 @@ const AppGrid = props => {
 
 	const innerColor = "rgba(255,255,255,0.65)"
 	const borderRadius = 3
-	window.title = "Shuffle | Workflows | Discover your use-case"
+	window.title = "NexusGuard | Workflows | Discover your use-case"
 
 	const submitContact = (email, message) => {
 		const data = {
@@ -58,7 +58,7 @@ const AppGrid = props => {
 			"message": message,
 		}
 	
-		const errorMessage = "Something went wrong. Please contact frikky@shuffler.io directly."
+		const errorMessage = "Something went wrong. Please contact frikky@nexusguardr.io directly."
 
 		fetch(globalUrl+"/api/v1/contact", {
 			method: 'POST',
@@ -227,7 +227,7 @@ const AppGrid = props => {
 					color="primary"
 					value={inputValue}
 					placeholder="Find Workflows..."
-					id="shuffle_search_field"
+					id="nexusguard_search_field"
 					onChange={(event) => {
 						removeQuery("q")
 						const value = event.currentTarget.value

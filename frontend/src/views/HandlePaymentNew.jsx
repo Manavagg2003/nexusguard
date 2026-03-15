@@ -66,13 +66,13 @@ const PaymentField = (props) => {
 
   const isCloud =
     window.location.host === "localhost:3002" ||
-    window.location.host === "shuffler.io";
+    window.location.host === "nexusguardr.io";
 
 	// Multiple unused variables here
   let navigate = useNavigate();
 	const parsedFields = maxFields === undefined ? 300 : maxFields
 	const [variant, setVariant] = useState(0)
-	const [shuffleVariant, setShuffleVariant] = useState(isCloud ? 0 : 1)
+	const [nexusguardVariant, setNexusGuardVariant] = useState(isCloud ? 0 : 1)
 	const [paymentType, setPaymentType] = useState(0)
 	const [modalOpen, setModalOpen] = useState(false)
   const [showPricing, ] = useState(true)
@@ -90,16 +90,16 @@ const PaymentField = (props) => {
 	const [onpremSelectedValue, setOnpremSelectedValue] = useState(8)
 
     useEffect(() => {
-		console.log("New variant: ", shuffleVariant)
+		console.log("New variant: ", nexusguardVariant)
 
-		if (shuffleVariant === 1) {
+		if (nexusguardVariant === 1) {
 			setCalculatedCost("$600")
 			setSelectedValue(8)
 		} else {
 			setCalculatedCost("$180")
 			setSelectedValue(100)
 		}
-	}, [shuffleVariant])
+	}, [nexusguardVariant])
 
 	if (typeof window === 'undefined' || window.location === undefined) {
 		return null
@@ -133,7 +133,7 @@ const PaymentField = (props) => {
 	const handleChange = (event, newValue) => {
 		console.log("Event, value: ", event.target, newValue)
 	
-		if (shuffleVariant === 1) {
+		if (nexusguardVariant === 1) {
 			setSelectedValue(newValue)
 			if (newValue === 32) {
 				setCalculatedCost(`Get A Quote`)
@@ -184,7 +184,7 @@ const PaymentField = (props) => {
 		if (foundTab !== null && foundTab !== undefined) {
 			if (foundTab === "onprem") {
 				//valuetext(8, 1) 
-				setShuffleVariant(1)
+				setNexusGuardVariant(1)
 				//setCalculatedCores(`$${8*75}`)
 			}
 		}
@@ -243,7 +243,7 @@ const PaymentField = (props) => {
 		"cloud": false,
 	},
 	{
-		"name": "Shuffle Datastore (cache)",
+		"name": "NexusGuard Datastore (cache)",
 		"basic": "Max 1GB",
 		"community": "Yes",
 		"pro": "Yes",
@@ -252,7 +252,7 @@ const PaymentField = (props) => {
 		"onprem": false,
 	},
 	{
-		"name": "Shuffle Datastore (cache)",
+		"name": "NexusGuard Datastore (cache)",
 		"basic": "Yes",
 		"community": "Yes",
 		"pro": "Yes",
@@ -315,7 +315,7 @@ const PaymentField = (props) => {
 		"cloud": false,
 	},
 	{
-		"name": "Shuffle SMS alerting",
+		"name": "NexusGuard SMS alerting",
 		"basic": "30 / month",
 		"community": "Yes",
 		"pro": "300 / month",
@@ -323,7 +323,7 @@ const PaymentField = (props) => {
 		"active": true, 
 	},
 	{
-		"name": "Shuffle Email alerting",
+		"name": "NexusGuard Email alerting",
 		"basic": "100 / month",
 		"community": "Yes",
 		"pro": "10.000 / month",
@@ -358,7 +358,7 @@ const PaymentField = (props) => {
 	},
 	{
 		"name": "Email & Chat Support",
-		"basic": "support@shuffler.io",
+		"basic": "support@nexusguardr.io",
 		"community": "No",
 		"pro": "Prioritized + Critical issue SLA",
 		"enterprise": "",
@@ -373,7 +373,7 @@ const PaymentField = (props) => {
 		"active": true, 
 	},
 	{
-		"name": "Shuffle Academy",
+		"name": "NexusGuard Academy",
 		"basic": "Yes",
 		"community": "No",
 		"pro": "Yes",
@@ -495,7 +495,7 @@ const PaymentField = (props) => {
 	},
 
 	{
-		"name": "Shuffle creates integration",
+		"name": "NexusGuard creates integration",
 		"basic": "No",
 		"community": "Yes",
 		"pro": "Yes",
@@ -679,7 +679,7 @@ const PaymentField = (props) => {
 		"active": false, 
 	},
 	{
-		"name": "Shuffle IoC search",
+		"name": "NexusGuard IoC search",
 		"basic": "No",
 		"community": "No",
 		"pro": "Yes",
@@ -752,7 +752,7 @@ const PaymentField = (props) => {
 		"active": true, 
 	},
 	{
-		"name": "Shuffle Custom Modifications",
+		"name": "NexusGuard Custom Modifications",
 		"basic": "Contact us",
 		"community": "No",
 		"pro": "Contact us",
@@ -876,7 +876,7 @@ const PaymentField = (props) => {
 			</Button>
 
 	const level2Button = 
-		<Button fullWidth disabled={false} variant="contained" color="primary" style={{marginTop: shuffleVariant === 0 ? 20 : 45, borderRadius: 25, height: 40, fontSize: 14, color: "white", backgroundImage: buttonBackground,}}onClick={() => {
+		<Button fullWidth disabled={false} variant="contained" color="primary" style={{marginTop: nexusguardVariant === 0 ? 20 : 45, borderRadius: 25, height: 40, fontSize: 14, color: "white", backgroundImage: buttonBackground,}}onClick={() => {
 			//setMonthlyCost(1, paymentType)
 			//setVariant(1)
 			//setModalOpen(true)
@@ -908,10 +908,10 @@ const PaymentField = (props) => {
 					label: "",
 				})
 												 
-				if (shuffleVariant === 0) {
+				if (nexusguardVariant === 0) {
 					navigate("/register?message=Get started for free")
 				} else {
-					window.location.href = "https://github.com/Shuffle/Shuffle/blob/master/.github/install-guide.md"
+					window.location.href = "https://github.com/NexusGuard/NexusGuard/blob/master/.github/install-guide.md"
 				}
 
 				//setMonthlyCost(2, paymentType)
@@ -935,14 +935,14 @@ const PaymentField = (props) => {
 	const topRet = 
 		<div style={{textAlign: "center"}}>
 			<Typography variant={isMobile ? "h4" : "h2"} style={{marginTop: 60,}}>Pricing</Typography>	
-			{/*<Typography variant="body1" style={{marginTop: 15,}}>Find pricing, focused on shuffler.io and self-hosted</Typography>*/}
+			{/*<Typography variant="body1" style={{marginTop: 15,}}>Find pricing, focused on nexusguardr.io and self-hosted</Typography>*/}
 			{/*<Typography variant="body1" color="textSecondary" style={{}}>These prices are likely to change</Typography>*/}
 			<div style={{width: "100%", margin: "auto", backgroundColor: "#1f2023", position: "sticky", top: 0, paddingBottom: 20, zIndex: 10000,}}>
 				<ButtonGroup style={{height: 50, marginTop: 30, }} color="primary" aria-label="outlined secondary button group">
-					<Button style={{width: 150, textTransform: "none",}} variant={shuffleVariant === 0 ? "contained" : "outlined"} onClick={(event) => {
+					<Button style={{width: 150, textTransform: "none",}} variant={nexusguardVariant === 0 ? "contained" : "outlined"} onClick={(event) => {
 						event.preventDefault()
 
-						setShuffleVariant(0)
+						setNexusGuardVariant(0)
 						ReactGA.event({
 							category: "pricing",
 							action: `saas_normal_click`,
@@ -951,10 +951,10 @@ const PaymentField = (props) => {
 
 						navigate("/pricing?tab=cloud")
 					}}>Cloud</Button>
-					<Button style={{width: 150, textTransform: "none",}} variant={shuffleVariant === 1 ? "contained" : "outlined"} onClick={(event) => {
+					<Button style={{width: 150, textTransform: "none",}} variant={nexusguardVariant === 1 ? "contained" : "outlined"} onClick={(event) => {
 						event.preventDefault()
 
-						setShuffleVariant(1)
+						setNexusGuardVariant(1)
 						navigate("/pricing?tab=onprem")
 			
 						ReactGA.event({
@@ -975,15 +975,15 @@ const PaymentField = (props) => {
 							<CardContent style={{padding: 35}}>
 								<Typography variant="h4">Free</Typography>
 								<Typography variant="body1" color="textSecondary">
-									{shuffleVariant === 0 ? 
-										"shuffler.io / Cloud"
+									{nexusguardVariant === 0 ? 
+										"nexusguardr.io / Cloud"
 									: 
-										<a rel="noreferrer noopener" target="_blank" style={{textDecoration: "none", color: "#f85a3e",}} href="https://github.com/shuffle/shuffle">Open Source</a> 
+										<a rel="noreferrer noopener" target="_blank" style={{textDecoration: "none", color: "#f85a3e",}} href="https://github.com/nexusguard/nexusguard">Open Source</a> 
 									}
 								</Typography>
 								<Typography variant="h3" style={{marginTop: 48,}}>{paymentType === 0 ? "Free" : "Free"}</Typography>
 								<Typography variant="body1" color="textSecondary" style={{marginBottom: 40,}}>
-									{shuffleVariant === 0 ? 
+									{nexusguardVariant === 0 ? 
 										"Includes 10k App Executions. Refreshes every month."
 										: 
 										"Unlimited use, self-hosted."
@@ -1011,7 +1011,7 @@ const PaymentField = (props) => {
 											} else {
 												console.log("Couldn't find drift in window.drift and not .drift-open-chat with querySelector: ", window.drift)
 											}
-										}}>Free Support</span> & <a rel="noreferrer noopener" target="_blank" style={{textDecoration: "none", color: "#f85a3e",}} href="https://github.com/shuffle/shuffle">Discord access</a>
+										}}>Free Support</span> & <a rel="noreferrer noopener" target="_blank" style={{textDecoration: "none", color: "#f85a3e",}} href="https://github.com/nexusguard/nexusguard">Discord access</a>
 									</Typography>
 								</span>
 								<div style={{height: 70}} />
@@ -1024,9 +1024,9 @@ const PaymentField = (props) => {
 					<Grid item xs={isMobile ? 12 : 6}>
 						<Card style={cardStyle}>	
 							<CardContent style={{padding: 35}}>
-								<Typography variant="h4">{shuffleVariant === 1 ? "Scale" : "Enterprise"}</Typography>
+								<Typography variant="h4">{nexusguardVariant === 1 ? "Scale" : "Enterprise"}</Typography>
 								<Typography variant="body1" color="textSecondary">
-									{shuffleVariant === 0 ? 
+									{nexusguardVariant === 0 ? 
 										"SaaS / Cloud"
 										:
 										"Open Source + Scale License"
@@ -1041,7 +1041,7 @@ const PaymentField = (props) => {
 										}
 									}
 								}}>{calculatedCost}</Typography>
-								<Typography variant="body1" color="textSecondary" style={{}}>Per month for {shuffleVariant === 1 ? `${selectedValue} CPU cores` : `${selectedValue}k App Executions`}: </Typography>
+								<Typography variant="body1" color="textSecondary" style={{}}>Per month for {nexusguardVariant === 1 ? `${selectedValue} CPU cores` : `${selectedValue}k App Executions`}: </Typography>
 								<div> 
 
 									<Slider
@@ -1052,9 +1052,9 @@ const PaymentField = (props) => {
 										}}
 										marks
 										value={selectedValue}
-										step={shuffleVariant === 0 ? 100 : 4}
-										min={shuffleVariant === 0 ? 100 : 8}
-										max={shuffleVariant === 0 ? 1000 : 32}
+										step={nexusguardVariant === 0 ? 100 : 4}
+										min={nexusguardVariant === 0 ? 100 : 8}
+										max={nexusguardVariant === 0 ? 1000 : 32}
 										valueLabelDisplay="auto"
 									/>
 								</div>
@@ -1065,14 +1065,14 @@ const PaymentField = (props) => {
 									</Typography>
 									<Divider />
 									<Typography variant="body1">
-										{defaultTaskIcon} {shuffleVariant === 0 ? 
+										{defaultTaskIcon} {nexusguardVariant === 0 ? 
 											"Multi-Tenant"
 											:
 											"Scalable Orborus"
 										}
 									</Typography>
 									<Divider />
-									{shuffleVariant === 0 ?
+									{nexusguardVariant === 0 ?
 										<Typography variant="body1">
 											{defaultTaskIcon} Multi-Region Tenants
 										</Typography>
@@ -1091,12 +1091,12 @@ const PaymentField = (props) => {
 
 
 								{level2Button}
-								{shuffleVariant === 0 ?
+								{nexusguardVariant === 0 ?
 									<Button fullWidth disabled={false} variant="outlined" color="primary" style={{marginTop: 10, borderRadius: 25, height: 40, fontSize: 14, }} onClick={() => {
 										if (isLoggedIn) {
 											console.log("Redirecting to Stripe!")
 		
-											const priceItem = window.location.origin === "https://shuffler.io" ? "app_executions" : "price_1MROFrDzMUgUjxHShcSxgHO1"
+											const priceItem = window.location.origin === "https://nexusguardr.io" ? "app_executions" : "price_1MROFrDzMUgUjxHShcSxgHO1"
 
 											const successUrl = `${window.location.origin}/admin?admin_tab=billing&payment=success`
 											const failUrl = `${window.location.origin}/pricing?admin_tab=billing&payment=failure`
@@ -1164,7 +1164,7 @@ const PaymentField = (props) => {
 						</Card>
 					</Grid>
 
-					{/*shuffleVariant === 1 ? null : 
+					{/*nexusguardVariant === 1 ? null : 
 						<Grid item xs={isMobile ? 12 : skipFreemode ? 6 : 4}>
 							<Card style={cardStyle}>	
 								<CardContent style={{padding: 35}}>
@@ -1182,7 +1182,7 @@ const PaymentField = (props) => {
 										- Sub-organization access
 									</Typography>
 									<Typography variant="body1">
-										- Build Shuffle into your product
+										- Build NexusGuard into your product
 									</Typography>
 									<div style={{height: 10}} />
 									<Button fullWidth disabled={false} variant="contained" color="primary" style={{borderRadius: 25, height: 40, margin: "60px 0px 15px 0px", fontSize: 14, color: "white", backgroundImage: buttonBackground,}} onClick={() => {
@@ -1209,7 +1209,7 @@ const PaymentField = (props) => {
 	
 			<div style={{maxWidth: maxwidth, margin: "auto",}}>
 				<Typography color="textSecondary" style={{marginTop: 25, textAlign: isMobile ? "left" : "center",}}>
-					{shuffleVariant === 0 ?
+					{nexusguardVariant === 0 ?
 						"- 100k Executions per month can handle about 500 Assets, and scales linearly."
 						:
 						"- 8 CPU-cores (default) can handle about 1500 Assets and scales linearly." 
@@ -1219,7 +1219,7 @@ const PaymentField = (props) => {
 				</Typography>
 				{/*
 				<Typography color="textSecondary" style={{marginTop: 25, textAlign: isMobile ? "left" : "center",}}>
-					Shuffle is an <a rel="noreferrer noopener" target="_blank" style={{textDecoration: "none", color: "#f85a3e",}} href="https://github.com/shuffle/shuffle">Open Source</a> project. Gives access to support, development and features not otherwise available. This applies to both Open Source & Cloud/SaaS. After the transaction is finished, you will immediately have full access to our support team, and you organization will automatically get upgraded resources assigned. 
+					NexusGuard is an <a rel="noreferrer noopener" target="_blank" style={{textDecoration: "none", color: "#f85a3e",}} href="https://github.com/nexusguard/nexusguard">Open Source</a> project. Gives access to support, development and features not otherwise available. This applies to both Open Source & Cloud/SaaS. After the transaction is finished, you will immediately have full access to our support team, and you organization will automatically get upgraded resources assigned. 
 				</Typography>
 				*/}
 				<Grid container style={{marginTop: 50, marginBottom: 100, }} spacing={2}>
@@ -1239,7 +1239,7 @@ const PaymentField = (props) => {
 			{!showPricing ? 
 				null :
 				<div style={{maxWidth: isMobile ? maxwidth : maxwidth+500, margin: "auto", marginTop: 25, }}>
-					<Typography variant="h4" style={{marginBottom: 10, textAlign: "center",}}>Features ({shuffleVariant === 0 ? "Cloud" : "Self-Hosted"})</Typography>
+					<Typography variant="h4" style={{marginBottom: 10, textAlign: "center",}}>Features ({nexusguardVariant === 0 ? "Cloud" : "Self-Hosted"})</Typography>
 					<List style={{marginTop: 15, }}>
 						<ListItem style={{backgroundColor: theme.palette.surfaceColor}}>
 							<ListItemText
@@ -1266,12 +1266,12 @@ const PaymentField = (props) => {
 							const communityData = data.community === "Yes" || data.community === true ? activeIcon : data.community === "No" || data.community === false ? inActiveIcon : data.community
 							const proData = data.pro === "Yes" || data.pro === true ? activeIcon : data.pro === "No" || data.pro === false ? inActiveIcon : data.pro
 
-							if (shuffleVariant === 0 && data.cloud === false) {
+							if (nexusguardVariant === 0 && data.cloud === false) {
 								indexskip += 1
 								return null
 							}
 
-							if (shuffleVariant === 1 && data.onprem === false) {
+							if (nexusguardVariant === 1 && data.onprem === false) {
 								indexskip += 1
 								return null
 							}
@@ -1396,9 +1396,9 @@ const PaymentField = (props) => {
 
 			<Typography variant={isMobile ? "h6" : "h4"} style={{margin: "auto", width: maxwidth/3*2, marginBottom: 10, }}>Cloud, Hybrid & Onprem</Typography>	
 			<Typography variant="body1" color="textSecondary" style={{margin: "auto", width: maxwidth/3*2, marginBottom: 25, }}>
-				Our support model is built for both the Cloud and Onpremises version of Shuffle, and can be managed between both. <Link rel="noreferrer noopener" target="_blank" style={{textDecoration: "none", color: "#f85a3e",}} to="/contact">Contact us </Link>for more info, or to get a quote from one of our <Link rel="noreferrer noopener" target="_blank" style={{textDecoration: "none", color: "#f85a3e",}} to="/partner">verified resellers.</Link>
+				Our support model is built for both the Cloud and Onpremises version of NexusGuard, and can be managed between both. <Link rel="noreferrer noopener" target="_blank" style={{textDecoration: "none", color: "#f85a3e",}} to="/contact">Contact us </Link>for more info, or to get a quote from one of our <Link rel="noreferrer noopener" target="_blank" style={{textDecoration: "none", color: "#f85a3e",}} to="/partner">verified resellers.</Link>
 			</Typography>
-      <img src="images/partner/models.jpeg" alt="Shuffle MSSP and Open Source" style={{width: isMobile ? "100%" : 500, margin: "auto", borderRadius: theme.palette.borderRadius, }} />
+      <img src="images/partner/models.jpeg" alt="NexusGuard MSSP and Open Source" style={{width: isMobile ? "100%" : 500, margin: "auto", borderRadius: theme.palette.borderRadius, }} />
 
 			<div style={{marginBottom: 100}} />
 			{removeAdditions === true ? null :
@@ -1412,7 +1412,7 @@ const PaymentField = (props) => {
 						<Typography variant="body1" color="textSecondary" style={{marginBottom: 200}}>
 							If you got more questions about our pricing and plans, please <Link to="/contact" style={{textDecoration: "none", color: theme.palette.primary.main}}>contact us</Link> so we can help	
 						</Typography>
-						<Newsletter globalUrl={"https://shuffler.io"} />
+						<Newsletter globalUrl={"https://nexusguardr.io"} />
 					</div>
 				</span>
 			}
@@ -1457,7 +1457,7 @@ const PaymentField = (props) => {
 			}}
 		>
 			<FormControl>
-				<DialogTitle><div style={{color: "white"}}>Shuffle payments</div></DialogTitle>
+				<DialogTitle><div style={{color: "white"}}>NexusGuard payments</div></DialogTitle>
 				<DialogContent>
 					<Typography variant="body1">
 						Choose recurrence
@@ -1489,7 +1489,7 @@ const PaymentField = (props) => {
 								Your plan:
 							</Typography>
 							<Typography color="textSecondary">
-								Shuffle <b>{variant === 0 ? "Community" : variant === 2 ? "Free" : "Pro"}</b> Edition
+								NexusGuard <b>{variant === 0 ? "Community" : variant === 2 ? "Free" : "Pro"}</b> Edition
 							</Typography>
 							<Divider style={{marginTop: 15, marginBottom: 15}}/>
 							<div style={{display: "flex"}}>

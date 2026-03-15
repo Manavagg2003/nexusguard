@@ -15,15 +15,15 @@ const Admin2 = (props) => {
     const [orgRequest, setOrgRequest] = React.useState(true);
     const [isOrgLoaded, setIsOrgLoaded] = React.useState(false);
     const {brandName, updateOrg, setUpdateOrg}  = useContext(Context)
-    const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+    const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
 
     let navigate = useNavigate();
 
 	if (document !== undefined) {
         if (selectedOrganization?.name !== undefined) {
-			document.title = brandName?.length > 0 ? selectedOrganization?.name + ` - Admin - ${brandName}` : selectedOrganization?.name + ` - Admin - Shuffle`;
+			document.title = brandName?.length > 0 ? selectedOrganization?.name + ` - Admin - ${brandName}` : selectedOrganization?.name + ` - Admin - NexusGuard`;
 		} else {
-  			document.title = brandName?.length > 0 ? `Admin - ${brandName}` : `Admin - Shuffle`;
+  			document.title = brandName?.length > 0 ? `Admin - ${brandName}` : `Admin - NexusGuard`;
 		}
 	}
 

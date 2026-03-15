@@ -285,7 +285,7 @@ const LoginDialog = (props) => {
           }}
         >
           <img
-            src="images/Shuffle_logo.png"
+            src="images/NexusGuard_logo.png"
             style={{
               height: imgsize + 10,
               width: imgsize + 10,
@@ -301,7 +301,7 @@ const LoginDialog = (props) => {
               variant="body2"
               style={{ marginBottom: 20, color: "white" }}
             >
-              Waiting for the Shuffle database to become available. This may
+              Waiting for the NexusGuard database to become available. This may
               take up to two minutes.
             </Typography>
 
@@ -328,11 +328,11 @@ const LoginDialog = (props) => {
                 style={{ marginBottom: 20, color: "white" }}
               >
                 <b>
-                  Are you sure Shuffle is{" "}
+                  Are you sure NexusGuard is{" "}
                   <a
-                    rel="norefferer"
+                    rel="norefferer noreferrer"
                     target="_blank"
-                    href="https://github.com/frikky/Shuffle/blob/master/.github/install-guide.md"
+                    href="https://github.com/frikky/NexusGuard/blob/master/.github/install-guide.md"
                     style={{ textDecoration: "none", color: "#f86a3e" }}
                   >
                     installed correctly
@@ -344,10 +344,10 @@ const LoginDialog = (props) => {
                 variant="body2"
                 style={{ marginBottom: 20, color: "white" }}
               >
-                <b>1.</b> Make sure shuffle-database folder has correct access, and that you have a minimum of <b>4Gb of RAM available</b>:{" "}
+                <b>1.</b> Make sure nexusguard-database folder has correct access, and that you have a minimum of <b>4Gb of RAM available</b>:{" "}
                 <br />
                 <br />
-                sudo chown -R 1000:1000 shuffle-database
+                sudo chown -R 1000:1000 nexusguard-database
               </Typography>
               <Typography
                 variant="body2"
@@ -365,7 +365,7 @@ const LoginDialog = (props) => {
                 <b>3</b>. Restart the database:
                 <br />
                 <br />
-                sudo docker restart shuffle-opensearch
+                sudo docker restart nexusguard-opensearch
               </Typography>
             </Paper>
             <Typography
@@ -374,7 +374,7 @@ const LoginDialog = (props) => {
             >
               Need help?{" "}
               <a
-                rel="norefferer"
+                rel="norefferer noreferrer"
                 target="_blank"
                 href="https://discord.gg/B2CBzUm"
                 style={{ textDecoration: "none", color: "#f86a3e" }}

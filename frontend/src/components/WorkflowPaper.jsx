@@ -52,7 +52,7 @@ const WorkflowPaper = (props) => {
 
   	const isCloud =
 			window.location.host === "localhost:3002" ||
-			window.location.host === "shuffler.io";
+			window.location.host === "nexusguardr.io";
 
 		//console.log("Workflow: ", data)
     var boxColor = "#86c142";
@@ -87,7 +87,7 @@ const WorkflowPaper = (props) => {
 			marginRight: 10, 
 			border: "1px solid rgba(255,255,255,0.3)",
 		}
-    var image = data.creator_info !== undefined && data.creator_info !== null && data.creator_info.image !== undefined && data.creator_info.image !== null && data.creator_info.image.length > 0 ? <Avatar alt={data.creator} src={data.creator_info.image} style={imageStyle}/> : <Avatar alt={"shuffle_image"} src={theme.palette.defaultImage} style={imageStyle}/>
+    var image = data.creator_info !== undefined && data.creator_info !== null && data.creator_info.image !== undefined && data.creator_info.image !== null && data.creator_info.image.length > 0 ? <Avatar alt={data.creator} src={data.creator_info.image} style={imageStyle}/> : <Avatar alt={"nexusguard_image"} src={theme.palette.defaultImage} style={imageStyle}/>
 		const creatorname = data.creator_info !== undefined && data.creator_info !== null && data.creator_info.username !== undefined && data.creator_info.username !== null && data.creator_info.username.length > 0 ? data.creator_info.username : ""
     var orgName = "";
     var orgId = "";
@@ -102,7 +102,7 @@ const WorkflowPaper = (props) => {
 		}
 
 		if (!isCloud) {
-			parsedUrl = `https://shuffler.io${parsedUrl}`
+			parsedUrl = `https://nexusguardr.io${parsedUrl}`
 		}
 
     return (
@@ -148,7 +148,7 @@ const WorkflowPaper = (props) => {
                 >
                   <a
                     href={parsedUrl}
-										rel="norefferer"
+										rel="norefferer noreferrer"
 										target="_blank"
                     style={{ textDecoration: "none", color: "inherit" }}
                   >

@@ -573,8 +573,8 @@ const SSOTab = ({selectedOrganization, userdata, isEditOrgTab, globalUrl, handle
 						color="textSecondary"
 						style={{ marginTop: 5, marginBottom: 5, color: "rgba(158, 158, 158, 1)", fontSize: 16, fontFamily: "var(--zds-typography-base,Inter,Helvetica,arial,sans-serif)", fontWeight: 400 }}
 					>
-						Restrict user login to SSO if no valid role is assigned by the SSO provider. When enabled, users will not be allowed to log in via SSO if their assigned role doesn't matches one of the following: shuffle-user, shuffle-admin, or shuffle-org-reader. Currently, available for OpenId Connect only. 
-						<a href="https://shuffler.io/docs/extensions#how-to-assign-a-role-to-a-new-user-from-an-sso-provider-(openid-connect)-in-shuffle" target="_blank" style={{ color: theme.palette.linkColor }}> Learn more</a>
+						Restrict user login to SSO if no valid role is assigned by the SSO provider. When enabled, users will not be allowed to log in via SSO if their assigned role doesn't matches one of the following: nexusguard-user, nexusguard-admin, or nexusguard-org-reader. Currently, available for OpenId Connect only. 
+						<a href="https://nexusguardr.io/docs/extensions#how-to-assign-a-role-to-a-new-user-from-an-sso-provider-(openid-connect)-in-nexusguard" target="_blank" style={{ color: theme.palette.linkColor }} rel="noreferrer"> Learn more</a>
 						 </Typography>
 					<div>
 						<Switch
@@ -634,7 +634,7 @@ const SSOTab = ({selectedOrganization, userdata, isEditOrgTab, globalUrl, handle
 						</span>
 					</span>
 					<Typography variant="body2" color="tehttp://localhost:5002/api/v1/login_openidxtSecondary" style={{ textAlign: "left", fontSize: 16, marginTop: 8,  fontWeight: 400 }}>
-						IdP URL for Shuffle OpenID: <Link to={`${globalUrl}/api/v1/login_openid`} target="_blank" style={{ color: theme.palette.text.secondary, textDecoration: "none", fontSize: 16,}}>{`${globalUrl}/api/v1/login_openid`}</Link>
+						IdP URL for NexusGuard OpenID: <Link to={`${globalUrl}/api/v1/login_openid`} target="_blank" style={{ color: theme.palette.text.secondary, textDecoration: "none", fontSize: 16,}}>{`${globalUrl}/api/v1/login_openid`}</Link>
 						</Typography>
 						<div style={{ display: 'flex', marginTop: 10, }}>
 							<Typography

@@ -100,7 +100,7 @@ const DetectionDashBoard = (props) => {
     setIsLoading(true);
     setImportAttempts((prevAttempts) => prevAttempts + 1);
 
-    const url = "https://github.com/satti-hari-krishna-reddy/shuffle_sigma";
+    const url = "https://github.com/satti-hari-krishna-reddy/nexusguard_sigma";
     const folder = "sigma";
 
     const parsedData = {

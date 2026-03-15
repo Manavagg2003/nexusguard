@@ -179,7 +179,7 @@ export default function defaultCytoscapeStyle(theme, apps) {
       },
     },
     {
-      selector: `node[app_name="Shuffle Tools"], node[app_name="email"], node[app_name="http"]`,
+      selector: `node[app_name="NexusGuard Tools"], node[app_name="email"], node[app_name="http"]`,
       css: {
         width: "35px",
         height: "35px",
@@ -330,7 +330,7 @@ export default function defaultCytoscapeStyle(theme, apps) {
       },
     },
     {
-      selector: `node[app_id="shuffle_agent"]`,
+      selector: `node[app_id="nexusguard_agent"]`,
       css: {
       "shape": function(element) {
             return "roundrectangle"
@@ -452,7 +452,7 @@ export default function defaultCytoscapeStyle(theme, apps) {
       },
     },
     {
-      selector: ".shuffle-hover-highlight",
+      selector: ".nexusguard-hover-highlight",
       css: {
         "background-color": "#f85a3e",
         "border-color": "#f85a3e",

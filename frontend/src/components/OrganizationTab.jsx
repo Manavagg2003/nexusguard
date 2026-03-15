@@ -116,7 +116,7 @@ const OrganizationTab = (props) => {
         const formattedTabName = tabName.toLowerCase().replace(/[\s&]+/g, '');
         const encodedTabName = encodeURIComponent(formattedTabName);
         setSelectedTab(formattedTabName);
-        document.title = brandName?.length > 0 ? `${brandName} - admin - ${formattedTabName}` : `Shuffle - admin - ${formattedTabName}`;
+        document.title = brandName?.length > 0 ? `${brandName} - admin - ${formattedTabName}` : `NexusGuard - admin - ${formattedTabName}`;
         navigate(`?admin_tab=${encodedTabName}`);
     };
 

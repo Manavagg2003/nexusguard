@@ -14,13 +14,13 @@ export const AppContext = (props) => {
     const [leftSideBarOpenByClick, setLeftSideBarOpenByClick] = useState(currentLocation?.includes('/workflows/') ? false : true)
     const [windowWidth, setWindowWidth] = useState(serverside === true ? 100 : window.innerWidth);
     const [brandColor, setBrandColor] = useState(() => localStorage.getItem("brandColor") || "#ff8544");
-    const [brandName, setBrandName] = useState(()=> localStorage.getItem("brandName") || "Shuffle");
+    const [brandName, setBrandName] = useState(()=> localStorage.getItem("brandName") || "NexusGuard");
     const [updateOrg, setUpdateOrg] = useState(false);
 
     const [themeMode, setThemeMode] = useState(
       () => localStorage.getItem("theme") || "dark"
     );
-    const [supportEmail, setSupportEmail] = useState("support@shuffler.io");
+    const [supportEmail, setSupportEmail] = useState("support@nexusguardr.io");
     const [logoutUrl, setLogoutUrl] = useState("");
 
     useEffect(() => {

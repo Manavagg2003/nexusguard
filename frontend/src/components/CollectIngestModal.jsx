@@ -91,7 +91,7 @@ const CollectIngestModal = (props) => {
 		})
 		.catch((error) => {
 			console.error("Error starting ingestion:", error);
-			toast.error(`Failed to start ingestion for ${bundleName}. Please try again or contact support@shuffler.io if this persists.`);
+			toast.error(`Failed to start ingestion for ${bundleName}. Please try again or contact support@nexusguardr.io if this persists.`);
 		});
 
 	}

@@ -3,14 +3,18 @@ import { createTheme, adaptV4Theme } from "@mui/material/styles";
 const theme = createTheme(adaptV4Theme({
   palette: {
 	theme: "dark",
-    main: "#FF8544",
+    main: "#0ea5e9",
     primary: {
-      main: "#FF8544",
+      main: "#0ea5e9",
   	  contrastText: "#ffffff",
     },
     secondary: {
-      main: "rgba(255,255,255,0.7)",
-	  contrastText: "#000000",
+      main: "#6366f1",
+	  contrastText: "#ffffff",
+    },
+    background: {
+      default: "#0f172a",
+      paper: "#1e293b",
     },
     text: {
       secondary: "rgba(255,255,255,0.8)",
@@ -19,10 +23,10 @@ const theme = createTheme(adaptV4Theme({
     //inputColor: "#383B40",
     
 	inputColor: "rgba(39,41,45,1)",
-    surfaceColor: "#27292d",
+    surfaceColor: "#1e293b",
     //platformColor: "#1c1c1d",
-    platformColor: "#212121",
-    backgroundColor: "#1a1a1a",
+    platformColor: "#1e293b",
+    backgroundColor: "#0f172a",
 	distributionColor: "#40E0D0",
 
     green: "#5cc879",
@@ -80,7 +84,7 @@ const theme = createTheme(adaptV4Theme({
 	singulBlackWhite: "/images/singul_black_white.png",
   },
   typography: {
-    fontFamily: `"inter", "Roboto", "Helvetica", "Arial", sans-serif`,
+    fontFamily: `"Inter", sans-serif`,
     useNextVariants: true,
     fontWeightLight: 300,
     fontWeightRegular: 400,
@@ -157,14 +161,18 @@ export const getTheme = (themeMode, brandColor) =>
   createTheme({
       palette: {
         mode: themeMode,
-        main: brandColor || "#FF8544",
+        main: brandColor || "#0ea5e9",
         primary: {
-          main: brandColor || "#FF8544",
+          main: brandColor || "#0ea5e9",
           contrastText:  "#ffffff",
         },
         secondary: {
-          main: "rgba(255,255,255,0.7)",
-          contrastText:"#000000",
+          main: "#6366f1",
+          contrastText:"#ffffff",
+        },
+        background: {
+          default: themeMode === "dark" ? "#0f172a" : "#f1f1f1",
+          paper: themeMode === "dark" ? "#1e293b" : "#ffffff",
         },
         text: {
           primary: themeMode === "dark" ? "#ffffff" : "#1A1A1A",
@@ -174,20 +182,20 @@ export const getTheme = (themeMode, brandColor) =>
         inputColor: themeMode === "dark" ? "rgba(39,41,45,1)" : "rgba(245, 245, 245, 1)",
         textColor: themeMode === "dark" ? "#F1F1F1" : "#1A1A1A",
         textPrimary: themeMode === "dark" ? "rgba(255, 255, 255, 0.8)" : "rgba(26, 26, 26, 0.8)",
-        surfaceColor: themeMode === "dark" ? "#27292d" : "#EFEFEF",
-        platformColor: themeMode === "dark" ? "#212121" : "#ffffff",
-        backgroundColor: themeMode === "dark" ? "#1a1a1a" : "#f1f1f1",
+        surfaceColor: themeMode === "dark" ? "#1e293b" : "#EFEFEF",
+        platformColor: themeMode === "dark" ? "#1e293b" : "#ffffff",
+        backgroundColor: themeMode === "dark" ? "#0f172a" : "#f1f1f1",
         distributionColor: themeMode === "dark" ? "#40E0D0" : "#008080",
-        cardBackgroundColor: themeMode === "dark" ? "#1e1e1e" : "#eaeaea",
-        cardHoverColor: themeMode === "dark" ? "#323232" : "#F0F0F0", 
-        hoverColor: themeMode === "dark" ? "#323232" : "#D6D6D6",
-        usecaseCardColor: themeMode === "dark" ? "#2f2f2f" : "rgba(245, 245, 245, 1)",
-        usecaseCardHoverColor: themeMode === "dark" ? "#2F2F2F" : "rgba(245, 245, 245, 1)",
-        usecaseDialogFieldColor: themeMode === "dark" ? "#2B2B2B" : "#F5F5F5",
-        accentColor: themeMode === "dark" ? "#ff8544" : "#ff8544",
+        cardBackgroundColor: themeMode === "dark" ? "#1e293b" : "#eaeaea",
+        cardHoverColor: themeMode === "dark" ? "#334155" : "#F0F0F0", 
+        hoverColor: themeMode === "dark" ? "#334155" : "#D6D6D6",
+        usecaseCardColor: themeMode === "dark" ? "#1e293b" : "rgba(245, 245, 245, 1)",
+        usecaseCardHoverColor: themeMode === "dark" ? "#334155" : "rgba(245, 245, 245, 1)",
+        usecaseDialogFieldColor: themeMode === "dark" ? "#1e293b" : "#F5F5F5",
+        accentColor: themeMode === "dark" ? "#0ea5e9" : "#0ea5e9",
         green: themeMode === "dark" ? "#5cc879" : "#008000",
-        defaultBorder: themeMode === "dark" ? '1px solid #494949' : '1px solid #CCCCCC',
-        linkColor: brandColor === "#ff8544" ? "#f86a3e" : brandColor,
+        defaultBorder: themeMode === "dark" ? '1px solid #334155' : '1px solid #CCCCCC',
+        linkColor: brandColor === "#0ea5e9" ? "#0284c7" : brandColor,
 
         borderRadius: 10,
         loaderColor: themeMode === "dark" ? "#1a1a1a" : "#E0E0E0",
@@ -263,7 +271,7 @@ export const getTheme = (themeMode, brandColor) =>
         scrollbarColorTransparent: themeMode === "dark" ? '#494949 transparent': "#c1c1c1 transparent",
       },
       typography: {
-        fontFamily: `"inter", "Roboto", "Helvetica", "Arial", sans-serif`,
+        fontFamily: `"Inter", sans-serif`,
         color: themeMode === "dark" ? "#ffffff" : "#000000",
         useNextVariants: true,
         fontWeightLight: 300,
@@ -332,15 +340,15 @@ export const getTheme = (themeMode, brandColor) =>
             {
               props: { variant: 'contained', color: 'primary' },
               style: {
-                backgroundColor: themeMode === "dark" ? brandColor || '#ff8544' : brandColor || '#FF7C35',
-                color: themeMode === "dark" ? '#1a1a1a': '#FFFFFF',
+                backgroundColor: themeMode === "dark" ? brandColor || '#0ea5e9' : brandColor || '#0ea5e9',
+                color: themeMode === "dark" ? '#ffffff': '#ffffff',
                 borderRadius: '4px',
                 whiteSpace: "nowrap",
 		            textWrap: "normal",
                 '&:hover': {
                   fontWeight: 600,
-                  backgroundColor: themeMode === 'dark' ? brandColor || "#ff955c" : brandColor || '#FF8D4F',
-                  color: themeMode === "dark" ? '#1a1a1a': '#FFFFFF',
+                  backgroundColor: themeMode === 'dark' ? brandColor || "#0284c7" : brandColor || '#0284c7',
+                  color: themeMode === "dark" ? '#ffffff': '#ffffff',
                 },
               },
             },
@@ -364,14 +372,14 @@ export const getTheme = (themeMode, brandColor) =>
             {
               props: { variant: 'outlined', color: 'primary' },
               style: {
-                borderColor: themeMode === "dark" ?  brandColor || "#ff8544" : brandColor || "#cc5f1f",
-                color: themeMode === "dark" ? brandColor || "#ff8544" : brandColor || "#cc5f1f",
+                borderColor: themeMode === "dark" ?  brandColor || "#0ea5e9" : brandColor || "#0ea5e9",
+                color: themeMode === "dark" ? brandColor || "#0ea5e9" : brandColor || "#0ea5e9",
                 whiteSpace: "nowrap",
                 fontWeight: 'normal',
 		            textWrap: "normal",
                 '&:hover': {
-                  backgroundColor: themeMode === "dark" ? brandColor || "#ff8544" : "#ffe8dc",
-                  color: themeMode === "dark" ? "#1a1a1a" : "#8a3d00",
+                  backgroundColor: themeMode === "dark" ? brandColor || "#0ea5e9" : "#e0f2fe",
+                  color: themeMode === "dark" ? "#ffffff" : "#0284c7",
                   fontWeight: 600,
                 },
               },

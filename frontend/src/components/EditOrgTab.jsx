@@ -30,7 +30,7 @@ const EditOrgTab = (props) => {
     const [organizationFeatures, setOrganizationFeatures] = React.useState({});
     const [users, setUsers] = React.useState([]);
     const [orgRequest, setOrgRequest] = React.useState(true);
-    const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+    const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
     useEffect(() => { 
         if(users.length === 0) {
             getUsers();
@@ -189,7 +189,7 @@ const EditOrgTab = (props) => {
         // Loop users
         var lastLogin = 0
         for (var i = 0; i < users.length; i++) {
-            if (users[i].username.includes("shuffler")) {
+            if (users[i].username.includes("nexusguardr")) {
                 continue
             }
 
@@ -228,7 +228,7 @@ const EditOrgTab = (props) => {
         // Check if cloud sync is active, and if so, add a message about it
         const cloudSyncInfo = selectedOrganization.cloud_sync === true ? "- Scale your onprem installation" : ""
 
-        var body = `Hey,%0D%0A%0D%0AI noticed you tried to use Shuffle${extra_timestamp_text}, and thought you may be interested in a POC. It looks like you have ${workflow_amount} workflows made, but it still doesn't look like you are getting what you wanted out of  Shuffle. If you're interested, I'd love to set up a quick call to see if we can help you get more out of Shuffle. %0D%0A%0D%0A
+        var body = `Hey,%0D%0A%0D%0AI noticed you tried to use NexusGuard${extra_timestamp_text}, and thought you may be interested in a POC. It looks like you have ${workflow_amount} workflows made, but it still doesn't look like you are getting what you wanted out of  NexusGuard. If you're interested, I'd love to set up a quick call to see if we can help you get more out of NexusGuard. %0D%0A%0D%0A
 
 Some of the things we can help with:%0D%0A
 ${your_apps}
@@ -239,7 +239,7 @@ ${cloudSyncInfo}%0D%0A
 
 If you're interested, please let me know a time that works for you, or set up a call here: https://drift.me/${username}`
 
-        return `mailto:${admins}?bcc=frikky@shuffler.io,binu@shuffler.io&subject=${subject}&body=${body}`
+        return `mailto:${admins}?bcc=frikky@nexusguardr.io,binu@nexusguardr.io&subject=${subject}&body=${body}`
     }
 
     if (

@@ -967,7 +967,7 @@ const RegionChangeModal = memo(
 
     const regionsplit = selectedOrganization?.region_url?.split(".");
 
-    if (regionsplit?.length > 2 && !regionsplit[0]?.includes("shuffler")) {
+    if (regionsplit?.length > 2 && !regionsplit[0]?.includes("nexusguardr")) {
       const namesplit = regionsplit[0]?.split("/");
       regiontag = namesplit[namesplit.length - 1];
 

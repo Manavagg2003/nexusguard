@@ -157,7 +157,7 @@ const RunWorkflow = (defaultprops) => {
     props.match = {}
     props.match.params = params
 
-	const defaultTitle = workflow.name !== undefined ? "Form for " + workflow.name : "Shuffle - Form to Run Workflows"
+	const defaultTitle = workflow.name !== undefined ? "Form for " + workflow.name : "NexusGuard - Form to Run Workflows"
 	if (document != undefined && document.title != defaultTitle) {
 		document.title = defaultTitle
 	}
@@ -252,7 +252,7 @@ const RunWorkflow = (defaultprops) => {
 		})
 		.then((responseJson) => {
 			if (responseJson.success === false) {
-				//toast.error("Failed loading forms. Please try again or contact support@shuffler.io if this persists.")
+				//toast.error("Failed loading forms. Please try again or contact support@nexusguardr.io if this persists.")
 			} else {
 				if (responseJson?.length > 0) {
 					// Sort them by name
@@ -847,7 +847,7 @@ const RunWorkflow = (defaultprops) => {
       })
       .then((responseJson) => {
 		if (responseJson.success === false) {
-			toast.warn("Failed getting the workflow. Please contact support@shuffler.io if this persists.")
+			toast.warn("Failed getting the workflow. Please contact support@nexusguardr.io if this persists.")
 			return
 		}
 
@@ -1057,7 +1057,7 @@ const RunWorkflow = (defaultprops) => {
 			if (response.status !== 200) {
 				console.log("Status not 200 for stream results :O!");
 
-				//toast.warn("Error getting results.. Please try again or contact support@shuffler.io if this persists.")
+				//toast.warn("Error getting results.. Please try again or contact support@nexusguardr.io if this persists.")
 			}
 		
 			return response.json();
@@ -1262,8 +1262,8 @@ const RunWorkflow = (defaultprops) => {
 	}
 
 	const organization = selectedOrganization !== undefined && selectedOrganization !== null ? selectedOrganization.name : ""
-	const contact = selectedOrganization !== undefined && selectedOrganization !== null && selectedOrganization.org !== undefined && selectedOrganization.org !== null? selectedOrganization.org : "support@shuffler.io"
-	//const contact = selectedOrganization !== undefined && selectedOrganization !== null && selectedOrganization.contact !== undefined && selectedOrganization.contact !== null? selectedOrganization.contact : "support@shuffler.io"
+	const contact = selectedOrganization !== undefined && selectedOrganization !== null && selectedOrganization.org !== undefined && selectedOrganization.org !== null? selectedOrganization.org : "support@nexusguardr.io"
+	//const contact = selectedOrganization !== undefined && selectedOrganization !== null && selectedOrganization.contact !== undefined && selectedOrganization.contact !== null? selectedOrganization.contact : "support@nexusguardr.io"
 	
 	const image = selectedOrganization !== undefined && selectedOrganization !== null && selectedOrganization.image !== undefined && selectedOrganization.image !== null && selectedOrganization.image !== "" ? selectedOrganization.image : theme.palette.defaultImage
 

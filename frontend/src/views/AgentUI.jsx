@@ -183,7 +183,7 @@ const AgentUI = (props) => {
     const navigate = useNavigate();
 
 	if (document !== undefined && document !== null && !document?.title?.includes("Agent")) {
-    	document.title = "Shuffle AI Agents"
+    	document.title = "NexusGuard AI Agents"
 	}
 
 	const agentWrapperStyle = {
@@ -359,7 +359,7 @@ const AgentUI = (props) => {
 			} else {
 				setDisableButtons(false)
 				if (responseJson.reason === undefined || responseJson.reason === null) {
-					toast.error("Failed to load the agent data. Please try again and contact support@shuffler.io if this persists")
+					toast.error("Failed to load the agent data. Please try again and contact support@nexusguardr.io if this persists")
 				} else {
 					toast.error("Error: " + responseJson.reason)
 				}
@@ -373,12 +373,12 @@ const AgentUI = (props) => {
 
 	const RerunDecision = (decision) => {
 		if (execution.execution_id === undefined || execution.execution_id === null) {
-			toast.error("No workflow run loaded. Please try again and contact support@shuffler.io if this persists.")
+			toast.error("No workflow run loaded. Please try again and contact support@nexusguardr.io if this persists.")
 			return
 		}
 
 		if (agentActionResult === undefined || agentActionResult === null) {
-			toast.error("Failed to find the relevant agent action. Please try again, and contact support@shuffler.io if it persists.")
+			toast.error("Failed to find the relevant agent action. Please try again, and contact support@nexusguardr.io if it persists.")
 			return
 		}
 
@@ -404,7 +404,7 @@ const AgentUI = (props) => {
 			if (responseJson.success !== false) {
 			} else {
 				if (responseJson.reason === undefined || responseJson.reason === null) {
-					toast.warn("Failed to restart the agent decision. Please try again and contact support@shuffler.io if this persists")
+					toast.warn("Failed to restart the agent decision. Please try again and contact support@nexusguardr.io if this persists")
 				} else {
 					toast.warn(responseJson.reason)
 
@@ -532,7 +532,7 @@ const AgentUI = (props) => {
 
 				toast.success("Successfully submitted answers! The agent should continue shortly.")
 			} else {
-				toast.warn("Failed to submit answers. Please try again or contact support@shuffler.io if this persists..")
+				toast.warn("Failed to submit answers. Please try again or contact support@nexusguardr.io if this persists..")
 			}
 		})
 		.catch((error) => {
@@ -1075,7 +1075,7 @@ const AgentUI = (props) => {
 
 												setQuestionAnswers({...questionAnswers, })
 											} catch (e) {
-												toast.warn("Something went wrong. Please contact support@shuffler.io. Details: " + e)
+												toast.warn("Something went wrong. Please contact support@nexusguardr.io. Details: " + e)
 											}
 										}}
 
@@ -1448,9 +1448,9 @@ const AgentUI = (props) => {
 		const data = {
 			"id": uuid,
 			"name":"agent",
-			//"app_name":"Shuffle AI",
+			//"app_name":"NexusGuard AI",
 			"app_name":"AI Agent", // Failover for rerun
-			"app_id":"shuffle_agent",
+			"app_id":"nexusguard_agent",
 			"app_version":"1.0.0",
 
 			"environment":"cloud",
@@ -1562,7 +1562,7 @@ const AgentUI = (props) => {
 					minWidth: 1000, maxWidth: 1000, margin: "auto", 
 				}}>
 					<TextField
-					  id="copy_element_shuffle"
+					  id="copy_element_nexusguard"
 					  style={{ display: "none" }}
 					/>
 

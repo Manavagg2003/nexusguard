@@ -1228,7 +1228,7 @@ const ConfigureWorkflow = (props) => {
 								event.preventDefault()
 								console.log("Clicked Webhook")
 
-								var copyText = document.getElementById("copy_element_shuffle")
+								var copyText = document.getElementById("copy_element_nexusguard")
 								if (copyText !== undefined && copyText !== null) {
 									console.log("NAVIGATOR: ", navigator);
 									const clipboard = navigator.clipboard;

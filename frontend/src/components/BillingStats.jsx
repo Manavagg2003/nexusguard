@@ -714,14 +714,14 @@ const AppStats = (defaultprops) => {
 			All shown statistics are gathered from <a 
 				href={`${globalUrl}/api/v1/orgs/${selectedOrganization?.id}/stats`} 
 				target="_blank"
-				style={{ textDecoration: "none", color: theme.palette.linkColor,}}
+				style={{ textDecoration: "none", color: theme.palette.linkColor,}} rel="noreferrer"
 			>Your Organisation Statistics. </a>
 
 			{currentTab === 0 ? 
 		<span>
 			All Organization app runs are calculated base on addition of parent org app runs + all child org app runs.
 		 </span>: <span>It exists to give you more insight into your workflows, and to
-        understand your utilization of the Shuffle platform.{" "}</span>}
+        understand your utilization of the NexusGuard platform.{" "}</span>}
 			<br style={{}}/>
 			{syncStats !== true ? null : 
 				"PS: You are currently looking at data from your onprem synced org"}

@@ -319,18 +319,7 @@ const App = (message, props) => {
         />
 		{!isLoaded ? null : 
 			userdata.chat_disabled === true ? null : 
-				<Drift 
-					appId="zfk9i7w3yizf" 
-					attributes={{
-						name: userdata.username === undefined || userdata.username === null ? "OSS user" : `OSS ${userdata.username}`,
-					}}
-					eventHandlers={[
-						{ 
-							event: "conversation:firstInteraction", 
-							function: handleFirstInteraction 
-						},
-					]}
-				/>
+				null
 		}
 
 		

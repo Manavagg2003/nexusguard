@@ -47,7 +47,7 @@ const Welcome = (props) => {
 		}
 	}, [activeStep])
 
-  	const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+  	const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
 		const [steps, setSteps] = useState([
 			"Help us get to know you", 
 			"Find your Apps", 
@@ -451,9 +451,9 @@ const Welcome = (props) => {
 											setShowWelcome(true)
 										}}>
 											<CardActionArea style={actionObject}>
-												<img src="/images/welcome-to-shuffle.png" style={imageStyle} />
+												<img src="/images/welcome-to-nexusguard.png" style={imageStyle} />
 												<Typography variant="h4" style={{color: "#F1F1F1"}}> 
-													New to Shuffle 
+													New to NexusGuard 
 												</Typography>
 												<Typography variant="body1" style={{marginTop: 10, color: "rgba(255,255,255,0.8)"}}>
 													Let us guide you for an easier experience
@@ -484,7 +484,7 @@ const Welcome = (props) => {
 												Experienced 
 											</Typography>										
 											<Typography variant="body1" style={{marginTop: 10, color: "rgba(255,255,255,0.8)"}}>
-												Head to Shuffle right away
+												Head to NexusGuard right away
 											</Typography>
 										</CardActionArea>
 									</Card>

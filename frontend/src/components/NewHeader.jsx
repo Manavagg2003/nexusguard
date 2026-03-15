@@ -142,7 +142,7 @@ const Header = (props) => {
   const [upgradeHovered, setUpgradeHovered] = React.useState(false);
   const [showTopbar, setShowTopbar] = useState(false) // Set to true to show top bar
   const [selectedOrganization, setSelectedOrganization] = useState({});
-  const stripeKey = typeof window === 'undefined' || window.location === undefined ? "" : window.location.origin === "https://shuffler.io" ? "pk_live_51PXYYMEJjT17t98N20qEqItyt1fLQjrnn41lPeG2PjnSlZHTDNKHuisAbW00s4KAn86nGuqB9uSVU4ds8MutbnMU00DPXpZ8ZD" : "pk_test_51PXYYMEJjT17t98NbDkojZ3DRvsFUQBs35LGMx3i436BXwEBVFKB9nCvHt0Q3M4MG3dz4mHheuWvfoYvpaL3GmsG00k1Rb2ksO"
+  const stripeKey = typeof window === 'undefined' || window.location === undefined ? "" : window.location.origin === "https://nexusguardr.io" ? "pk_live_51PXYYMEJjT17t98N20qEqItyt1fLQjrnn41lPeG2PjnSlZHTDNKHuisAbW00s4KAn86nGuqB9uSVU4ds8MutbnMU00DPXpZ8ZD" : "pk_test_51PXYYMEJjT17t98NbDkojZ3DRvsFUQBs35LGMx3i436BXwEBVFKB9nCvHt0Q3M4MG3dz4mHheuWvfoYvpaL3GmsG00k1Rb2ksO"
   let navigate = useNavigate();
   const classes = useStyles();
 
@@ -220,7 +220,7 @@ const Header = (props) => {
     serverside === true || typeof window === "undefined"
       ? true
       : window.location.host === "localhost:3002" ||
-      window.location.host === "shuffler.io" ||
+      window.location.host === "nexusguardr.io" ||
       window.location.host === "localhost:5002";
 
 
@@ -374,7 +374,7 @@ const Header = (props) => {
             toast(responseJson.reason);
           } else {
             toast(
-              "Failed changing org. Try again or contact support@shuffler.io if this persists."
+              "Failed changing org. Try again or contact support@nexusguardr.io if this persists."
             );
           }
         }
@@ -393,7 +393,7 @@ const Header = (props) => {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <Tooltip color="primary" title={"Shuffle is Open Source, and has a thriving Discord Automation Community"} placement="left">
+        <Tooltip color="primary" title={"NexusGuard is Open Source, and has a thriving Discord Automation Community"} placement="left">
           <IconButton
             color="primary"
             style={{}}
@@ -617,7 +617,7 @@ const Header = (props) => {
             >
               <img
                 src={"/images/logos/topleft_logo.svg"}
-                alt="shuffle logo"
+                alt="nexusguard logo"
                 style={{ height: 25, }}
               />
             </Grid>
@@ -1054,7 +1054,7 @@ const Header = (props) => {
                       const regionsplit = data.region_url.split(".");
                       if (
                         regionsplit.length > 2 &&
-                        !regionsplit[0].includes("shuffler")
+                        !regionsplit[0].includes("nexusguardr")
                       ) {
                         const namesplit = regionsplit[0].split("/");
 
@@ -1188,7 +1188,7 @@ const Header = (props) => {
               <Tooltip
                 title={
 					<Typography variant="body1" style={{margin: 10, }}>
-						<b>App Runs used</b>: {userdata.app_execution_usage} / {userdata.app_execution_limit}. When the limit is reached, you can still use Shuffle normally, but your Workflow triggers will stop workflows from starting. Reach out to support@shuffler.io to extend this limit. Customer workflows are NOT stopped this way.
+						<b>App Runs used</b>: {userdata.app_execution_usage} / {userdata.app_execution_limit}. When the limit is reached, you can still use NexusGuard normally, but your Workflow triggers will stop workflows from starting. Reach out to support@nexusguardr.io to extend this limit. Customer workflows are NOT stopped this way.
 					</Typography>
 				}
               >
@@ -1413,7 +1413,7 @@ const Header = (props) => {
       <span style={{ zIndex: 50001, }}>
         <div style={{ position: "relative", height: topbarHeight, backgroundImage: "linear-gradient(to right, #f86a3e, #f34079)", overflow: "hidden", }}>
           <Typography style={{ paddingTop: 7, fontSize:16, margin: "auto", textAlign: "center", color: "white", }}>
-            {/* Shuffle 1.4.0 is out! Read more about&nbsp; */}
+            {/* NexusGuard 1.4.0 is out! Read more about&nbsp; */}
             New&nbsp;
             <u>
               <span onClick={() => {

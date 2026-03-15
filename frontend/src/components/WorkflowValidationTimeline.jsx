@@ -136,7 +136,7 @@ export const getParentNodes = (workflow, action, count) => {
 
     // Remove on the end as we don't want to remove everything
     results = results.filter((data) => data.id !== action.id)
-    results = results.filter((data) => data.type === "ACTION" || data.app_name === "Shuffle Workflow" || data.app_name === "User Input" || data.app_name === "shuffle-subflow")
+    results = results.filter((data) => data.type === "ACTION" || data.app_name === "NexusGuard Workflow" || data.app_name === "User Input" || data.app_name === "nexusguard-subflow")
     results.push({ label: "Execution Argument", type: "INTERNAL" })
 
     return results
@@ -387,7 +387,7 @@ const WorkflowValidationTimeline = (props) => {
 				const lastitem = index === relevantactions.length - 1
 
 				if (!lastitem) {
-					if (action.app_name === "Shuffle Tools") {
+					if (action.app_name === "NexusGuard Tools") {
 						if (action.status === "SUCCESS") {
 							branchcolor = red
 
@@ -483,7 +483,7 @@ const WorkflowValidationTimeline = (props) => {
 				}
 
 				var appgroup = []
-				if (action.app_name === "shuffle-subflow") {
+				if (action.app_name === "nexusguard-subflow") {
 					if (action.status === "SUCCESS") {
 						nodecolor = green
 						branchcolor = green

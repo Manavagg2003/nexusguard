@@ -144,7 +144,7 @@ const DetectionExplorer = (props)  => {
 				}
 
 			} else {
-				toast.warn("Failed to load workflows. Please try again or contact support@shuffler if this persists.")
+				toast.warn("Failed to load workflows. Please try again or contact support@nexusguardr if this persists.")
 			}
 		})
 		.catch((error) => {
@@ -172,7 +172,7 @@ const DetectionExplorer = (props)  => {
 		})
 		.then((responseJson) => {
 			if (responseJson?.success === false) {
-				toast.warn("Failed to load apps. Please try again or contact support@shuffler if this persists.")
+				toast.warn("Failed to load apps. Please try again or contact support@nexusguardr if this persists.")
 			} else {
 				setApps(responseJson)
 			}
@@ -263,7 +263,7 @@ const DetectionExplorer = (props)  => {
 	}
 
 	if (detectionInfo.category === undefined || detectionInfo.category === null) {
-		toast.warn("Detection category not found. Please try again or contact support@shuffler.io if you think this is a bug.")
+		toast.warn("Detection category not found. Please try again or contact support@nexusguardr.io if you think this is a bug.")
 		return
 	}
 
@@ -653,7 +653,7 @@ const DetectionExplorer = (props)  => {
 								if (importDetectionFromUrl !== undefined) {
 									importDetectionFromUrl(true, detectionInfo.download_repo)
 								} else {
-									toast("Import function not found. Please contact support@shuffler.io")
+									toast("Import function not found. Please contact support@nexusguardr.io")
 								}
 							}}
 						>

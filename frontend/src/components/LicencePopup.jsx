@@ -58,7 +58,7 @@ const LicencePopup = (props) => {
   } = props;
   //const alert = useAlert();
   let navigate = useNavigate();
-  const [shuffleVariant, setShuffleVariant] = useState(isCloud ? 0 : 1);
+  const [nexusguardVariant, setNexusGuardVariant] = useState(isCloud ? 0 : 1);
   const [BillingEmail, setBillingEmail] = useState(
     selectedOrganization?.Billing?.Email
   );
@@ -288,11 +288,11 @@ const LicencePopup = (props) => {
               parseInt(formattedLimit) > 1 ? "s" : ""
             }`;
       },
-      shuffle_gpt: (limit) => {
+      nexusguard_gpt: (limit) => {
         const formattedLimit = formatLimit(limit);
         return formattedLimit === "Unlimited"
-          ? "Unlimited Shuffle GPT"
-          : `${formattedLimit} Shuffle GPT${
+          ? "Unlimited NexusGuard GPT"
+          : `${formattedLimit} NexusGuard GPT${
               parseInt(formattedLimit) > 1 ? "s" : ""
             }`;
       },
@@ -1151,7 +1151,7 @@ const LicencePopup = (props) => {
               electronically agreeing that it has the same legal validity and
               effects as a handwritten signature, and that you have the
               competent authority to represent and sign on behalf an entity.
-              Need support or have questions? Contact us at support@shuffler.io.
+              Need support or have questions? Contact us at support@nexusguardr.io.
             </Typography>
 
             <div style={{ display: "flex", marginTop: 25 }}>
@@ -1520,7 +1520,7 @@ const LicencePopup = (props) => {
                     if(isCloud) {
                       navigate("/pricing?ref=cloud_billing");
                     }else {
-                      window.open("https://shuffler.io/pricing?env=Self-Hosted&ref=onprem_billing", "_blank")
+                      window.open("https://nexusguardr.io/pricing?env=Self-Hosted&ref=onprem_billing", "_blank")
                     }
                   }}
                 >
@@ -1535,7 +1535,7 @@ const LicencePopup = (props) => {
                   if (isCloud) {
                       navigate("/contact?category=contact&ref=cloud_billing")
                   } else {
-                      window.open("https://shuffler.io/contact?category=contact&ref=onprem_billing", "_blank")
+                      window.open("https://nexusguardr.io/contact?category=contact&ref=onprem_billing", "_blank")
                   }
                 }}
                 style={{ textTransform: "none" }}

@@ -207,7 +207,7 @@ const ParsedAction = (props) => {
 	const [uiBox, setUiBox] = useState(null);
 	const [parentAction, setParentAction] = useState(null);
 	const isIntegration = selectedAction.app_id === "integration"
-	const isAgent = selectedAction.app_id === "shuffle_agent"
+	const isAgent = selectedAction.app_id === "nexusguard_agent"
 	const [distributeAuthToSuborgs, setDistributeAuthToSuborgs] = useState(selectedAction?.selectedAuthentication?.suborg_distributed || false)
 
 	useEffect(() => {
@@ -448,7 +448,7 @@ const ParsedAction = (props) => {
 				if (response.status === 200) {
 					//toast("Successfully GOT app "+appId)
 				} else {
-					toast.error("Failed getting app. Please try again or contact support@shuffler.io");
+					toast.error("Failed getting app. Please try again or contact support@nexusguardr.io");
 				}
 
 				return response.json();
@@ -737,13 +737,13 @@ const ParsedAction = (props) => {
 		}
 
 		// Look for cachekey
-		if (newActionList.find((item) => item.type === "Shuffle DB") === undefined) {
+		if (newActionList.find((item) => item.type === "NexusGuard DB") === undefined) {
 			let cacheKey = {
-				type: "Shuffle DB",
-				name: "Shuffle Datastore",
-				value: "$shuffle_cache",
-				highlight: "shuffle_cache",
-				autocomplete: "shuffle_cache",
+				type: "NexusGuard DB",
+				name: "NexusGuard Datastore",
+				value: "$nexusguard_cache",
+				highlight: "nexusguard_cache",
+				autocomplete: "nexusguard_cache",
 				example: "",
 			};
 
@@ -933,8 +933,8 @@ const ParsedAction = (props) => {
 					
 					// Check for variables that don't exist in the workflow at all
 					foundVariables.forEach(variable => {
-						// Skip checking for $ followed by system vars as exec and shuffle_cache.
-						if (variable.match(/\$(exec|shuffle_cache)/)) {
+						// Skip checking for $ followed by system vars as exec and nexusguard_cache.
+						if (variable.match(/\$(exec|nexusguard_cache)/)) {
 							return;
 						}
 						// Create list of all valid action variables from newActionList
@@ -1232,11 +1232,11 @@ const ParsedAction = (props) => {
 		selectedAction.parameters[count].value = event.target.value;
 
 		var forceUpdate = false
-		if (isCloud && (selectedAction.app_name === "Shuffle Tools" || selectedAction.app_name === "email") && (selectedAction.name === "send_email_shuffle" || selectedAction.name === "send_sms_shuffle") && data.name === "apikey") {
+		if (isCloud && (selectedAction.app_name === "NexusGuard Tools" || selectedAction.app_name === "email") && (selectedAction.name === "send_email_nexusguard" || selectedAction.name === "send_sms_nexusguard") && data.name === "apikey") {
 			console.log("APIKEY - this shouldn't show up!")
 		}
 
-		if (selectedAction.app_name === "Shuffle Tools" && (selectedAction.name === "filter_list" || selectedAction.name === "is_in_datastore") && data.name === "input_list") {
+		if (selectedAction.app_name === "NexusGuard Tools" && (selectedAction.name === "filter_list" || selectedAction.name === "is_in_datastore") && data.name === "input_list") {
 			//console.log("FILTER LIST!: ", event, count, data)
 			const parsedvalue = event.target.value
 			if (parsedvalue.includes(".#")) {
@@ -1523,7 +1523,7 @@ const ParsedAction = (props) => {
 		var helperText = ""
 		if (name.includes("url")) {
 			if (value.includes("localhost") || value.includes("127.0.0.1")) {
-				helperText = "Can't use localhost in Shuffle. Please change to server's IP."
+				helperText = "Can't use localhost in NexusGuard. Please change to server's IP."
 			}
 		}
 
@@ -1554,8 +1554,8 @@ const ParsedAction = (props) => {
 			return null
 		}
 
-		// Only shuffle tools for now
-		if (selectedAction.app_name !== "Shuffle Tools") {
+		// Only nexusguard tools for now
+		if (selectedAction.app_name !== "NexusGuard Tools") {
 			return null
 		}
 
@@ -1778,7 +1778,7 @@ const ParsedAction = (props) => {
 								}}
 							>
 								<Tooltip title={"App: " + selectedAction.app_name + ". Click to open in new tab"} placement="top">
-									<a href={"/apps/" + selectedAction?.app_id} target="_blank" style={{ textDecoration: "none", color: theme.palette.textPrimary, }}>
+									<a href={"/apps/" + selectedAction?.app_id} target="_blank" style={{ textDecoration: "none", color: theme.palette.textPrimary, }} rel="noreferrer">
 										<img src={selectedAppIcon} style={{
 											width: 30,
 											height: 30,
@@ -1940,7 +1940,7 @@ const ParsedAction = (props) => {
 									</Button>
 								</Tooltip>
 
-								{(selectedAction?.generated === true && selectedAction?.app_version === "1.0.0") || (selectedAction?.app_name === "Shuffle Tools" && selectedAction?.app_version !== "1.2.0")  ? 
+								{(selectedAction?.generated === true && selectedAction?.app_version === "1.0.0") || (selectedAction?.app_name === "NexusGuard Tools" && selectedAction?.app_version !== "1.2.0")  ? 
 									<Button
 										variant="contained"
 										color="secondary"
@@ -2623,7 +2623,7 @@ const ParsedAction = (props) => {
 				disableScrollLock: true,
 			}}
             value={
-              selectedActionEnvironment === undefined || selectedActionEnvironment === null || selectedActionEnvironment.Name === undefined || selectedActionEnvironment.Name === null ? isCloud ? "Cloud" : "Shuffle" : selectedActionEnvironment.Name
+              selectedActionEnvironment === undefined || selectedActionEnvironment === null || selectedActionEnvironment.Name === undefined || selectedActionEnvironment.Name === null ? isCloud ? "Cloud" : "NexusGuard" : selectedActionEnvironment.Name
             }
             SelectDisplayProps={{
               style: {
@@ -3008,15 +3008,15 @@ const ParsedAction = (props) => {
 					/>
 				) : null}
 
-				{selectedAction?.app_name === "Shuffle AI" && selectedAction?.name === "run_llm" ?
+				{selectedAction?.app_name === "NexusGuard AI" && selectedAction?.name === "run_llm" ?
 					selectedAction?.environment === "Cloud" && isCloud ? (
 						<Typography  variant="body2" style={{color: theme.palette.textPrimary, paddingTop: 25, }}>
-							Info: Cloud Inference processing runs with Shuffle's GPUs in EU, Netherlands, and may be unstable. Your data is NOT stored there.
+							Info: Cloud Inference processing runs with NexusGuard's GPUs in EU, Netherlands, and may be unstable. Your data is NOT stored there.
 						</Typography> 
 					)
 					:
 					<Typography variant="body2" style={{ paddingTop: 25, color: red, color: theme.palette.textPrimary}}>
-						This action is slow without GPU's. Use Shuffle's Cloud Runtime location for faster processing.
+						This action is slow without GPU's. Use NexusGuard's Cloud Runtime location for faster processing.
 					</Typography> 
 					:
 					null
@@ -3095,8 +3095,8 @@ const ParsedAction = (props) => {
 
 											{apps.map((app, appIndex) => {
 												// Forces it into every category (for now)
-												// This is to make it possible to "use" shuffle for Singul natively
-												if (app.name === "Shuffle Tools") {
+												// This is to make it possible to "use" nexusguard for Singul natively
+												if (app.name === "NexusGuard Tools") {
 													if (actionname == "Intel" || actionname == "Intel") { 
 														app.categories = [actionname]
 													}
@@ -3426,7 +3426,7 @@ const ParsedAction = (props) => {
 
 
 									// Added autofill to make this ALOT simpler
-									if (isCloud && (selectedAction.app_name === "Shuffle Tools" || selectedAction.app_name === "email") && (selectedAction.name === "send_email_shuffle" || selectedAction.name === "send_sms_shuffle") && data.name === "apikey") {
+									if (isCloud && (selectedAction.app_name === "NexusGuard Tools" || selectedAction.app_name === "email") && (selectedAction.name === "send_email_nexusguard" || selectedAction.name === "send_sms_nexusguard") && data.name === "apikey") {
 										if (selectedActionParameters[count].length === 0) {
 											selectedAction.parameters[count].value = "TMP: Will be replaced during execution if cloud"
 											setSelectedAction(selectedAction)
@@ -3528,10 +3528,10 @@ const ParsedAction = (props) => {
 
 
 									var showCacheConfig = false
-									if (data.name === "key" && selectedAction.name.includes("cache") && selectedAction.app_name === "Shuffle Tools") {
+									if (data.name === "key" && selectedAction.name.includes("cache") && selectedAction.app_name === "NexusGuard Tools") {
 										// Show a key popout button
 										showCacheConfig = true
-									}  else if (data.name === "category" && selectedAction.app_name === "Shuffle Tools") {
+									}  else if (data.name === "category" && selectedAction.app_name === "NexusGuard Tools") {
 										showCacheConfig = true
 									}
 
@@ -3772,7 +3772,7 @@ const ParsedAction = (props) => {
 										tmpitem = tmpitem.slice(2, data.name.length - 1);
 									}
 
-									if (tmpitem === "from_shuffle") {
+									if (tmpitem === "from_nexusguard") {
 										tmpitem = "from"
 									}
 
@@ -4530,9 +4530,9 @@ const ParsedAction = (props) => {
 																	var node = cy.getElementById(item.id);
 																	if (node.length > 0) {
 																		if (inside) {
-																			node.addClass("shuffle-hover-highlight");
+																			node.addClass("nexusguard-hover-highlight");
 																		} else {
-																			node.removeClass("shuffle-hover-highlight");
+																			node.removeClass("nexusguard-hover-highlight");
 																		}
 																	}
 																}
@@ -4545,9 +4545,9 @@ const ParsedAction = (props) => {
 															var node = cy.getElementById(actionId);
 															if (node.length > 0) {
 																if (inside) {
-																	node.addClass("shuffle-hover-highlight");
+																	node.addClass("nexusguard-hover-highlight");
 																} else {
-																	node.removeClass("shuffle-hover-highlight");
+																	node.removeClass("nexusguard-hover-highlight");
 																}
 															}
 														}
@@ -4841,7 +4841,7 @@ const ParsedAction = (props) => {
 														:
 														<Tooltip
 															color="primary"
-															title={"Field was autocompleted by Shuffle based on previous actions (same fields or parent nodes)"}
+															title={"Field was autocompleted by NexusGuard based on previous actions (same fields or parent nodes)"}
 															placement="top"
 														>
 															<AutoFixHighIcon style={{
@@ -4981,7 +4981,7 @@ const ParsedAction = (props) => {
 
 											</div>
 											{datafield}
-											{/*shufflecode*/}
+											{/*nexusguardcode*/}
 											{showDropdown &&
 												showDropdownNumber === count &&
 												data.variant === "STATIC_VALUE" &&

@@ -9,8 +9,6 @@ import ReactGA from 'react-ga4';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import {
-	ConnectingAirportsOutlined,
-	ConstructionOutlined,
 	DoneRounded,
 	Done as DoneIcon
 } from '@mui/icons-material';
@@ -23,12 +21,6 @@ import {
 	Paper,
 	Typography,
 	Tooltip,
-	TableHead,
-	TableRow,
-	TableContainer,
-	TableCell,
-	TableBody,
-	Table,
 } from '@mui/material';
 
 const hrefStyle = {
@@ -38,44 +30,8 @@ const hrefStyle = {
 	display: "flex",
 }
 
-const googleLoginIcon = {
-	boxSizing: "border-box",
-	display: "flex",
-	flexDirection: "row",
-	justifyContent: "center",
-	alignItems: "center",
-	padding: "16px",
-	gap: "8px",
-	// position: "sticky",
-	width: 171,
-	height: "51px",
-	left: "352px",
-	top: "725px",
-	background: "#1A1A1A",
-	border: "1px solid #494949",
-	borderRadius: "8px",
 
-}
 
-const githubLoginIcon = {
-	boxSizing: "border-box",
-	display: "flex",
-	flexDirection: "row",
-	justifyContent: "center",
-	alignItems: "center",
-	padding: "16px",
-	gap: "8px",
-	position: "sticky",
-	width: "173px",
-	height: "51px",
-	left: "539px",
-	top: "725px",
-	backgroundColor: "#1A1A1A",
-	border: "1px solid #494949",
-	borderRadius: "8px",
-}
-
-const surfaceColor = "#27292D"
 const inputColor = "#383B40"
 
 const useStyles = makeStyles({
@@ -132,31 +88,6 @@ const useStyles = makeStyles({
 });
 
 
-const FreePlanCard = ({ classes }) => {
-	const features = [
-		"Access to All Apps",
-		"10,000 App Runs",
-		"Monthly Runs Refresh",
-		"Unlimited Users & Workflows",
-		"Multi-Tenancy & -Region",
-		"Support & Discord Access"
-	];
-
-	return (
-		<div className={classes.freePlanCard}>
-			<h2 className={classes.freePlanTitle}>
-				The free plan includes:
-			</h2>
-
-			{features.map((feature, index) => (
-				<div key={index} className={classes.featureItem}>
-					<DoneRounded className={classes.checkIcon} />
-					<span>{feature}</span>
-				</div>
-			))}
-		</div>
-	);
-};
 
 const MarketplaceCard = ({ classes, isCloud }) => {
 	const marketplaceOptions = [
@@ -166,7 +97,7 @@ const MarketplaceCard = ({ classes, isCloud }) => {
 			tooltipText: "Click to install!",
 			valid: true,
 
-			link: "https://github.com/shuffle/shuffle/blob/main/.github/install-guide.md"
+			link: "https://github.com/nexusguard/nexusguard/blob/main/.github/install-guide.md"
 		},
 		{
 			name: "Amazon Web Services",
@@ -270,7 +201,7 @@ const MarketplaceCard = ({ classes, isCloud }) => {
 			}}>
 				{/*
 				<a
-					href="https://shuffler.io/docs/configuration#marketplace-setup"
+					href="https://nexusguardr.io/docs/configuration#marketplace-setup"
 					target="_blank"
 					style={{ color: "rgba(255, 132, 68, 1)", textDecoration: "underline" }}
 				>
@@ -307,7 +238,7 @@ const LoginPage = props => {
 	const [showPassword, setShowPassword] = useState(false)
 	const [ssoUrl, setSSOUrl] = useState("");
 
-    const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io" || window.location.host === "migration.shuffler.io" || window.location.host === "sandbox.shuffler.io";
+    const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io" || window.location.host === "migration.nexusguardr.io" || window.location.host === "sandbox.nexusguardr.io";
 	const parsedsearch = serverside === true ? "" : window.location.search
 
 	useEffect(() => {
@@ -337,15 +268,15 @@ const LoginPage = props => {
 	if (document !== undefined) {
 		if (register) {
 			if (isCloud) { 
-				document.title = "Login to Shuffle SaaS"
+				document.title = "Login to NexusGuard SaaS"
 			} else {
-				document.title = "Login to Shuffle"
+				document.title = "Login to NexusGuard"
 			}
 		} else {
 			if (isCloud) {
-				document.title = "Register to Shuffle SaaS"
+				document.title = "Register to NexusGuard SaaS"
 			} else {
-				document.title = "Register to Shuffle"
+				document.title = "Register to NexusGuard"
 			}
 		}
   }
@@ -688,8 +619,8 @@ const LoginPage = props => {
 							}
 							setLoginInfo(responseJson["reason"])
 						} else {
-							if (responseJson["reason"] === "shuffle_account") {
-								window.location.href = "/login?message=Please+login+with+your+Shuffle+account"
+							if (responseJson["reason"] === "nexusguard_account") {
+								window.location.href = "/login?message=Please+login+with+your+NexusGuard+account"
 								return
 							}
 
@@ -745,7 +676,7 @@ const LoginPage = props => {
 					}),
 				)
 				.catch(error => {
-					setLoginInfo("Error in login. Please try again, or contact support@shuffler.io if the problem persists.")
+					setLoginInfo("Error in login. Please try again, or contact support@nexusguardr.io if the problem persists.")
 					setLoginLoading(false)
 				});
 		}
@@ -775,27 +706,6 @@ const LoginPage = props => {
 	}
 
 	var formtitle = register ? <div>Welcome Back!</div> : <div>Create your account</div>
-	var formButton = !isCloud ? "" : register ? <div style={{ display: "flex" }}> <div style={{ fontSize: "14px", paddingRight: "7px", textDecoration: "none", }}>Don’t have an account yet?</div> <Link style={hrefStyle} to={`/register${parsedsearch}`} onClick={() => {
-		if (isCloud) {
-			ReactGA.event({
-				category: "authentication",
-				action: "click_register_link",
-				label: "Switch to Register",
-			});
-		}
-	}}><div>Register here</div></Link></div> : <>
-
-		<div style={{ display: "flex", marginTop: 40, marginBottom: -10 }}> <div style={{ fontSize: "14px", paddingRight: "7px", textDecoration: "none", }}>Already have an account?</div> <Link style={hrefStyle} to={`/login${parsedsearch}`} onClick={() => {
-			if (isCloud) {
-				ReactGA.event({
-					category: "authentication",
-					action: "click_login_link",
-					label: "Switch to Login",
-				});
-			}
-		}}><div>Login here</div></Link></div>
-	</>
-	//<Link to={`/login${parsedsearch}`} style={hrefStyle}><div>Click here to Login</div></Link>
 
 	//	<DialogTitle>{formtitle}</DialogTitle>
 
@@ -820,7 +730,7 @@ const LoginPage = props => {
 								paddingBottom: isMobile ? null : 40
 							}}
 							src="images/logos/orange_logo.svg"
-							alt="Shuffle Logo"
+							alt="NexusGuard Logo"
 						/>
 
 						<Typography
@@ -850,8 +760,8 @@ const LoginPage = props => {
 							variant="body2"
 						>
 							{register
-								? "Find new ways to automate by discovering usecases Shufflers"
-								: "Please fill in the information to continue to discover the power of Shuffle"
+								? "Find new ways to automate by discovering usecases NexusGuardrs"
+								: "Please fill in the information to continue to discover the power of NexusGuard"
 							}
 						</Typography>
 
@@ -1005,12 +915,12 @@ const LoginPage = props => {
 								/>
 								I agree to{' '}
 								<a
-									href="https://shuffler.io/docs/terms_of_service"
+									href="https://nexusguardr.io/docs/terms_of_service"
 									style={{ textDecoration: "none", color: "#f85a3e" }}
 									rel="noopener noreferrer"
 									target="_blank"
 								>
-									Shuffle's Terms of Service
+									NexusGuard's Terms of Service
 								</a>
 								.
 							</Typography>
@@ -1036,16 +946,7 @@ const LoginPage = props => {
 							</Button>
 						</div>
 
-						<div style={{
-							display: "flex",
-							flexDirection: "column",
-							marginTop: "0px",
-							alignItems: isMobile ? "center" : null
-						}}>
-							<div style={{ flex: 1 }}>
-								{formButton}
-							</div>
-						</div>
+
 
 						<div style={{ marginTop: "10px", color: "white" }}>
 							{loginInfo}
@@ -1082,19 +983,7 @@ const LoginPage = props => {
 							</div>
 						  </div>
 						) : null}
-						{isCloud && loginWithSSO && (
-							<Button 
-								variant="outlined"
-								color="secondary"
-								onClick={() => {
-									setLoginWithSSO(false)
-									setLoginInfo("")
-								}}
-								style={{ width: '100%', marginTop: 5, flex: "1", textTransform: 'none', fontSize: 16 }}
-							>
-								Back to login
-							</Button>
-						)}
+
 					</form>
 				</Paper>
 

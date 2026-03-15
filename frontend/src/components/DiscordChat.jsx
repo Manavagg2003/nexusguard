@@ -42,7 +42,7 @@ const DiscordChat = props => {
 			"message": message,
 		}
 	
-		const errorMessage = "Something went wrong. Please contact frikky@shuffler.io directly."
+		const errorMessage = "Something went wrong. Please contact frikky@nexusguardr.io directly."
 
 		fetch(globalUrl+"/api/v1/contact", {
 			method: 'POST',

@@ -45,7 +45,7 @@ const DocsGrid = props => {
 
 	const innerColor = "rgba(255,255,255,0.65)"
 	const borderRadius = 3
-	window.title = "Shuffle | Apps | Find and integrate any app"
+	window.title = "NexusGuard | Apps | Find and integrate any app"
 
 	const submitContact = (email, message) => {
 		const data = {
@@ -58,7 +58,7 @@ const DocsGrid = props => {
 			"message": message,
 		}
 	
-		const errorMessage = "Something went wrong. Please contact frikky@shuffler.io directly."
+		const errorMessage = "Something went wrong. Please contact frikky@nexusguardr.io directly."
 
 		fetch(globalUrl+"/api/v1/contact", {
 			method: 'POST',
@@ -122,7 +122,7 @@ const DocsGrid = props => {
 					type="search"
 					color="primary"
 					placeholder="Search our Documentation..."
-					id="shuffle_search_field"
+					id="nexusguard_search_field"
 					onChange={(event) => {
 						removeQuery("q")
 						debouncedRefine(event.currentTarget.value)
@@ -269,7 +269,7 @@ const DocsGrid = props => {
 					style={selectButtonStyle}
 					variant="outlined"
 					onClick={() => {
-    				const searchField = document.createElement("shuffle_search_field")
+    				const searchField = document.createElement("nexusguard_search_field")
 						console.log("Field: ", searchField)
 						if (searchField !== null & searchField !== undefined) {
 							console.log("Set field.")

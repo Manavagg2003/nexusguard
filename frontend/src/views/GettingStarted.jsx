@@ -113,7 +113,7 @@ const chipStyle = {
 const GettingStarted = (props) => {
   const { globalUrl, isLoggedIn, isLoaded, userdata } = props;
 
-  document.title = "Getting Started with Shuffle";
+  document.title = "Getting Started with NexusGuard";
   //const alert = useAlert();
   const classes = useStyles(theme);
 	let navigate = useNavigate();
@@ -133,7 +133,7 @@ const GettingStarted = (props) => {
   const [field1, setField1] = React.useState("");
   const [field2, setField2] = React.useState("");
   const [downloadUrl, setDownloadUrl] = React.useState(
-    "https://github.com/frikky/shuffle-workflows"
+    "https://github.com/frikky/nexusguard-workflows"
   );
   const [videoViewOpen, setVideoViewOpen] = React.useState(false)
   const [downloadBranch, setDownloadBranch] = React.useState("master");
@@ -163,7 +163,7 @@ const GettingStarted = (props) => {
 
   const isCloud =
     window.location.host === "localhost:3002" ||
-    window.location.host === "shuffler.io";
+    window.location.host === "nexusguardr.io";
 
   const findWorkflow = (filters) => {
     if (filters.length === 0) {
@@ -646,7 +646,7 @@ const GettingStarted = (props) => {
     if (data.triggers !== null && data.triggers !== undefined) {
       for (var key in data.triggers) {
         const trigger = data.triggers[key];
-        if (trigger.app_name === "Shuffle Workflow") {
+        if (trigger.app_name === "NexusGuard Workflow") {
           if (trigger.parameters.length > 2) {
             trigger.parameters[2].value = "";
           }
@@ -691,7 +691,7 @@ const GettingStarted = (props) => {
           }
         }
 
-        trigger.environment = isCloud ? "cloud" : "Shuffle";
+        trigger.environment = isCloud ? "cloud" : "NexusGuard";
         trigger.id = newId;
       }
     }
@@ -823,7 +823,7 @@ const GettingStarted = (props) => {
     data = sanitizeWorkflow(data);
     toast("Sanitizing and publishing " + data.name);
 
-    // This ALWAYS talks to Shuffle cloud
+    // This ALWAYS talks to NexusGuard cloud
     fetch(globalUrl + "/api/v1/workflows/" + data.id + "/publish", {
       method: "POST",
       headers: {
@@ -841,7 +841,7 @@ const GettingStarted = (props) => {
             toast("Successfully published workflow");
           } else {
             toast(
-              "Successfully published workflow to https://shuffler.io"
+              "Successfully published workflow to https://nexusguardr.io"
             );
           }
         }
@@ -1270,7 +1270,7 @@ const GettingStarted = (props) => {
                     var newWorkflows = [data];
                     for (var key in data.triggers) {
                       const trigger = data.triggers[key];
-                      if (trigger.app_name !== "Shuffle Workflow") {
+                      if (trigger.app_name !== "NexusGuard Workflow") {
                         continue;
                       }
 
@@ -1541,7 +1541,7 @@ const GettingStarted = (props) => {
     ) {
       triggers = data.triggers.length;
       for (let key in data.triggers) {
-        if (data.triggers[key].app_name === "Shuffle Workflow") {
+        if (data.triggers[key].app_name === "NexusGuard Workflow") {
           subflows += 1;
         }
       }
@@ -1725,7 +1725,7 @@ const GettingStarted = (props) => {
                         var newWorkflows = [data];
                         for (var key in data.triggers) {
                           const trigger = data.triggers[key];
-                          if (trigger.app_name !== "Shuffle Workflow") {
+                          if (trigger.app_name !== "NexusGuard Workflow") {
                             continue;
                           }
 
@@ -2127,7 +2127,7 @@ const GettingStarted = (props) => {
 		const textSpacingDiff = 8
 		const textType = "body2"
 						
-		// Discover <a target="_blank" href="https://shuffler.io/search?tab=workflows" style={{textDecoration: "none", color: "#f86a3e",}}>use-cases made by us and other creators</a>!
+		// Discover <a target="_blank" href="https://nexusguardr.io/search?tab=workflows" style={{textDecoration: "none", color: "#f86a3e",}}>use-cases made by us and other creators</a>!
 		const steps = [
 			{
 				html: (
@@ -2162,7 +2162,7 @@ const GettingStarted = (props) => {
 								toast("TBD: Coming in version 1.0.0");
 							}
 
-							const ele = document.getElementById("shuffle_search_field")
+							const ele = document.getElementById("nexusguard_search_field")
 							if (ele !== undefined && ele !== null) {
 								console.log("Found ele: ", ele)
 								ele.focus()
@@ -2187,13 +2187,13 @@ const GettingStarted = (props) => {
 							})
 						}
 					}}>
-						Learn to use Shuffle by&nbsp; 
+						Learn to use NexusGuard by&nbsp; 
 						<span style={{cursor: "pointer", color: "#f86a3e",}} onClick={() => {setModalOpen(true)}}>
 							creating your first workflow 
 						</span> and <Link to="/docs/getting_started" style={{textDecoration: "none", color: "#f86a3e",}}>reading the docs.</Link>
 					</Typography>
 				),
-				tutorial: "learn_shuffle",
+				tutorial: "learn_nexusguard",
 			},
 			{
 				html: 
@@ -2222,7 +2222,7 @@ const GettingStarted = (props) => {
 					}}
 				>
 					<DialogTitle>
-						Welcome to Shuffle!	
+						Welcome to NexusGuard!	
 					</DialogTitle>
 
 					<Tooltip
@@ -2255,7 +2255,7 @@ const GettingStarted = (props) => {
 				</Dialog>
         <div style={workflowViewStyle}>
 					<Typography variant="h1" style={{fontSize: 30, marginTop: 25, }}>
-						Getting Started with Shuffle
+						Getting Started with NexusGuard
 					</Typography>
 					<Typography variant="body2" color="textSecondary" style={{marginTop: 25}}>
 						We provide everything you need to automate your operations - apps, default workflows, security dashboards and analytics that work well together.
@@ -2283,7 +2283,7 @@ const GettingStarted = (props) => {
 										}
 									}
 
-									if (data.tutorial === "learn_shuffle") {
+									if (data.tutorial === "learn_nexusguard") {
 										//tutorial: "discover_workflows",
 										if (workflows.length > 0) {
 											tutorialFound = true
@@ -2416,7 +2416,7 @@ const GettingStarted = (props) => {
                 <a
                   rel="noopener noreferrer"
                   target="_blank"
-                  href="https://shuffler.io/docs/workflows"
+                  href="https://nexusguardr.io/docs/workflows"
                   style={{ textDecoration: "none", color: "#f85a3e" }}
                 >
                   Learn more about Workflows
@@ -2471,7 +2471,7 @@ const GettingStarted = (props) => {
                   return null;
                 }
 
-                if (data.app_name.toLowerCase() === "shuffle tools") {
+                if (data.app_name.toLowerCase() === "nexusguard tools") {
                   data.large_image = theme.palette.defaultImage;
                 }
 
@@ -2674,7 +2674,7 @@ const GettingStarted = (props) => {
             },
           }}
           onChange={(e) => setDownloadUrl(e.target.value)}
-          placeholder="https://github.com/frikky/shuffle-apps"
+          placeholder="https://github.com/frikky/nexusguard-apps"
           fullWidth
         />
         <span style={{ marginTop: 10 }}>

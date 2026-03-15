@@ -338,7 +338,7 @@ const Dashboard = (props) => {
   const [, setUpdate] = useState(0);
 
 	let navigate = useNavigate();
-  	const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+  	const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
 
 	const path = window.location.pathname
 	if (path !== undefined && path !== null) { 
@@ -473,7 +473,7 @@ const Dashboard = (props) => {
       })
 		}
 
-  document.title = "Shuffle - Dashboard";
+  document.title = "NexusGuard - Dashboard";
   var dayGraphLabels = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
   var dayGraphData = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
 
@@ -755,7 +755,7 @@ const Dashboard = (props) => {
 			if (resp !== undefined) { 
 				resp.then((respdata) => {
 					if (respdata === undefined || respdata === null) {
-						toast("Failed to laod data. Please try again, or contact support@shuffler.io if this persists.")
+						toast("Failed to laod data. Please try again, or contact support@nexusguardr.io if this persists.")
 					} else {
 						newWidgetData[index] = respdata
 						setNewWidgetData(newWidgetData)

@@ -24,7 +24,7 @@ const Appsearch = props => {
     const xs = parsedXs === undefined || parsedXs === null ? 12 : parsedXs
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = useState("");
-    window.title = "Shuffle | Apps | Find and integration any app"
+    window.title = "NexusGuard | Apps | Find and integration any app"
 
     const useCloseOnBlur = (setOpen) => {
         useEffect(() => {
@@ -117,7 +117,7 @@ const Appsearch = props => {
                         type="search"
                         color="primary"
                         placeholder={placeholder !== undefined ? placeholder : "Search more than 2500 Apps"}
-                        id="shuffle_search_field"
+                        id="nexusguard_search_field"
                         onChange={(event) => {
                             // Remove "q" from URL
                             // removeQuery("q")

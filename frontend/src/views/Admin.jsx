@@ -301,7 +301,7 @@ const Admin = (props) => {
 
   const isCloud =
     window.location.host === "localhost:3002" ||
-    window.location.host === "shuffler.io";
+    window.location.host === "nexusguardr.io";
 
   const setSelectedRegion = (region) => {
     // send a POST request to /api/v1/orgs/{org_id}/region with the region as the body
@@ -526,7 +526,7 @@ const Admin = (props) => {
       })
       .then((responseJson) => {
 		if (responseJson.success === false) {
-			toast("Failed to create. Please try again, or contact support@shuffler.io")
+			toast("Failed to create. Please try again, or contact support@nexusguardr.io")
 		} else {
 			// Close the modal
 			setAppAuthenticationGroupModalOpen(false)
@@ -585,7 +585,7 @@ const Admin = (props) => {
 
   // Basically just a simple way to get a generated email
   // This also may help understand how to communicate with users
-  // both inside and outside Shuffle
+  // both inside and outside NexusGuard
   // This could also be generated on the backend
   const mailsendingButton = (org) => {
     if (org === undefined || org === null) {
@@ -760,7 +760,7 @@ const Admin = (props) => {
     // Loop users
     var lastLogin = 0;
     for (var i = 0; i < users.length; i++) {
-      if (users[i].username.includes("shuffler")) {
+      if (users[i].username.includes("nexusguardr")) {
         continue;
       }
 
@@ -809,7 +809,7 @@ const Admin = (props) => {
         ? "- Scale your onprem installation"
         : "";
 
-    var body = `Hey,%0D%0A%0D%0AI noticed you tried to use Shuffle${extra_timestamp_text}, and thought you may be interested in a POC. It looks like you have ${workflow_amount} workflows made, but it still doesn't look like you are getting what you wanted out of  Shuffle. If you're interested, I'd love to set up a quick call to see if we can help you get more out of Shuffle. %0D%0A%0D%0A
+    var body = `Hey,%0D%0A%0D%0AI noticed you tried to use NexusGuard${extra_timestamp_text}, and thought you may be interested in a POC. It looks like you have ${workflow_amount} workflows made, but it still doesn't look like you are getting what you wanted out of  NexusGuard. If you're interested, I'd love to set up a quick call to see if we can help you get more out of NexusGuard. %0D%0A%0D%0A
 
 Some of the things we can help with:%0D%0A
 ${your_apps}
@@ -820,7 +820,7 @@ ${cloudSyncInfo}%0D%0A
 
 If you're interested, please let me know a time that works for you, or set up a call here: https://drift.me/${username}`;
 
-    return `mailto:${admins}?bcc=frikky@shuffler.io,binu@shuffler.io&subject=${subject}&body=${body}`;
+    return `mailto:${admins}?bcc=frikky@nexusguardr.io,binu@nexusguardr.io&subject=${subject}&body=${body}`;
   };
 
   const changeDistribution = (data) => {
@@ -1531,7 +1531,7 @@ If you're interested, please let me know a time that works for you, or set up a 
           toast("Failed to deactivate user: " + responseJson.reason);
         } else if (responseJson.success === false) {
           toast(
-            "Failed to deactivate user. Please contact support@shuffler.io if this persists.",
+            "Failed to deactivate user. Please contact support@nexusguardr.io if this persists.",
           );
         } else {
           toast("Changed activation for user " + data.id);
@@ -1554,7 +1554,7 @@ If you're interested, please let me know a time that works for you, or set up a 
     }
 
     if (orgId.length === 0) {
-      toast("Organization ID not defined. Please contact us on https://shuffler.io if this persists logout.")
+      toast("Organization ID not defined. Please contact us on https://nexusguardr.io if this persists logout.")
       return;
     }
 
@@ -1597,8 +1597,8 @@ If you're interested, please let me know a time that works for you, or set up a 
             responseJson.lead_info !== null
           ) {
             var leads = [];
-            if (responseJson.lead_info.testing_shuffle) {
-              leads.push("testing shuffle");
+            if (responseJson.lead_info.testing_nexusguard) {
+              leads.push("testing nexusguard");
             }
 
             if (responseJson.lead_info.contacted) {
@@ -1689,7 +1689,7 @@ If you're interested, please let me know a time that works for you, or set up a 
   const handleGetSubOrgs = (orgId) => {
     if (orgId.length === 0) {
       toast(
-        "Organization ID not defined. Please contact us on https://shuffler.io if this persists logout.",
+        "Organization ID not defined. Please contact us on https://nexusguardr.io if this persists logout.",
       );
       return;
     }
@@ -2408,29 +2408,29 @@ If you're interested, please let me know a time that works for you, or set up a 
 
     setCurTab(newValue);
     if (newValue === 1) {
-      document.title = "Shuffle - admin - users";
+      document.title = "NexusGuard - admin - users";
       getUsers();
     } else if (newValue === 2) {
-      document.title = "Shuffle - admin - app authentication";
+      document.title = "NexusGuard - admin - app authentication";
       getAppAuthentication();
       getAppAuthenticationGroups();
     } else if (newValue === 3) {
-      document.title = "Shuffle - admin - Files";
+      document.title = "NexusGuard - admin - Files";
     } else if (newValue === 4) {
-      document.title = "Shuffle - admin - Datastore";
+      document.title = "NexusGuard - admin - Datastore";
 
       //listOrgCache("3fd181b9-fb29-41b7-b2f5-15292265d420");
     } else if (newValue === 5) {
-      document.title = "Shuffle - admin - schedules";
+      document.title = "NexusGuard - admin - schedules";
       getSchedules();
     } else if (newValue === 6) {
-      document.title = "Shuffle - admin - environments";
+      document.title = "NexusGuard - admin - environments";
       getEnvironments();
     } else if (newValue === 7) {
-      document.title = "Shuffle - admin - orgs";
+      document.title = "NexusGuard - admin - orgs";
       getOrgs();
     } else {
-      document.title = "Shuffle - admin";
+      document.title = "NexusGuard - admin";
     }
 
     if (newValue === 8) {
@@ -2443,7 +2443,7 @@ If you're interested, please let me know a time that works for you, or set up a 
 
   if (firstRequest) {
     setFirstRequest(false);
-    document.title = "Shuffle - admin";
+    document.title = "NexusGuard - admin";
 
     getEnvironments();
     if (!isCloud) {
@@ -3518,7 +3518,7 @@ If you're interested, please let me know a time that works for you, or set up a 
     userdata.region_url.length > 0
   ) {
     const regionsplit = userdata.region_url.split(".");
-    if (regionsplit.length > 2 && !regionsplit[0].includes("shuffler")) {
+    if (regionsplit.length > 2 && !regionsplit[0].includes("nexusguardr")) {
       const namesplit = regionsplit[0].split("/");
 
       regiontag = namesplit[namesplit.length - 1];
@@ -3624,7 +3624,7 @@ If you're interested, please let me know a time that works for you, or set up a 
                     MenuProps={MenuProps}
                   >
                     {[
-                      "testing shuffle",
+                      "testing nexusguard",
                       "contacted",
                       "lead",
                       //"demo done",
@@ -3692,7 +3692,7 @@ If you're interested, please let me know a time that works for you, or set up a 
               <IconButton
                 style={{ top: -10, right: 0, position: "absolute" }}
                 onClick={() => {
-                  const elementName = "copy_element_shuffle";
+                  const elementName = "copy_element_nexusguard";
                   const org_id = selectedOrganization.id;
                   var copyText = document.getElementById(elementName);
                   if (copyText !== null && copyText !== undefined) {
@@ -3828,7 +3828,7 @@ If you're interested, please let me know a time that works for you, or set up a 
                   cloud sync
                 </a>{" "}
                 do? Cloud syncronization is a way of getting more out of
-                Shuffle. Shuffle will <b>ALWAYS</b> make every option open
+                NexusGuard. NexusGuard will <b>ALWAYS</b> make every option open
                 source, but features relying on other users can't be done
                 without a collaborative approach.
                 {isCloud ? (
@@ -3979,7 +3979,7 @@ If you're interested, please let me know a time that works for you, or set up a 
                     </div>
                     {orgSyncResponse.length > 0 ? (
                       <Typography style={{ marginTop: 5, marginBottom: 10 }}>
-                        Message from Shuffle Cloud: <b>{orgSyncResponse}</b>
+                        Message from NexusGuard Cloud: <b>{orgSyncResponse}</b>
                       </Typography>
                     ) : null}
                   </div>
@@ -4030,8 +4030,8 @@ If you're interested, please let me know a time that works for you, or set up a 
                           const newkey = key.replaceAll("_", " ");
                           // Name rewrites as these are structs
                           var newname = "";
-                          if (newkey.toLowerCase() === "shuffle gpt") {
-                            newname = "Shuffle AI";
+                          if (newkey.toLowerCase() === "nexusguard gpt") {
+                            newname = "NexusGuard AI";
                           }
 
                           const griditem = {
@@ -5065,7 +5065,7 @@ If you're interested, please let me know a time that works for you, or set up a 
                           <IconButton
                             style={{}}
                             onClick={() => {
-                              const elementName = "copy_element_shuffle";
+                              const elementName = "copy_element_nexusguard";
                               var copyText = document.getElementById(elementName);
                               if (copyText !== null && copyText !== undefined) {
                                 const clipboard = navigator.clipboard;
@@ -5234,7 +5234,7 @@ If you're interested, please let me know a time that works for you, or set up a 
         <div style={{ marginTop: 20, marginBottom: 20 }}>
           <h2 style={{ display: "inline" }}>Categories</h2>
           <span style={{ marginLeft: 25 }}>
-            Categories are the categories supported by Shuffle, which are mapped
+            Categories are the categories supported by NexusGuard, which are mapped
             to apps and workflows
           </span>
         </div>
@@ -5376,7 +5376,7 @@ If you're interested, please let me know a time that works for you, or set up a 
 	const isDistributed =
 	  data.suborg_distributed === true ? true : false;
 
-	const isKms = data.label !== undefined && data.label !== null && data.label.toLowerCase() === "kms shuffle storage"
+	const isKms = data.label !== undefined && data.label !== null && data.label.toLowerCase() === "kms nexusguard storage"
 
 	var selectedEnvironment = ""
 	if (data.environment !== undefined && data.environment !== null && data.environment.length > 0) {
@@ -5442,7 +5442,7 @@ If you're interested, please let me know a time that works for you, or set up a 
 		  primary={!isKms ? data.label : 
 			<div style={{display: "flex", flexDirection: "column", maxWidth: 200, }}>
 			  <Chip
-				label={"KMS Shuffle Storage"}
+				label={"KMS NexusGuard Storage"}
 				variant="contained"
 				color="secondary"
 				style={{cursor: "pointer"}}
@@ -5781,7 +5781,7 @@ If you're interested, please let me know a time that works for you, or set up a 
               <div>
               {authentication.map((data, index) => {
 				var checked = data.checked
-				if (data.label !== undefined && data.label !== null && data.label.toLowerCase() === "kms shuffle storage") {
+				if (data.label !== undefined && data.label !== null && data.label.toLowerCase() === "kms nexusguard storage") {
 					return null
 				}
 
@@ -6185,7 +6185,7 @@ If you're interested, please let me know a time that works for you, or set up a 
       })
       .catch((error) => {
         toast(
-          "Failed dismissing alert. Please contact support@shuffler.io if this persists.",
+          "Failed dismissing alert. Please contact support@nexusguardr.io if this persists.",
         );
       });
   };
@@ -6207,14 +6207,14 @@ If you're interested, please let me know a time that works for you, or set up a 
 	  return;
 	}
 
-	const elementName = "copy_element_shuffle";
+	const elementName = "copy_element_nexusguard";
 	const auth =
 	  environment.auth === ""
 		? "cb5st3d3Z!3X3zaJ*Pc"
 		: environment.auth;
 	const newUrl =
-	  globalUrl === "https://shuffler.io"
-		? "https://shuffle-backend-stbuwivzoq-nw.a.run.app"
+	  globalUrl === "https://nexusguardr.io"
+		? "https://nexusguard-backend-stbuwivzoq-nw.a.run.app"
 		: globalUrl;
 
     var skipPipeline = false
@@ -6230,32 +6230,32 @@ If you're interested, please let me know a time that works for you, or set up a 
 	if (installationTab === 1) {
 		return (`docker run -d \\
 	--restart=always \\
-	--name="shuffle-orborus" \\
+	--name="nexusguard-orborus" \\
 	--pull=always \\
 	--volume "/var/run/docker.sock:/var/run/docker.sock" \\
 	-e AUTH="${environment.auth}" \\
 	-e ENVIRONMENT_NAME="${environment.Name}" \\
 	-e ORG="${environment.org_id}" \\
-	-e SHUFFLE_WORKER_IMAGE="ghcr.io/shuffle/shuffle-worker:nightly" \\
-	-e SHUFFLE_SWARM_CONFIG=run \\
-	-e SHUFFLE_LOGS_DISABLED=true \\
-	-e BASE_URL="${newUrl}" \\${addProxy ? "\n        -e HTTPS_PROXY=IP:PORT \\" : ""}${skipPipeline ? "\n        -e SHUFFLE_SKIP_PIPELINES=true \\" : ""}
-	ghcr.io/shuffle/shuffle-orborus:latest
+	-e NEXUSGUARD_WORKER_IMAGE="ghcr.io/nexusguard/nexusguard-worker:nightly" \\
+	-e NEXUSGUARD_SWARM_CONFIG=run \\
+	-e NEXUSGUARD_LOGS_DISABLED=true \\
+	-e BASE_URL="${newUrl}" \\${addProxy ? "\n        -e HTTPS_PROXY=IP:PORT \\" : ""}${skipPipeline ? "\n        -e NEXUSGUARD_SKIP_PIPELINES=true \\" : ""}
+	ghcr.io/nexusguard/nexusguard-orborus:latest
 		`)
 	} else if (installationTab === 2) {
-		return `https://shuffler.io/docs/configuration#kubernetes`
+		return `https://nexusguardr.io/docs/configuration#kubernetes`
 	}
 
-	const commandData = `docker rm shuffle-orborus --force; \\\ndocker run -d \\
+	const commandData = `docker rm nexusguard-orborus --force; \\\ndocker run -d \\
 	--restart=always \\
-	--name="shuffle-orborus" \\
+	--name="nexusguard-orborus" \\
 	--pull=always  \\
 	--volume "/var/run/docker.sock:/var/run/docker.sock" \\
 	-e AUTH="${auth}" \\
 	-e ENVIRONMENT_NAME="${environment.Name}" \\
 	-e ORG="${props.userdata.active_org.id}" \\
-	-e BASE_URL="${newUrl}" \\${addProxy ? "\n        -e HTTPS_PROXY=IP:PORT \\" : ""}${skipPipeline ? "\n        -e SHUFFLE_SKIP_PIPELINES=true \\" : ""}
-	ghcr.io/shuffle/shuffle-orborus:latest`
+	-e BASE_URL="${newUrl}" \\${addProxy ? "\n        -e HTTPS_PROXY=IP:PORT \\" : ""}${skipPipeline ? "\n        -e NEXUSGUARD_SKIP_PIPELINES=true \\" : ""}
+	ghcr.io/nexusguard/nexusguard-orborus:latest`
 
 	return commandData
 
@@ -6294,9 +6294,9 @@ curTab === 6 ? (
 	<div style={{ marginTop: 20, marginBottom: 20 }}>
 	  <h2 style={{ display: "inline" }}>Locations</h2>
 	  <span style={{ marginLeft: 25 }}>
-		Decides where to run your workflows and actions. Uses Shuffle's Orborus runner to handle queued jobs onprem. Previously "Environments".
+		Decides where to run your workflows and actions. Uses NexusGuard's Orborus runner to handle queued jobs onprem. Previously "Environments".
 
-		If you have scale problems, talk to our team: support@shuffler.io.&nbsp;
+		If you have scale problems, talk to our team: support@nexusguardr.io.&nbsp;
 		<a
 		  target="_blank"
 		  rel="noopener noreferrer"
@@ -6491,11 +6491,11 @@ curTab === 6 ? (
                             </Tooltip>
                           ) : (
                             <Tooltip
-                              title="In Verbose mode. Set SHUFFLE_SWARM_CONFIG=run to Scale. This will not be as verbose. Details: https://shuffler.io/docs/configuration#scaling-shuffle"
+                              title="In Verbose mode. Set NEXUSGUARD_SWARM_CONFIG=run to Scale. This will not be as verbose. Details: https://nexusguardr.io/docs/configuration#scaling-nexusguard"
                               placement="top"
                             >
                               <a
-                                href="/docs/configuration#scaling-shuffle"
+                                href="/docs/configuration#scaling-nexusguard"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
@@ -6514,7 +6514,7 @@ curTab === 6 ? (
                         primary={
 						  environment.Type === "cloud" ? 
 
-                            <Tooltip title={"Make a new environment to set up a Datalake node. Please contact support@shuffler.io if this is something you want to see on Cloud directly."} placement="top">
+                            <Tooltip title={"Make a new environment to set up a Datalake node. Please contact support@nexusguardr.io if this is something you want to see on Cloud directly."} placement="top">
                               <CancelIcon style={{ color: "rgba(255,255,255,0.3)" }} />
                             </Tooltip>
 						  :
@@ -6678,7 +6678,7 @@ curTab === 6 ? (
 						  			Your Onprem Orborus instance
 						  		</Typography>
 						  		<Typography variant="body2" color="textSecondary">
-						  			Orborus is the Shuffle queue handler that runs your hybrid workflows and manages pipelines. It can be run in Docker/k8s container on your server or in your cluster. Follow the steps below, and configure as need be.
+						  			Orborus is the NexusGuard queue handler that runs your hybrid workflows and manages pipelines. It can be run in Docker/k8s container on your server or in your cluster. Follow the steps below, and configure as need be.
 						  		</Typography>
 
 								<Tabs
@@ -6724,7 +6724,7 @@ curTab === 6 ? (
 						  		<Typography variant="body1" color="textSecondary" style={{marginTop: 15, }}>
 						  			{installationTab === 2 ?
 										<span>
-						  					Check our <a href="https://docs.docker.com/get-started/get-docker/" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "#f85a3e",}}>Kubernetes documentation</a> for more information on how to run Shuffle on Kubernetes. The status of the node will change when connected.
+						  					Check our <a href="https://docs.docker.com/get-started/get-docker/" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "#f85a3e",}}>Kubernetes documentation</a> for more information on how to run NexusGuard on Kubernetes. The status of the node will change when connected.
 										</span>
 										:
 										<span>
@@ -6771,7 +6771,7 @@ curTab === 6 ? (
 
 										<Divider style={{marginTop: 25, marginBottom: 10, }}/>
 										Configure HTTP Proxies: <Checkbox 
-											id="shuffle_skip_proxies"
+											id="nexusguard_skip_proxies"
 											onClick={() => {
 												if (commandController.proxies === undefined) { 
 													commandController.proxies = true 
@@ -6785,7 +6785,7 @@ curTab === 6 ? (
 										/>
 										<div />
 										Disable Pipelines & Data Lake: <Checkbox 
-											id="shuffle_skip_pipelines"
+											id="nexusguard_skip_pipelines"
 											onClick={() => {
 												if (commandController.pipelines === undefined) { 
 													commandController.pipelines = true 
@@ -6831,7 +6831,7 @@ curTab === 6 ? (
                         >
                           <div style={{ flex: 2, overflow: "hidden" }}>
                             <Typography variant="body1">
-                              90% CPU the server(s) hosting the Shuffle App
+                              90% CPU the server(s) hosting the NexusGuard App
                               Runner (Orborus) was found.
                             </Typography>
                             <Typography variant="body2" color="textSecondary">
@@ -6849,7 +6849,7 @@ curTab === 6 ? (
                               </a>{" "}
                               and{" "}
                               <a
-                                href="https://shuffler.io/contact"
+                                href="https://nexusguardr.io/contact"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{
@@ -6911,7 +6911,7 @@ curTab === 6 ? (
           <span style={{ marginLeft: 25 }}>
             Control sub organizations (tenants)!{" "}
             {isCloud
-              ? "You can only make a sub organization if you are a customer of shuffle or running a POC of the platform. Please contact support@shuffler.io to try it out."
+              ? "You can only make a sub organization if you are a customer of nexusguard or running a POC of the platform. Please contact support@nexusguardr.io to try it out."
               : ""}
             .{" "}
             <a
@@ -7433,7 +7433,7 @@ curTab === 6 ? (
       {editAuthenticationModal}
       {data}
       <TextField
-        id="copy_element_shuffle"
+        id="copy_element_nexusguard"
         value={to_be_copied}
         style={{ display: "none" }}
       />

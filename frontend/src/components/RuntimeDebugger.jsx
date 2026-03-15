@@ -443,7 +443,7 @@ const RuntimeDebugger = (props) => {
 				var extraItems = 0
 				if (params.row.workflow.triggers !== null) {
 					for (let key in params.row.workflow.triggers) {
-						if (params.row.workflow.triggers[key].app_name === "User Input" || params.row.workflow.triggers[key].app_name === "Shuffle Workflow") { 
+						if (params.row.workflow.triggers[key].app_name === "User Input" || params.row.workflow.triggers[key].app_name === "NexusGuard Workflow") { 
 							extraItems += 1
 						}
 					}
@@ -641,7 +641,7 @@ const RuntimeDebugger = (props) => {
 						  </Link>
 						</span>
 						</Tooltip>
-						<Tooltip arrow title={`Force continue workflow. Only workflows for workflows in EXECUTING state. This is NOT a rerun, but way for Shuffle to figure out the next steps automatically. If the execution doesn't finish even after trying this, please contact ${supportEmail}`}> 
+						<Tooltip arrow title={`Force continue workflow. Only workflows for workflows in EXECUTING state. This is NOT a rerun, but way for NexusGuard to figure out the next steps automatically. If the execution doesn't finish even after trying this, please contact ${supportEmail}`}> 
 						  <IconButton
 							style={{marginLeft: 5, }}
 							disabled={params.row.status !== "EXECUTING"}
@@ -659,7 +659,7 @@ const RuntimeDebugger = (props) => {
 							onClick={() => {
 								window.open(`${globalUrl}/api/v1/workflows/search/${params.row.id}`, "_blank")
 							}}
-							disabled={userdata.region_url !== "https://shuffler.io"}
+							disabled={userdata.region_url !== "https://nexusguardr.io"}
 						  >
 							<InsightsIcon fontSize="small" />
 						  </IconButton>
@@ -956,7 +956,7 @@ const RuntimeDebugger = (props) => {
 						onChange={(e)=>{handleQueryChange(e)}}
 						color="primary"
 						placeholder="Filter by Workflow Name, Status, Execution Argument, Results"
-						id="shuffle_search_field"
+						id="nexusguard_search_field"
         				/>
 						<Tooltip title="Set the maximum number of workflow executions to retrieve in search results" placement="top">
 							<FormControl style={{ minWidth: 120, marginTop: 20 }}>

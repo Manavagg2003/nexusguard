@@ -208,7 +208,7 @@ const menuData = {
         social: true,
         platforms: [
           { name: "Discord", icon: "/images/icons/discord.svg", link: "https://discord.gg/B2CBzUm", gaData: { category: "navbar", action: "social_click", label: "discord_icon_click" } },
-          { name: "GitHub", icon: "/images/icons/github.svg", link: "https://github.com/shuffle/shuffle/blob/main/.github/install-guide.md", gaData: { category: "navbar", action: "social_click", label: "github_icon_click" } },
+          { name: "GitHub", icon: "/images/icons/github.svg", link: "https://github.com/Manavagg2003/nexusguard", gaData: { category: "navbar", action: "social_click", label: "github_icon_click" } },
         ],
         followUs: [
           { name: "LinkedIn", icon: "/images/icons/linkedIn.svg", link: "https://www.linkedin.com/company/shuffleio", gaData: { category: "navbar", action: "social_click", label: "linkedin_icon_click" } },
@@ -710,7 +710,7 @@ const MobileMenu = ({ anchorEl, handleClose, isLoggedIn, navigate, isCloud }) =>
               }
             }}
           >
-            Book a Demo
+            Get in Touch
           </Button>
           <Button
             fullWidth

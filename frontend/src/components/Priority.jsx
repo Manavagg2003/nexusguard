@@ -25,7 +25,7 @@ const Priority = (props) => {
   	const { globalUrl, clickedFromOrgTab,userdata, serverside, priority, checkLogin, setAdminTab, setCurTab, appFramework, } = props;
 	const { themeMode, supportEmail } = useContext(Context);
 	const theme = getTheme(themeMode);
-  	const isCloud = window.location.host === "localhost:3002" || window.location.host === "shuffler.io";
+  	const isCloud = window.location.host === "localhost:3002" || window.location.host === "nexusguardr.io";
 	let navigate = useNavigate();
 
 	if (window.location.pathname === "/workflows") {
@@ -171,7 +171,7 @@ const Priority = (props) => {
 							setAdminTab(0)
 						}
 
-						if (priority.description.toLowerCase().includes("hybrid shuffle")) {
+						if (priority.description.toLowerCase().includes("hybrid nexusguard")) {
 							setCurTab(6)
 						}
 					}

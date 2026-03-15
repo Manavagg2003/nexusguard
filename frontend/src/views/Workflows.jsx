@@ -166,7 +166,7 @@ const DropzoneWrapper = memo(({ onDrop, WorkflowView }) => {
 const Workflows = (props) => {
   const { globalUrl, isLoggedIn, isLoaded, userdata, checkLogin } = props;
 
-  document.title = "Workflows - Shuffle";
+  document.title = "Workflows - NexusGuard";
   let navigate = useNavigate();
 
   const classes = useStyles(theme)
@@ -186,7 +186,7 @@ const Workflows = (props) => {
 
   const [field1, setField1] = React.useState("");
   const [field2, setField2] = React.useState("");
-  const [downloadUrl, setDownloadUrl] = React.useState("https://github.com/shuffle/workflows")
+  const [downloadUrl, setDownloadUrl] = React.useState("https://github.com/nexusguard/workflows")
   const [downloadBranch, setDownloadBranch] = React.useState("master");
   const [loadWorkflowsModalOpen, setLoadWorkflowsModalOpen] =
     React.useState(false);
@@ -269,7 +269,7 @@ const Workflows = (props) => {
 
   const isCloud =
     window.location.host === "localhost:3002" ||
-    window.location.host === "shuffler.io";
+    window.location.host === "nexusguardr.io";
 
   const findWorkflow = (filters) => {
     console.log("Using filters: ", filters)
@@ -1056,7 +1056,7 @@ const Workflows = (props) => {
       for (var key in data.triggers) {
         const trigger = data.triggers[key];
         if (skip_sanitize !== true) {
-          if (trigger.app_name === "Shuffle Workflow") {
+          if (trigger.app_name === "NexusGuard Workflow") {
             if (trigger.parameters !== null && trigger.parameters !== undefined) {
               if (trigger.parameters.length > 2) {
                 trigger.parameters[2].value = "";
@@ -1104,7 +1104,7 @@ const Workflows = (props) => {
           }
         }
 
-        trigger.environment = isCloud ? "cloud" : "Shuffle";
+        trigger.environment = isCloud ? "cloud" : "NexusGuard";
         trigger.id = newId;
       }
     }
@@ -1246,7 +1246,7 @@ const Workflows = (props) => {
     data = sanitizeWorkflow(data);
     toast("Sanitizing and publishing " + data.name);
 
-    // This ALWAYS talks to Shuffle cloud
+    // This ALWAYS talks to NexusGuard cloud
     fetch(globalUrl + "/api/v1/workflows/" + data.id + "/publish", {
       method: "POST",
       headers: {
@@ -1264,7 +1264,7 @@ const Workflows = (props) => {
             toast("Successfully published workflow");
           } else {
             toast(
-              "Successfully published workflow to https://shuffler.io"
+              "Successfully published workflow to https://nexusguardr.io"
             );
           }
         }
@@ -1570,7 +1570,7 @@ const Workflows = (props) => {
         continue
       }
 
-      if (parsedAction.app_name === "Shuffle Tools" || parsedAction.app_id === "bc78f35c6c6351b07a09b7aed5d29652") {
+      if (parsedAction.app_name === "NexusGuard Tools" || parsedAction.app_id === "bc78f35c6c6351b07a09b7aed5d29652") {
         continue
       }
 
@@ -1980,7 +1980,7 @@ const Workflows = (props) => {
                     var newWorkflows = [data];
                     for (var key in data.triggers) {
                       const trigger = data.triggers[key];
-                      if (trigger.app_name !== "Shuffle Workflow") {
+                      if (trigger.app_name !== "NexusGuard Workflow") {
                         continue;
                       }
 
@@ -2319,7 +2319,7 @@ const Workflows = (props) => {
     ) {
       triggers = data.triggers.length;
       for (let key in data.triggers) {
-        if (data.triggers[key].app_name === "Shuffle Workflow") {
+        if (data.triggers[key].app_name === "NexusGuard Workflow") {
           subflows += 1;
         }
       }
@@ -2528,7 +2528,7 @@ const Workflows = (props) => {
                         var newWorkflows = [data];
                         for (var key in data.triggers) {
                           const trigger = data.triggers[key];
-                          if (trigger.app_name !== "Shuffle Workflow") {
+                          if (trigger.app_name !== "NexusGuard Workflow") {
                             continue;
                           }
 
@@ -3065,7 +3065,7 @@ const Workflows = (props) => {
         </Tooltip>
       ) : null}
       {isCloud ? null : (
-        <Tooltip color="primary" title={"Import workflows to Shuffle"} placement="top">
+        <Tooltip color="primary" title={"Import workflows to NexusGuard"} placement="top">
           <Button
             color="secondary"
             style={{}}
@@ -3197,7 +3197,7 @@ const Workflows = (props) => {
                 <a
                   rel="noopener noreferrer"
                   target="_blank"
-                  href="https://shuffler.io/docs/workflows"
+                  href="https://nexusguardr.io/docs/workflows"
                   style={{ textDecoration: "none", color: "#f85a3e" }}
                 >
                   Learn more about Workflows
@@ -3322,7 +3322,7 @@ const Workflows = (props) => {
                   return null;
                 }
 
-                if (data.app_name.toLowerCase() === "shuffle tools") {
+                if (data.app_name.toLowerCase() === "nexusguard tools") {
                   //data.large_image = theme.palette.defaultImage
                 }
 
@@ -3601,7 +3601,7 @@ const Workflows = (props) => {
             },
           }}
           onChange={(e) => setDownloadUrl(e.target.value)}
-          placeholder="https://github.com/shuffle/workflows"
+          placeholder="https://github.com/nexusguard/workflows"
           fullWidth
         />
         <span style={{ marginTop: 10 }}>
@@ -3805,7 +3805,7 @@ const Workflows = (props) => {
       }}
     >
       <DialogTitle>
-        Welcome to Shuffle!
+        Welcome to NexusGuard!
       </DialogTitle>
 
       <Tooltip

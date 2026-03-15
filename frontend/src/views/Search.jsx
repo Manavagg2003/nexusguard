@@ -147,17 +147,17 @@ const Search = (props) => {
 
     setCurTab(newValue);
     if (newValue === 0) {
-      document.title = "Shuffle - search - apps";
+      document.title = "NexusGuard - search - apps";
     } else if (newValue === 1) {
-      document.title = "Shuffle - search - workflows";
+      document.title = "NexusGuard - search - workflows";
     } else if (newValue === 2) {
-      document.title = "Shuffle - search - documentation";
+      document.title = "NexusGuard - search - documentation";
     } else if (newValue === 3) {
-      document.title = "Shuffle - search - creators";
+      document.title = "NexusGuard - search - creators";
     } else if (newValue === 4) {
-      document.title = "Shuffle - search - Discord Chat";
+      document.title = "NexusGuard - search - Discord Chat";
     } else {
-      document.title = "Shuffle - search";
+      document.title = "NexusGuard - search";
     }
 
     const urlSearchParams = new URLSearchParams(window.location.search);

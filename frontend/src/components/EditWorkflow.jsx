@@ -258,7 +258,7 @@ const EditWorkflow = (props) => {
 
     const isCloud =
         window.location.host === "localhost:3002" ||
-        window.location.host === "shuffler.io";
+        window.location.host === "nexusguardr.io";
 
 	return (
 		<Drawer
@@ -1047,7 +1047,7 @@ const EditWorkflow = (props) => {
 								</Typography>
 
 								<Typography variant="body2" color="textSecondary" style={{ marginTop: 10, marginBottom: 10, }}>
-									Make one workflow, and keep a separate, synced copy in your other tenants. Control distributed auth, runtime locations, files, datastore keys etc. Can only distribute from parent org to child org. Need help trying it? <a href="https://shuffler.io/contact" target="_blank" style={{color: "#f85a3e", textDecoration: "none",}}>Contact us for a demo</a>
+									Make one workflow, and keep a separate, synced copy in your other tenants. Control distributed auth, runtime locations, files, datastore keys etc. Can only distribute from parent org to child org. Need help trying it? <a href="https://nexusguardr.io/contact" target="_blank" style={{color: "#f85a3e", textDecoration: "none",}} rel="noreferrer">Contact us for a demo</a>
 								</Typography>
 
 								{userdata !== undefined && userdata !== null && userdata.orgs !== undefined && userdata.orgs !== null && userdata.orgs.length > 0  ?
@@ -1059,7 +1059,7 @@ const EditWorkflow = (props) => {
 											</Typography>
 											:
 											<Typography variant="body2" style={{ marginTop: 10, color: "rgba(255,255,255,0.7)" }}>
-												{innerWorkflow.parentorg_workflow !== undefined && innerWorkflow.parentorg_workflow !== null && innerWorkflow.parentorg_workflow.length > 0 ? <span>This workflow is distributed from <a href={`/workflows/${innerWorkflow.parentorg_workflow}`} style={{ textDecoration: "none", color: "#f86a3e" }} target="_blank">your parent workflow</a> (you may not have access).</span> : null}
+												{innerWorkflow.parentorg_workflow !== undefined && innerWorkflow.parentorg_workflow !== null && innerWorkflow.parentorg_workflow.length > 0 ? <span>This workflow is distributed from <a href={`/workflows/${innerWorkflow.parentorg_workflow}`} style={{ textDecoration: "none", color: "#f86a3e" }} target="_blank" rel="noreferrer">your parent workflow</a> (you may not have access).</span> : null}
 												<br />
 												<br />
 												You can only distribute to suborgs from a parent org.
@@ -1186,7 +1186,7 @@ const EditWorkflow = (props) => {
 												id="outlined-with-placeholder"
 												margin="normal"
 												variant="outlined"
-												placeholder="github/com/shuffle/workflowbackup "
+												placeholder="github/com/nexusguard/workflowbackup "
 												defaultValue={innerWorkflow.backup_config === undefined || innerWorkflow.backup_config.upload_repo === undefined || innerWorkflow.backup_config.upload_repo === null || innerWorkflow.backup_config.upload_repo === "" ? "" : innerWorkflow.backup_config.upload_repo}
 												onChange={(e) => {
 													//setUploadRepo(e.target.value);
@@ -1628,7 +1628,7 @@ const EditWorkflow = (props) => {
 								/>
 							</Typography>
 							<Typography variant="body2" color="textSecondary" style={{ marginTop: 10, }}>
-								Publishing is related to making this workflow itself public. When publishing a workflow, all the details (except sensitive info) become available to anyone. The fields below will help a user and Shuffle's system understand your workflow better. When a workflow is published, you keep the original, and a copy enters the Shuffle workflow search, and is associated with your <a href="/creators" style={{ textDecoration: "none", color: "#f86a3e" }} target="_blank">creator</a> or partner account, if you have one. You can always unpublish the workflow after. When ready to publish, click the three dots next to a workflow on the main workflow page. 
+								Publishing is related to making this workflow itself public. When publishing a workflow, all the details (except sensitive info) become available to anyone. The fields below will help a user and NexusGuard's system understand your workflow better. When a workflow is published, you keep the original, and a copy enters the NexusGuard workflow search, and is associated with your <a href="/creators" style={{ textDecoration: "none", color: "#f86a3e" }} target="_blank">creator</a> or partner account, if you have one. You can always unpublish the workflow after. When ready to publish, click the three dots next to a workflow on the main workflow page. 
 
 								You can always unpublish a workflow after.
 							</Typography>
@@ -1675,7 +1675,7 @@ const EditWorkflow = (props) => {
 										<FormControlLabel value="subflow" control={<Radio />} label="Subflow" />
 									</Tooltip>
 
-									<Tooltip title="Standalone is default. This has no impact on Shuffle as a system.">
+									<Tooltip title="Standalone is default. This has no impact on NexusGuard as a system.">
 										<FormControlLabel value="standalone" control={<Radio />} label="Standalone" />
 									</Tooltip>
 

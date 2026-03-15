@@ -83,10 +83,10 @@ const OrgHeaderexpandedNew = (props) => {
 
 	const [appDownloadUrl, setAppDownloadUrl] = React.useState(
 		selectedOrganization.defaults === undefined
-			? "https://github.com/frikky/shuffle-apps"
+			? "https://github.com/frikky/nexusguard-apps"
 			: selectedOrganization.defaults.app_download_repo === undefined ||
 				selectedOrganization.defaults.app_download_repo.length === 0
-				? "https://github.com/frikky/shuffle-apps"
+				? "https://github.com/frikky/nexusguard-apps"
 				: selectedOrganization.defaults.app_download_repo
 	);
 
@@ -104,10 +104,10 @@ const OrgHeaderexpandedNew = (props) => {
 	);
 	const [workflowDownloadUrl, setWorkflowDownloadUrl] = React.useState(
 		selectedOrganization.defaults === undefined
-			? "https://github.com/frikky/shuffle-apps"
+			? "https://github.com/frikky/nexusguard-apps"
 			: selectedOrganization.defaults.workflow_download_repo === undefined ||
 				selectedOrganization.defaults.workflow_download_repo.length === 0
-				? "https://github.com/frikky/shuffle-workflows"
+				? "https://github.com/frikky/nexusguard-workflows"
 				: selectedOrganization.defaults.workflow_download_repo
 	);
 	const [workflowDownloadBranch, setWorkflowDownloadBranch] = React.useState(
@@ -612,7 +612,7 @@ const OrgHeaderexpandedNew = (props) => {
 
 							{/*isCloud ? 
 								<Chip
-									label="Disabled on shuffler.io for now. Contact us for more info"
+									label="Disabled on nexusguardr.io for now. Contact us for more info"
 									color="secondary"
 									style={{ marginLeft: 30, height: 30, }}
 								/>
@@ -620,7 +620,7 @@ const OrgHeaderexpandedNew = (props) => {
 						</div>
 						{/*
 						<Typography variant="body2" color="textSecondary">
-							Add a Workflow that receives notifications from Shuffle when an error occurs in one of your workflows
+							Add a Workflow that receives notifications from NexusGuard when an error occurs in one of your workflows
 						</Typography>
 						*/}
 					</span>
@@ -742,7 +742,7 @@ const OrgHeaderexpandedNew = (props) => {
 									id="outlined-with-placeholder"
 									margin="normal"
 									variant="outlined"
-									placeholder="Ex: github/com/shuffle/workflowbackup "
+									placeholder="Ex: github/com/nexusguard/workflowbackup "
 									value={uploadRepo}
 									onChange={(e) => {
 										setUploadRepo(e.target.value);
@@ -1085,7 +1085,7 @@ const RegionChangeModal = memo(({ selectedOrganization, setSelectedRegion, userd
 
 	const regionsplit = selectedOrganization?.region_url?.split(".");
 
-	if (regionsplit?.length > 2 && !regionsplit[0]?.includes("shuffler")) {
+	if (regionsplit?.length > 2 && !regionsplit[0]?.includes("nexusguardr")) {
 		const namesplit = regionsplit[0]?.split("/");
 		regiontag = namesplit[namesplit.length - 1];
 

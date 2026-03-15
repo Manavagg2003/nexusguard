@@ -112,7 +112,7 @@ const PartnerTab = (props) => {
         const formattedTabName = tabName.toLowerCase().replace(/[\s&]+/g, '');
         const encodedTabName = encodeURIComponent(formattedTabName);
         setSelectedTab(formattedTabName);
-        document.title = `Shuffle - partner - ${formattedTabName}`;
+        document.title = `NexusGuard - partner - ${formattedTabName}`;
         navigate(`?partner_tab=${encodedTabName}`);
     };
 

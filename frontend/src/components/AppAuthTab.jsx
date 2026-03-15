@@ -875,7 +875,7 @@ const AppAuthTab = memo((props) => {
                   <div>
                   {authentication.map((data, index) => {
                     var checked = data.checked
-                    if (data.label !== undefined && data.label !== null && data.label.toLowerCase() === "kms shuffle storage") {
+                    if (data.label !== undefined && data.label !== null && data.label.toLowerCase() === "kms nexusguard storage") {
                         return null
                     }
     
@@ -1705,7 +1705,7 @@ const SearchBox = ({ currentRefinement, refine, isSearchStalled, searchQuery, se
         autoComplete="off"
         color="primary"
         placeholder="Search more than 2500 Apps"
-        id="shuffle_search_field"
+        id="nexusguard_search_field"
         onChange={(event) => {
           setSearchQuery(event.currentTarget.value);
           // removeQuery("q");
@@ -2161,7 +2161,7 @@ const Hits = ({
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://shuffler.io/docs/apps#authentication"
+            href="https://nexusguardr.io/docs/apps#authentication"
             style={{ textDecoration: "none", color: "#f85a3e" }}
           >
             What is app authentication?
@@ -2350,7 +2350,7 @@ const Hits = ({
           <a
             rel="noopener noreferrer"
             target="_blank"
-            href={"https://github.com/shuffle/python-apps"}
+            href={"https://github.com/nexusguard/python-apps"}
             style={{ textDecoration: "none", color: "#f86a3e" }}
           >
             <img
@@ -2516,7 +2516,7 @@ const Hits = ({
                     }}
                 >
           <Typography variant="h6" style={{marginBottom: 25, }}>
-          There is no Shuffle-specific documentation for this app yet outside of the general description above. Documentation is written for each api, and is a community effort. We hope to see your contribution!
+          There is no NexusGuard-specific documentation for this app yet outside of the general description above. Documentation is written for each api, and is a community effort. We hope to see your contribution!
           </Typography>
           <Button 
             variant="contained" 
@@ -2525,7 +2525,7 @@ const Hits = ({
               toast.success("Opening remote Github documentation link. Thanks for contributing!")
 
               setTimeout(() => {
-                window.open(`https://github.com/Shuffle/openapi-apps/new/master/docs?filename=${selectedAppData.name.toLowerCase()}.md`, "_blank")
+                window.open(`https://github.com/NexusGuard/openapi-apps/new/master/docs?filename=${selectedAppData.name.toLowerCase()}.md`, "_blank")
               }, 2500)
             }}
            >
@@ -2559,7 +2559,7 @@ const Hits = ({
                     <a
                       rel="noopener noreferrer"
                       target="_blank"
-                      href={"https://github.com/shuffle/python-apps"}
+                      href={"https://github.com/nexusguard/python-apps"}
                       style={{ textDecoration: "none", color: "#f86a3e" }}
                     >
                       Check it out on Github!
@@ -2715,7 +2715,7 @@ const Hits = ({
             {hits.map((data, index) => {
               const appUrl = isCloud
                 ? `/apps/${data.objectID}?queryID=${data.__queryID}`
-                : `https://shuffler.io/apps/${data.objectID}?queryID=${data.__queryID}`;
+                : `https://nexusguardr.io/apps/${data.objectID}?queryID=${data.__queryID}`;
   
               return (
                 <Zoom

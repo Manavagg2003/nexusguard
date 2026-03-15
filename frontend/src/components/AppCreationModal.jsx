@@ -517,7 +517,7 @@ const AppCreationModal = ({ open, onClose, theme, globalUrl, isCloud, startOpenA
                             Paste in the URI for the OpenAPI or find out
                         </Typography>
                         <Link 
-                        to="https://shuffler.io/docs/apps#getting-started"
+                        to="https://nexusguardr.io/docs/apps#getting-started"
                         style={{
                             color: '#ff8544',
                             textDecoration: 'none',
@@ -736,7 +736,7 @@ const AppCreationModal = ({ open, onClose, theme, globalUrl, isCloud, startOpenA
                         fontFamily: theme?.typography?.fontFamily
                     }}>
                         Paste in a URL, and we will make it into an app for you.
-                        <b>{isCloud ? "" : " Uses Shuffle Cloud (https://shuffler.io) for processing (for now)."}</b>
+                        <b>{isCloud ? "" : " Uses NexusGuard Cloud (https://nexusguardr.io) for processing (for now)."}</b>
                     </Typography>
 
                     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>

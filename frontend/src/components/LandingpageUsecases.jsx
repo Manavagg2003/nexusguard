@@ -125,47 +125,27 @@ const LandingpageUsecases = (props) => {
 						{/*<b>Security Automation <i>is Hard</i></b>*/}
 					</Typography>
 					<Typography variant="h6" style={{marginTop: isMobile ? 15 : 0,}}>
-						Connecting your everchanging environment is hard. We get it! That's why we built Shuffle, where you can use and share your security workflows to everyones benefit.
-						{/*Shuffle is an automation platform where you don't need to be an expert to automate. Get access to our large pool of security playbooks, apps and people.*/}
+						Connecting your everchanging environment is hard. We get it! That's why we built NexusGuard, where you can use and share your security workflows to everyones benefit.
+						{/*NexusGuard is an automation platform where you don't need to be an expert to automate. Get access to our large pool of security playbooks, apps and people.*/}
 					</Typography>
-					<div style={{display: "flex", textAlign: "center", itemAlign: "center",}}>
 						{isMobile ? null :
-							<Link rel="noopener noreferrer" to={"/pricing"} style={{textDecoration: "none"}}>
-								<Button
-									variant="contained"
-									onClick={() => {
-										ReactGA.event({
-											category: "landingpage",
-											action: "click_main_pricing",
-											label: "",
-										})
-									}}
-									style={{
-										borderRadius: 25, height: 40, width: 175, margin: "15px 0px 15px 0px", fontSize: 14, color: "white", backgroundImage: buttonBackground, marginRight: 10, 
-									}}>
-									See Pricing	
-								</Button>
-							</Link>
+							<Button
+								variant="contained"
+								size="large"
+								onClick={() => {
+									ReactGA.event({
+										category: "landingpage",
+										action: "click_main_launch",
+										label: "",
+									});
+									window.location.href = "/workflows";
+								}}
+								style={{
+									borderRadius: 25, height: 50, width: 220, margin: "15px 0px 15px 0px", fontSize: 16, color: "white", backgroundImage: buttonBackground,
+								}}>
+								Launch NexusGuard →
+							</Button>
 						}
-						{isMobile ? null :
-							<Link rel="noopener noreferrer" to={"/register?message=You'll need to sign up first. No name, company or credit card required."} style={{textDecoration: "none"}}>
-								<Button
-									variant="contained"
-									onClick={() => {
-										ReactGA.event({
-											category: "landingpage",
-											action: "click_main_try_it_out",
-											label: "",
-										})
-									}}
-									style={{
-										borderRadius: 25, height: 40, width: 175, margin: "15px 0px 15px 0px", fontSize: 14, color: "white", backgroundImage: buttonBackground,
-									}}>
-									Start for free	
-								</Button>
-							</Link>
-						}
-					</div>
 				</div>
 				{isMobile ? null : 
 					<div style={{marginLeft: 200, marginTop: 125, zIndex: 1000}}>
@@ -183,43 +163,7 @@ const LandingpageUsecases = (props) => {
 				}
 			</div>
 			<div style={{display: "flex", width: isMobile ? "100%" : 300, itemAlign: "center", margin: "auto", marginTop: 20, flexDirection: isMobile ? "column" : "row", textAlign: "center",}}>
-				{isMobile ?
-				<Link rel="noopener noreferrer" to={"/pricing"} style={{textDecoration: "none"}}>
-					<Button
-						variant={isMobile ? "contained" : "outlined"}
-						color={isMobile ? "primary" : "secondary"}
-						style={buttonStyle}
-						onClick={() => {
-							ReactGA.event({
-								category: "landingpage",
-								action: "click_main_pricing",
-								label: "",
-							})
-						}}
-						>
-						See pricing 
-					</Button>
-				</Link>
-				: null
-				}
-				{/*isMobile ? 
-				<Link rel="noopener noreferrer" to={"/docs/features"} style={{textDecoration: "none"}}>
-					<Button
-						variant="outlined"
-						onClick={() => {
-							ReactGA.event({
-								category: "landingpage",
-								action: "click_main_features",
-								label: "",
-							})
-						}}
-						color="secondary"
-						style={buttonStyle}>
-						Features 
-					</Button>
-						</Link>
-						: null*/}
-					</div>
+			</div>
 			{isMobile ? null : 
 				<div style={{display: "flex", width: parsedWidth, margin: "auto", marginTop: 150}}>
 					{securityFramework.map((data, index) => {

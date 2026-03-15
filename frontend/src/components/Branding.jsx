@@ -157,7 +157,7 @@ const Branding = (props) => {
 					if (supportEmail?.length > 0) {
 						setSupportEmail(supportEmail)
 					}else {
-						setSupportEmail("support@shuffler.io")
+						setSupportEmail("support@nexusguardr.io")
 					}
 				}
 
@@ -301,7 +301,7 @@ const Branding = (props) => {
 		<span style={{marginLeft: 10, color: isPublished ? red : green, fontSize: 16 }}>{isPublished ? "Not Published" : "Published"}</span>
 			</Typography>
 
-			<a href="https://shuffler.io/partners" target="_blank" style={{ textDecoration: "none", }}>
+			<a href="https://nexusguardr.io/partners" target="_blank" style={{ textDecoration: "none", }} rel="noreferrer">
 				<Typography variant="body1" color="textSecondary" style={{display: 'flex', marginTop: 20, marginBottom: 10 }}>
 					{!isPartner ? <CheckCircleIcon style={{color: red, }} /> : <CheckCircleIcon style={{color: green, }} />}
 					<Tooltip title="Official Partner Program (manual verification)" placement="top" arrow>
@@ -314,7 +314,7 @@ const Branding = (props) => {
 					<a 
 						href={`/partners/${selectedOrganization.creator_id}/edit`} 
 						target="_blank"
-						style={{ textDecoration: "none" }} // Optional: remove underline
+						style={{ textDecoration: "none" }} rel="noreferrer" // Optional: remove underline
 					>
 						<Button 
 								variant="contained" 
@@ -352,7 +352,7 @@ const Branding = (props) => {
 				<div>
 					<span>
 						<Typography variant="body2" color="textSecondary">
-							By changing publishing settings, you agree to our <a href="/docs/terms_of_service" target="_blank" style={{ textDecoration: "none", color: theme.palette.linkColor}}>Terms of Service</a>, and acknowledge that your organization's non-sensitive data will be added as a <a target="_blank" style={{ textDecoration: "none", color: theme.palette.linkColor}} href="https://shuffler.io/creators">creator account</a>. None of your existing workflows, apps, or other stored data will be published. Any admin in your organization can manage the creator configuration. Becoming a creator organization IS reversible.<div/>Support: <a href={`mailto:${supportEmail}`} target="_blank" style={{ textDecoration: "none", color: theme.palette.linkColor}}>{supportEmail}</a>
+							By changing publishing settings, you agree to our <a href="/docs/terms_of_service" target="_blank" style={{ textDecoration: "none", color: theme.palette.linkColor}}>Terms of Service</a>, and acknowledge that your organization's non-sensitive data will be added as a <a target="_blank" style={{ textDecoration: "none", color: theme.palette.linkColor}} href="https://nexusguardr.io/creators" rel="noreferrer">creator account</a>. None of your existing workflows, apps, or other stored data will be published. Any admin in your organization can manage the creator configuration. Becoming a creator organization IS reversible.<div/>Support: <a href={`mailto:${supportEmail}`} target="_blank" style={{ textDecoration: "none", color: theme.palette.linkColor}} rel="noreferrer">{supportEmail}</a>
 						</Typography>
 						{selectedOrganization.creator_id == "" ? 
 							<Typography variant="h6" color="textSecondary" style={{ marginTop: 20, marginBottom: 10, color: "grey", }}>
