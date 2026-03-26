@@ -8,7 +8,7 @@ NexusGuard Security Automation
 
 NexusGuard is an open-source, dashboard-centric security automation platform designed for security professionals and SOC teams. Built to streamline security operations, it provides an intuitive interface, robust workflows, and comprehensive integrations.
 
-[_Documentation_](#documentation) — [_Getting Started_](#getting-started) — [_Features_](#features) — [_Development_](#contributing)
+[_Documentation_](#documentation) — [_Getting Started_](#getting-started) — [_Features_](#key-features) — [_Development_](#contributing)
 
 </h4>
 

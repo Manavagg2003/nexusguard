@@ -1,12 +1,14 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
@@ -42,6 +44,10 @@ func seedNexusGuardTemplates() {
 // buildNexusGuardTemplates returns the 3 NexusGuard branded template workflows.
 func buildNexusGuardTemplates() []shuffle.Workflow {
 	now := time.Now().Unix()
+	envName := os.Getenv("ENVIRONMENT_NAME")
+	if len(envName) == 0 {
+		envName = "NexusGuard"
+	}
 
 	// ─── Template 1: Phishing Triage ─────────────────────────────────────────
 	triggerPhish := shuffle.Trigger{
@@ -59,7 +65,7 @@ func buildNexusGuardTemplates() []shuffle.Workflow {
 			AppName:     "Shuffle Tools",
 			AppVersion:  "1.2.0",
 			IsStartNode: false,
-			Environment: "NexusGuard",
+			Environment: envName,
 		},
 		{
 			ID:          "ng-phish-act-02",
@@ -68,7 +74,7 @@ func buildNexusGuardTemplates() []shuffle.Workflow {
 			AppName:     "VirusTotal",
 			AppVersion:  "3.0.0",
 			IsStartNode: false,
-			Environment: "NexusGuard",
+			Environment: envName,
 		},
 		{
 			ID:          "ng-phish-act-03",
@@ -77,7 +83,7 @@ func buildNexusGuardTemplates() []shuffle.Workflow {
 			AppName:     "Firewall",
 			AppVersion:  "1.0.0",
 			IsStartNode: false,
-			Environment: "NexusGuard",
+			Environment: envName,
 		},
 	}
 	phishBranches := []shuffle.Branch{
@@ -116,7 +122,7 @@ func buildNexusGuardTemplates() []shuffle.Workflow {
 			AppName:     "Shuffle Tools",
 			AppVersion:  "1.2.0",
 			IsStartNode: false,
-			Environment: "NexusGuard",
+			Environment: envName,
 		},
 		{
 			ID:          "ng-brute-act-02",
@@ -125,7 +131,7 @@ func buildNexusGuardTemplates() []shuffle.Workflow {
 			AppName:     "Firewall",
 			AppVersion:  "1.0.0",
 			IsStartNode: false,
-			Environment: "NexusGuard",
+			Environment: envName,
 		},
 		{
 			ID:          "ng-brute-act-03",
@@ -134,7 +140,7 @@ func buildNexusGuardTemplates() []shuffle.Workflow {
 			AppName:     "Slack",
 			AppVersion:  "1.4.0",
 			IsStartNode: false,
-			Environment: "NexusGuard",
+			Environment: envName,
 		},
 	}
 	bruteBranches := []shuffle.Branch{
@@ -173,7 +179,7 @@ func buildNexusGuardTemplates() []shuffle.Workflow {
 			AppName:     "Shuffle Tools",
 			AppVersion:  "1.2.0",
 			IsStartNode: false,
-			Environment: "NexusGuard",
+			Environment: envName,
 		},
 		{
 			ID:          "ng-malware-act-02",
@@ -182,7 +188,7 @@ func buildNexusGuardTemplates() []shuffle.Workflow {
 			AppName:     "CrowdStrike",
 			AppVersion:  "2.0.0",
 			IsStartNode: false,
-			Environment: "NexusGuard",
+			Environment: envName,
 		},
 		{
 			ID:          "ng-malware-act-03",
@@ -191,7 +197,7 @@ func buildNexusGuardTemplates() []shuffle.Workflow {
 			AppName:     "Jira",
 			AppVersion:  "1.3.0",
 			IsStartNode: false,
-			Environment: "NexusGuard",
+			Environment: envName,
 		},
 	}
 	malwareBranches := []shuffle.Branch{
@@ -235,9 +241,9 @@ func handleNexusGuardSummarize(resp http.ResponseWriter, request *http.Request) 
 	_ = user
 
 	body, err := ioutil.ReadAll(request.Body)
-	if err != nil {
+	if err != nil || len(bytes.TrimSpace(body)) == 0 {
 		resp.WriteHeader(400)
-		resp.Write([]byte(`{"success": false, "reason": "Failed to read request body"}`))
+		resp.Write([]byte(`{"success": false, "reason": "Failed to read request body or body is empty"}`))
 		return
 	}
 
@@ -251,6 +257,12 @@ func handleNexusGuardSummarize(resp http.ResponseWriter, request *http.Request) 
 		if jsonErr2 := json.Unmarshal(body, &rawAlerts); jsonErr2 == nil {
 			payload.Alerts = rawAlerts
 		}
+	}
+
+	if payload.Alerts == nil {
+		resp.WriteHeader(400)
+		resp.Write([]byte(`{"success": false, "reason": "Malformed JSON or missing alerts array"}`))
+		return
 	}
 
 	alertCount := len(payload.Alerts)
