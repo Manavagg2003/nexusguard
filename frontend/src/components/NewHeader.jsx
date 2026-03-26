@@ -465,7 +465,7 @@ const Header = (props) => {
         </Link>
 
         <Divider style={{ marginTop: 10, marginBottom: 10, }} />
-		<Link to="/admin?admin_tab=notifications" style={hrefStyle}>
+		<Link to="/alerts" style={hrefStyle}>
 		  <MenuItem
 			onClick={(event) => {
 			  handleClose();
@@ -477,6 +477,7 @@ const Header = (props) => {
 			}) 
 		  </MenuItem>
 		</Link>
+
         <Link to="/usecases" style={hrefStyle}>
           <MenuItem
             onClick={(event) => {
@@ -511,8 +512,9 @@ const Header = (props) => {
         <Divider style={{ marginBottom: 10, }} />
 
         <Typography variant="body2" color="textSecondary" align="center" style={{ marginTop: 5, marginBottom: 5, }}>
-          Version: 1.4.5
+          Version: 1.0.0
         </Typography>
+
       </Menu>
     </span>
   );

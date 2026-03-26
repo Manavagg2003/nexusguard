@@ -1621,7 +1621,7 @@ const AngularWorkflow = (defaultprops) => {
     }
 
     // Special multi-workflow edgecase handler for events
-    if (distributedFromParent === "" && suborgWorkflows === []) {
+    if (distributedFromParent === "" && suborgWorkflows.length === 0) {
     } else {
       if (cy !== undefined && cy !== null) {
         cy.removeListener("select");
@@ -3204,7 +3204,7 @@ const AngularWorkflow = (defaultprops) => {
         if (response.status !== 200) {
           console.log("Status not 200 for setting workflows :O!");
         } else {
-          if (distributedFromParent === "" && suborgWorkflows === []) {
+          if (distributedFromParent === "" && suborgWorkflows.length === 0) {
           } else {
 			// Slight delay to ensure we are not too fast compared to backend goroutines.
             getChildWorkflows(useworkflow.id)
@@ -8540,7 +8540,7 @@ const AngularWorkflow = (defaultprops) => {
   ) {
 
     // Check if 
-    if (distributedFromParent === "" && suborgWorkflows === []) {
+    if (distributedFromParent === "" && suborgWorkflows.length === 0) {
       toast.info("Redirecting as the workflow ID does not match the URL")
 
       setTimeout(() => {
@@ -11909,7 +11909,7 @@ const AngularWorkflow = (defaultprops) => {
         }
 
         var parsedEnvironments =
-          environments === undefined || environments === null || environments === []
+          environments === undefined || environments === null || environments.length === 0
             ? isCloud ? "cloud" : "NexusGuard" : environments[defaultEnvironmentIndex] === undefined
               ? isCloud ? "cloud" : "NexusGuard" : environments[defaultEnvironmentIndex].Name
 
@@ -12282,7 +12282,7 @@ const AngularWorkflow = (defaultprops) => {
                 }
 
                 const parsedEnvironments =
-                  environments === null || environments === []
+                  environments === null || environments.length === 0
                     ? "cloud"
                     : environments[defaultEnvironmentIndex] === undefined
                       ? "cloud"
@@ -14239,7 +14239,6 @@ const AngularWorkflow = (defaultprops) => {
       hideBackdrop={true}
       disableBackdropClick={true}
       style={{ pointerEvents: "none" }}
-      PaperComponent={PaperComponent}
       aria-labelledby="draggable-dialog-title"
       open={authgroupModalOpen}
       PaperProps={{
@@ -14358,12 +14357,10 @@ const AngularWorkflow = (defaultprops) => {
 
   const executionArgumentModal =
     <Dialog
-      PaperComponent={PaperComponent}
       disableEnforceFocus={true}
       hideBackdrop={true}
       disableBackdropClick={true}
       style={{ pointerEvents: "none" }}
-      PaperComponent={PaperComponent}
       aria-labelledby="draggable-dialog-title"
       open={executionArgumentModalOpen}
       PaperProps={{
@@ -14617,7 +14614,6 @@ const AngularWorkflow = (defaultprops) => {
 
   const aiQueryModal =
     <Dialog
-      PaperComponent={PaperComponent}
       aria-labelledby="draggable-dialog-title"
       open={aiQueryModalOpen}
       PaperProps={{
@@ -14737,7 +14733,6 @@ const AngularWorkflow = (defaultprops) => {
 
   const conditionsModal = (
     <Dialog
-      PaperComponent={PaperComponent}
       disableEnforceFocus={true}
       hideBackdrop={true}
       disableBackdropClick={true}
@@ -15447,7 +15442,6 @@ const AngularWorkflow = (defaultprops) => {
 			  onClick={() => {
 				// Delete the branch
 			  }}
-			  fullWidth
 			>
 				Re-attach branch
 			</Button>
@@ -15459,7 +15453,6 @@ const AngularWorkflow = (defaultprops) => {
 			  onClick={() => {
 				// Delete the branch
 			  }}
-			  fullWidth
 			>
 				Disable Path
 			</Button>
@@ -18429,7 +18422,6 @@ const AngularWorkflow = (defaultprops) => {
           <FormControlLabel
             control={
               <Checkbox
-                disabled={!isCloud}
                 checked={workflow.triggers !== undefined && workflow.triggers !== null && workflow.triggers[selectedTriggerIndex].parameters !== undefined && workflow.triggers[selectedTriggerIndex].parameters.length > 0 && workflow.triggers[selectedTriggerIndex].parameters[2] !== undefined && workflow.triggers[selectedTriggerIndex].parameters[2].value !== undefined ? workflow.triggers[selectedTriggerIndex].parameters[2].value.includes("sms") : false}
                 onChange={() => {
                   setTriggerOptionsWrapper("sms");
@@ -19990,7 +19982,7 @@ const AngularWorkflow = (defaultprops) => {
             {parentWorkflows.slice(0, 5).map((wf, index) => {
               return (
                 <a href={`/workflows/${wf.id}`} target="_blank" rel="noopener noreferrer" key={index}>
-                  <Tooltip arrow placement="left" title={
+                  <Tooltip arrow title={
                     <span style={{}}>
                       {wf.image !== undefined && wf.image !== null && wf.image.length > 0 ?
                         <img
@@ -20006,6 +19998,7 @@ const AngularWorkflow = (defaultprops) => {
                     </span>
 
                   } placement="bottom">
+
                     <span onClick={() => {
                       console.log("Click: ", wf)
                     }}>
@@ -20769,7 +20762,6 @@ const AngularWorkflow = (defaultprops) => {
 					borderTop: "0px solid",
                   }
                 }}
-                disabled={workflow.public}
                 color="secondary"
                 placeholder={"Runtime Argument"}
                 defaultValue={executionText}
@@ -20799,7 +20791,6 @@ const AngularWorkflow = (defaultprops) => {
                 <Button
                   disabled={savingState !== 0}
                   color="secondary"
-                  variant="text"
                   style={{
                     height: buttonHeights,
                     width: 64,
@@ -22225,7 +22216,8 @@ const AngularWorkflow = (defaultprops) => {
     }
 
     if (stringjson.includes("kms/")) {
-      return `KMS authentication most likely failed. Check your notifications for more details on this page: /admin?admin_tab=notifications. If you need help with KMS, please contact ${supportEmail}`
+      return `KMS authentication most likely failed. Check your notifications for more details on this page: /alerts. If you need help with KMS, please contact ${supportEmail}`
+
     }
 
     if (stringjson.includes("string indices must be integers")) {
@@ -22257,7 +22249,8 @@ const AngularWorkflow = (defaultprops) => {
 
     if (stringjson.includes("connectionerror")) {
       if (stringjson.includes("kms")) {
-        return `KMS authentication most likely failed (2). Check your notifications for more details on this page: /admin?admin_tab=notifications&kms=true. If you need help with KMS, please contact ${supportEmail}`
+        return `KMS authentication most likely failed (2). Check your notifications for more details on this page: /alerts?kms=true. If you need help with KMS, please contact ${supportEmail}`
+
       }
 
       return "The URL is incorrect, or NexusGuard can't reach it. Set up a NexusGuard Environment in the same VLAN, or whitelist NexusGuard's IPs."
@@ -22671,7 +22664,8 @@ const AngularWorkflow = (defaultprops) => {
                                 onClick={(e) => {
                                   e.preventDefault()
                                   e.stopPropagation()
-                                  window.open(`/admin?org_id=${workflow.org_id}&admin_tab=notifications&workflow=${data.workflow.id}&execution_id=${data.execution_id}`, "_blank")
+                                  window.open(`/alerts?workflow=${data.workflow.id}&execution_id=${data.execution_id}`, "_blank")
+
                                 }}
                               />
                             </Tooltip>
@@ -22929,7 +22923,8 @@ const AngularWorkflow = (defaultprops) => {
                       onClick={(e) => {
                         e.preventDefault()
                         e.stopPropagation()
-                        window.open(`/admin?admin_tab=notifications&workflow=${executionData.workflow.id}&execution_id=${executionData.execution_id}`, "_blank")
+                        window.open(`/alerts?workflow=${executionData.workflow.id}&execution_id=${executionData.execution_id}`, "_blank")
+
                       }}
                     />
                   </Button>
@@ -24343,7 +24338,6 @@ const AngularWorkflow = (defaultprops) => {
                 cy={cy}
                 setAuthenticationModalOpen={setAuthenticationModalOpen}
                 setVariablesModalOpen={setVariablesModalOpen}
-                setLastSaved={setLastSaved}
                 setCodeModalOpen={setCodeModalOpen}
                 selectedNameChange={selectedNameChange}
                 rightsidebarStyle={rightsidebarStyle}

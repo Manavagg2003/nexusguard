@@ -10,8 +10,6 @@ import AngularWorkflow from "./views/AngularWorkflow.jsx";
 
 import Header from "./components/NewHeader.jsx";
 import HealthPage from "./components/HealthPage.jsx";
-
-//import Header from "./components/Header.jsx";
 import theme, { getTheme } from "./theme.jsx";
 import Apps from "./views/Apps.jsx";
 import Apps2 from "./views/Apps2.jsx";
@@ -24,24 +22,23 @@ import AgentUI from "./views/AgentUI.jsx";
 
 import Welcome from "./views/Welcome.jsx";
 import Dashboard from "./views/Dashboard.jsx";
-import DashboardView from "./views/DashboardViews.jsx";
 import NewDashboard from "./views/NewDashboard.jsx";
 import AdminSetup from "./views/AdminSetup.jsx";
 import Admin from "./views/Admin.jsx";
 import Docs from "./views/Docs.jsx";
 import Usecases2 from "./views/Usecases2.jsx";
 import DashboardViews from "./views/DashboardViews.jsx";
-//import Introduction from "./views/Introduction";
-import SetAuthentication from "./views/SetAuthentication.jsx";
-import SetAuthenticationSSO from "./views/SetAuthenticationSSO.jsx";
 import Search from "./views/Search.jsx";
 import RunWorkflow from "./views/RunWorkflow.jsx";
 import Admin2 from "./views/Admin2.jsx";
 
 import LoginPage from "./views/LoginPage.jsx";
 import LoginPageOld from "./views/LoginPageOld.jsx";
-
 import SettingsPage from "./views/SettingsPage.jsx";
+
+import SetAuthentication from "./views/SetAuthentication.jsx";
+import SetAuthenticationSSO from "./views/SetAuthenticationSSO.jsx";
+
 import KeepAlive from "./views/KeepAlive.jsx";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from '@mui/material/CssBaseline';
@@ -96,6 +93,8 @@ const App = (message, props) => {
 	const [isLoaded, setIsLoaded] = useState(false)
 	const [curpath, setCurpath] = useState(typeof window === "undefined" || window.location === undefined ? "" : window.location.pathname)
 	const { themeMode, handleThemeChange, setBrandColor, brandColor, setThemeMode, setSupportEmail, setLogoutUrl, setBrandName } = useContext(Context);
+
+
 	const currentTheme = getTheme(themeMode, brandColor);
 	const mainColor = currentTheme?.palette?.backgroundColor
 	const [isPreviousThemeLight, setIsPreviousThemeLight] = useState(false)
@@ -400,47 +399,15 @@ const App = (message, props) => {
 				<Route
 					exact
 					path="/admin2"
-					element={
-						<ComingSoon pageName="Admin Panel" />
-						/*
-						<Admin
-							userdata={userdata}
-							isLoggedIn={isLoggedIn}
-							setIsLoggedIn={setIsLoggedIn}
-							register={true}
-							isLoaded={isLoaded}
-							globalUrl={globalUrl}
-							setCookie={setCookie}
-							cookies={cookies}
-							checkLogin={checkLogin}
-							notifications={notifications}
-							{...props}
-						/>
-						*/
-					}
+					element={<ComingSoon pageName="Admin Panel" />}
 				/>
 
 				<Route
 					exact
 					path="/admin"
-					element={
-						<ComingSoon pageName="Admin Panel" />
-						/*
-						<Admin2
-							cookies={cookies}
-							removeCookie={removeCookie}
-							isLoaded={isLoaded}
-							isLoggedIn={isLoggedIn}
-							notifications={notifications}
-							setNotifications={setNotifications}
-							globalUrl={globalUrl}
-							checkLogin={checkLogin}
-							userdata={userdata}
-							{...props}
-						/>
-						*/
-					}
+					element={<ComingSoon pageName="Admin Panel" />}
 				/>
+
 
 				<Route exact path="/search" element={<Search serverside={false} isLoaded={isLoaded} userdata={userdata} globalUrl={globalUrl} surfaceColor={currentTheme.palette.surfaceColor} inputColor={currentTheme.palette.inputColor} {...props} />} />
 				<Route
@@ -448,19 +415,6 @@ const App = (message, props) => {
 					path="/admin/:key"
 					element={
 						<ComingSoon pageName="Admin Panel" />
-						/*
-						<Admin
-							isLoggedIn={isLoggedIn}
-							userdata={userdata}
-							setIsLoggedIn={setIsLoggedIn}
-							register={true}
-							isLoaded={isLoaded}
-							globalUrl={globalUrl}
-							setCookie={setCookie}
-							cookies={cookies}
-							{...props}
-						/>
-						*/
 					}
 				/>
 
@@ -515,14 +469,6 @@ const App = (message, props) => {
 					path="/adminsetup"
 					element={
 						<ComingSoon pageName="Admin Panel" />
-						/*
-						<AdminSetup
-							isLoaded={isLoaded}
-							userdata={userdata}
-							globalUrl={globalUrl}
-							{...props}
-						/>
-						*/
 					}
 				/>
 
@@ -612,23 +558,9 @@ const App = (message, props) => {
 				<Route
 					exact
 					path="/apps"
-					element={
-						<ComingSoon pageName="Integrations" />
-						/*
-						<Apps2
-							serverside={false}
-							isLoaded={isLoaded}
-							isLoggedIn={isLoggedIn}
-							checkLogin={checkLogin}
-							userdata={userdata}
-							globalUrl={globalUrl}
-							surfaceColor={currentTheme.palette.surfaceColor}
-							inputColor={currentTheme.palette.inputColor}
-							{...props}
-						/>
-						*/
-					}
+					element={<ComingSoon pageName="Integrations" />}
 				/>
+
 
 				<Route
 					exact
@@ -723,84 +655,37 @@ const App = (message, props) => {
 				<Route
 					exact
 					path="/legal/:key"
-					element={
-						<ComingSoon pageName="Legal Documentation" />
-						/*
-						<Docs
-							isMobile={isMobile}
-							isLoaded={isLoaded}
-							globalUrl={globalUrl}
-							isLoggedIn={isLoggedIn}
-							{...props}
-						/>
-						*/
-					}
+					element={<ComingSoon pageName="Legal Documentation" />}
 				/>
+
 
 				<Route
 					exact
 					path="/legal"
-					element={
-						<ComingSoon pageName="Legal Documentation" />
-						/*
-						<Docs
-							isMobile={isMobile}
-							isLoaded={isLoaded}
-							globalUrl={globalUrl}
-							isLoggedIn={isLoggedIn}
-							{...props}
-						/>
-						*/
-					}
+					element={<ComingSoon pageName="Legal Documentation" />}
 				/>
+
 
 				<Route
 					exact
 					path="/docs/:key"
-					element={
-						<ComingSoon pageName="Documentation" />
-						/*
-						<Docs
-							isMobile={isMobile}
-							isLoaded={isLoaded}
-							globalUrl={globalUrl}
-							isLoggedIn={isLoggedIn}
-							{...props}
-						/>
-						*/
-					}
+					element={<ComingSoon pageName="Documentation" />}
 				/>
+
 
 				<Route
 					exact
 					path="/docs"
-					element={
-						<ComingSoon pageName="Documentation" />
-						/*
-						<Docs
-							isMobile={isMobile}
-							isLoaded={isLoaded}
-							globalUrl={globalUrl}
-							isLoggedIn={isLoggedIn}
-							{...props}
-						/>
-						*/
-					}
+					element={<ComingSoon pageName="Documentation" />}
 				/>
+
 
 				<Route
 					exact
 					path="/support"
-					element={
-						//navigate(`/docs/about`)
-						<Docs
-							isMobile={isMobile}
-							isLoaded={isLoaded}
-							globalUrl={globalUrl}
-							{...props}
-						/>
-					}
+					element={<ComingSoon pageName="Support" />}
 				/>
+
 				<Route
 					exact
 					path="/set_authentication"

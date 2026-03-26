@@ -139,14 +139,7 @@ const NewDashboard = (props) => {
   useEffect(() => {
     const anyLoading = loadingNoti || loadingSelectedOrgStats;
     setShowOverlay(anyLoading);
-  }, [
-    loadingSfw,
-    loadingRot,
-    loadingNoti,
-    loadingSelectedOrgStats,
-    selectedOrganization,
-    selectedOrgForStats,
-  ]);
+  }, [loadingNoti, loadingSelectedOrgStats]);
 
   // Only auto-open onboarding if user has never dismissed it
   useEffect(() => {
@@ -450,7 +443,8 @@ const NewDashboard = (props) => {
 				 onClick={() => {
 				  if (kpi.label.toLowerCase().includes('total errors')) {
 					// navigate to notifications page
-					navigate('/admin?admin_tab=notifications');
+					navigate('/alerts');
+
 				  }
 				 }}
 				 

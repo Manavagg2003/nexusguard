@@ -3602,7 +3602,8 @@ const Workflows2 = (props) => {
                                         aria-controls="long-menu"
                                         aria-haspopup="true"
                                         onClick={() => {
-                                            window.open(`/admin?admin_tab=notifications&workflow=${data.id}`, "_blank")
+                                            window.open(`/alerts?workflow=${data.id}`, "_blank")
+
                                         }}
                                         style={{ 
 											padding: "0px", 

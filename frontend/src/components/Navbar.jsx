@@ -2485,7 +2485,8 @@ const Navbar = (props) => {
                                 })
                               }
                               handleCloseUserMenu();
-                              navigate("/admin?admin_tab=notifications");
+                              navigate("/alerts");
+
                             }}
                             onMouseEnter={() => setIsHovered("notifications")}
                             onMouseLeave={() => setIsHovered("")}
@@ -2496,7 +2497,7 @@ const Navbar = (props) => {
                               transition: "color 0.1s ease",
                               '&:hover': {
                                 backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                color: isHovered === "notifications" ? "#FF8544" : "white",
+                                color: isHovered === "notifications" ? theme.palette.primary.main : theme.palette.text.primary,
                               },
                             }}
                           >

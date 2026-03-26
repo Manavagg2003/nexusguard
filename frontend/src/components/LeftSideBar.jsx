@@ -292,6 +292,10 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
       setOpenautomateTab(false);
       setOpenSecurityTab(true);
       setCurrentOpenTab("locations");
+    } else if (lastTabOpenByUser === "alerts" || currentPath.includes("/alerts")) {
+      setOpenautomateTab(true);
+      setOpenSecurityTab(false);
+      setCurrentOpenTab("alerts");
     } else if ((lastTabOpenByUser === "docs" || currentPath.includes("/docs")) || currentPath.includes("/docs")) {
       setOpenautomateTab(false);
       setOpenSecurityTab(false);
@@ -650,14 +654,15 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
         <Divider style={{ marginTop: 10, marginBottom: 10, }} />
 
 	  	{/*
-		<Link to="/admin?admin_tab=notifications" style={hrefStyle}>
+        <Divider style={{ marginTop: 10, marginBottom: 10, }} />
+		<Link to="/alerts" style={hrefStyle}>
 		  <MenuItem
 			onClick={(event) => {
 			  handleClose();
 			}}
       style={{fontSize: 18}}
 		  >
-			<NotificationsIcon style={{ marginRight: 5 }} /> Org Notifications ({
+			<NotificationsIcon style={{ marginRight: 5 }} /> Notifications ({
 				notifications === undefined || notifications === null ? 0 : 
 				notifications?.filter((notification) => notification.read === false).length
 			}) 
@@ -693,10 +698,8 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
 
         <Divider style={{ marginBottom: 10, }} />
 
-        <Typography color="textSecondary" align="center" style={{ marginTop: 5, marginBottom: 5, fontSize: 18 }}>
-          Version: <a href="https://github.com/NexusGuard/NexusGuard/releases" style={{ color: theme.palette.text.primary, textDecoration: "underline" }} target="_blank" rel="noreferrer"> 
-	  		1.0.0
-	  		</a>
+        <Typography variant="body2" color="textSecondary" align="center" style={{ marginTop: 5, marginBottom: 5, fontSize: 18 }}>
+          Version: 1.0.0
         </Typography>
 
       </Menu>
@@ -1348,8 +1351,8 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
               component={Link}
               to="/alerts"
               onClick={(event) => {
-                setCurrentOpenTab("notifications");
-                localStorage.setItem("lastTabOpenByUser", "notifications");
+                setCurrentOpenTab("alerts");
+                localStorage.setItem("lastTabOpenByUser", "alerts");
               }}
               style={{
                 width: "100%",
@@ -1357,7 +1360,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                 color: themeMode === "dark" ? lightText : darkText,
                 justifyContent: "flex-start",
                 textTransform: "none",
-                backgroundColor: currentOpenTab === "notifications" && expandLeftNav  ? themeMode === "dark"? darkHoverColor : lightHoverColor : "transparent",
+                backgroundColor: currentOpenTab === "alerts" && expandLeftNav  ? themeMode === "dark"? darkHoverColor : lightHoverColor : "transparent",
                 marginLeft: 16,
                 fontSize: 18
               }}
@@ -1365,7 +1368,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                 event.currentTarget.style.backgroundColor = themeMode === "dark" ? darkHoverColor : lightHoverColor;
               }}
               onMouseOut={(event)=>{
-                event.currentTarget.style.backgroundColor = currentOpenTab === "notifications" && expandLeftNav ? themeMode === "dark"? darkHoverColor : lightHoverColor  : "transparent";
+                event.currentTarget.style.backgroundColor = currentOpenTab === "alerts" && expandLeftNav ? themeMode === "dark"? darkHoverColor : lightHoverColor  : "transparent";
               }}
               disableRipple={expandLeftNav ? false : true}
             >
@@ -1375,7 +1378,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                   display: expandLeftNav ? "inline" : "none",
                   opacity: expandLeftNav ? 1 : 0,
                   transition: "opacity 0.3s ease",
-                  color: themeMode === "dark" ? currentOpenTab === "notifications" ? theme.palette.text.primary : lightText : darkText,
+                  color: themeMode === "dark" ? currentOpenTab === "alerts" ? theme.palette.text.primary : lightText : darkText,
                 }}
               >
                 Alerts

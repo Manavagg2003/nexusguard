@@ -211,12 +211,14 @@ const EditWorkflow = (props) => {
 						setDescription(description)
 					}
 
-					if (newWorkflowTags === []) {
+					if (newWorkflowTags.length === 0) {
+
 						innerWorkflow.tags = responseJson.tags
 						setNewWorkflowTags(responseJson.tags)
 					}
 
-					if (selectedUsecases === []) {
+					if (selectedUsecases.length === 0) {
+
 						selectedUsecases = responseJson.usecase_ids
 					}
 
@@ -979,7 +981,9 @@ const EditWorkflow = (props) => {
 									color="primary"
 									defaultValue={innerWorkflow.description}
 									placeholder="Description"
-									multiline
+
+
+
 									label="Description"
 									margin="dense"
 									fullWidth
@@ -1166,7 +1170,7 @@ const EditWorkflow = (props) => {
 									Git Backup Repository
 								</Typography>
 								<Typography variant="body2" style={{ textAlign: "left", marginTop: 5, }} color="textSecondary">
-									Decide where this workflow is backed up in a Git repository. Will create logs and notifications if upload fails. <b>The repository and branch must already have been initialized</b>. Files will show up in the root folder in the format 'orgid/workflow status/workflow id.json' and be formatted, with removed images, to make diffing easy. Overrides your <a href="/admin?admin_tab=org_config" style={{ textDecoration: "none", color: "#f86a3e" }} target="_blank">default backup repository</a>. <a href="/docs/configuration#environment-variables" style={{ textDecoration: "none", color: "#f86a3e" }} target="_blank">Credentials are encrypted.</a> Creates <a href="/admin?admin_tab=notifications" style={{ textDecoration: "none", color: "#f86a3e" }} target="_blank">notifications</a> if it fails.
+									Decide where this workflow is backed up in a Git repository. Will create logs and notifications if upload fails. <b>The repository and branch must already have been initialized</b>. Files will show up in the root folder in the format 'orgid/workflow status/workflow id.json' and be formatted, with removed images, to make diffing easy. Overrides your <a href="/alerts" style={{ textDecoration: "none", color: "#f86a3e" }} target="_blank">default backup repository</a>. <a href="/docs/configuration#environment-variables" style={{ textDecoration: "none", color: "#f86a3e" }} target="_blank">Credentials are encrypted.</a> Creates <a href="/alerts" style={{ textDecoration: "none", color: "#f86a3e" }} target="_blank">notifications</a> if it fails.
 								</Typography>
 								<Grid container style={{ marginTop: 10, }} spacing={2}>
 									<Grid item xs={6} style={{}}>
@@ -1325,7 +1329,8 @@ const EditWorkflow = (props) => {
 											multiple
 											fullWidth
 											style={{ width: 500, }}
-											value={selectedCleanupActions === [] ? ["none"] : selectedCleanupActions}
+											value={selectedCleanupActions.length === 0 ? ["none"] : selectedCleanupActions}
+
 											renderValue={(selected) => selected.join(', ')}
 											onChange={(event) => {
 												if (event.target.value.length > 0) {
@@ -1576,7 +1581,8 @@ const EditWorkflow = (props) => {
 											multiple
 											fullWidth
 											style={{ width: 500, }}
-											value={selectedYieldActions === [] ? ["none"] : selectedYieldActions}
+											value={selectedYieldActions.length === 0 ? ["none"] : selectedYieldActions}
+
 											renderValue={(selected) => selected.join(', ')}
 											onChange={(event) => {
 												console.log("Value: ", event.target.value)
