@@ -1050,7 +1050,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
               src={
 				  showPartnerLogo ? userdata?.active_org?.image : NexusGuardLogo
 			  }
-              alt="NexusGuard"
+              alt={showPartnerLogo ? (userdata?.active_org?.name ? `${userdata.active_org.name} logo` : "Partner logo") : "NexusGuard logo"}
               style={{
                 width: showPartnerLogo ? 32 : 32,
                 height: showPartnerLogo ? 32 : 32,

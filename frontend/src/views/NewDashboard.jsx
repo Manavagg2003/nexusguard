@@ -48,12 +48,16 @@ const NewDashboard = (props) => {
   const [notifications, setNotifications] = useState([]);
   const [onboardingOpen, setOnboardingOpen] = useState(() => {
     try {
-      return localStorage.getItem("dashboard_onboarding_complete") === "true" ? false : true;
+      const alreadyDone = localStorage.getItem("dashboard_onboarding_complete") === "true";
+      const alreadyDismissed = localStorage.getItem("dashboard_onboarding_dismissed") === "true";
+      if (alreadyDone || alreadyDismissed) {
+        return false;
+      }
+      return true;
     } catch {
       return true;
     }
-
-  })
+  });
   const [overrideDays, setOverrideDays] = useState(undefined);
   const [rotMonthOverride, setRotMonthOverride] = useState(undefined);
   const [isProdStatusOn, setIsProdStatusOn] = useState(false)

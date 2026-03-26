@@ -1977,8 +1977,11 @@ const Workflows2 = (props) => {
             .then((response) => {
     			setIsLoadingWorkflow(false)
                 if (response.status !== 200) {
-                    // Silently ignore — user may not be logged in yet
                     console.log("Status not 200 for workflows: ", response.status);
+                    setWorkflowDone(true);
+                    if (isLoggedIn) {
+                        toast(`Failed to load workflows: Server returned ${response.status}`);
+                    }
                     return
                 }
 
@@ -2100,6 +2103,8 @@ const Workflows2 = (props) => {
                     */
 
                 } else {
+                    setIsLoadingWorkflow(false)
+                    setWorkflowDone(true);
                     if (isLoggedIn) {
                         toast("An error occurred while loading workflows");
                     }
@@ -2109,6 +2114,10 @@ const Workflows2 = (props) => {
             })
             .catch((error) => {
     			setIsLoadingWorkflow(false)
+                setWorkflowDone(true);
+                if (isLoggedIn) {
+                    toast("An error occurred while loading workflows: " + error.toString());
+                }
                 console.log("Workflow fetch error: " + error.toString());
             });
     }

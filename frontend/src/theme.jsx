@@ -410,54 +410,51 @@ export const getTheme = (themeMode, brandColor) =>
             },
           },
         },
-      },
-
-      overrides: {
         MuiMenu: {
-          list: {
-            backgroundColor: themeMode === "dark" ? "#27292d" : "#ffffff",
+          styleOverrides: {
+            list: {
+              backgroundColor: themeMode === "dark" ? "#27292d" : "#ffffff",
+            },
           },
         },
         MuiCssBaseline: {
-          MuiCssBaseline: {
-            styleOverrides: `
-              @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-display: swap;
-                font-weight: 300;
-                src: local('Inter Light'), local('Inter-Light');
-              }
-              @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-display: swap;
-                font-weight: 400;
-                src: local('Inter Regular'), local('Inter-Regular');
-              }
-              @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-display: swap;
-                font-weight: 500;
-                src: local('Inter Medium'), local('Inter-Medium');
-              }
-              @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-display: swap;
-                font-weight: 600;
-                src: local('Inter SemiBold'), local('Inter-SemiBold');
-              }
-              @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-display: swap;
-                font-weight: 700;
-                src: local('Inter Bold'), local('Inter-Bold');
-              }
-            `,
-          },
+          styleOverrides: `
+            @font-face {
+              font-family: 'Inter';
+              font-style: normal;
+              font-display: swap;
+              font-weight: 300;
+              src: local('Inter Light'), local('Inter-Light');
+            }
+            @font-face {
+              font-family: 'Inter';
+              font-style: normal;
+              font-display: swap;
+              font-weight: 400;
+              src: local('Inter Regular'), local('Inter-Regular');
+            }
+            @font-face {
+              font-family: 'Inter';
+              font-style: normal;
+              font-display: swap;
+              font-weight: 500;
+              src: local('Inter Medium'), local('Inter-Medium');
+            }
+            @font-face {
+              font-family: 'Inter';
+              font-style: normal;
+              font-display: swap;
+              font-weight: 600;
+              src: local('Inter SemiBold'), local('Inter-SemiBold');
+            }
+            @font-face {
+              font-family: 'Inter';
+              font-style: normal;
+              font-display: swap;
+              font-weight: 700;
+              src: local('Inter Bold'), local('Inter-Bold');
+            }
+          `,
         },
       },
     });

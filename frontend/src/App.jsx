@@ -829,19 +829,7 @@ const App = (message, props) => {
 					}
 				/>
 
-				<Route
-					exact
-					path="/new-dashboard"
-					element={
-						<DashboardViews
-							serverside={false}
-							isLoaded={isLoaded}
-							isLoggedIn={isLoggedIn}
-							globalUrl={globalUrl}
-							wut={userdata}
-						/>
-					}
-				/>
+
 				<Route exact path="/dashboard" element={<Navigate to="/new-dashboard" replace />} />
 				<Route exact path="/dashboard/:key" element={<Navigate to="/new-dashboard" replace />} />
 				<Route
@@ -857,19 +845,7 @@ const App = (message, props) => {
 						/>
 					}
 				/>
-				<Route
-					exact
-					path="/dashboard/:key"
-					element={
-						<DashboardViews
-							serverside={false}
-							isLoaded={isLoaded}
-							isLoggedIn={isLoggedIn}
-							globalUrl={globalUrl}
-							wut={userdata}
-						/>
-					}
-				/>
+
 				<Route
 					exact
 					path="/chat"

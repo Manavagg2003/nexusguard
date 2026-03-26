@@ -523,7 +523,7 @@ function computeTodayValueForOrg(key, orgStats) {
                   padding: '8px', // Adjust the text padding
                 },
               }}
-              isOptionEqualToValue={(option, value) => option.id === value.id}
+              isOptionEqualToValue={(option, value) => option.value === value.value}
               getOptionLabel={(option) => {
                 if (
                   option === undefined ||
