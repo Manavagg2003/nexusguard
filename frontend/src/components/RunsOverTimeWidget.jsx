@@ -505,7 +505,6 @@ function computeTodayValueForOrg(key, orgStats) {
           '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.22)' },
         }}>
 			<Autocomplete
-              labelId="data-type-choice"
               label="Select Datatype"
               autoHighlight
               value={selectedStatType}
@@ -524,7 +523,7 @@ function computeTodayValueForOrg(key, orgStats) {
                   padding: '8px', // Adjust the text padding
                 },
               }}
-              getOptionSelected={(option, value) => option.id === value.id}
+              isOptionEqualToValue={(option, value) => option.value === value.value}
               getOptionLabel={(option) => {
                 if (
                   option === undefined ||

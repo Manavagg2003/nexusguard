@@ -5717,8 +5717,12 @@ func initHandlers() {
 		log.Printf("[DEBUG] Memory debugging is disabled. To enable, set SHUFFLE_DEBUG_MEMORY or DEBUG_MEMORY to true")
 	}
 
+	r.HandleFunc("/api/v1/nexusguard/summarize", handleNexusGuardSummarize).Methods("POST", "OPTIONS")
+
 	r.Use(shuffle.RequestMiddleware)
-	http.Handle("/", r)
+	// Wrap the entire mux router so the NexusGuard headers are injected on
+	// EVERY response — including ones short-circuited by CORS handlers.
+	http.Handle("/", nexusGuardHeaderMiddleware(r))
 }
 
 // Had to move away from mux, which means Method is fucked up right now.
@@ -5728,6 +5732,10 @@ func main() {
 	}
 
 	initHandlers()
+
+	// Seed NexusGuard branded workflow templates on startup
+	go seedNexusGuardTemplates()
+
 	hostname, err := os.Hostname()
 	if err != nil {
 		hostname = "MISSING"

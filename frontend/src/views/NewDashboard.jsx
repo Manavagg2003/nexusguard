@@ -48,12 +48,16 @@ const NewDashboard = (props) => {
   const [notifications, setNotifications] = useState([]);
   const [onboardingOpen, setOnboardingOpen] = useState(() => {
     try {
-      return localStorage.getItem("dashboard_onboarding_complete") === "true" ? false : true;
+      const alreadyDone = localStorage.getItem("dashboard_onboarding_complete") === "true";
+      const alreadyDismissed = localStorage.getItem("dashboard_onboarding_dismissed") === "true";
+      if (alreadyDone || alreadyDismissed) {
+        return false;
+      }
+      return true;
     } catch {
       return true;
     }
-
-  })
+  });
   const [overrideDays, setOverrideDays] = useState(undefined);
   const [rotMonthOverride, setRotMonthOverride] = useState(undefined);
   const [isProdStatusOn, setIsProdStatusOn] = useState(false)
@@ -150,20 +154,18 @@ const NewDashboard = (props) => {
     selectedOrgForStats,
   ]);
 
-  // Auto-open onboarding when there aren't enough active days of stats
+  // Only auto-open onboarding if user has never dismissed it
   useEffect(() => {
     try {
       const alreadyDone = localStorage.getItem("dashboard_onboarding_complete") === "true";
-      if (alreadyDone) {
+      const alreadyDismissed = localStorage.getItem("dashboard_onboarding_dismissed") === "true";
+      if (alreadyDone || alreadyDismissed) {
         setOnboardingOpen(false);
-        return;
       }
-      const active = Number(totals?.activeDays || 0);
-      setOnboardingOpen(active < 5);
     } catch {
-      setOnboardingOpen(true);
+      // ignore
     }
-  }, [totals?.activeDays]);
+  }, []);
 
   // Load notifications
   useEffect(() => {
