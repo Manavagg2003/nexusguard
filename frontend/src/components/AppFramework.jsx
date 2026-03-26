@@ -38,8 +38,10 @@ import cytoscape from "cytoscape";
 import { toast } from 'react-toastify';
 import { isMobile } from 'react-device-detect';
 
-cytoscape.use(edgehandles)
-
+if (typeof cytoscape('core', 'edgehandles') !== 'function' && !cytoscape.__edgehandlesRegistered) {
+  cytoscape.use(edgehandles);
+  cytoscape.__edgehandlesRegistered = true;
+}
 export const findSpecificApp = (framework, inputcategory) => {
   // Get the frameworkinfo for the org and fill in
   if (framework === undefined || framework === null) {

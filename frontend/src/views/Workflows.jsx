@@ -754,13 +754,8 @@ const Workflows = (props) => {
     })
       .then((response) => {
         if (response.status !== 200) {
-          console.log("Status not 200 for workflows :O!: ", response.status);
-
-          //if (isCloud) {
-          //  navigate("/search?tab=workflows")
-          //}
-
-          toast("Failed getting workflows. Are you logged in?");
+          // Silently ignore — user may not be logged in yet
+          console.log("Status not 200 for workflows: ", response.status);
           return
         }
 
@@ -854,7 +849,7 @@ const Workflows = (props) => {
         }
       })
       .catch((error) => {
-        toast(error.toString());
+        console.log("Workflow fetch error: " + error.toString());
       });
   }
 

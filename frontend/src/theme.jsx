@@ -1,16 +1,16 @@
-import { createTheme, adaptV4Theme } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
-const theme = createTheme(adaptV4Theme({
+const theme = createTheme({
   palette: {
-	theme: "dark",
+    mode: "dark",
     main: "#0ea5e9",
     primary: {
       main: "#0ea5e9",
-  	  contrastText: "#ffffff",
+      contrastText: "#ffffff",
     },
     secondary: {
       main: "#6366f1",
-	  contrastText: "#ffffff",
+      contrastText: "#ffffff",
     },
     background: {
       default: "#0f172a",
@@ -19,40 +19,28 @@ const theme = createTheme(adaptV4Theme({
     text: {
       secondary: "rgba(255,255,255,0.8)",
     },
-    type: "dark",
-    //inputColor: "#383B40",
-    
-	inputColor: "rgba(39,41,45,1)",
+    inputColor: "rgba(39,41,45,1)",
     surfaceColor: "#1e293b",
-    //platformColor: "#1c1c1d",
     platformColor: "#1e293b",
     backgroundColor: "#0f172a",
-	distributionColor: "#40E0D0",
-
+    distributionColor: "#40E0D0",
     green: "#5cc879",
     borderRadius: 8,
     defaultBorder: "1px solid rgba(255,255,255,0.3)",
-
-	//jsonTheme: "brewer",
-	//jsonTheme: "chalk",
-	//jsonTheme: "monokai",
-	//jsonTheme: "google",
-	//jsonTheme: "tomorrow",
-	jsonIconStyle: "round",
-	jsonTheme: "summerfruit",
-	jsonCollapseStringsAfterLength: 100,
-
-	reactJsonStyle: {
-		padding: 5, 
-		width: "98%",
-		borderRadius: 5,
-		border: "1px solid rgba(255,255,255,0.7)",
-		overflowX: "auto",
-	},
+    jsonIconStyle: "round",
+    jsonTheme: "summerfruit",
+    jsonCollapseStringsAfterLength: 100,
+    reactJsonStyle: {
+      padding: 5,
+      width: "98%",
+      borderRadius: 5,
+      border: "1px solid rgba(255,255,255,0.7)",
+      overflowX: "auto",
+    },
     textFieldStyle: {
       backgroundColor: "#212121",
       borderRadius: 5,
-	  height: 40, 
+      height: 40,
     },
     DialogStyle: {
       backgroundColor: "#212121",
@@ -61,16 +49,9 @@ const theme = createTheme(adaptV4Theme({
       border: "1px solid #494949",
     },
     innerTextfieldStyle: {
-	  height: 40,
-	  fontSize: 16,
+      height: 40,
+      fontSize: 16,
       backgroundColor: "#212121",
-	  // Removed since upgrading to mui 18
-      //color: "white",
-      //minHeight: 50,
-      //marginLeft: "5px",
-      //maxWidth: "95%",
-      //fontSize: "1em",
-      //borderRadius: 5,
     },
     tooltip: {
       backgroundColor: "white",
@@ -79,81 +60,30 @@ const theme = createTheme(adaptV4Theme({
       fontSize: 11,
     },
     defaultImage: "/images/no_image.png",
-	singulOrange: "/images/singul_orange.png",
-	singulGreen: "/images/singul_green.png",
-	singulBlackWhite: "/images/singul_black_white.png",
+    singulOrange: "/images/singul_orange.png",
+    singulGreen: "/images/singul_green.png",
+    singulBlackWhite: "/images/singul_black_white.png",
   },
   typography: {
     fontFamily: `"Inter", sans-serif`,
-    useNextVariants: true,
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
     fontWeightSemiBold: 600,
     fontWeightBold: 700,
-    h1: {
-      fontSize: 40,
-    },
-    h4: {
-      fontSize: 30,
-      fontWeight: 500,
-    },
-    h6: {
-      fontSize: 22,
-    },
-    body1: {
-      fontSize: 18,
-    },
+    h1: { fontSize: 40 },
+    h4: { fontSize: 30, fontWeight: 500 },
+    h6: { fontSize: 22 },
+    body1: { fontSize: 18 },
   },
-  overrides: {
+  components: {
     MuiMenu: {
-      list: {
-        backgroundColor: "#27292d",
+      styleOverrides: {
+        list: { backgroundColor: "#27292d" },
       },
     },
-    MuiCssBaseline: {
-      MuiCssBaseline: {
-        styleOverrides: `
-          @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-display: swap;
-            font-weight: 300;
-            src: local('Inter Light'), local('Inter-Light');
-          }
-          @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-display: swap;
-            font-weight: 400;
-            src: local('Inter Regular'), local('Inter-Regular');
-          }
-          @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-display: swap;
-            font-weight: 500;
-            src: local('Inter Medium'), local('Inter-Medium');
-          }
-          @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-display: swap;
-            font-weight: 600;
-            src: local('Inter SemiBold'), local('Inter-SemiBold');
-          }
-          @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-display: swap;
-            font-weight: 700;
-            src: local('Inter Bold'), local('Inter-Bold');
-          }
-        `,
-      },
-	},
   },
-}));
+});
 
 export default theme;
 

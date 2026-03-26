@@ -336,7 +336,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
       })
         .then((response) => {
           if (response.status !== 200) {
-            toast("Failed getting workflows. Are you logged in?");
+            // Silently ignore auth errors — user may not be logged in yet
             return
           }
   
@@ -387,7 +387,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
           } 
         })
         .catch((error) => {
-          toast(error.toString());
+          console.log("Workflow fetch error:", error.toString());
         });
     }, [usersWorkFlows]);
 
@@ -543,7 +543,6 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
           setAnchorElAvatar(event.currentTarget);
         }}
         disableRipple
-        disableElevation
       >
         <SettingsIcon
           style={{ height: 24, width: 24 }}
@@ -914,10 +913,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
     height: 35,
     color: openautomatetab ? "#F1F1F1" : themeMode === "dark" ? lightText : darkText,
     textTransform: "none",
-    "& .MuiButton-root	": {
-      width: expandLeftNav ? "100%" : 30,
-      padding: 0,
-    },
+    padding: 0,
     fontSize: 18
   };
 
@@ -1054,32 +1050,46 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
               src={
 				  showPartnerLogo ? userdata?.active_org?.image : NexusGuardLogo
 			  }
-              alt="NexusGuard Logo"
-              style={{ width: showPartnerLogo ? 30 : 24, height: showPartnerLogo ? 30 : 24 }}
+              alt="NexusGuard"
+              style={{
+                width: showPartnerLogo ? 32 : 32,
+                height: showPartnerLogo ? 32 : 32,
+                borderRadius: 6,
+                objectFit: "contain",
+              }}
             />
           </Link>
           </Tooltip>
           {
-            !isCloud && expandLeftNav && (
-              <Box style={{ display: "flex", flexDirection: "column", marginLeft: 8 }}>
-                <Typography variant="body2" style={{fontSize: 16, color: themeMode === "dark" ? lightText : darkText, transition: "opacity 0.3s ease", fontWeight: 600, marginTop: -5}}>
-                  {isProdStatusOn ? "Enterprise" : "Open Source"}
+            expandLeftNav && (
+              <Box style={{ display: "flex", flexDirection: "column", marginLeft: 10 }}>
+                <Typography
+                  variant="body2"
+                  style={{
+                    fontSize: 15,
+                    color: themeMode === "dark" ? lightText : darkText,
+                    transition: "opacity 0.3s ease",
+                    fontWeight: 700,
+                    letterSpacing: "0.02em",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  NexusGuard
                 </Typography>
-                <Typography variant="caption" style={{fontSize: 9, color: themeMode === "dark" ? lightText : darkText, opacity: 0.7, lineHeight: 1, marginTop: 2}}>
-                  Intelligent Security Automation
+                <Typography
+                  variant="caption"
+                  style={{
+                    fontSize: 9,
+                    color: themeMode === "dark" ? lightText : darkText,
+                    opacity: 0.55,
+                    lineHeight: 1,
+                    marginTop: 3,
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Security Automation
                 </Typography>
-              </Box>
-            )
-          }
-          {
-            isCloud && expandLeftNav && (
-              <Box style={{ display: "flex", flexDirection: "column", marginLeft: 8 }}>
-                 <Typography variant="body2" style={{fontSize: 16, color: themeMode === "dark" ? lightText : darkText, transition: "opacity 0.3s ease", fontWeight: 600, marginTop: -5}}>
-                    NexusGuard
-                 </Typography>
-                 <Typography variant="caption" style={{fontSize: 9, color: themeMode === "dark" ? lightText : darkText, opacity: 0.7, lineHeight: 1, marginTop: 2}}>
-                    Intelligent Security Automation
-                 </Typography>
               </Box>
             )
           }
@@ -1110,7 +1120,6 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                 backgroundColor: "transparent",
               },
             }}
-            disableElevation
             disableRipple
           >
           <svg
@@ -1207,7 +1216,6 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                           <kbd>Ctrl</kbd>+<kbd>K</kbd>
                         </span>
                       ),
-                      disableUnderline: true,
                     }}
                     onClick={() => {
                       setSearchBarModalOpen(true);
@@ -1842,7 +1850,6 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                   gap: 10,
                   marginLeft: 8,
                 }}
-                disableElevation
                 disableRipple
               >
                 <Avatar
@@ -1891,7 +1898,6 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                 padding: 5,
                 border: hoverOnAvatar ? theme.palette.defaultBorder: "none",
               }}
-              disableElevation
               disableRipple
             >
               <Avatar

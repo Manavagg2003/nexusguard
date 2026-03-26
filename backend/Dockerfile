@@ -7,6 +7,7 @@ WORKDIR /app
 ADD ./go-app/main.go /app
 ADD ./go-app/walkoff.go /app
 ADD ./go-app/docker.go /app
+ADD ./go-app/nexusguard_templates.go /app
 
 ADD ./go-app/go.mod /app
 

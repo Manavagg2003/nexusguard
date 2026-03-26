@@ -21,9 +21,9 @@ const StepIcon = styled("div")(({ completed }) => ({
   justifyContent: "center",
   fontWeight: 700,
   fontSize: 14,
-  color: completed ? "#0C111D" : "#ffffff",
-  background: completed ? "#43D17C" : "#2F2F2F",
-  border: completed ? "1px solid #43D17C" : "1px solid rgba(255,255,255,0.15)",
+  color: completed === "true" ? "#0C111D" : "#ffffff",
+  background: completed === "true" ? "#43D17C" : "#2F2F2F",
+  border: completed === "true" ? "1px solid #43D17C" : "1px solid rgba(255,255,255,0.15)",
   flexShrink: 0,
 }));
 
@@ -34,7 +34,7 @@ const StepCard = styled(Box)(({ completed, flash }) => ({
   gap: "14px",
   minHeight: 60,
   backgroundColor: "#212121",
-  border: `1px solid ${flash ? "#f87171" : completed ? "#43D17C" : "rgba(255, 255, 255, 0.1)"}`,
+  border: `1px solid ${flash === "true" ? "#f87171" : completed === "true" ? "#43D17C" : "rgba(255, 255, 255, 0.1)"}`,
   borderRadius: "12px",
   padding: "16px",
   width: "100%",
@@ -76,10 +76,10 @@ const SecondaryButton = styled(Button)({
 const StepItem = React.forwardRef(({ step, iconRef }, ref) => (
   <Box ref={ref} sx={{ display: "flex", gap: 1.2, alignItems: "flex-start" }}>
     <Box ref={iconRef} sx={{ display: "flex", alignItems: "center", justifyContent: "center", width: 40, height: 28, zIndex: 1, mt: 1.5 }}>
-      <StepIcon completed={step.completed}>{step.index}</StepIcon>
+      <StepIcon completed={step.completed ? "true" : undefined}>{step.index}</StepIcon>
     </Box>
 
-    <StepCard completed={step.completed} flash={Array.isArray(step.flashKeys) && step.flashKeys.includes(step.key)}>
+    <StepCard completed={step.completed ? "true" : undefined} flash={Array.isArray(step.flashKeys) && step.flashKeys.includes(step.key) ? "true" : undefined}>
       <Box sx={{ display: "flex", flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", gap: 1, width: "100%" }}>
         <Stack direction="column" spacing={1} sx={{ width: "70%" }}>
         <Typography
@@ -493,8 +493,7 @@ const DashboardOnboarding = ({
 
             <Button variant="text" color="secondary"  onClick={() => {
         		setOnboardingOpen(false)
-
-				toast.warn("The dashboard is not fully set up yet. You can complete the steps later from the onboarding section.", { timeout: 10000 })
+				try { localStorage.setItem("dashboard_onboarding_dismissed", "true"); } catch {}
 			}}
 				sx={{
 					fontSize: 14,
