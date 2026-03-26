@@ -137,13 +137,7 @@ const NewDashboard = (props) => {
   const displayName = userdata !== undefined && userdata?.username !== undefined ? userdata?.username?.split('@')[0]?.charAt(0)?.toUpperCase() + userdata?.username?.split('@')[0]?.slice(1) : 'User';
 
   useEffect(() => {
-    const anyLoading =
-      //loadingSfw ||
-      //loadingRot ||
-      loadingNoti ||
-      loadingSelectedOrgStats //||
-      !selectedOrganization ||
-      //!selectedOrgForStats;
+    const anyLoading = loadingNoti || loadingSelectedOrgStats;
     setShowOverlay(anyLoading);
   }, [
     loadingSfw,

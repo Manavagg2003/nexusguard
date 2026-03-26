@@ -68,6 +68,8 @@ import { Context } from './context/ContextApi.jsx';
 import Navbar from "./components/Navbar.jsx";
 import Workflows2 from "./views/Workflows2.jsx";
 import AppExplorer from "./views/AppExplorer.jsx";
+import ComingSoon from "./components/ComingSoon.jsx";
+
 
 // Production - backend proxy forwarding in nginx
 var globalUrl = window.location.origin;
@@ -399,6 +401,8 @@ const App = (message, props) => {
 					exact
 					path="/admin2"
 					element={
+						<ComingSoon pageName="Admin Panel" />
+						/*
 						<Admin
 							userdata={userdata}
 							isLoggedIn={isLoggedIn}
@@ -412,12 +416,16 @@ const App = (message, props) => {
 							notifications={notifications}
 							{...props}
 						/>
+						*/
 					}
 				/>
+
 				<Route
 					exact
 					path="/admin"
 					element={
+						<ComingSoon pageName="Admin Panel" />
+						/*
 						<Admin2
 							cookies={cookies}
 							removeCookie={removeCookie}
@@ -430,13 +438,17 @@ const App = (message, props) => {
 							userdata={userdata}
 							{...props}
 						/>
+						*/
 					}
 				/>
+
 				<Route exact path="/search" element={<Search serverside={false} isLoaded={isLoaded} userdata={userdata} globalUrl={globalUrl} surfaceColor={currentTheme.palette.surfaceColor} inputColor={currentTheme.palette.inputColor} {...props} />} />
 				<Route
 					exact
 					path="/admin/:key"
 					element={
+						<ComingSoon pageName="Admin Panel" />
+						/*
 						<Admin
 							isLoggedIn={isLoggedIn}
 							userdata={userdata}
@@ -448,8 +460,10 @@ const App = (message, props) => {
 							cookies={cookies}
 							{...props}
 						/>
+						*/
 					}
 				/>
+
 				<Route
 					exact
 					path="/health"
@@ -500,14 +514,18 @@ const App = (message, props) => {
 					exact
 					path="/adminsetup"
 					element={
+						<ComingSoon pageName="Admin Panel" />
+						/*
 						<AdminSetup
 							isLoaded={isLoaded}
 							userdata={userdata}
 							globalUrl={globalUrl}
 							{...props}
 						/>
+						*/
 					}
 				/>
+
 
 				<Route
 					exact
@@ -595,6 +613,8 @@ const App = (message, props) => {
 					exact
 					path="/apps"
 					element={
+						<ComingSoon pageName="Integrations" />
+						/*
 						<Apps2
 							serverside={false}
 							isLoaded={isLoaded}
@@ -606,8 +626,10 @@ const App = (message, props) => {
 							inputColor={currentTheme.palette.inputColor}
 							{...props}
 						/>
+						*/
 					}
 				/>
+
 				<Route
 					exact
 					path="/apps/edit/:appid"
@@ -702,6 +724,8 @@ const App = (message, props) => {
 					exact
 					path="/legal/:key"
 					element={
+						<ComingSoon pageName="Legal Documentation" />
+						/*
 						<Docs
 							isMobile={isMobile}
 							isLoaded={isLoaded}
@@ -709,12 +733,16 @@ const App = (message, props) => {
 							isLoggedIn={isLoggedIn}
 							{...props}
 						/>
+						*/
 					}
 				/>
+
 				<Route
 					exact
 					path="/legal"
 					element={
+						<ComingSoon pageName="Legal Documentation" />
+						/*
 						<Docs
 							isMobile={isMobile}
 							isLoaded={isLoaded}
@@ -722,12 +750,16 @@ const App = (message, props) => {
 							isLoggedIn={isLoggedIn}
 							{...props}
 						/>
+						*/
 					}
 				/>
+
 				<Route
 					exact
 					path="/docs/:key"
 					element={
+						<ComingSoon pageName="Documentation" />
+						/*
 						<Docs
 							isMobile={isMobile}
 							isLoaded={isLoaded}
@@ -735,12 +767,16 @@ const App = (message, props) => {
 							isLoggedIn={isLoggedIn}
 							{...props}
 						/>
+						*/
 					}
 				/>
+
 				<Route
 					exact
 					path="/docs"
 					element={
+						<ComingSoon pageName="Documentation" />
+						/*
 						<Docs
 							isMobile={isMobile}
 							isLoaded={isLoaded}
@@ -748,8 +784,10 @@ const App = (message, props) => {
 							isLoggedIn={isLoggedIn}
 							{...props}
 						/>
+						*/
 					}
 				/>
+
 				<Route
 					exact
 					path="/support"
@@ -845,6 +883,18 @@ const App = (message, props) => {
 						/>
 					}
 				/>
+				<Route
+					exact
+					path="/reports"
+					element={<ComingSoon pageName="Reports" />}
+				/>
+				<Route
+					exact
+					path="/alerts"
+					element={<ComingSoon pageName="Alerts" />}
+				/>
+
+
 
 				<Route
 					exact
