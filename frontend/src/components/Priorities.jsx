@@ -1449,7 +1449,7 @@ print('"' + encoded + '"')
 									}
 
 									return (
-										<Tooltip arrow placement="right" title={
+										<Tooltip arrow title={
 											<span style={{}}>
 												{data.image !== undefined && data.image !== null && data.image.length > 0 ?
 													<img src={data.image} alt={data.name} style={{ backgroundColor: theme.palette.surfaceColor, maxHeight: 200, minHeigth: 200, borderRadius: theme.palette?.borderRadius, }} />
@@ -1476,6 +1476,7 @@ print('"' + encoded + '"')
 												{data.name}
 											</MenuItem>
 										</Tooltip>
+
 									)
 								}}
 								renderInput={(params) => {
@@ -1582,7 +1583,8 @@ print('"' + encoded + '"')
 										"description": "This is a test notification to check if the notification workflow is working correctly.",
 										"org_id": selectedOrganization.id,
 										"id": uuidv4(),
-										"reference_url": "/admin?type=test&admin_tab=notifications",
+										"reference_url": "/alerts",
+
 										"created_at": Math.floor(new Date().getTime() / 1000),
 										"updated_at": Math.floor(new Date().getTime() / 1000),
 									})

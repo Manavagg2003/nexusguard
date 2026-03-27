@@ -292,6 +292,10 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
       setOpenautomateTab(false);
       setOpenSecurityTab(true);
       setCurrentOpenTab("locations");
+    } else if (lastTabOpenByUser === "alerts" || currentPath.includes("/alerts")) {
+      setOpenautomateTab(true);
+      setOpenSecurityTab(false);
+      setCurrentOpenTab("alerts");
     } else if ((lastTabOpenByUser === "docs" || currentPath.includes("/docs")) || currentPath.includes("/docs")) {
       setOpenautomateTab(false);
       setOpenSecurityTab(false);
@@ -623,6 +627,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
       <Divider style={{ marginTop: 10, marginBottom: 10, color: theme.palette.defaultBorder }} />
           </>
         )}
+        {/*
         <Link to="/admin" style={hrefStyle}>
           <MenuItem
             onClick={(event) => {
@@ -643,18 +648,21 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
             <SettingsIcon style={{ marginRight: 5 }} /> User Account
           </MenuItem>
         </Link>
+        */}
+
 
         <Divider style={{ marginTop: 10, marginBottom: 10, }} />
 
 	  	{/*
-		<Link to="/admin?admin_tab=notifications" style={hrefStyle}>
+        <Divider style={{ marginTop: 10, marginBottom: 10, }} />
+		<Link to="/alerts" style={hrefStyle}>
 		  <MenuItem
 			onClick={(event) => {
 			  handleClose();
 			}}
       style={{fontSize: 18}}
 		  >
-			<NotificationsIcon style={{ marginRight: 5 }} /> Org Notifications ({
+			<NotificationsIcon style={{ marginRight: 5 }} /> Notifications ({
 				notifications === undefined || notifications === null ? 0 : 
 				notifications?.filter((notification) => notification.read === false).length
 			}) 
@@ -674,6 +682,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
             <HelpOutlineIcon style={{ marginRight: 5 }} /> About
           </MenuItem>
         </Link>
+        {/*
         <MenuItem
           style={{ fontSize: 18 }}
           onClick={(event) => {
@@ -685,13 +694,14 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
         >
           <MeetingRoomIcon style={{ marginRight: 5 }} /> &nbsp;Logout
         </MenuItem>
+        */}
+
         <Divider style={{ marginBottom: 10, }} />
 
-        <Typography color="textSecondary" align="center" style={{ marginTop: 5, marginBottom: 5, fontSize: 18 }}>
-          Version: <a href="https://github.com/NexusGuard/NexusGuard/releases" style={{ color: theme.palette.text.primary, textDecoration: "underline" }} target="_blank" rel="noreferrer"> 
-	  		2.1.2
-	  		</a>
+        <Typography variant="body2" color="textSecondary" align="center" style={{ marginTop: 5, marginBottom: 5, fontSize: 18 }}>
+          Version: 1.0.0
         </Typography>
+
       </Menu>
     </span>
   );
@@ -1339,10 +1349,10 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
             </Button>
             <Button
               component={Link}
-              to="/admin?admin_tab=notifications"
+              to="/alerts"
               onClick={(event) => {
-                setCurrentOpenTab("notifications");
-                localStorage.setItem("lastTabOpenByUser", "notifications");
+                setCurrentOpenTab("alerts");
+                localStorage.setItem("lastTabOpenByUser", "alerts");
               }}
               style={{
                 width: "100%",
@@ -1350,7 +1360,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                 color: themeMode === "dark" ? lightText : darkText,
                 justifyContent: "flex-start",
                 textTransform: "none",
-                backgroundColor: currentOpenTab === "notifications" && expandLeftNav  ? themeMode === "dark"? darkHoverColor : lightHoverColor : "transparent",
+                backgroundColor: currentOpenTab === "alerts" && expandLeftNav  ? themeMode === "dark"? darkHoverColor : lightHoverColor : "transparent",
                 marginLeft: 16,
                 fontSize: 18
               }}
@@ -1358,7 +1368,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                 event.currentTarget.style.backgroundColor = themeMode === "dark" ? darkHoverColor : lightHoverColor;
               }}
               onMouseOut={(event)=>{
-                event.currentTarget.style.backgroundColor = currentOpenTab === "notifications" && expandLeftNav ? themeMode === "dark"? darkHoverColor : lightHoverColor  : "transparent";
+                event.currentTarget.style.backgroundColor = currentOpenTab === "alerts" && expandLeftNav ? themeMode === "dark"? darkHoverColor : lightHoverColor  : "transparent";
               }}
               disableRipple={expandLeftNav ? false : true}
             >
@@ -1368,7 +1378,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
                   display: expandLeftNav ? "inline" : "none",
                   opacity: expandLeftNav ? 1 : 0,
                   transition: "opacity 0.3s ease",
-                  color: themeMode === "dark" ? currentOpenTab === "notifications" ? theme.palette.text.primary : lightText : darkText,
+                  color: themeMode === "dark" ? currentOpenTab === "alerts" ? theme.palette.text.primary : lightText : darkText,
                 }}
               >
                 Alerts
@@ -1635,6 +1645,7 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
           </div>
       ) : null}
 
+        {/*
         <Box ref={autocompleteRef}>
           <Autocomplete
             disablePortal
@@ -1807,6 +1818,8 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
             )}
           />
         </Box>
+        */}
+
         <Box
           style={{
             display: "flex",
@@ -1814,14 +1827,15 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
             width: "100%",
             marginTop: 16,
             gap: 10,
-            justifyContent: "space-between",
+            justifyContent: expandLeftNav ? "flex-end" : "center",
             alignItems: "center",
             marginBottom: expandLeftNav ? 0 : 10,
             height: 55,
             borderRadius: 8,
           }}
           onMouseOver={(event) => {
-            event.currentTarget.style.backgroundColor = themeMode === "dark" ? darkHoverColor : lightHoverColor;
+            event.currentTarget.style.backgroundColor =
+              themeMode === "dark" ? darkHoverColor : lightHoverColor;
             setHoverOnAvatar(true);
           }}
           onMouseLeave={(event) => {
@@ -1829,91 +1843,9 @@ const LeftSideBar = ({ userdata, serverside, globalUrl, notifications, }) => {
             setHoverOnAvatar(false);
           }}
         >
-          {expandLeftNav ? (
-            <>
-              <Button
-                onClick={(event) => {
-                  if (anchorElAvatar) {
-                    setAnchorElAvatar(null);
-                  } else {
-                    setAnchorElAvatar(event.currentTarget);
-                  }
-                  setOpenAutocomplete(false);
-                }}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  backgroundColor: "transparent",
-                  cursor: "pointer",
-                  padding: 0,
-                  minWidth: 0,
-                  gap: 10,
-                  marginLeft: 8,
-                }}
-                disableRipple
-              >
-                <Avatar
-                  sx={{
-                    width: 48,
-                    height: 48,
-                    backgroundColor: themeMode === 'dark' ? darkHoverColor : lightHoverColor,
-                    color: themeMode === 'dark' ? lightText : darkText,
-                    fontSize: 30,
-                    fontStyle: "bold",
-                    border: hoverOnAvatar ? (themeMode === 'dark' ? "1px solid #494949" : '1px solid #5A5A5A') : "none",
-                  }}
-                >
-                  {userdata?.username?.substring(0, 1).toUpperCase()}
-                </Avatar>
-                <Typography
-                  style={{
-                    color: themeMode === "dark" ? lightText : darkText,
-                    fontSize: 18,
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    maxWidth: 150,
-                  }}
-                >
-                  {userdata?.username}
-                </Typography>
-              </Button>
-              {avatarMenu}
-            </>
-          ) : (
-            <Button
-              onClick={(event) => {
-                if (anchorElAvatar) {
-                  setAnchorElAvatar(null);
-                } else {
-                  setAnchorElAvatar(event.currentTarget);
-                }
-              }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexDirection: 'column',
-                cursor: "pointer",
-                backgroundColor: "transparent",
-                padding: 5,
-                border: hoverOnAvatar ? theme.palette.defaultBorder: "none",
-              }}
-              disableRipple
-            >
-              <Avatar
-                sx={{
-                  width: 48,
-                  height: 48,
-                  backgroundColor: themeMode === "dark" ? darkHoverColor : lightHoverColor,
-                  color: theme.palette.text.primary,
-                  fontSize: 30,
-                }}
-              >
-                {userdata?.username?.substring(0, 1).toUpperCase()}
-              </Avatar>
-            </Button>
-          )}
+          {avatarMenu}
         </Box>
+
       </Box>
       </Box>
      </div>
