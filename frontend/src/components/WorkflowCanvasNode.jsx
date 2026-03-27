@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { IconButton, Tooltip, Typography } from "@mui/material";
@@ -13,6 +13,8 @@ const WorkflowCanvasNode = ({ id, node, onDelete, onConfigure, isSelected, theme
     transition,
     isDragging,
   } = useSortable({ id });
+
+  const [isHovered, setIsHovered] = useState(false);
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -33,9 +35,6 @@ const WorkflowCanvasNode = ({ id, node, onDelete, onConfigure, isSelected, theme
     boxShadow: isDragging ? "0 8px 16px rgba(0,0,0,0.4)" : "0 4px 6px rgba(0,0,0,0.1)",
     cursor: isDragging ? "grabbing" : "grab",
     zIndex: isDragging ? 2 : 1,
-    "&:hover .action-buttons": {
-      opacity: 1,
-    }
   };
 
   const getFallbackIcon = (name) => {
@@ -43,7 +42,26 @@ const WorkflowCanvasNode = ({ id, node, onDelete, onConfigure, isSelected, theme
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners} onClick={() => onConfigure(node)}>
+    <div 
+      ref={setNodeRef} 
+      style={style} 
+      {...attributes} 
+      {...listeners} 
+      role="button"
+      tabIndex={0}
+      onClick={() => onConfigure(node)}
+      onKeyDown={(e) => {
+        if (listeners && listeners.onKeyDown) {
+          listeners.onKeyDown(e);
+        }
+        if (e.key === "Enter" || e.key === " ") {
+          if (e.key === " ") e.preventDefault();
+          onConfigure(node);
+        }
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Visual connector points */}
       <div style={{
         position: "absolute",
@@ -102,7 +120,7 @@ const WorkflowCanvasNode = ({ id, node, onDelete, onConfigure, isSelected, theme
         style={{ 
           display: "flex", 
           gap: "4px",
-          opacity: isSelected ? 1 : 0, 
+          opacity: isSelected || isHovered ? 1 : 0, 
           transition: "opacity 0.2s"
         }}
         onClick={(e) => e.stopPropagation()}

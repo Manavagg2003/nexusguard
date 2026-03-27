@@ -46,6 +46,7 @@ const WorkflowBuilder = (props) => {
   const [activeId, setActiveId] = useState(null);
   const [activeApp, setActiveApp] = useState(null);
   const [selectedNode, setSelectedNode] = useState(null);
+  const canvasRef = useRef(null);
   
 
   const { setNodeRef: setDroppableNodeRef, isOver } = useDroppable({
@@ -73,11 +74,12 @@ const WorkflowBuilder = (props) => {
       // Check if dropped directly over a registered dropzone
       const isOverCanvas = over && (over.id === 'canvas-droppable' || String(over.id).startsWith('node-'));
       
-      // Fallback: Use absolute screen coordinates. 
-      // The canvas resides entirely to the right of the 280px sidebar.
-      // If the left edge of the dropped item is greater than 250px, it's on the canvas.
+      // Fallback: Use absolute screen coordinates checking canvas bounds.
       const draggedRect = active.rect.current.translated;
-      const isOverCanvasArea = draggedRect && draggedRect.left > 250;
+      const canvasRect = canvasRef.current?.getBoundingClientRect();
+      const isOverCanvasArea = draggedRect && canvasRect ? 
+        (draggedRect.left >= canvasRect.left && draggedRect.left <= canvasRect.right) 
+        : false;
       
       const droppedOnCanvas = isOverCanvas || isOverCanvasArea;
 
@@ -101,11 +103,14 @@ const WorkflowBuilder = (props) => {
     } 
     // Case 2: Reordering nodes within canvas
     else if (active.id.startsWith('node-')) {
-      if (over && active.id !== over.id) {
+      if (over && String(over.id).startsWith('node-') && active.id !== over.id) {
         setNodes((items) => {
           const oldIndex = items.findIndex((item) => item.id === active.id);
           const newIndex = items.findIndex((item) => item.id === over.id);
-          return arrayMove(items, oldIndex, newIndex);
+          if (oldIndex >= 0 && newIndex >= 0) {
+            return arrayMove(items, oldIndex, newIndex);
+          }
+          return items;
         });
       }
     }
@@ -179,7 +184,10 @@ const WorkflowBuilder = (props) => {
 
           {/* Center Canvas Area */}
           <div 
-            ref={setDroppableNodeRef}
+            ref={(node) => {
+              setDroppableNodeRef(node);
+              canvasRef.current = node;
+            }}
             id="canvas-droppable"
             style={{ 
               flex: 1, 
@@ -290,7 +298,12 @@ const WorkflowBuilder = (props) => {
                   label="Node Name"
                   size="small"
                   variant="outlined"
-                  value={selectedNode.name}
+                  value={selectedNode.name || ""}
+                  onChange={(e) => {
+                    const newName = e.target.value;
+                    setSelectedNode(prev => ({ ...prev, name: newName }));
+                    setNodes(prevNodes => prevNodes.map(n => n.id === selectedNode.id ? { ...n, name: newName } : n));
+                  }}
                   InputLabelProps={{ style: { color: "rgba(255,255,255,0.6)" } }}
                   InputProps={{ style: { color: "white" } }}
                   style={{ marginBottom: 20 }}
@@ -310,6 +323,12 @@ const WorkflowBuilder = (props) => {
                   select
                   size="small"
                   variant="outlined"
+                  value={selectedNode.config?.action || "default"}
+                  onChange={(e) => {
+                    const newAction = e.target.value;
+                    setSelectedNode(prev => ({ ...prev, config: { ...(prev.config || {}), action: newAction } }));
+                    setNodes(prevNodes => prevNodes.map(n => n.id === selectedNode.id ? { ...n, config: { ...(n.config || {}), action: newAction } } : n));
+                  }}
                   SelectProps={{ native: true }}
                   InputProps={{ style: { color: "white" } }}
                   style={{ marginBottom: 20 }}

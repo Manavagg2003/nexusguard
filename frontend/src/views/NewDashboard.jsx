@@ -438,7 +438,7 @@ const NewDashboard = (props) => {
 			<Tooltip title={kpi.disabled ? "This metric is coming soon!" : ""} arrow>
 				<Paper style={{ padding: 16, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12
 				  , cursor: kpi.label.toLowerCase().includes('total errors') ? 'pointer' : 'default',
-					transparency: kpi.disabled ? 0.5 : 1
+					opacity: kpi.disabled ? 0.5 : 1
 				 }}
 				 onClick={() => {
 				  if (kpi.label.toLowerCase().includes('total errors')) {

@@ -7,6 +7,7 @@ import {
   Accordion, 
   AccordionSummary, 
   AccordionDetails,
+  Box,
 } from "@mui/material";
 import { Search, ExpandMore } from "@mui/icons-material";
 
@@ -41,11 +42,11 @@ const DraggableAppNode = ({ app, theme }) => {
   const getFallbackIcon = (name) => name ? name.charAt(0).toUpperCase() : "?";
 
   return (
-    <div
+    <Box
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      style={{
+      sx={{
         display: "flex",
         alignItems: "center",
         gap: "12px",
@@ -89,7 +90,7 @@ const DraggableAppNode = ({ app, theme }) => {
           {app.description}
         </Typography>
       </div>
-    </div>
+    </Box>
   );
 };
 

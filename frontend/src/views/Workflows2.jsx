@@ -3607,7 +3607,7 @@ const Workflows2 = (props) => {
                                         }}
                                         style={{ 
 											padding: "0px", 
-											transparency: 0.5,
+											opacity: 0.5,
 										}}
 										color="primary"
                                     >

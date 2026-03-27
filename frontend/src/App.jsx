@@ -67,6 +67,7 @@ import Workflows2 from "./views/Workflows2.jsx";
 import AppExplorer from "./views/AppExplorer.jsx";
 import ComingSoon from "./components/ComingSoon.jsx";
 import WorkflowBuilder from "./views/WorkflowBuilder.jsx";
+import Alerts from "./views/Alerts.jsx";
 
 
 // Production - backend proxy forwarding in nginx
@@ -790,7 +791,7 @@ const App = (message, props) => {
 				<Route
 					exact
 					path="/alerts"
-					element={<ComingSoon pageName="Alerts" />}
+					element={<Alerts {...props} />}
 				/>
 
 
