@@ -66,6 +66,7 @@ import Navbar from "./components/Navbar.jsx";
 import Workflows2 from "./views/Workflows2.jsx";
 import AppExplorer from "./views/AppExplorer.jsx";
 import ComingSoon from "./components/ComingSoon.jsx";
+import WorkflowBuilder from "./views/WorkflowBuilder.jsx";
 
 
 // Production - backend proxy forwarding in nginx
@@ -630,6 +631,19 @@ const App = (message, props) => {
 				/>
 				<Route exact path="/debug" element={<RuntimeDebugger userdata={userdata} globalUrl={globalUrl} />} />
 				<Route exact path="/workflows/debug" element={<RuntimeDebugger userdata={userdata} globalUrl={globalUrl} />} />
+				<Route
+					exact
+					path="/workflows/builder"
+					element={
+						<WorkflowBuilder
+							userdata={userdata}
+							globalUrl={globalUrl}
+							isLoaded={isLoaded}
+							isLoggedIn={isLoggedIn}
+							{...props}
+						/>
+					}
+				/>
 				<Route
 					exact
 					path="/workflows/:key"
