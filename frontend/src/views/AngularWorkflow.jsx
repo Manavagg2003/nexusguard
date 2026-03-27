@@ -12282,11 +12282,12 @@ const AngularWorkflow = (defaultprops) => {
                 }
 
                 const parsedEnvironments =
-                  environments === null || environments.length === 0
+                  environments == null || environments.length === 0
                     ? "cloud"
                     : environments[defaultEnvironmentIndex] === undefined
                       ? "cloud"
                       : environments[defaultEnvironmentIndex].Name;
+
 
                 // activated: app.generated === true ? app.activated === false ? false : true : true,
                 const newAppData = {

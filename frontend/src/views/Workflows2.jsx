@@ -3607,7 +3607,7 @@ const Workflows2 = (props) => {
                                         }}
                                         style={{ 
 											padding: "0px", 
-											transparency: 0.5,
+											opacity: 0.5,
 										}}
 										color="primary"
                                     >
@@ -5521,6 +5521,24 @@ const Workflows2 = (props) => {
                         	        >
                         	            Create Workflow
                         	        </Button>
+                                    <Button
+                                        variant="outlined"
+                                        color="primary"
+                                        onClick={() => navigate("/workflows/builder")}
+                                        id="build_workflow_button"
+                                        style={{
+                                            borderRadius: 4,
+                                            flex: 0.8,
+                                            marginLeft: 8,
+                                            textTransform: 'none',
+                                            fontFamily: theme.typography?.fontFamily,
+                                            fontSize: 16,
+                                            fontWeight: 500
+                                        }}
+                                        startIcon={<AppsIcon />}
+                                    >
+                                        Build Workflow (Beta)
+                                    </Button>
                         	    </div>
                         	</div>
 						}
